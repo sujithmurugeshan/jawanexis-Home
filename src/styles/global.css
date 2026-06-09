@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  color: #20242a;
+  color: #111111;
   background: #ffffff;
   font-family: "DM Sans", system-ui, sans-serif;
   font-synthesis: none;

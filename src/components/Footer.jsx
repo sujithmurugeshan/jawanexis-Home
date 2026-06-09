@@ -2,7 +2,7 @@ import { footerColumns } from "../pages/homeData.jsx";
 
 function Footer() {
   return (
-    <footer id="contact-us" className="bg-[#2f3033] py-14 text-zinc-300">
+    <footer id="contact-us" className="bg-black py-14 text-white/70">
       <div className="shell grid gap-10 md:grid-cols-3 lg:grid-cols-6">
         {footerColumns.map(([title, ...items]) => (
           <div key={title}>

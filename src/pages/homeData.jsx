@@ -8,43 +8,43 @@ export const accreditationItems = [
     name: "nasscom",
     mark: "n",
     sub: "",
-    style: "text-[#bd1f2d] text-[42px] font-extrabold lowercase",
-    markStyle: "bg-[#bd1f2d]"
+    style: "text-black text-[42px] font-extrabold lowercase",
+    markStyle: "bg-black"
   },
   {
     name: "NSDC",
     mark: "N",
     sub: "National Skill Development Corporation",
-    style: "text-[#2f86c9] text-[21px] font-extrabold",
-    markStyle: "bg-[#7ac943]"
+    style: "text-guvi-deepGreen text-[21px] font-extrabold",
+    markStyle: "bg-guvi-green"
   },
   {
     name: "AICTE",
     mark: "A",
     sub: "All India Council for Technical Education",
-    style: "text-[#1d4f8f] text-[21px] font-extrabold",
-    markStyle: "bg-[#e9a625]"
+    style: "text-black text-[21px] font-extrabold",
+    markStyle: "bg-black"
   },
   {
     name: "SWAYAM Plus",
     mark: "+",
     sub: "",
-    style: "text-[#0b73b7] text-[32px] font-extrabold",
-    markStyle: "bg-[#0b73b7]"
+    style: "text-guvi-deepGreen text-[32px] font-extrabold",
+    markStyle: "bg-guvi-deepGreen"
   },
   {
     name: "ANNA UNIVERSITY",
     mark: "AU",
     sub: "CHENNAI",
-    style: "text-[#b82735] text-[19px] font-extrabold",
-    markStyle: "bg-[#b82735]"
+    style: "text-black text-[19px] font-extrabold",
+    markStyle: "bg-black"
   },
   {
     name: "IIT KANPUR",
     mark: "IK",
     sub: "Indian Institute of Technology, Kanpur",
-    style: "text-[#1f2933] text-[27px] font-extrabold",
-    markStyle: "bg-[#6b8175]"
+    style: "text-guvi-deepGreen text-[27px] font-extrabold",
+    markStyle: "bg-guvi-green"
   }
 ];
 

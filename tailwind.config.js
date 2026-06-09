@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,jsx}"],
+  content: ["./src/**/*.{js,jsx}"],
   theme: {
     extend: {
       fontFamily: {
@@ -10,14 +10,12 @@ export default {
         guvi: {
           green: "#19d950",
           deepGreen: "#0b8a32",
-          dark: "#1d1d1f",
-          ink: "#20242a",
-          muted: "#70757d",
+          dark: "#050505",
+          ink: "#111111",
+          muted: "#4b4b4b",
           mint: "#e9f8ef",
-          line: "#e7e7ea",
-          soft: "#f4f4f8",
-          purple: "#7417f2",
-          red: "#ef5368"
+          line: "#d7eadc",
+          soft: "#f4fff7"
         }
       },
       boxShadow: {
