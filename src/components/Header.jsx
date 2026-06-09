@@ -8,18 +8,16 @@ function Header() {
   return (
     <header className="sticky top-0 z-40 bg-white shadow-nav">
       <div className="shell flex h-[76px] items-center justify-between gap-8">
-        <a href="#home" className="flex min-w-[220px] items-center gap-3">
+        <a href="#home" className="flex min-w-[220px] items-center gap-3" aria-label="Jawanexis home">
           <div className="flex flex-col items-start">
             <div className="flex items-center gap-2">
               <span className="flex h-7 w-7 items-center justify-center rounded-full bg-guvi-green text-sm font-extrabold text-white">
-                g
+                J
               </span>
-              <span className="text-2xl font-extrabold leading-none text-black">GUVI</span>
+              <span className="text-2xl font-extrabold leading-none text-black">Jawanexis</span>
             </div>
             <span className="mt-1 text-[8px] font-bold tracking-[0.22em] text-zinc-500">SKILL UP. LEVEL UP</span>
           </div>
-          <span className="h-8 w-px bg-zinc-300" />
-          <span className="text-[31px] font-extrabold italic leading-none tracking-tight text-[#0072bc]">HCL</span>
         </a>
 
         <nav className="hidden flex-1 items-center gap-8 text-[18px] font-bold text-guvi-ink lg:flex" aria-label="Primary navigation">
