@@ -169,36 +169,30 @@
       ];
 
       const liveCards = [
-        ["./src/assets/course-data.png", "Master Data Science Course with IITM Pravartak Certification", "Tamil, English & Hindi"],
-        ["./src/assets/course-genai.png", "GEN AI Software Development Program (Certified by MongoDB, IITM Pravartak)", "Tamil, English & Hindi"],
-        ["./src/assets/course-ai.png", "Artificial Intelligence & Machine Learning (Certified by Intel, IITM Pravartak)", "Tamil, English & Hindi"],
-        ["./src/assets/course-uiux.png", "UI/UX Design Course", "Tamil, English, Hindi & Telugu"],
-        ["./src/assets/course-genai.png", "Full Stack Development Course with AI Tools", "Tamil, English, Hindi & Telugu"],
-        ["./src/assets/course-data.png", "Business and Marketing Analytics with AI Tools", "Tamil, English & Hindi"],
-        ["./src/assets/course-ai.png", "DevOps Course", "Tamil & English"],
-        ["./src/assets/course-ai.png", "Artificial Intelligence & Machine Learning Course", "Tamil, English & Hindi"]
+        ["./src/assets/course-data.png", "HR Executive Training", "Tamil, English"],
+        ["./src/assets/course-genai.png", "HR Recruitment Training", "Tamil, English"],
+        ["./src/assets/course-ai.png", "Full Stack Development", "Tamil, English"],
+        ["./src/assets/course-uiux.png", "Software Quality Testing(QA Testing)", "Tamil, English"],
+        ["./src/assets/course-data.png", "Data Structure And Algorithms(DSA)", "Tamil, English"]
       ];
 
       const courseCards = [
-        ["Free", "HTML & CSS for Beginners", "English", "3 Hrs"],
-        ["Free", "Python Zero to Hero", "Tamil", "5 Hrs"],
-        ["Free", "JavaScript Essentials", "Hindi", "4 Hrs"],
-        ["Free", "SQL for Data Analytics", "Telugu", "3 Hrs"],
-        ["Paid", "Product Management Interview Preparation", "English", "3 Hrs"],
-        ["Paid", "Project Management Fundamentals", "English", "4 Hrs"],
-        ["Paid", "Jira: Project Management", "English", "6 Hrs"],
-        ["Combo", "Career Booster Combo Pack", "English", "12 Hrs"]
+        ["Training", "HR Executive Training", "Tamil, English", "Career Track"],
+        ["Training", "HR Recruitment Training", "Tamil, English", "Career Track"],
+        ["Training", "Full Stack Development", "Tamil, English", "Career Track"],
+        ["Training", "Software Quality Testing(QA Testing)", "Tamil, English", "Career Track"],
+        ["Training", "Data Structure And Algorithms(DSA)", "Tamil, English", "Career Track"]
       ];
 
-      const dropdowns = {
-        "LIVE Classes": ["Zen Class", "IIT-M Pravartak Certified", "Career Programs"],
-        Courses: ["Free Courses", "Paid Courses", "Combo Courses"],
-        Practice: ["CodeKata", "WebKata", "SQLKata", "IDE"],
-        Resources: ["Blog", "Forum", "Rewards", "Leaderboard"],
-        "Our Products": ["HackerKID", "GUVI for Corporates", "Placement Prep"]
-      };
+      const navItems = [
+        { label: "Home", href: "#home" },
+        { label: "Courses", href: "#courses-page" },
+        { label: "Internship", href: "#internship" },
+        { label: "About Us", href: "#about-us" },
+        { label: "Contact Us", href: "#contact-us" }
+      ];
 
-      const languages = ["All Languages", "English", "Tamil", "Hindi", "Telugu", "Malayalam", "Kannada", "Odiya", "Gujarati", "Marathi", "Bengali", "Arabic", "Vietnamese", "French", "Spanish"];
+      const languages = ["Tamil", "English"];
 
       const learnerCards = [
         ["Padmaja Kothapalli", "Front-End Developer", "ReactJS", "Automation Testing Engineer"],
@@ -210,12 +204,11 @@
       const companyLogos = ["infosys", "TCS", "Wipro", "amazon", "SIEMENS", "accenture", "cognizant", "PayPal", "HCL", "IBM", "Zoho", "Juspay", "Tech Mahindra", "Freshworks", "Capgemini", "Virtusa"];
 
       const learningCourses = [
-        ["Business & Management", "Jira: Jira project management", "Free", "./src/assets/course-uiux.png"],
-        ["Data Science & AI", "Introduction to Agile and Project Management", "Free", "./src/assets/course-data.png"],
-        ["IT & Software", "Entrepreneurship: Bootstrap an Fundraising", "Free", "./src/assets/course-genai.png"],
-        ["Design", "Introduction to ESG: Responsible Business", "Free", "./src/assets/course-ai.png"],
-        ["Career", "Email Etiquette", "Free", "./src/assets/course-genai.png"],
-        ["Productivity", "Resume Building", "Free", "./src/assets/course-data.png"]
+        ["Human Resources", "HR Executive Training", "Training", "./src/assets/course-uiux.png"],
+        ["Human Resources", "HR Recruitment Training", "Training", "./src/assets/course-data.png"],
+        ["Development", "Full Stack Development", "Training", "./src/assets/course-genai.png"],
+        ["Quality Assurance", "Software Quality Testing(QA Testing)", "Training", "./src/assets/course-ai.png"],
+        ["Programming", "Data Structure And Algorithms(DSA)", "Training", "./src/assets/course-data.png"]
       ];
 
       const practiceTabs = ["CodeKata", "WebKata", "SQLKata", "FixTheCode", "IDE", "Rewards", "Referral", "Forum"];
@@ -288,8 +281,10 @@
               </a>
 
               <nav className="hidden flex-1 items-center gap-8 text-[18px] font-bold text-guvi-ink lg:flex" aria-label="Primary navigation">
-                {Object.keys(dropdowns).map((label) => (
-                  <NavDropdown key={label} label={label} items={dropdowns[label]} />
+                {navItems.map((item) => (
+                  <a key={item.label} href={item.href} className="flex h-[58px] items-center rounded-md border border-transparent px-3 hover:border-[#1b9b4d] hover:bg-[#f8fffb]">
+                    {item.label}
+                  </a>
                 ))}
               </nav>
 
@@ -310,9 +305,9 @@
             {mobileOpen && (
               <div className="border-t border-guvi-line bg-white lg:hidden">
                 <div className="shell grid gap-2 py-4">
-                  {Object.keys(dropdowns).map((label) => (
-                    <a key={label} href={`#${label.toLowerCase().replaceAll(" ", "-")}`} className="rounded-md px-2 py-2 text-base font-bold">
-                      {label}
+                  {navItems.map((item) => (
+                    <a key={item.label} href={item.href} className="rounded-md px-2 py-2 text-base font-bold" onClick={() => setMobileOpen(false)}>
+                      {item.label}
                     </a>
                   ))}
                   <div className="mt-2 grid grid-cols-2 gap-3">
@@ -326,30 +321,6 @@
         );
       }
 
-      function NavDropdown({ label, items }) {
-        const isCourses = label === "Courses";
-
-        return (
-          <div className="group relative">
-            <a href={isCourses ? "#courses-page" : `#${label.toLowerCase().replaceAll(" ", "-")}`} className="flex h-[58px] items-center gap-2 rounded-md border border-transparent px-3 hover:border-[#1b9b4d] hover:bg-[#f8fffb]">
-              {label} <Icon name="down" size={18} />
-            </a>
-            <div className="invisible absolute left-1/2 top-[58px] w-[340px] -translate-x-1/2 rounded-b-sm border border-guvi-line bg-white p-5 opacity-0 shadow-menu transition group-hover:visible group-hover:opacity-100">
-              <div className="grid gap-2">
-                {items.map((item, index) => (
-                  <a key={item} href={item.includes("Course") ? "#courses-page" : "#live-classes"} className={`flex h-[58px] items-center gap-3 rounded-lg px-3 text-[20px] font-bold text-guvi-ink hover:bg-[#f5efff] ${isCourses && index === 1 ? "bg-[#f5efff]" : ""}`}>
-                    <span className="flex h-9 w-9 items-center justify-center rounded-md border border-guvi-line bg-white text-guvi-purple">
-                      <Icon name={index === 0 ? "monitor" : "play"} size={20} />
-                    </span>
-                    {item}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        );
-      }
-
       function HeroOffer() {
         return (
           <section id="home" className="hero-offer">
@@ -360,9 +331,9 @@
                   Save <span className="text-[#18b94b]">₹5,000</span> on HCL GUVI’s Zen Class
                 </h1>
                 <div className="mt-8 inline-flex min-h-[60px] max-w-full items-center rounded-full border-2 border-[#ec4b43] bg-white px-6 text-[15px] font-extrabold leading-tight text-black shadow-[inset_12px_0_0_#f5ee25] sm:px-7 sm:text-[22px]">
-                  Full Stack Development | Data Science | DevOps | Automation Testing | AI-ML | UI/UX
+                  HR Executive Training | HR Recruitment Training | Full Stack Development | Software Quality Testing(QA Testing) | Data Structure And Algorithms(DSA)
                 </div>
-                <a href="#live-classes" className="mt-8 flex h-[54px] w-[250px] items-center justify-center rounded-md bg-[#6f11ee] text-[21px] font-extrabold text-white shadow-sm sm:h-[62px] sm:w-[309px] sm:text-[26px]">
+                <a href="#internship" className="mt-8 flex h-[54px] w-[250px] items-center justify-center rounded-md bg-[#6f11ee] text-[21px] font-extrabold text-white shadow-sm sm:h-[62px] sm:w-[309px] sm:text-[26px]">
                   Claim ₹5K Off Now
                 </a>
                 <p className="mt-4 text-[20px] font-medium text-zinc-700">*Summer Offer Ends Soon</p>
@@ -401,7 +372,7 @@
 
       function LiveClasses() {
         return (
-          <section id="live-classes" className="bg-white pb-[84px] pt-[94px]">
+          <section id="internship" className="bg-white pb-[84px] pt-[94px]">
             <div className="shell">
               <div className="mx-auto max-w-[1030px] text-center">
                 <h2 className="flex items-center justify-center gap-3 text-[30px] font-extrabold leading-tight tracking-[-0.01em] text-guvi-ink sm:text-[40px]">
@@ -415,13 +386,7 @@
               </div>
 
               <div className="mt-[64px] grid gap-5 lg:grid-cols-4">
-                {liveCards.slice(0, 4).map(([thumb, title, language]) => (
-                  <LiveCard key={title} thumb={thumb} title={title} language={language} />
-                ))}
-              </div>
-
-              <div className="mt-[50px] grid gap-5 lg:grid-cols-4">
-                {liveCards.slice(4).map(([thumb, title, language]) => (
+                {liveCards.map(([thumb, title, language]) => (
                   <LiveCard key={title} thumb={thumb} title={title} language={language} />
                 ))}
               </div>
@@ -482,7 +447,7 @@
                     <p className="mt-4 max-w-2xl text-[18px] leading-8 text-zinc-600">
                       Find a career program that fits your goals, language preference, and current skill level.
                     </p>
-                    <a href="#live-classes" className="mt-7 inline-flex h-12 items-center justify-center rounded-md bg-[#19d950] px-7 text-[17px] font-extrabold text-white">
+                    <a href="#internship" className="mt-7 inline-flex h-12 items-center justify-center rounded-md bg-[#19d950] px-7 text-[17px] font-extrabold text-white">
                       Get Expert Guidance
                     </a>
                   </div>
@@ -541,7 +506,7 @@
 
       function HiringStats() {
         return (
-          <section className="bg-white py-16">
+          <section id="about-us" className="bg-white py-16">
             <div className="shell">
               <h2 className="text-center text-[24px] font-extrabold text-guvi-ink">Where Do Our Students Work?</h2>
               <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-8">
@@ -579,7 +544,7 @@
                 <p className="mt-2 text-[15px] font-medium text-zinc-500">Choose from 1000+ exclusive courses with new courses being published every month.</p>
               </div>
               <div className="mt-7 flex flex-wrap justify-center gap-3">
-                {["Business & Management", "Data Science & AI", "Programming", "IT & Software", "Network & Security", "Design and User Experience"].map((tab, index) => (
+                {["HR Executive Training", "HR Recruitment Training", "Full Stack Development", "Software Quality Testing(QA Testing)", "Data Structure And Algorithms(DSA)"].map((tab, index) => (
                   <button key={tab} className={`rounded-md border px-4 py-2 text-sm font-bold ${index === 0 ? "border-[#19d950] bg-[#e8fff0] text-[#0b8a32]" : "border-guvi-line bg-white text-zinc-600"}`}>
                     {tab}
                   </button>
@@ -595,7 +560,7 @@
                       <span className="rounded-md bg-[#e8295d] px-3 py-1 text-xs font-extrabold text-white">{type}</span>
                       <p className="mt-4 text-xs font-bold text-[#0b8a32]">{category}</p>
                       <h3 className="mt-2 min-h-[48px] text-[16px] font-extrabold leading-6 text-guvi-ink">{title}</h3>
-                      <p className="mt-4 text-sm font-bold text-zinc-500">0 Hrs • English</p>
+                      <p className="mt-4 text-sm font-bold text-zinc-500">Tamil, English</p>
                     </div>
                   </article>
                 ))}
@@ -664,14 +629,14 @@
 
       function Footer() {
         return (
-          <footer className="bg-[#2f3033] py-14 text-zinc-300">
+          <footer id="contact-us" className="bg-[#2f3033] py-14 text-zinc-300">
             <div className="shell grid gap-10 md:grid-cols-3 lg:grid-cols-6">
               {[
-                ["ZEN CLASS", "Full Stack Development", "Data Science", "AI/ML", "DevOps", "UI/UX"],
-                ["Popular Courses", "Python", "Java", "C Programming", "AWS", "Angular"],
-                ["Self-Paced Courses", "Premium Courses", "Free Courses", "Combos", "Course Library"],
-                ["Products", "HackerKID", "Placement Preparation", "HCL GUVI for Corporates"],
-                ["Resources", "Blog", "Forum", "Rewards", "Leaderboard"],
+                ["Courses", "HR Executive Training", "HR Recruitment Training", "Full Stack Development", "Software Quality Testing(QA Testing)", "Data Structure And Algorithms(DSA)"],
+                ["Popular Courses", "HR Executive Training", "HR Recruitment Training", "Full Stack Development", "QA Testing", "DSA"],
+                ["Training", "HR Executive Training", "HR Recruitment Training", "Full Stack Development", "QA Testing", "DSA"],
+                ["Products", "Placement Preparation", "HCL GUVI for Corporates"],
+                ["Resources", "Blog", "Forum", "Rewards"],
                 ["Company", "Refund Policy", "Contact Us", "About Us", "Privacy Policy"]
               ].map(([title, ...items]) => (
                 <div key={title}>
@@ -691,7 +656,7 @@
           <section id="courses-page" className="border-t border-guvi-line bg-white pt-[190px]">
             <div className="shell pb-20">
               <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-                <h2 className="text-[32px] font-extrabold tracking-[-0.02em] text-black sm:text-[40px]">All Free Courses</h2>
+                <h2 className="text-[32px] font-extrabold tracking-[-0.02em] text-black sm:text-[40px]">All Courses</h2>
                 <div className="flex flex-wrap gap-4">
                   <button className="flex h-12 items-center gap-3 rounded-md border border-guvi-line px-4 text-[18px] font-medium text-zinc-600">
                     Sort By <Icon name="down" size={18} />

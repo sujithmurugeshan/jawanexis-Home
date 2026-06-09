@@ -21,32 +21,44 @@ import {
 import { useState } from "react";
 import heroLearning from "./assets/hero-learning.png";
 
-const navItems = ["Live Classes", "Courses", "Practice", "Resources", "Our Products"];
+const navItems = [
+  { label: "Home", href: "#home" },
+  { label: "Courses", href: "#courses" },
+  { label: "Internship", href: "#internship" },
+  { label: "About Us", href: "#about-us" },
+  { label: "Contact Us", href: "#contact-us" }
+];
 
 const programs = [
   {
-    title: "Data Science",
-    tag: "IIT-M Pravartak certified",
-    languages: "Tamil, English, Hindi",
+    title: "HR Executive Training",
+    tag: "Career-ready HR skills",
+    languages: "Tamil, English",
     accent: "bg-emerald-50 text-emerald-700"
+  },
+  {
+    title: "HR Recruitment Training",
+    tag: "Hiring and talent acquisition",
+    languages: "Tamil, English",
+    accent: "bg-amber-50 text-amber-700"
   },
   {
     title: "Full Stack Development",
     tag: "Project based career program",
-    languages: "Tamil, English, Hindi, Telugu",
-    accent: "bg-amber-50 text-amber-700"
-  },
-  {
-    title: "AI & Machine Learning",
-    tag: "Industry focused curriculum",
-    languages: "Tamil, English, Hindi",
+    languages: "Tamil, English",
     accent: "bg-sky-50 text-sky-700"
   },
   {
-    title: "UI/UX Design",
-    tag: "Portfolio led learning",
-    languages: "Tamil, English, Hindi, Telugu",
+    title: "Software Quality Testing(QA Testing)",
+    tag: "Manual and automation testing",
+    languages: "Tamil, English",
     accent: "bg-rose-50 text-rose-700"
+  },
+  {
+    title: "Data Structure And Algorithms(DSA)",
+    tag: "Problem solving and coding interviews",
+    languages: "Tamil, English",
+    accent: "bg-violet-50 text-violet-700"
   }
 ];
 
@@ -75,20 +87,17 @@ const practiceTools = [
 
 const stats = [
   ["4.8M+", "learners"],
-  ["20", "languages"],
+  ["2", "languages"],
   ["2500+", "corporate partners"],
   ["200+", "self-paced courses"]
 ];
 
 const courseChips = [
-  "Python",
-  "Java",
-  "C Programming",
-  "AWS",
-  "Angular",
-  "Mobile Hacking",
-  "Business Analytics",
-  "DevOps"
+  "HR Executive Training",
+  "HR Recruitment Training",
+  "Full Stack Development",
+  "Software Quality Testing(QA Testing)",
+  "Data Structure And Algorithms(DSA)"
 ];
 
 const testimonials = [
@@ -125,8 +134,8 @@ function App() {
 
           <nav className="hidden items-center gap-7 text-sm font-semibold text-zinc-700 lg:flex" aria-label="Primary navigation">
             {navItems.map((item) => (
-              <a key={item} href={`#${item.toLowerCase().replaceAll(" ", "-")}`} className="focus-ring rounded-md hover:text-guvi-green">
-                {item}
+              <a key={item.label} href={item.href} className="focus-ring rounded-md hover:text-guvi-green">
+                {item.label}
               </a>
             ))}
           </nav>
@@ -158,12 +167,12 @@ function App() {
             <div className="section-shell grid gap-2 py-4">
               {navItems.map((item) => (
                 <a
-                  key={item}
-                  href={`#${item.toLowerCase().replaceAll(" ", "-")}`}
+                  key={item.label}
+                  href={item.href}
                   className="focus-ring rounded-md px-2 py-2 text-sm font-semibold text-zinc-700"
                   onClick={() => setMenuOpen(false)}
                 >
-                  {item}
+                  {item.label}
                 </a>
               ))}
               <div className="mt-2 grid grid-cols-2 gap-3">
@@ -195,7 +204,7 @@ function App() {
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <a
-                  href="#live-classes"
+                  href="#internship"
                   className="focus-ring inline-flex items-center justify-center gap-2 rounded-md bg-guvi-green px-6 py-3 text-base font-bold text-white shadow-sm hover:bg-[#099f4e]"
                 >
                   Explore programs <ArrowRight size={18} />
@@ -248,7 +257,7 @@ function App() {
           </div>
         </section>
 
-        <section id="live-classes" className="border-y border-guvi-line bg-[#f8faf9] py-16">
+        <section id="internship" className="border-y border-guvi-line bg-[#f8faf9] py-16">
           <div className="section-shell">
             <SectionHeader
               eyebrow="Live Classes + Placement Guidance"
@@ -276,8 +285,8 @@ function App() {
               <SectionHeader
                 align="left"
                 eyebrow="Self-paced courses"
-                title="Learn on your schedule with focused topic tracks."
-                text="A course library for beginners and working professionals, from programming basics to cloud and analytics."
+                title="Learn on your schedule with focused career tracks."
+                text="Choose from focused training programs for HR, development, and software testing roles."
               />
               <a
                 href="#signup"
@@ -355,7 +364,7 @@ function App() {
           </div>
         </section>
 
-        <section id="our-products" className="bg-white py-16">
+        <section id="about-us" className="bg-white py-16">
           <div className="section-shell grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-center">
             <div>
               <SectionHeader
@@ -401,7 +410,7 @@ function App() {
         </section>
       </main>
 
-      <footer className="bg-[#2d2d2d] py-12 text-zinc-300">
+      <footer id="contact-us" className="bg-[#2d2d2d] py-12 text-zinc-300">
         <div className="section-shell grid gap-8 md:grid-cols-4">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2">
@@ -414,8 +423,8 @@ function App() {
               A React and Tailwind recreation inspired by the public GUVI landing page structure, using original imagery and rewritten copy.
             </p>
           </div>
-          <FooterColumn title="Zen Class" items={["Full Stack", "Data Science", "AI/ML", "UI/UX"]} />
-          <FooterColumn title="Practice" items={["CodeKata", "WebKata", "SQLKata", "FixTheCode"]} />
+          <FooterColumn title="Courses" items={["HR Executive Training", "HR Recruitment Training", "Full Stack Development", "QA Testing", "DSA"]} />
+          <FooterColumn title="Company" items={["About Us", "Contact Us", "Privacy Policy", "Refund Policy"]} />
         </div>
         <div className="section-shell mt-10 border-t border-white/20 pt-6 text-sm text-zinc-400">
           HCL GUVI Geek Network Pvt. Ltd. Inspired demo page.
