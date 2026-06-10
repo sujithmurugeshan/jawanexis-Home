@@ -119,6 +119,27 @@ a {
   object-fit: contain;
 }
 
+.auth-brand-panel::before {
+  content: "";
+  position: absolute;
+  inset: -20% -16% auto auto;
+  width: 420px;
+  height: 420px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(25, 217, 80, 0.34), rgba(25, 217, 80, 0) 68%);
+}
+
+.auth-brand-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0.35) 100%);
+}
+
 .learner-journey-card {
   min-height: 620px;
   overflow: hidden;
