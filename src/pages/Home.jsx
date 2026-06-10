@@ -271,6 +271,19 @@ function AwardsAchievements() {
 }
 
 function HiringStats() {
+  const proudStats = [
+    ["4464724", "Learners"],
+    ["194", "Mentors"],
+    ["58892935", "Lines of Code Submission"],
+    ["1673", "Videos"]
+  ];
+
+  const proudInsights = [
+    [72, "of Learners complete their courses within 3 months"],
+    [78, "of Learners could recollect the concepts faster"],
+    [84, "of Learners have better understanding over complex topics"]
+  ];
+
   return (
     <section id="about-us" className="bg-white py-16">
       <div className="shell">
@@ -282,19 +295,26 @@ function HiringStats() {
             </div>
           ))}
         </div>
-        <h3 className="mt-10 text-center text-[20px] font-extrabold text-guvi-ink">We are proud of...</h3>
-        <div className="mt-5 grid gap-4 md:grid-cols-4">
-          {[
-            ["4464724", "Learners"],
-            ["194", "Mentors"],
-            ["58892935", "Lines of Code"],
-            ["1673", "Videos"]
-          ].map(([value, label]) => (
-            <div key={label} className="rounded-md bg-guvi-soft py-4 text-center">
-              <div className="text-[20px] font-extrabold text-guvi-deepGreen">{value}</div>
-              <div className="mt-1 text-sm font-bold text-black/55">{label}</div>
-            </div>
-          ))}
+        <div className="mx-auto mt-14 max-w-[1096px]">
+          <h3 className="text-center text-[32px] font-extrabold leading-tight text-[#0f172a]">We are proud of...</h3>
+          <div className="mt-8 grid gap-[15px] sm:grid-cols-2 lg:grid-cols-4">
+            {proudStats.map(([value, label]) => (
+              <article key={label} className="flex min-h-[109px] flex-col items-center justify-center rounded-[4px] bg-[#f5f6f7] px-5 text-center">
+                <div className="text-[32px] font-extrabold leading-none text-[#00735d]">{value}</div>
+                <div className="mt-6 text-[16px] font-extrabold leading-tight text-[#606a76]">{label}</div>
+              </article>
+            ))}
+          </div>
+          <div className="mt-[15px] grid gap-[15px] lg:grid-cols-3">
+            {proudInsights.map(([value, text]) => (
+              <article key={value} className="proud-insight-card">
+                <div className="proud-progress-ring" style={{ "--progress": `${value}%` }} aria-label={`${value}%`}>
+                  <span>{value}%</span>
+                </div>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>

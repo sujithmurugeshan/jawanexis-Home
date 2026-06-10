@@ -475,6 +475,53 @@ a {
   background: #15b957;
 }
 
+.proud-insight-card {
+  display: flex;
+  min-height: 124px;
+  align-items: center;
+  gap: 18px;
+  border-radius: 4px;
+  background: #f5f6f7;
+  padding: 18px 26px;
+}
+
+.proud-insight-card p {
+  margin: 0;
+  color: #5f6976;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.proud-progress-ring {
+  position: relative;
+  display: flex;
+  width: 88px;
+  height: 88px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: conic-gradient(#12b84f var(--progress), #c8ffd1 0);
+}
+
+.proud-progress-ring::before {
+  content: "";
+  position: absolute;
+  inset: 13px;
+  border-radius: inherit;
+  background: #ffffff;
+}
+
+.proud-progress-ring span {
+  position: relative;
+  z-index: 1;
+  color: #0f172a;
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1;
+}
+
 @keyframes logo-scroll {
   from {
     transform: translateX(0);
@@ -535,6 +582,10 @@ a {
     left: 50%;
     transform: translateX(-50%);
   }
+
+  .proud-insight-card {
+    padding-inline: 22px;
+  }
 }
 
 @media (max-width: 760px) {
@@ -592,5 +643,24 @@ a {
 
   .awards-image-wrap {
     height: 240px;
+  }
+
+  .proud-insight-card {
+    min-height: auto;
+    align-items: flex-start;
+    padding: 18px;
+  }
+
+  .proud-insight-card p {
+    font-size: 16px;
+  }
+
+  .proud-progress-ring {
+    width: 76px;
+    height: 76px;
+  }
+
+  .proud-progress-ring::before {
+    inset: 11px;
   }
 }
