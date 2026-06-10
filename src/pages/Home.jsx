@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { ArrowLeft, ArrowRight, ChevronDown, Search } from "lucide-react";
 import FloatingChatButton from "../components/FloatingChatButton.jsx";
 import Footer from "../components/Footer.jsx";
@@ -166,10 +166,10 @@ function LearnerStories() {
     <section className="bg-guvi-soft py-20">
       <div className="shell">
         <div className="text-center">
-          <h2 className="text-[28px] font-extrabold text-guvi-ink">What Our Learners Are Saying!</h2>
+          <h2 className="text-[28px] font-extrabold text-guvi-ink">Journey Of Our Learners</h2>
         </div>
         <div className="mt-10 grid gap-5 lg:grid-cols-4">
-          {learnerCards.map(([name, role, skill, job]) => (
+          {learnerCards.map(([name, company, course, story]) => (
             <article key={name} className="rounded-lg border border-guvi-line bg-white p-6 shadow-sm">
               <div className="flex items-center gap-4">
                 <div className="flex h-14 w-14 items-center justify-center rounded-full bg-guvi-green text-[20px] font-extrabold text-black">
@@ -177,12 +177,12 @@ function LearnerStories() {
                 </div>
                 <div>
                   <h3 className="text-[18px] font-extrabold text-guvi-ink">{name}</h3>
-                  <p className="text-sm font-bold text-black/55">{role}</p>
+                  <p className="text-sm font-bold text-black/55">{company}</p>
                 </div>
               </div>
               <div className="mt-5 grid gap-3">
-                <div className="rounded-md bg-guvi-soft px-4 py-3 text-sm font-bold text-guvi-deepGreen">{skill}</div>
-                <div className="rounded-md bg-guvi-soft px-4 py-3 text-sm font-bold text-guvi-deepGreen">{job}</div>
+                <div className="rounded-md bg-guvi-soft px-4 py-3 text-sm font-bold text-guvi-deepGreen">{course}</div>
+                <p className="text-sm font-medium leading-6 text-black/65">{story}</p>
               </div>
             </article>
           ))}
@@ -213,6 +213,61 @@ function JourneyCompanyLogo({ name }) {
   }
 
   return <span className="journey-company journey-company-fipsar">Fipsar</span>;
+}
+
+function AwardsAchievements() {
+  const [activeAward, setActiveAward] = useState(0);
+  const slide = awardSlides[activeAward];
+
+  const showPrevious = () => {
+    setActiveAward((current) => (current === 0 ? awardSlides.length - 1 : current - 1));
+  };
+
+  const showNext = () => {
+    setActiveAward((current) => (current + 1) % awardSlides.length);
+  };
+
+  return (
+    <section className="bg-white py-20">
+      <div className="shell">
+        <div className="awards-panel">
+          <div className="awards-copy">
+            <div className="awards-title-wrap">
+              <span className="awards-laurel awards-laurel-left" aria-hidden="true" />
+              <div>
+                <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-guvi-deepGreen">Achievements</p>
+                <h2 className="mt-3 text-[30px] font-extrabold leading-tight text-guvi-ink">{slide.title}</h2>
+                <p className="mt-4 text-[17px] font-medium leading-7 text-black/65">{slide.description}</p>
+              </div>
+              <span className="awards-laurel awards-laurel-right" aria-hidden="true" />
+            </div>
+          </div>
+          <div className="awards-image-wrap">
+            <img src={slide.image} alt={slide.title} className="h-full w-full object-cover" />
+          </div>
+          <div className="awards-controls">
+            <button className="awards-arrow awards-arrow-left" type="button" aria-label="Previous achievement" onClick={showPrevious}>
+              <ArrowLeft size={24} aria-hidden="true" />
+            </button>
+            <button className="awards-arrow awards-arrow-right" type="button" aria-label="Next achievement" onClick={showNext}>
+              <ArrowRight size={24} aria-hidden="true" />
+            </button>
+            <div className="awards-dots">
+              {awardSlides.map((award, index) => (
+                <button
+                  key={award.title}
+                  className={`awards-dot ${index === activeAward ? "awards-dot-active" : ""}`}
+                  type="button"
+                  aria-label={`Show ${award.title}`}
+                  onClick={() => setActiveAward(index)}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 function HiringStats() {
