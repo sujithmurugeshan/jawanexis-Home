@@ -43,14 +43,14 @@ function HeroOffer() {
     <section id="home" className="hero-offer">
       <div className="shell flex min-h-[374px] items-center">
         <div className="relative z-10 max-w-[760px] pt-1 xl:max-w-[930px]">
-          <p className="text-[18px] font-semibold leading-tight text-black sm:text-[25px]">
+          <p className="text-[18px] font-semibold leading-tight tracking-[-0.01em] text-black sm:text-[25px]">
             Some People Take a Break. Others Build an Advantage.
           </p>
-          <h1 className="mt-5 text-[30px] font-extrabold leading-tight text-black sm:text-[42px] lg:text-[46px]">
+          <h1 className="mt-5 text-[30px] font-extrabold leading-tight tracking-[-0.02em] text-black sm:text-[42px] lg:text-[46px]">
             Save <span className="text-guvi-deepGreen">Rs. 5,000</span> on Jawanexis Zen Class
           </h1>
-          <div className="mt-7 inline-flex min-h-[50px] max-w-full items-center rounded-full border-2 border-black bg-white px-4 text-[11px] font-extrabold leading-snug text-black shadow-[inset_10px_0_0_#19d950] sm:px-6 sm:text-[15px]">
-            HR Executive Training | HR Recruitment Training | Full Stack Development | Software Quality Testing(QA Testing) | DSA
+          <div className="mt-7 inline-flex min-h-[48px] max-w-[760px] items-center rounded-full border-2 border-black bg-white px-5 text-[12px] font-extrabold leading-tight text-black shadow-[inset_10px_0_0_#19d950] sm:px-6 sm:text-[14px] lg:text-[15px]">
+            HR Executive Training | HR Recruitment Training | Full Stack Development | Software Quality Testing(QA Testing) | Data Structure And Algorithms(DSA)
           </div>
           <a
             href="#internship"
