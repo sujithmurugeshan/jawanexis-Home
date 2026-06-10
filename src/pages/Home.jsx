@@ -42,23 +42,23 @@ function HeroOffer() {
   return (
     <section id="home" className="hero-offer">
       <div className="shell flex min-h-[374px] items-center">
-        <div className="max-w-[1040px] pt-1">
-          <p className="text-[22px] font-semibold leading-tight tracking-[-0.01em] text-black sm:text-[31px]">
+        <div className="relative z-10 max-w-[760px] pt-1 xl:max-w-[930px]">
+          <p className="text-[18px] font-semibold leading-tight text-black sm:text-[25px]">
             Some People Take a Break. Others Build an Advantage.
           </p>
-          <h1 className="mt-6 text-[36px] font-extrabold leading-tight tracking-[-0.02em] text-black sm:text-[52px] lg:text-[58px]">
+          <h1 className="mt-5 text-[30px] font-extrabold leading-tight text-black sm:text-[42px] lg:text-[46px]">
             Save <span className="text-guvi-deepGreen">Rs. 5,000</span> on Jawanexis Zen Class
           </h1>
-          <div className="mt-8 inline-flex min-h-[60px] max-w-full items-center rounded-full border-2 border-black bg-white px-6 text-[15px] font-extrabold leading-tight text-black shadow-[inset_12px_0_0_#19d950] sm:px-7 sm:text-[22px]">
-            HR Executive Training | HR Recruitment Training | Full Stack Development | Software Quality Testing(QA Testing) | Data Structure And Algorithms(DSA)
+          <div className="mt-7 inline-flex min-h-[50px] max-w-full items-center rounded-full border-2 border-black bg-white px-4 text-[11px] font-extrabold leading-snug text-black shadow-[inset_10px_0_0_#19d950] sm:px-6 sm:text-[15px]">
+            HR Executive Training | HR Recruitment Training | Full Stack Development | Software Quality Testing(QA Testing) | DSA
           </div>
           <a
             href="#internship"
-            className="mt-8 flex h-[54px] w-[250px] items-center justify-center rounded-md bg-black text-[21px] font-extrabold text-white shadow-sm sm:h-[62px] sm:w-[309px] sm:text-[26px]"
+            className="mt-7 flex h-[48px] w-[220px] items-center justify-center rounded-md bg-black text-[17px] font-extrabold text-white shadow-sm sm:h-[54px] sm:w-[260px] sm:text-[21px]"
           >
             Claim Rs. 5K Off Now
           </a>
-          <p className="mt-4 text-[20px] font-medium text-black/70">*Summer Offer Ends Soon</p>
+          <p className="mt-4 text-[16px] font-medium text-black/70">*Summer Offer Ends Soon</p>
         </div>
       </div>
     </section>
@@ -69,26 +69,94 @@ function Accreditations() {
   return (
     <section className="bg-guvi-soft py-[66px]">
       <div className="shell">
-        <h2 className="text-center text-[26px] font-medium text-black">Our Accreditations & Partnerships</h2>
-        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-          {accreditationItems.map((item) => (
-            <article key={item.name} className="flex h-[123px] items-center justify-center rounded-lg bg-white px-4 text-center">
-              <div className="flex items-center justify-center gap-3">
-                {item.mark && (
-                  <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-sm font-extrabold text-white ${item.markStyle}`}>
-                    {item.mark}
-                  </span>
-                )}
-                <div className="text-left">
-                  <div className={item.style}>{item.name}</div>
-                  {item.sub && <div className="mt-1 text-[11px] font-bold leading-tight text-black/60">{item.sub}</div>}
-                </div>
-              </div>
-            </article>
-          ))}
+        <h2 className="text-center text-[26px] font-medium text-black">Our Students Work On</h2>
+        <div className="logo-marquee mt-8" aria-label="Companies where our students work">
+          <div className="logo-track">
+            {[...accreditationItems, ...accreditationItems].map((item, index) => (
+              <article key={`${item.name}-${index}`} className="logo-card" aria-hidden={index >= accreditationItems.length}>
+                <CompanyLogo name={item.name} />
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function CompanyLogo({ name }) {
+  if (name === "Cisco") {
+    return (
+      <svg className="company-logo-svg" viewBox="0 0 220 82" role="img" aria-label="Cisco logo">
+        <g fill="#1673b9">
+          {[20, 42, 64, 86, 108, 130, 152].map((x, index) => (
+            <rect key={x} x={x} y={index % 2 === 0 ? 8 : 0} width="8" height={index % 2 === 0 ? 24 : 32} rx="4" />
+          ))}
+        </g>
+        <text x="110" y="69" textAnchor="middle" fill="#1673b9" fontSize="38" fontWeight="700" letterSpacing="0">
+          cisco
+        </text>
+      </svg>
+    );
+  }
+
+  if (name === "Goldman Sachs") {
+    return (
+      <svg className="company-logo-svg company-logo-square" viewBox="0 0 140 96" role="img" aria-label="Goldman Sachs logo">
+        <rect width="140" height="96" fill="#6aa8d8" />
+        <text x="16" y="41" fill="#ffffff" fontSize="25" fontWeight="700">
+          Goldman
+        </text>
+        <text x="16" y="70" fill="#ffffff" fontSize="25" fontWeight="700">
+          Sachs
+        </text>
+      </svg>
+    );
+  }
+
+  if (name === "Amazon") {
+    return (
+      <svg className="company-logo-svg" viewBox="0 0 230 82" role="img" aria-label="Amazon logo">
+        <text x="16" y="48" fill="#111827" fontSize="45" fontWeight="700" letterSpacing="-1">
+          amazon
+        </text>
+        <path d="M69 61c35 18 78 13 112-7" fill="none" stroke="#ff9900" strokeWidth="6" strokeLinecap="round" />
+        <path d="M172 53l18-3-8 16" fill="none" stroke="#ff9900" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+
+  if (name === "Oracle") {
+    return (
+      <svg className="company-logo-svg" viewBox="0 0 230 82" role="img" aria-label="Oracle logo">
+        <text x="115" y="54" textAnchor="middle" fill="#c74634" fontSize="47" fontWeight="800" letterSpacing="-1">
+          ORACLE
+        </text>
+      </svg>
+    );
+  }
+
+  if (name === "Google") {
+    return (
+      <svg className="company-logo-svg" viewBox="0 0 230 82" role="img" aria-label="Google logo">
+        <text x="20" y="55" fontSize="48" fontWeight="700" letterSpacing="-2">
+          <tspan fill="#4285f4">G</tspan>
+          <tspan fill="#db4437">o</tspan>
+          <tspan fill="#f4b400">o</tspan>
+          <tspan fill="#4285f4">g</tspan>
+          <tspan fill="#0f9d58">l</tspan>
+          <tspan fill="#db4437">e</tspan>
+        </text>
+      </svg>
+    );
+  }
+
+  return (
+    <svg className="company-logo-svg" viewBox="0 0 220 82" role="img" aria-label="TVS logo">
+      <text x="110" y="56" textAnchor="middle" fill="#134f9c" fontSize="58" fontWeight="800" fontStyle="italic" letterSpacing="-2">
+        TVS
+      </text>
+    </svg>
   );
 }
 
@@ -246,7 +314,7 @@ function LearningPace() {
           </p>
         </div>
         <div className="mt-7 flex flex-wrap justify-center gap-3">
-          {["HR Executive Training", "HR Recruitment Training", "Full Stack Development", "Software Quality Testing(QA Testing)", "Data Structure And Algorithms(DSA)"].map(
+          {["HR Executive Training", "HR Recruitment Training", "Full Stack Development", "Software Quality Testing(QA Testing)", "DSA"].map(
             (tab, index) => (
               <button
                 key={tab}

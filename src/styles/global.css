@@ -37,12 +37,86 @@ a {
 }
 
 .hero-offer {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   min-height: 374px;
-  background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.96) 33%, rgba(255, 255, 255, 0.34) 56%, rgba(255, 255, 255, 0) 78%),
-    url("../assets/offer-hero.png");
-  background-position: center right;
-  background-size: cover;
+  background: #f8fcff;
+}
+
+.hero-offer::before,
+.hero-offer::after {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  pointer-events: none;
+}
+
+.hero-offer::before {
+  inset-inline: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0.98) 44%, rgba(255, 255, 255, 0.46) 58%, rgba(255, 255, 255, 0) 72%);
+}
+
+.hero-offer::after {
+  left: clamp(760px, 52vw, 1000px);
+  right: 0;
+  z-index: 0;
+  background: url("../assets/offer-hero.png") center right / cover no-repeat;
+}
+
+.hero-offer > .shell {
+  position: relative;
+  z-index: 2;
+}
+
+.logo-marquee {
+  overflow: hidden;
+  width: 100%;
+}
+
+.logo-track {
+  display: flex;
+  width: max-content;
+  gap: 20px;
+  animation: logo-scroll 24s linear infinite;
+}
+
+.logo-marquee:hover .logo-track {
+  animation-play-state: paused;
+}
+
+.logo-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 292px;
+  height: 123px;
+  flex: 0 0 auto;
+  border-radius: 8px;
+  background: #ffffff;
+  padding-inline: 28px;
+  text-align: center;
+}
+
+.company-logo-svg {
+  width: 220px;
+  max-width: 100%;
+  height: 82px;
+}
+
+.company-logo-square {
+  width: 140px;
+}
+
+@keyframes logo-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 10px));
+  }
 }
 
 @media (max-width: 1100px) {
@@ -50,8 +124,16 @@ a {
     padding-inline: 24px;
   }
 
-  .hero-offer {
-    background-position: 65% center;
+  .hero-offer::before {
+    background: linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0.98) 52%, rgba(255, 255, 255, 0.72) 68%, rgba(255, 255, 255, 0.18) 100%);
+  }
+
+  .hero-offer::after {
+    left: 58%;
+  }
+
+  .logo-card {
+    width: 260px;
   }
 }
 
@@ -60,11 +142,23 @@ a {
     padding-inline: 16px;
   }
 
-  .hero-offer {
-    background:
-      linear-gradient(90deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.9)),
-      url("../assets/offer-hero.png");
-    background-position: center right;
-    background-size: cover;
+  .hero-offer::before {
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .hero-offer::after {
+    left: 28%;
+    opacity: 0.22;
+  }
+
+  .logo-track {
+    gap: 14px;
+    animation-duration: 18s;
+  }
+
+  .logo-card {
+    width: 230px;
+    height: 104px;
+    padding-inline: 18px;
   }
 }

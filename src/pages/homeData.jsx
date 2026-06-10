@@ -5,46 +5,22 @@ import courseUiux from "../assets/course-uiux.png";
 
 export const accreditationItems = [
   {
-    name: "nasscom",
-    mark: "n",
-    sub: "",
-    style: "text-black text-[42px] font-extrabold lowercase",
-    markStyle: "bg-black"
+    name: "Cisco"
   },
   {
-    name: "NSDC",
-    mark: "N",
-    sub: "National Skill Development Corporation",
-    style: "text-guvi-deepGreen text-[21px] font-extrabold",
-    markStyle: "bg-guvi-green"
+    name: "Goldman Sachs"
   },
   {
-    name: "AICTE",
-    mark: "A",
-    sub: "All India Council for Technical Education",
-    style: "text-black text-[21px] font-extrabold",
-    markStyle: "bg-black"
+    name: "Amazon"
   },
   {
-    name: "SWAYAM Plus",
-    mark: "+",
-    sub: "",
-    style: "text-guvi-deepGreen text-[32px] font-extrabold",
-    markStyle: "bg-guvi-deepGreen"
+    name: "Oracle"
   },
   {
-    name: "ANNA UNIVERSITY",
-    mark: "AU",
-    sub: "CHENNAI",
-    style: "text-black text-[19px] font-extrabold",
-    markStyle: "bg-black"
+    name: "Google"
   },
   {
-    name: "IIT KANPUR",
-    mark: "IK",
-    sub: "Indian Institute of Technology, Kanpur",
-    style: "text-guvi-deepGreen text-[27px] font-extrabold",
-    markStyle: "bg-guvi-green"
+    name: "TVS"
   }
 ];
 
@@ -53,7 +29,7 @@ export const liveCards = [
   [courseGenai, "HR Recruitment Training", "Tamil, English"],
   [courseAi, "Full Stack Development", "Tamil, English"],
   [courseUiux, "Software Quality Testing(QA Testing)", "Tamil, English"],
-  [courseData, "Data Structure And Algorithms(DSA)", "Tamil, English"]
+  [courseData, "DSA", "Tamil, English"]
 ];
 
 export const courseCards = [
@@ -61,7 +37,7 @@ export const courseCards = [
   ["Paid", "HR Recruitment Training", "Tamil, English", "Career Track"],
   ["Paid", "Full Stack Development", "Tamil, English", "Career Track"],
   ["Paid", "Software Quality Testing(QA Testing)", "Tamil, English", "Career Track"],
-  ["Paid", "Data Structure And Algorithms(DSA)", "Tamil, English", "Career Track"]
+  ["Paid", "DSA", "Tamil, English", "Career Track"]
 ];
 
 export const navItems = [
@@ -105,13 +81,13 @@ export const learningCourses = [
   ["Human Resources", "HR Recruitment Training", "Paid", courseData],
   ["Development", "Full Stack Development", "Paid", courseGenai],
   ["Quality Assurance", "Software Quality Testing(QA Testing)", "Paid", courseAi],
-  ["Programming", "Data Structure And Algorithms(DSA)", "Paid", courseData]
+  ["Programming", "DSA", "Paid", courseData]
 ];
 
 export const practiceTabs = ["CodeKata", "WebKata", "SQLKata", "FixTheCode", "IDE", "Rewards", "Referral", "Forum"];
 
 export const footerColumns = [
-  ["Courses", "HR Executive Training", "HR Recruitment Training", "Full Stack Development", "Software Quality Testing(QA Testing)", "Data Structure And Algorithms(DSA)"],
+  ["Courses", "HR Executive Training", "HR Recruitment Training", "Full Stack Development", "Software Quality Testing(QA Testing)", "DSA"],
   ["Popular Courses", "HR Executive Training", "HR Recruitment Training", "Full Stack Development", "QA Testing", "DSA"],
   ["Paid Courses", "HR Executive Training", "HR Recruitment Training", "Full Stack Development", "QA Testing", "DSA"],
   ["Products", "Placement Preparation", "Jawanexis for Corporates"],
