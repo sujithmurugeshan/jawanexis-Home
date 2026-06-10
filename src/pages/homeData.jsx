@@ -24,6 +24,12 @@ import mohammedPhoto from "../assets/learner-journey/mohammed-hashid.jpg";
 import nithyasreePhoto from "../assets/learner-journey/nithyasree.jpg";
 import parthibanPhoto from "../assets/learner-journey/parthiban-sundararaju.jpg";
 import shanmugamPhoto from "../assets/learner-journey/shanmugam-gopal.jpg";
+import achievement1 from "../assets/achievements/achievement-1.jpeg";
+import achievement2 from "../assets/achievements/achievement-2.jpeg";
+import achievement3 from "../assets/achievements/achievement-3.jpeg";
+import achievement4 from "../assets/achievements/achievement-4.jpeg";
+import achievement5 from "../assets/achievements/achievement-5.jpeg";
+import achievement6 from "../assets/achievements/achievement-6.jpeg";
 
 export const accreditationItems = [
   { name: "TeamLease", logo: teamleaseLogo },
@@ -226,12 +232,12 @@ export const learningCourses = [
 ];
 
 export const achievementPhotos = [
-  { id: 1, src: "/src/assets/achievements/achievement-1.jpeg", alt: "Achievement 1" },
-  { id: 2, src: "/src/assets/achievements/achievement-2.jpeg", alt: "Achievement 2" },
-  { id: 3, src: "/src/assets/achievements/achievement-3.jpeg", alt: "Achievement 3" },
-  { id: 4, src: "/src/assets/achievements/achievement-4.jpeg", alt: "Achievement 4" },
-  { id: 5, src: "/src/assets/achievements/achievement-5.jpeg", alt: "Achievement 5" },
-  { id: 6, src: "/src/assets/achievements/achievement-6.jpeg", alt: "Achievement 6" }
+  { id: 1, src: achievement1, alt: "Achievement 1" },
+  { id: 2, src: achievement2, alt: "Achievement 2" },
+  { id: 3, src: achievement3, alt: "Achievement 3" },
+  { id: 4, src: achievement4, alt: "Achievement 4" },
+  { id: 5, src: achievement5, alt: "Achievement 5" },
+  { id: 6, src: achievement6, alt: "Achievement 6" }
 ];
 
 export const footerColumns = [
