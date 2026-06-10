@@ -110,15 +110,15 @@ function Footer() {
           <div className="grid gap-10 lg:grid-cols-[1.35fr_0.5fr_0.34fr] lg:items-start">
             <div>
               <div className="flex flex-wrap items-center gap-4">
-                <img src={logo} alt="Jawanexis logo" className="h-14 w-14 rounded-lg object-contain" />
+                <img src={logo} alt="Jawa EDTech logo" className="h-14 w-14 rounded-lg object-contain" />
                 <div>
-                  <div className="text-[28px] font-extrabold leading-none text-white">Jawanexis</div>
+                  <div className="text-[28px] font-extrabold leading-none text-white">Jawa EDTech</div>
                   <p className="mt-1 text-[11px] font-extrabold tracking-[0.22em] text-guvi-green">LEARN, LEAD, INNOVATE!</p>
                 </div>
               </div>
 
               <p className="mt-5 max-w-[690px] text-[15px] font-medium leading-6 text-slate-200">
-                Jawanexis is a career-focused learning and skills development company delivering practical training in HR, full stack development,
+                Jawa EDTech is a career-focused learning and skills development company delivering practical training in HR, full stack development,
                 software testing, DSA, and placement preparation.
               </p>
               <p className="mt-4 max-w-[690px] text-[15px] font-medium leading-6 text-slate-200">
@@ -160,7 +160,7 @@ function Footer() {
           <a href="#contact" className="underline underline-offset-2 transition hover:text-guvi-green">
             Privacy Policy
           </a>
-          <span className="text-slate-200">&copy; {new Date().getFullYear()} Jawanexis. All rights reserved.</span>
+          <span className="text-slate-200">&copy; {new Date().getFullYear()} Jawa EDTech. All rights reserved.</span>
         </div>
       </div>
     </footer>
