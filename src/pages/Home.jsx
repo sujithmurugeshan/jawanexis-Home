@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, ChevronDown, Search } from "lucide-react";
 import FloatingChatButton from "../components/FloatingChatButton.jsx";
 import Footer from "../components/Footer.jsx";
@@ -5,6 +6,7 @@ import Header from "../components/Header.jsx";
 import LiveCard from "../components/LiveCard.jsx";
 import {
   accreditationItems,
+  awardSlides,
   companyLogos,
   courseCards,
   languages,
@@ -25,6 +27,7 @@ function Home() {
         <LiveClasses />
         <PathChooser />
         <LearnerStories />
+        <AwardsAchievements />
         <HiringStats />
         <LearningPace />
         <PracticePlatforms />
@@ -163,37 +166,33 @@ function LearnerStories() {
     <section className="bg-guvi-soft py-20">
       <div className="shell">
         <div className="text-center">
-          <h2 className="text-[36px] font-extrabold tracking-normal text-guvi-ink sm:text-[44px]">Journey Of Our Learners</h2>
+          <h2 className="text-[28px] font-extrabold text-guvi-ink">What Our Learners Are Saying!</h2>
         </div>
-        <div className="mt-10 grid gap-8 lg:grid-cols-4">
-          {learnerCards.map((learner) => (
-            <article key={learner.name} className="learner-journey-card">
-              <div className="journey-top">
-                <div className="journey-avatar" aria-label={`${learner.name} portrait placeholder`}>
-                  {learner.initials}
+        <div className="mt-10 grid gap-5 lg:grid-cols-4">
+          {learnerCards.map(([name, role, skill, job]) => (
+            <article key={name} className="rounded-lg border border-guvi-line bg-white p-6 shadow-sm">
+              <div className="flex items-center gap-4">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-guvi-green text-[20px] font-extrabold text-black">
+                  {name.charAt(0)}
                 </div>
-                <h3 className="mt-5 text-center text-[24px] font-extrabold leading-tight text-guvi-ink">{learner.name}</h3>
-                <div className="mt-7 flex h-9 items-center justify-center">
-                  <JourneyCompanyLogo name={learner.company} />
+                <div>
+                  <h3 className="text-[18px] font-extrabold text-guvi-ink">{name}</h3>
+                  <p className="text-sm font-bold text-black/55">{role}</p>
                 </div>
               </div>
-
-              <div className="journey-body">
-                <div className="journey-before">
-                  <span className="journey-dot" />
-                  <span>{learner.before}</span>
-                </div>
-                <div className="journey-line">
-                  <span className="journey-badge">J</span>
-                  <span className="text-[17px] font-medium text-black/70">After Jawanexis</span>
-                </div>
-                <div className="journey-after">
-                  <span className="journey-final-dot" />
-                  <span>{learner.after}</span>
-                </div>
+              <div className="mt-5 grid gap-3">
+                <div className="rounded-md bg-guvi-soft px-4 py-3 text-sm font-bold text-guvi-deepGreen">{skill}</div>
+                <div className="rounded-md bg-guvi-soft px-4 py-3 text-sm font-bold text-guvi-deepGreen">{job}</div>
               </div>
             </article>
           ))}
+        </div>
+        <div className="mt-8 flex justify-center">
+          <div className="flex h-[28px] items-center gap-2 rounded-full bg-white px-4">
+            {[0, 1, 2, 3, 4, 5].map((dot) => (
+              <span key={dot} className={`h-2.5 w-2.5 rounded-full ${dot === 1 ? "bg-guvi-green" : "bg-guvi-green/35"}`} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
