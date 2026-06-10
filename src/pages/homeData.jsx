@@ -69,7 +69,7 @@ export const navItems = [
   { label: "Courses", href: "#courses-page" },
   { label: "Internship", href: "#internship" },
   { label: "About Us", href: "#about-us" },
-  { label: "Contact Us", href: "#contact-us" }
+  { label: "Contact Us", href: "#contact" }
 ];
 
 export const languages = ["Tamil", "English"];
