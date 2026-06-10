@@ -74,89 +74,13 @@ function Accreditations() {
           <div className="logo-track">
             {[...accreditationItems, ...accreditationItems].map((item, index) => (
               <article key={`${item.name}-${index}`} className="logo-card" aria-hidden={index >= accreditationItems.length}>
-                <CompanyLogo name={item.name} />
+                <img src={item.logo} alt={`${item.name} logo`} className="company-logo-img" />
               </article>
             ))}
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function CompanyLogo({ name }) {
-  if (name === "Cisco") {
-    return (
-      <svg className="company-logo-svg" viewBox="0 0 220 82" role="img" aria-label="Cisco logo">
-        <g fill="#1673b9">
-          {[20, 42, 64, 86, 108, 130, 152].map((x, index) => (
-            <rect key={x} x={x} y={index % 2 === 0 ? 8 : 0} width="8" height={index % 2 === 0 ? 24 : 32} rx="4" />
-          ))}
-        </g>
-        <text x="110" y="69" textAnchor="middle" fill="#1673b9" fontSize="38" fontWeight="700" letterSpacing="0">
-          cisco
-        </text>
-      </svg>
-    );
-  }
-
-  if (name === "Goldman Sachs") {
-    return (
-      <svg className="company-logo-svg company-logo-square" viewBox="0 0 140 96" role="img" aria-label="Goldman Sachs logo">
-        <rect width="140" height="96" fill="#6aa8d8" />
-        <text x="16" y="41" fill="#ffffff" fontSize="25" fontWeight="700">
-          Goldman
-        </text>
-        <text x="16" y="70" fill="#ffffff" fontSize="25" fontWeight="700">
-          Sachs
-        </text>
-      </svg>
-    );
-  }
-
-  if (name === "Amazon") {
-    return (
-      <svg className="company-logo-svg" viewBox="0 0 230 82" role="img" aria-label="Amazon logo">
-        <text x="16" y="48" fill="#111827" fontSize="45" fontWeight="700" letterSpacing="-1">
-          amazon
-        </text>
-        <path d="M69 61c35 18 78 13 112-7" fill="none" stroke="#ff9900" strokeWidth="6" strokeLinecap="round" />
-        <path d="M172 53l18-3-8 16" fill="none" stroke="#ff9900" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    );
-  }
-
-  if (name === "Oracle") {
-    return (
-      <svg className="company-logo-svg" viewBox="0 0 230 82" role="img" aria-label="Oracle logo">
-        <text x="115" y="54" textAnchor="middle" fill="#c74634" fontSize="47" fontWeight="800" letterSpacing="-1">
-          ORACLE
-        </text>
-      </svg>
-    );
-  }
-
-  if (name === "Google") {
-    return (
-      <svg className="company-logo-svg" viewBox="0 0 230 82" role="img" aria-label="Google logo">
-        <text x="20" y="55" fontSize="48" fontWeight="700" letterSpacing="-2">
-          <tspan fill="#4285f4">G</tspan>
-          <tspan fill="#db4437">o</tspan>
-          <tspan fill="#f4b400">o</tspan>
-          <tspan fill="#4285f4">g</tspan>
-          <tspan fill="#0f9d58">l</tspan>
-          <tspan fill="#db4437">e</tspan>
-        </text>
-      </svg>
-    );
-  }
-
-  return (
-    <svg className="company-logo-svg" viewBox="0 0 220 82" role="img" aria-label="TVS logo">
-      <text x="110" y="56" textAnchor="middle" fill="#134f9c" fontSize="58" fontWeight="800" fontStyle="italic" letterSpacing="-2">
-        TVS
-      </text>
-    </svg>
   );
 }
 
@@ -239,37 +163,57 @@ function LearnerStories() {
     <section className="bg-guvi-soft py-20">
       <div className="shell">
         <div className="text-center">
-          <h2 className="text-[28px] font-extrabold text-guvi-ink">What Our Learners Are Saying!</h2>
+          <h2 className="text-[36px] font-extrabold tracking-normal text-guvi-ink sm:text-[44px]">Journey Of Our Learners</h2>
         </div>
-        <div className="mt-10 grid gap-5 lg:grid-cols-4">
-          {learnerCards.map(([name, role, skill, job]) => (
-            <article key={name} className="rounded-lg border border-guvi-line bg-white p-6 shadow-sm">
-              <div className="flex items-center gap-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-guvi-green text-[20px] font-extrabold text-black">
-                  {name.charAt(0)}
+        <div className="mt-10 grid gap-8 lg:grid-cols-4">
+          {learnerCards.map((learner) => (
+            <article key={learner.name} className="learner-journey-card">
+              <div className="journey-top">
+                <div className="journey-avatar" aria-label={`${learner.name} portrait placeholder`}>
+                  {learner.initials}
                 </div>
-                <div>
-                  <h3 className="text-[18px] font-extrabold text-guvi-ink">{name}</h3>
-                  <p className="text-sm font-bold text-black/55">{role}</p>
+                <h3 className="mt-5 text-center text-[24px] font-extrabold leading-tight text-guvi-ink">{learner.name}</h3>
+                <div className="mt-7 flex h-9 items-center justify-center">
+                  <JourneyCompanyLogo name={learner.company} />
                 </div>
               </div>
-              <div className="mt-5 grid gap-3">
-                <div className="rounded-md bg-guvi-soft px-4 py-3 text-sm font-bold text-guvi-deepGreen">{skill}</div>
-                <div className="rounded-md bg-guvi-soft px-4 py-3 text-sm font-bold text-guvi-deepGreen">{job}</div>
+
+              <div className="journey-body">
+                <div className="journey-before">
+                  <span className="journey-dot" />
+                  <span>{learner.before}</span>
+                </div>
+                <div className="journey-line">
+                  <span className="journey-badge">J</span>
+                  <span className="text-[17px] font-medium text-black/70">After Jawanexis</span>
+                </div>
+                <div className="journey-after">
+                  <span className="journey-final-dot" />
+                  <span>{learner.after}</span>
+                </div>
               </div>
             </article>
           ))}
         </div>
-        <div className="mt-8 flex justify-center">
-          <div className="flex h-[28px] items-center gap-2 rounded-full bg-white px-4">
-            {[0, 1, 2, 3, 4, 5].map((dot) => (
-              <span key={dot} className={`h-2.5 w-2.5 rounded-full ${dot === 1 ? "bg-guvi-green" : "bg-guvi-green/35"}`} />
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
+}
+
+function JourneyCompanyLogo({ name }) {
+  if (name === "GNIKUL") {
+    return <span className="journey-company journey-company-gnikul">GNIKUL</span>;
+  }
+
+  if (name === "RebitBee") {
+    return <span className="journey-company journey-company-rebit">RebitBee</span>;
+  }
+
+  if (name === "Pixis") {
+    return <span className="journey-company journey-company-pixis">Pixis</span>;
+  }
+
+  return <span className="journey-company journey-company-fipsar">Fipsar</span>;
 }
 
 function HiringStats() {
@@ -277,10 +221,10 @@ function HiringStats() {
     <section id="about-us" className="bg-white py-16">
       <div className="shell">
         <h2 className="text-center text-[24px] font-extrabold text-guvi-ink">Where Do Our Students Work?</h2>
-        <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-8">
-          {companyLogos.map((logo) => (
-            <div key={logo} className="flex h-[42px] items-center justify-center rounded-md border border-guvi-line bg-white px-3 text-[13px] font-extrabold text-black/70">
-              {logo}
+        <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-5">
+          {companyLogos.map((company) => (
+            <div key={company.name} className="flex h-[74px] items-center justify-center rounded-md border border-guvi-line bg-white px-4">
+              <img src={company.logo} alt={`${company.name} logo`} className="company-grid-logo" />
             </div>
           ))}
         </div>

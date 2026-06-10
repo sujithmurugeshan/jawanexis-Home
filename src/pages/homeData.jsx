@@ -2,26 +2,28 @@ import courseAi from "../assets/course-ai.png";
 import courseData from "../assets/course-data.png";
 import courseGenai from "../assets/course-genai.png";
 import courseUiux from "../assets/course-uiux.png";
+import abcConsultantsLogo from "../assets/company-logos/abc-consultants.jpg";
+import airtableLogo from "../assets/company-logos/airtable.jpg";
+import cielLogo from "../assets/company-logos/ciel.jpg";
+import codingmartLogo from "../assets/company-logos/codingmart.jpg";
+import deelLogo from "../assets/company-logos/deel.jpg";
+import notionLogo from "../assets/company-logos/notion.jpg";
+import peoplefyLogo from "../assets/company-logos/peoplefy.jpg";
+import quickRecruitLogo from "../assets/company-logos/quick-recruit.jpg";
+import ripplingLogo from "../assets/company-logos/rippling.jpg";
+import teamleaseLogo from "../assets/company-logos/teamlease.jpg";
 
 export const accreditationItems = [
-  {
-    name: "Cisco"
-  },
-  {
-    name: "Goldman Sachs"
-  },
-  {
-    name: "Amazon"
-  },
-  {
-    name: "Oracle"
-  },
-  {
-    name: "Google"
-  },
-  {
-    name: "TVS"
-  }
+  { name: "TeamLease", logo: teamleaseLogo },
+  { name: "ABC Consultants", logo: abcConsultantsLogo },
+  { name: "CIEL", logo: cielLogo },
+  { name: "Peoplefy", logo: peoplefyLogo },
+  { name: "Notion", logo: notionLogo },
+  { name: "Airtable", logo: airtableLogo },
+  { name: "Rippling", logo: ripplingLogo },
+  { name: "Deel", logo: deelLogo },
+  { name: "Codingmart", logo: codingmartLogo },
+  { name: "Quick Recruit", logo: quickRecruitLogo }
 ];
 
 export const liveCards = [
@@ -51,30 +53,37 @@ export const navItems = [
 export const languages = ["Tamil", "English"];
 
 export const learnerCards = [
-  ["Padmaja Kothapalli", "Front-End Developer", "ReactJS", "Automation Testing Engineer"],
-  ["B Swathy", "UI/UX Designer", "Figma", "UX Designer"],
-  ["Vignesh G", "Java Developer", "Java, SQL", "Software Developer"],
-  ["Ramapriya Prasathe", "Automation Tester", "Selenium", "QA Engineer"]
+  {
+    name: "Vignesh G",
+    initials: "VG",
+    company: "GNIKUL",
+    before: "Fresher, MSc (Arts & Science)",
+    after: "Junior Developer"
+  },
+  {
+    name: "Ramapriya Prasathe",
+    initials: "RP",
+    company: "RebitBee",
+    before: "9 years gap after graduation",
+    after: "Automation Testing Engineer"
+  },
+  {
+    name: "Penumaka Gopi Kishore",
+    initials: "PG",
+    company: "Pixis",
+    before: "Intern, 2 Years",
+    after: "Full Stack Developer"
+  },
+  {
+    name: "Kesavan",
+    initials: "K",
+    company: "Fipsar",
+    before: "Career gap of 7 months",
+    after: "Data Scientist"
+  }
 ];
 
-export const companyLogos = [
-  "infosys",
-  "TCS",
-  "Wipro",
-  "amazon",
-  "SIEMENS",
-  "accenture",
-  "cognizant",
-  "PayPal",
-  "HCL",
-  "IBM",
-  "Zoho",
-  "Juspay",
-  "Tech Mahindra",
-  "Freshworks",
-  "Capgemini",
-  "Virtusa"
-];
+export const companyLogos = accreditationItems;
 
 export const learningCourses = [
   ["Human Resources", "HR Executive Training", "Paid", courseUiux],
