@@ -4,6 +4,7 @@ import FloatingChatButton from "../components/FloatingChatButton.jsx";
 import Footer from "../components/Footer.jsx";
 import Header from "../components/Header.jsx";
 import LiveCard from "../components/LiveCard.jsx";
+import nativeLanguagesImage from "../assets/native-languages.png";
 import {
   accreditationItems,
   achievementPhotos,
@@ -27,6 +28,7 @@ function Home() {
         <StudentTestimonials />
         <HiringStats />
         <LearningPace />
+        <NativeLanguages />
         <AchievementsGallery />
         <FinalCta />
       </main>
@@ -371,6 +373,38 @@ function LearningPace() {
           <a href="#courses-page" className="inline-flex h-10 items-center justify-center rounded-md bg-black px-6 text-sm font-extrabold text-white">
             Explore Courses
           </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function NativeLanguages() {
+  return (
+    <section className="bg-white py-16 sm:py-20">
+      <div className="shell">
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1fr)] lg:gap-16 xl:gap-20">
+          <div className="mx-auto w-full max-w-[690px]">
+            <img
+              src={nativeLanguagesImage}
+              alt="Student learning with native language icons"
+              className="h-auto w-full object-contain"
+            />
+          </div>
+
+          <div className="mx-auto max-w-[680px] text-center lg:mx-0 lg:text-left">
+            <h2 className="text-[30px] font-extrabold leading-[1.12] tracking-[-0.01em] text-guvi-ink sm:text-[40px] lg:text-[46px]">
+              Leading EdTech Platform for Learning in Native Languages.
+            </h2>
+            <p className="mt-5 text-[17px] font-medium leading-8 text-guvi-muted sm:text-[22px] sm:leading-[1.55]">
+              JAWA EDTECH helps learners build job-ready skills through practical online learning, career-focused training, and placement
+              guidance in regional and global languages.
+            </p>
+            <p className="mt-8 text-[20px] font-semibold text-guvi-ink sm:text-[24px]">
+              <span className="font-extrabold text-guvi-deepGreen">JAWA EDTECH</span>
+              <span> - Learn, Upskill, and Grow</span>
+            </p>
+          </div>
         </div>
       </div>
     </section>
