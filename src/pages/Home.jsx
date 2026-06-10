@@ -47,7 +47,7 @@ function HeroOffer() {
             Some People Take a Break. Others Build an Advantage.
           </p>
           <h1 className="mt-5 text-[30px] font-extrabold leading-tight tracking-[-0.02em] text-black sm:text-[42px] lg:text-[46px]">
-            Save <span className="text-guvi-deepGreen">Rs. 5,000</span> on Jawanexis Zen Class
+            Save <span className="text-guvi-deepGreen">Rs. 5,000</span> on Jawa EDTech Zen Class
           </h1>
           <div className="mt-7 inline-flex min-h-[48px] max-w-[760px] items-center rounded-full border-2 border-black bg-white px-5 text-[12px] font-extrabold leading-tight text-black shadow-[inset_10px_0_0_#19d950] sm:px-6 sm:text-[14px] lg:text-[15px]">
             HR Executive Training | HR Recruitment Training | Full Stack Development | Software Quality Testing(QA Testing) | Data Structure And Algorithms(DSA)
@@ -100,7 +100,7 @@ function LiveClasses() {
           </p>
         </div>
 
-        <div className="mt-[64px] grid gap-5 lg:grid-cols-4">
+        <div className="mt-[64px] grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {liveCards.map(([thumb, title, language]) => (
             <LiveCard key={title} thumb={thumb} title={title} language={language} />
           ))}
