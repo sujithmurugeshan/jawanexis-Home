@@ -12,8 +12,9 @@ function Header() {
         <a href="#home" className="flex min-w-[220px] items-center gap-3" aria-label="Jawanexis home">
           <img
             src={logo3d}
-            alt="Jawanexis"
+            alt=""
             className="h-14 w-14 object-contain"
+            aria-hidden="true"
           />
           <div className="flex flex-col leading-none">
             <span className="text-2xl font-extrabold tracking-tight text-black">Jawanexis</span>

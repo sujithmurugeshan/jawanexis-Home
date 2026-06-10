@@ -47,7 +47,7 @@ function HeroOffer() {
             Some People Take a Break. Others Build an Advantage.
           </p>
           <h1 className="mt-6 text-[36px] font-extrabold leading-tight tracking-[-0.02em] text-black sm:text-[52px] lg:text-[58px]">
-            Save <span className="text-guvi-deepGreen">Rs. 5,000</span> on JAWA's EdTech Zen Class
+            Save <span className="text-guvi-deepGreen">Rs. 5,000</span> on Jawanexis Zen Class
           </h1>
           <div className="mt-8 inline-flex min-h-[60px] max-w-full items-center rounded-full border-2 border-black bg-white px-6 text-[15px] font-extrabold leading-tight text-black shadow-[inset_12px_0_0_#19d950] sm:px-7 sm:text-[22px]">
             HR Executive Training | HR Recruitment Training | Full Stack Development | Software Quality Testing(QA Testing) | Data Structure And Algorithms(DSA)
@@ -102,7 +102,7 @@ function LiveClasses() {
             Live Classes + Placement Guidance
           </h2>
           <p className="mt-6 text-[18px] font-medium leading-[1.45] text-guvi-muted sm:text-[24px]">
-            HCL GUVI offers one of the industry's leading Project Based Career Programs that promises
+            Jawanexis offers one of the industry's leading Project Based Career Programs that promises
             <br className="hidden lg:block" />
             Placement Guidance on completing the program.
           </p>

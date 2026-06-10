@@ -57,11 +57,11 @@ export const liveCards = [
 ];
 
 export const courseCards = [
-  ["Training", "HR Executive Training", "Tamil, English", "Career Track"],
-  ["Training", "HR Recruitment Training", "Tamil, English", "Career Track"],
-  ["Training", "Full Stack Development", "Tamil, English", "Career Track"],
-  ["Training", "Software Quality Testing(QA Testing)", "Tamil, English", "Career Track"],
-  ["Training", "Data Structure And Algorithms(DSA)", "Tamil, English", "Career Track"]
+  ["Paid", "HR Executive Training", "Tamil, English", "Career Track"],
+  ["Paid", "HR Recruitment Training", "Tamil, English", "Career Track"],
+  ["Paid", "Full Stack Development", "Tamil, English", "Career Track"],
+  ["Paid", "Software Quality Testing(QA Testing)", "Tamil, English", "Career Track"],
+  ["Paid", "Data Structure And Algorithms(DSA)", "Tamil, English", "Career Track"]
 ];
 
 export const navItems = [
@@ -101,11 +101,11 @@ export const companyLogos = [
 ];
 
 export const learningCourses = [
-  ["Human Resources", "HR Executive Training", "Training", courseUiux],
-  ["Human Resources", "HR Recruitment Training", "Training", courseData],
-  ["Development", "Full Stack Development", "Training", courseGenai],
-  ["Quality Assurance", "Software Quality Testing(QA Testing)", "Training", courseAi],
-  ["Programming", "Data Structure And Algorithms(DSA)", "Training", courseData]
+  ["Human Resources", "HR Executive Training", "Paid", courseUiux],
+  ["Human Resources", "HR Recruitment Training", "Paid", courseData],
+  ["Development", "Full Stack Development", "Paid", courseGenai],
+  ["Quality Assurance", "Software Quality Testing(QA Testing)", "Paid", courseAi],
+  ["Programming", "Data Structure And Algorithms(DSA)", "Paid", courseData]
 ];
 
 export const practiceTabs = ["CodeKata", "WebKata", "SQLKata", "FixTheCode", "IDE", "Rewards", "Referral", "Forum"];
@@ -113,8 +113,8 @@ export const practiceTabs = ["CodeKata", "WebKata", "SQLKata", "FixTheCode", "ID
 export const footerColumns = [
   ["Courses", "HR Executive Training", "HR Recruitment Training", "Full Stack Development", "Software Quality Testing(QA Testing)", "Data Structure And Algorithms(DSA)"],
   ["Popular Courses", "HR Executive Training", "HR Recruitment Training", "Full Stack Development", "QA Testing", "DSA"],
-  ["Training", "HR Executive Training", "HR Recruitment Training", "Full Stack Development", "QA Testing", "DSA"],
-  ["Products", "Placement Preparation", "HCL GUVI for Corporates"],
+  ["Paid Courses", "HR Executive Training", "HR Recruitment Training", "Full Stack Development", "QA Testing", "DSA"],
+  ["Products", "Placement Preparation", "Jawanexis for Corporates"],
   ["Resources", "Blog", "Forum", "Rewards"],
   ["Company", "Refund Policy", "Contact Us", "About Us", "Privacy Policy"]
 ];
