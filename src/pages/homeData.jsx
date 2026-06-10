@@ -13,6 +13,17 @@ import peoplefyLogo from "../assets/company-logos/peoplefy.jpg";
 import quickRecruitLogo from "../assets/company-logos/quick-recruit.jpg";
 import ripplingLogo from "../assets/company-logos/rippling.jpg";
 import teamleaseLogo from "../assets/company-logos/teamlease.jpg";
+import anbuPhoto from "../assets/learner-journey/anbu-r.jpg";
+import brahadeeshPhoto from "../assets/learner-journey/brahadeesh-kalyan.jpg";
+import dhanasekarPhoto from "../assets/learner-journey/dhanasekar-selvam.jpg";
+import guganPhoto from "../assets/learner-journey/gugan.jpg";
+import hariharasudhanPhoto from "../assets/learner-journey/hariharasudhan-sudhagar.jpg";
+import harikrishnanPhoto from "../assets/learner-journey/harikrishnan-dhanasekaran.jpg";
+import mohanPhoto from "../assets/learner-journey/mohan-prasad.jpg";
+import mohammedPhoto from "../assets/learner-journey/mohammed-hashid.jpg";
+import nithyasreePhoto from "../assets/learner-journey/nithyasree.jpg";
+import parthibanPhoto from "../assets/learner-journey/parthiban-sundararaju.jpg";
+import shanmugamPhoto from "../assets/learner-journey/shanmugam-gopal.jpg";
 
 export const accreditationItems = [
   { name: "TeamLease", logo: teamleaseLogo },
@@ -35,14 +46,6 @@ export const liveCards = [
   [courseData, "DSA", "Tamil, English"]
 ];
 
-export const courseCards = [
-  ["Paid", "HR Executive Training", "Tamil, English", "Career Track"],
-  ["Paid", "HR Recruitment Training", "Tamil, English", "Career Track"],
-  ["Paid", "Full Stack Development", "Tamil, English", "Career Track"],
-  ["Paid", "Software Quality Testing(QA Testing)", "Tamil, English", "Career Track"],
-  ["Paid", "DSA", "Tamil, English", "Career Track"]
-];
-
 export const navItems = [
   { label: "Home", href: "#home" },
   { label: "Courses", href: "#courses-page" },
@@ -51,7 +54,85 @@ export const navItems = [
   { label: "Contact Us", href: "#contact" }
 ];
 
-export const languages = ["Tamil", "English"];
+export const journeyLearners = [
+  {
+    name: "Brahadeesh Kalyan",
+    role: "HR Executive",
+    company: "Muthu Group Companies",
+    location: "Coimbatore",
+    photo: brahadeeshPhoto
+  },
+  {
+    name: "Parthiban Sundararaju",
+    role: "HR Executive",
+    company: "Tata Consultancy Services",
+    location: "Kochi",
+    photo: parthibanPhoto
+  },
+  {
+    name: "Anbu R",
+    role: "HR Executive",
+    company: "TVS Motor Company",
+    location: "Chennai",
+    photo: anbuPhoto
+  },
+  {
+    name: "Mohan Prasad",
+    role: "Senior Associate HR Operations",
+    company: "Russell Tobin",
+    location: "New York",
+    photo: mohanPhoto
+  },
+  {
+    name: "Hariharasudhan Sudhagar",
+    role: "Full Stack Developer",
+    company: "Laxhari Infotech",
+    location: "",
+    photo: hariharasudhanPhoto
+  },
+  {
+    name: "Mohammed Hashid",
+    role: "Full Stack Developer",
+    company: "AES Technologies",
+    location: "",
+    photo: mohammedPhoto
+  },
+  {
+    name: "Shanmugam Gopal",
+    role: "Senior Developer",
+    company: "Fresa Technologies",
+    location: "",
+    photo: shanmugamPhoto
+  },
+  {
+    name: "Dhanasekar Selvam",
+    role: "Full Stack Developer",
+    company: "Prevaj",
+    location: "",
+    photo: dhanasekarPhoto
+  },
+  {
+    name: "Gugan",
+    role: "Senior Mulesoft Developer",
+    company: "Mulecraft Digital",
+    location: "Salem",
+    photo: guganPhoto
+  },
+  {
+    name: "HariKrishnan Dhanasekaran",
+    role: "Full Stack Developer",
+    company: "Mulecraft Digital",
+    location: "",
+    photo: harikrishnanPhoto
+  },
+  {
+    name: "Nithyasree",
+    role: "HR-IT Recruiter",
+    company: "Career Net",
+    location: "Coimbatore",
+    photo: nithyasreePhoto
+  }
+];
 
 export const learnerCards = [
   [
@@ -143,8 +224,6 @@ export const learningCourses = [
   ["Quality Assurance", "Software Quality Testing(QA Testing)", "Paid", courseAi],
   ["Programming", "DSA", "Paid", courseData]
 ];
-
-export const practiceTabs = ["CodeKata", "WebKata", "SQLKata", "FixTheCode", "IDE", "Rewards", "Referral", "Forum"];
 
 export const achievementPhotos = [
   { id: 1, src: "/src/assets/achievements/achievement-1.jpeg", alt: "Achievement 1" },

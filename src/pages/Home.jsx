@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { ArrowLeft, ArrowRight, ChevronDown, Search } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import FloatingChatButton from "../components/FloatingChatButton.jsx";
 import Footer from "../components/Footer.jsx";
 import Header from "../components/Header.jsx";
@@ -8,12 +8,10 @@ import {
   accreditationItems,
   achievementPhotos,
   companyLogos,
-  courseCards,
-  languages,
+  journeyLearners,
   learnerCards,
   learningCourses,
-  liveCards,
-  practiceTabs
+  liveCards
 } from "./homeData.jsx";
 
 function Home() {
@@ -25,18 +23,63 @@ function Home() {
         <HeroOffer />
         <Accreditations />
         <LiveClasses />
-        <PathChooser />
-        <LearnerStories />
+        <JourneyOfLearners />
+        <StudentTestimonials />
         <HiringStats />
         <LearningPace />
-        <PracticePlatforms />
         <AchievementsGallery />
-        <CoursesPagePreview />
         <FinalCta />
       </main>
 
       <Footer />
       <FloatingChatButton />
+    </div>
+  );
+}
+
+function useManualSlider(itemCount) {
+  const trackRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const scrollToIndex = (index) => {
+    const nextIndex = (index + itemCount) % itemCount;
+    setActiveIndex(nextIndex);
+    trackRef.current?.children[nextIndex]?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "start"
+    });
+  };
+
+  return {
+    activeIndex,
+    trackRef,
+    goNext: () => scrollToIndex(activeIndex + 1),
+    goPrevious: () => scrollToIndex(activeIndex - 1),
+    scrollToIndex
+  };
+}
+
+function SliderControls({ activeIndex, count, onNext, onPrevious, onSelect }) {
+  return (
+    <div className="manual-slider-controls">
+      <button className="manual-slider-arrow manual-slider-arrow-muted" type="button" aria-label="Previous slide" onClick={onPrevious}>
+        <ArrowLeft size={18} aria-hidden="true" />
+      </button>
+      <div className="manual-slider-dots">
+        {Array.from({ length: count }).map((_, index) => (
+          <button
+            key={index}
+            className={`manual-slider-dot ${index === activeIndex ? "manual-slider-dot-active" : ""}`}
+            type="button"
+            aria-label={`Show slide ${index + 1}`}
+            onClick={() => onSelect(index)}
+          />
+        ))}
+      </div>
+      <button className="manual-slider-arrow" type="button" aria-label="Next slide" onClick={onNext}>
+        <ArrowRight size={18} aria-hidden="true" />
+      </button>
     </div>
   );
 }
@@ -50,7 +93,7 @@ function HeroOffer() {
             Some People Take a Break. Others Build an Advantage.
           </p>
           <h1 className="mt-5 text-[30px] font-extrabold leading-tight tracking-[-0.02em] text-black sm:text-[42px] lg:text-[46px]">
-            Save <span className="text-guvi-deepGreen">Rs. 5,000</span> on Jawa EDTech Zen Class
+            Save <span className="text-guvi-deepGreen">Rs. 5,000</span> on Jawanexis Zen Class
           </h1>
           <div className="mt-7 inline-flex min-h-[48px] max-w-[760px] items-center rounded-full border-2 border-black bg-white px-5 text-[12px] font-extrabold leading-tight text-black shadow-[inset_10px_0_0_#19d950] sm:px-6 sm:text-[14px] lg:text-[15px]">
             HR Executive Training | HR Recruitment Training | Full Stack Development | Software Quality Testing(QA Testing) | Data Structure And Algorithms(DSA)
@@ -133,67 +176,85 @@ function LiveClasses() {
   );
 }
 
-function PathChooser() {
+function JourneyOfLearners() {
+  const slider = useManualSlider(journeyLearners.length);
+
   return (
-    <section className="bg-white pb-20">
+    <section className="student-showcase bg-white py-20">
       <div className="shell">
-        <div className="overflow-hidden rounded-xl bg-guvi-soft">
-          <div className="grid min-h-[250px] gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-            <div className="p-10 lg:p-14">
-              <h2 className="text-[30px] font-extrabold leading-tight text-guvi-ink">Not sure which path to choose?</h2>
-              <p className="mt-4 max-w-2xl text-[18px] leading-8 text-black/65">
-                Find a career program that fits your goals, language preference, and current skill level.
-              </p>
-              <a href="#internship" className="mt-7 inline-flex h-12 items-center justify-center rounded-md bg-black px-7 text-[17px] font-extrabold text-white">
-                Get Expert Guidance
-              </a>
-            </div>
-            <div className="relative hidden items-end justify-center bg-gradient-to-br from-white to-guvi-mint lg:flex">
-              <div className="absolute bottom-0 h-[225px] w-[225px] rounded-full bg-guvi-green/20" />
-              <div className="relative mb-8 flex h-[170px] w-[170px] items-center justify-center rounded-full bg-white shadow-card">
-                <span className="text-[72px] font-extrabold text-guvi-deepGreen">?</span>
-              </div>
-            </div>
+        <div className="text-center">
+          <h2 className="text-[28px] font-extrabold text-guvi-ink">Journey Of Our Learners</h2>
+        </div>
+        <div className="manual-feedback-slider">
+          <div className="manual-feedback-track journey-slider-track" ref={slider.trackRef}>
+            {journeyLearners.map((learner) => (
+              <article key={`${learner.name}-${learner.company}`} className="journey-slide-card">
+                <div className="journey-slide-top">
+                  <img src={learner.photo} alt={`${learner.name} photo`} className="journey-photo" />
+                  <div className="mt-5">
+                    <h3 className="text-[22px] font-extrabold leading-tight text-guvi-ink">{learner.name}</h3>
+                    <p className="mt-2 text-[15px] font-extrabold uppercase tracking-[0.12em] text-guvi-deepGreen">{learner.role}</p>
+                  </div>
+                </div>
+                <div className="journey-slide-body">
+                  <span className="journey-badge">1</span>
+                  <div>
+                    <p className="text-sm font-bold text-black/45">Placed at</p>
+                    <p className="mt-1 text-[20px] font-extrabold leading-tight text-guvi-ink">{learner.company}</p>
+                    {learner.location ? <p className="mt-2 text-sm font-bold text-black/50">{learner.location}</p> : null}
+                  </div>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
+        <SliderControls
+          activeIndex={slider.activeIndex}
+          count={journeyLearners.length}
+          onNext={slider.goNext}
+          onPrevious={slider.goPrevious}
+          onSelect={slider.scrollToIndex}
+        />
       </div>
     </section>
   );
 }
 
-function LearnerStories() {
+function StudentTestimonials() {
+  const slider = useManualSlider(learnerCards.length);
+
   return (
     <section className="bg-guvi-soft py-20">
       <div className="shell">
         <div className="text-center">
-          <h2 className="text-[28px] font-extrabold text-guvi-ink">Journey Of Our Learners</h2>
+          <h2 className="text-[28px] font-extrabold text-guvi-ink">What Our Students Are Saying!</h2>
         </div>
-        <div className="mt-10 grid gap-5 lg:grid-cols-4">
-          {learnerCards.map(([name, company, course, story]) => (
-            <article key={name} className="rounded-lg border border-guvi-line bg-white p-6 shadow-sm">
-              <div className="flex items-center gap-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-guvi-green text-[20px] font-extrabold text-black">
-                  {name.charAt(0)}
+        <div className="manual-feedback-slider">
+          <div className="manual-feedback-track testimonials-track" ref={slider.trackRef}>
+            {learnerCards.map(([name, company, course, story]) => (
+              <article key={name} className="testimonial-slide-card">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-[70px] w-[70px] shrink-0 items-center justify-center rounded-full bg-guvi-green text-[24px] font-extrabold text-black">
+                    {name.charAt(0)}
+                  </div>
+                  <div>
+                    <h3 className="text-[22px] font-extrabold leading-tight text-guvi-ink">{name}</h3>
+                    <p className="mt-1 text-[16px] font-extrabold text-black/55">{company}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-[18px] font-extrabold text-guvi-ink">{name}</h3>
-                  <p className="text-sm font-bold text-black/55">{company}</p>
-                </div>
-              </div>
-              <div className="mt-5 grid gap-3">
-                <div className="rounded-md bg-guvi-soft px-4 py-3 text-sm font-bold text-guvi-deepGreen">{course}</div>
-                <p className="text-sm font-medium leading-6 text-black/65">{story}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-        <div className="mt-8 flex justify-center">
-          <div className="flex h-[28px] items-center gap-2 rounded-full bg-white px-4">
-            {[0, 1, 2, 3, 4, 5].map((dot) => (
-              <span key={dot} className={`h-2.5 w-2.5 rounded-full ${dot === 1 ? "bg-guvi-green" : "bg-guvi-green/35"}`} />
+                <div className="mt-6 rounded-md bg-[#effff3] px-5 py-4 text-[16px] font-extrabold text-guvi-deepGreen">{course}</div>
+                <p className="mt-5 text-[17px] font-medium leading-8 text-[#253041]">{story}</p>
+              </article>
             ))}
           </div>
         </div>
+        <SliderControls
+          activeIndex={slider.activeIndex}
+          count={learnerCards.length}
+          onNext={slider.goNext}
+          onPrevious={slider.goPrevious}
+          onSelect={slider.scrollToIndex}
+        />
       </div>
     </section>
   );
@@ -268,7 +329,7 @@ function HiringStats() {
 
 function LearningPace() {
   return (
-    <section className="bg-guvi-soft py-20">
+    <section id="courses-page" className="bg-guvi-soft py-20">
       <div className="shell">
         <div className="text-center">
           <h2 className="text-[32px] font-extrabold text-guvi-ink">Your Learning, Your Pace: Explore, Master, Succeed</h2>
@@ -310,55 +371,6 @@ function LearningPace() {
           <a href="#courses-page" className="inline-flex h-10 items-center justify-center rounded-md bg-black px-6 text-sm font-extrabold text-white">
             Explore Courses
           </a>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function PracticePlatforms() {
-  return (
-    <section className="bg-white py-20">
-      <div className="shell">
-        <div className="text-center">
-          <h2 className="text-[30px] font-extrabold text-guvi-ink">Learn. Practice. Earn. Have Fun!</h2>
-        </div>
-        <div className="mt-7 flex flex-wrap justify-center gap-3">
-          {practiceTabs.map((tab, index) => (
-            <button
-              key={tab}
-              className={`rounded-md border px-4 py-2 text-sm font-bold ${
-                index === 0 ? "border-guvi-green bg-guvi-green text-black" : "border-guvi-line bg-white text-black/70"
-              }`}
-              type="button"
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-        <div className="mx-auto mt-8 grid max-w-[1040px] gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div className="rounded-lg border border-guvi-line bg-white p-4 shadow-sm">
-            <div className="rounded-md bg-guvi-soft p-4">
-              <div className="h-[250px] rounded-md border border-guvi-line bg-white p-4">
-                <div className="h-8 rounded bg-black" />
-                <div className="mt-4 grid grid-cols-3 gap-3">
-                  <div className="h-28 rounded bg-guvi-green" />
-                  <div className="h-28 rounded bg-guvi-soft" />
-                  <div className="h-28 rounded bg-guvi-soft" />
-                </div>
-                <div className="mt-4 h-20 rounded bg-guvi-soft" />
-              </div>
-            </div>
-          </div>
-          <div>
-            <h3 className="text-[26px] font-extrabold text-guvi-ink">CodeKata</h3>
-            <p className="mt-4 text-[17px] leading-8 text-black/65">
-              CodeKata is an interactive platform for programming practice. Learn to code, improve problem solving skills, and prepare for technical interviews.
-            </p>
-            <a href="#courses-page" className="mt-6 inline-flex h-11 items-center justify-center rounded-md bg-black px-6 text-sm font-extrabold text-white">
-              Explore CodeKata
-            </a>
-          </div>
         </div>
       </div>
     </section>
@@ -466,71 +478,6 @@ function AchievementsGallery() {
                   : "w-2.5 bg-guvi-green/35 hover:bg-guvi-green/60"
               }`}
             />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CoursesPagePreview() {
-  return (
-    <section id="courses-page" className="border-t border-guvi-line bg-white pt-[190px]">
-      <div className="shell pb-20">
-        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-          <h2 className="text-[32px] font-extrabold tracking-[-0.02em] text-black sm:text-[40px]">All Courses</h2>
-          <div className="flex flex-wrap gap-4">
-            <button className="flex h-12 items-center gap-3 rounded-md border border-guvi-line px-4 text-[18px] font-medium text-black/70" type="button">
-              Sort By <ChevronDown size={18} aria-hidden="true" />
-            </button>
-            <button className="flex h-12 items-center gap-3 rounded-md border border-guvi-line px-4 text-[18px] font-medium text-black/70" type="button">
-              Explore <ChevronDown size={18} aria-hidden="true" />
-            </button>
-            <label className="flex h-12 w-full items-center gap-3 rounded-md border border-guvi-line px-4 text-black/55 sm:w-[300px]">
-              <Search size={22} aria-hidden="true" />
-              <input className="min-w-0 flex-1 border-0 bg-transparent text-[18px] outline-none" placeholder="Search for anything..." />
-            </label>
-          </div>
-        </div>
-
-        <div className="mt-10 flex items-center gap-2 overflow-hidden">
-          <button className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-black" type="button" aria-label="Previous language">
-            <ArrowLeft size={18} aria-hidden="true" />
-          </button>
-          <div className="flex gap-3 overflow-x-auto pb-2">
-            {languages.map((lang, index) => (
-              <button
-                key={lang}
-                className={`h-[52px] shrink-0 rounded-lg border px-5 text-[20px] font-bold ${
-                  index === 0 ? "border-guvi-green bg-guvi-green text-black" : "border-guvi-line bg-white text-black"
-                }`}
-                type="button"
-              >
-                {lang}
-              </button>
-            ))}
-          </div>
-          <button className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-black" type="button" aria-label="Next language">
-            <ArrowRight size={18} aria-hidden="true" />
-          </button>
-        </div>
-
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {courseCards.map(([type, title, lang, duration]) => (
-            <article key={title} className="min-h-[228px] rounded-lg bg-white p-4 shadow-[0_3px_18px_rgba(15,23,42,0.08)]">
-              <span
-                className={`inline-flex rounded-md px-4 py-1.5 text-sm font-extrabold text-white ${
-                  "bg-black"
-                }`}
-              >
-                {type}
-              </span>
-              <h3 className="mt-5 min-h-[72px] text-[18px] font-extrabold leading-snug text-guvi-ink">{title}</h3>
-              <div className="mt-7 flex items-center justify-between gap-3 text-xs font-bold text-black/55">
-                <span>{lang}</span>
-                <span className="text-right">{duration}</span>
-              </div>
-            </article>
           ))}
         </div>
       </div>

@@ -317,6 +317,69 @@ a {
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
 }
 
+.journey-slider-track,
+.testimonials-track {
+  scroll-padding-inline: 4px;
+}
+
+.journey-slide-card {
+  width: min(394px, calc(100vw - 48px));
+  min-height: 520px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border: 1px solid #d7ecdc;
+  border-radius: 8px;
+  background: #ffffff;
+  scroll-snap-align: start;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.07);
+}
+
+.journey-slide-top {
+  min-height: 350px;
+  padding: 28px 24px 26px;
+  text-align: center;
+  background:
+    linear-gradient(#eef0f4 1px, transparent 1px),
+    linear-gradient(90deg, #eef0f4 1px, transparent 1px),
+    #ffffff;
+  background-size: 38px 38px;
+}
+
+.journey-photo {
+  display: block;
+  width: 210px;
+  height: 210px;
+  margin-inline: auto;
+  border: 5px solid #e4f8e7;
+  border-radius: 9999px;
+  background: #ffffff;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.14);
+}
+
+.journey-slide-body {
+  display: flex;
+  min-height: 160px;
+  align-items: center;
+  gap: 18px;
+  border-top: 1px solid #e2e7e4;
+  background: #f4fff6;
+  padding: 24px;
+}
+
+.testimonial-slide-card {
+  width: min(420px, calc(100vw - 48px));
+  min-height: 496px;
+  flex: 0 0 auto;
+  border: 1px solid #cfe9d5;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 30px;
+  scroll-snap-align: start;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+}
+
 .manual-slider-controls {
   display: flex;
   align-items: center;
@@ -554,6 +617,11 @@ a {
     min-height: 420px;
   }
 
+  .journey-slide-card,
+  .testimonial-slide-card {
+    width: 360px;
+  }
+
   .awards-panel {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -625,6 +693,21 @@ a {
     width: 292px;
     min-height: 470px;
     padding: 20px;
+  }
+
+  .journey-slide-card,
+  .testimonial-slide-card {
+    width: 292px;
+  }
+
+  .testimonial-slide-card {
+    min-height: 560px;
+    padding: 22px;
+  }
+
+  .journey-slide-top,
+  .journey-slide-body {
+    padding-inline: 20px;
   }
 
   .awards-panel {

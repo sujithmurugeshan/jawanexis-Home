@@ -20,8 +20,7 @@ const footerGroups = [
       "HR Recruitment Training",
       "Full Stack Development",
       "QA Testing",
-      "DSA",
-      "All Courses"
+      "DSA"
     ]
   },
   {
@@ -111,9 +110,9 @@ function Footer() {
           <div className="grid gap-10 lg:grid-cols-[1.35fr_0.5fr_0.34fr] lg:items-start">
             <div>
               <div className="flex flex-wrap items-center gap-4">
-                <img src={logo} alt="Jawa Edtech logo" className="h-14 w-14 rounded-lg object-contain" />
+                <img src={logo} alt="Jawanexis logo" className="h-14 w-14 rounded-lg object-contain" />
                 <div>
-                  <div className="text-[28px] font-extrabold leading-none text-white">Jawa Edtech</div>
+                  <div className="text-[28px] font-extrabold leading-none text-white">Jawanexis</div>
                   <p className="mt-1 text-[11px] font-extrabold tracking-[0.22em] text-guvi-green">LEARN, LEAD, INNOVATE!</p>
                 </div>
               </div>
@@ -161,7 +160,7 @@ function Footer() {
           <a href="#contact" className="underline underline-offset-2 transition hover:text-guvi-green">
             Privacy Policy
           </a>
-          <span className="text-slate-200">&copy; {new Date().getFullYear()} Jawa Edtech. All rights reserved.</span>
+          <span className="text-slate-200">&copy; {new Date().getFullYear()} Jawanexis. All rights reserved.</span>
         </div>
       </div>
     </footer>
