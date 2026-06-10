@@ -462,20 +462,20 @@ function CoursesPagePreview() {
           </button>
         </div>
 
-        <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {courseCards.map(([type, title, lang, duration]) => (
-            <article key={title} className="min-h-[318px] rounded-lg bg-white p-6 shadow-[0_3px_18px_rgba(15,23,42,0.08)]">
+            <article key={title} className="min-h-[228px] rounded-lg bg-white p-4 shadow-[0_3px_18px_rgba(15,23,42,0.08)]">
               <span
-                className={`inline-flex rounded-md px-8 py-2 text-base font-extrabold text-white ${
+                className={`inline-flex rounded-md px-4 py-1.5 text-sm font-extrabold text-white ${
                   "bg-black"
                 }`}
               >
                 {type}
               </span>
-              <h3 className="mt-8 min-h-[76px] text-[22px] font-extrabold leading-tight text-guvi-ink">{title}</h3>
-              <div className="mt-10 flex items-center justify-between text-sm font-bold text-black/55">
+              <h3 className="mt-5 min-h-[72px] text-[18px] font-extrabold leading-snug text-guvi-ink">{title}</h3>
+              <div className="mt-7 flex items-center justify-between gap-3 text-xs font-bold text-black/55">
                 <span>{lang}</span>
-                <span>{duration}</span>
+                <span className="text-right">{duration}</span>
               </div>
             </article>
           ))}
