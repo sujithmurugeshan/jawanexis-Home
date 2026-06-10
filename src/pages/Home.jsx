@@ -327,6 +327,12 @@ function HiringStats() {
 }
 
 function LearningPace() {
+  const courseTabs = ["All", ...learningCourses.map(([, title]) => title)];
+  const [activeCourseTab, setActiveCourseTab] = useState("All");
+  const visibleCourses =
+    activeCourseTab === "All" ? learningCourses : learningCourses.filter(([, title]) => title === activeCourseTab);
+  const marqueeCourses = visibleCourses.length > 1 ? [...visibleCourses, ...visibleCourses] : visibleCourses;
+
   return (
     <section id="courses-page" className="bg-guvi-soft py-20">
       <div className="shell">
@@ -337,14 +343,15 @@ function LearningPace() {
           </p>
         </div>
         <div className="mt-7 flex flex-wrap justify-center gap-3">
-          {["HR Executive Training", "HR Recruitment Training", "Full Stack Development", "Software Quality Testing(QA Testing)", "DSA"].map(
-            (tab, index) => (
+          {courseTabs.map(
+            (tab) => (
               <button
                 key={tab}
                 className={`rounded-md border px-4 py-2 text-sm font-bold ${
-                  index === 0 ? "border-guvi-green bg-guvi-green text-black" : "border-guvi-line bg-white text-black/70"
+                  activeCourseTab === tab ? "border-guvi-green bg-guvi-green text-black" : "border-guvi-line bg-white text-black/70"
                 }`}
                 type="button"
+                onClick={() => setActiveCourseTab(tab)}
               >
                 {tab}
               </button>
@@ -352,9 +359,9 @@ function LearningPace() {
           )}
         </div>
         <div className="course-carousel">
-          <div className="course-carousel-track auto-scroll-track auto-scroll-track-slow">
-            {[...learningCourses, ...learningCourses].map(([category, title, type, image], index) => (
-              <article key={`${title}-${index}`} className="course-slide-card" aria-hidden={index >= learningCourses.length}>
+          <div className={`course-carousel-track ${visibleCourses.length > 1 ? "auto-scroll-track auto-scroll-track-slow" : ""}`}>
+            {marqueeCourses.map(([category, title, type, image], index) => (
+              <article key={`${title}-${index}`} className="course-slide-card" aria-hidden={index >= visibleCourses.length}>
                 <div className="h-[150px] overflow-hidden">
                   <img src={image} alt={`${title} course preview`} className="h-full w-full object-cover" />
                 </div>
