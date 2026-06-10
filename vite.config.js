@@ -29,7 +29,7 @@ function jsxOnlyEntryPlugin() {
             "<head>",
             '<meta charset="UTF-8" />',
             '<meta name="viewport" content="width=device-width, initial-scale=1.0" />',
-            '<link rel="icon" href="./src/assets/3dlogo.png" />',
+            '<link rel="icon" href="./src/assets/logo.png" />',
             "<title>Jawa EDTech | Learn to code in your native language</title>",
             "</head>",
             "<body>",

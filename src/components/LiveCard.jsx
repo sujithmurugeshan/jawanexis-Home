@@ -1,6 +1,6 @@
 import { Globe2 } from "lucide-react";
 
-function LiveCard({ thumb, title, language }) {
+function LiveCard({ thumb, title, language, onSyllabusClick }) {
   return (
     <article className="overflow-hidden rounded-lg bg-white shadow-[0_3px_18px_rgba(15,23,42,0.08)]">
       <div className="relative h-[150px] overflow-hidden bg-black">
@@ -13,9 +13,13 @@ function LiveCard({ thumb, title, language }) {
           <Globe2 size={18} aria-hidden="true" /> {language}
         </p>
         <div className="mt-auto grid grid-cols-2 gap-3 pt-5">
-          <a href="#syllabus" className="flex h-10 items-center justify-center rounded-md border border-black text-sm font-bold text-black">
+          <button
+            type="button"
+            onClick={() => onSyllabusClick?.(title)}
+            className="flex h-10 items-center justify-center rounded-md border border-black text-sm font-bold text-black transition hover:border-guvi-deepGreen hover:text-guvi-deepGreen"
+          >
             Syllabus
-          </a>
+          </button>
           <a
             href="#know-more"
             className="flex h-10 items-center justify-center rounded-md bg-guvi-green text-sm font-extrabold text-black shadow-[0_8px_18px_rgba(21,213,77,0.22)]"
