@@ -146,6 +146,15 @@ export const learningCourses = [
 
 export const practiceTabs = ["CodeKata", "WebKata", "SQLKata", "FixTheCode", "IDE", "Rewards", "Referral", "Forum"];
 
+export const achievementPhotos = [
+  { id: 1, src: "/src/assets/achievements/achievement-1.jpeg", alt: "Achievement 1" },
+  { id: 2, src: "/src/assets/achievements/achievement-2.jpeg", alt: "Achievement 2" },
+  { id: 3, src: "/src/assets/achievements/achievement-3.jpeg", alt: "Achievement 3" },
+  { id: 4, src: "/src/assets/achievements/achievement-4.jpeg", alt: "Achievement 4" },
+  { id: 5, src: "/src/assets/achievements/achievement-5.jpeg", alt: "Achievement 5" },
+  { id: 6, src: "/src/assets/achievements/achievement-6.jpeg", alt: "Achievement 6" }
+];
+
 export const footerColumns = [
   ["Courses", "HR Executive Training", "HR Recruitment Training", "Full Stack Development", "Software Quality Testing(QA Testing)", "DSA"],
   ["Popular Courses", "HR Executive Training", "HR Recruitment Training", "Full Stack Development", "QA Testing", "DSA"],

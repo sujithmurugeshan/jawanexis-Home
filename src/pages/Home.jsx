@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowLeft, ArrowRight, ChevronDown, Search } from "lucide-react";
 import FloatingChatButton from "../components/FloatingChatButton.jsx";
 import Footer from "../components/Footer.jsx";
@@ -6,7 +6,7 @@ import Header from "../components/Header.jsx";
 import LiveCard from "../components/LiveCard.jsx";
 import {
   accreditationItems,
-  awardSlides,
+  achievementPhotos,
   companyLogos,
   courseCards,
   languages,
@@ -27,10 +27,10 @@ function Home() {
         <LiveClasses />
         <PathChooser />
         <LearnerStories />
-        <AwardsAchievements />
         <HiringStats />
         <LearningPace />
         <PracticePlatforms />
+        <AchievementsGallery />
         <CoursesPagePreview />
         <FinalCta />
       </main>
@@ -215,61 +215,6 @@ function JourneyCompanyLogo({ name }) {
   return <span className="journey-company journey-company-fipsar">Fipsar</span>;
 }
 
-function AwardsAchievements() {
-  const [activeAward, setActiveAward] = useState(0);
-  const slide = awardSlides[activeAward];
-
-  const showPrevious = () => {
-    setActiveAward((current) => (current === 0 ? awardSlides.length - 1 : current - 1));
-  };
-
-  const showNext = () => {
-    setActiveAward((current) => (current + 1) % awardSlides.length);
-  };
-
-  return (
-    <section className="bg-white py-20">
-      <div className="shell">
-        <div className="awards-panel">
-          <div className="awards-copy">
-            <div className="awards-title-wrap">
-              <span className="awards-laurel awards-laurel-left" aria-hidden="true" />
-              <div>
-                <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-guvi-deepGreen">Achievements</p>
-                <h2 className="mt-3 text-[30px] font-extrabold leading-tight text-guvi-ink">{slide.title}</h2>
-                <p className="mt-4 text-[17px] font-medium leading-7 text-black/65">{slide.description}</p>
-              </div>
-              <span className="awards-laurel awards-laurel-right" aria-hidden="true" />
-            </div>
-          </div>
-          <div className="awards-image-wrap">
-            <img src={slide.image} alt={slide.title} className="h-full w-full object-cover" />
-          </div>
-          <div className="awards-controls">
-            <button className="awards-arrow awards-arrow-left" type="button" aria-label="Previous achievement" onClick={showPrevious}>
-              <ArrowLeft size={24} aria-hidden="true" />
-            </button>
-            <button className="awards-arrow awards-arrow-right" type="button" aria-label="Next achievement" onClick={showNext}>
-              <ArrowRight size={24} aria-hidden="true" />
-            </button>
-            <div className="awards-dots">
-              {awardSlides.map((award, index) => (
-                <button
-                  key={award.title}
-                  className={`awards-dot ${index === activeAward ? "awards-dot-active" : ""}`}
-                  type="button"
-                  aria-label={`Show ${award.title}`}
-                  onClick={() => setActiveAward(index)}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function HiringStats() {
   const proudStats = [
     ["4464724", "Learners"],
@@ -414,6 +359,114 @@ function PracticePlatforms() {
               Explore CodeKata
             </a>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AchievementsGallery() {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const photosPerSlide = 3;
+  const totalSlides = Math.max(1, Math.ceil(achievementPhotos.length / photosPerSlide));
+
+  const showPrevious = () => {
+    setActiveSlide((current) => (current === 0 ? totalSlides - 1 : current - 1));
+  };
+
+  const showNext = () => {
+    setActiveSlide((current) => (current + 1) % totalSlides);
+  };
+
+  useEffect(() => {
+    if (totalSlides < 2 || isHovered) {
+      return undefined;
+    }
+
+    const timer = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % totalSlides);
+    }, 5000);
+
+    return () => window.clearInterval(timer);
+  }, [totalSlides, isHovered]);
+
+  return (
+    <section className="bg-white py-20">
+      <div className="shell">
+        <div className="text-center">
+          <h2 className="text-[32px] font-extrabold text-guvi-ink">Achievements</h2>
+        </div>
+
+        <div
+          className="mt-12 flex items-center justify-center gap-4 lg:gap-6"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <button
+            type="button"
+            onClick={showPrevious}
+            className="hidden h-11 w-11 items-center justify-center rounded-full border border-black/30 bg-white text-black shadow-sm transition hover:-translate-y-0.5 hover:border-guvi-green hover:bg-guvi-green/10 md:flex"
+            aria-label="Previous achievements"
+          >
+            <ArrowLeft size={18} />
+          </button>
+
+          <div className="w-full overflow-hidden rounded-2xl bg-transparent">
+            <div
+              className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
+              style={{ transform: `translateX(-${activeSlide * 100}%)` }}
+            >
+              {Array.from({ length: totalSlides }).map((_, slideIndex) => (
+                <div key={`achievement-slide-${slideIndex}`} className="min-w-full">
+                  <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+                    {achievementPhotos
+                      .slice(slideIndex * photosPerSlide, slideIndex * photosPerSlide + photosPerSlide)
+                      .map((photo) => (
+                        <article
+                          key={photo.id}
+                          className="h-full min-h-[300px] overflow-hidden rounded-[20px] border border-slate-200 bg-white shadow-[0_18px_40px_-24px_rgba(15,23,42,0.45)] transition duration-300 hover:-translate-y-1 hover:border-guvi-green hover:shadow-[0_24px_50px_-22px_rgba(16,185,129,0.35)]"
+                        >
+                          <img
+                            src={photo.src}
+                            alt={photo.alt}
+                            className="h-full w-full object-cover"
+                            onError={(e) => {
+                              e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%23f0f0f0' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='16' fill='%23999'%3EAdd image file%3C/text%3E%3C/svg%3E";
+                            }}
+                          />
+                        </article>
+                      ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={showNext}
+            className="hidden h-11 w-11 items-center justify-center rounded-full border border-black/30 bg-white text-black shadow-sm transition hover:-translate-y-0.5 hover:border-guvi-green hover:bg-guvi-green/10 md:flex"
+            aria-label="Next achievements"
+          >
+            <ArrowRight size={18} />
+          </button>
+        </div>
+
+        <div className="mt-8 flex items-center justify-center gap-2">
+          {Array.from({ length: totalSlides }).map((_, index) => (
+            <button
+              key={`dot-${index}`}
+              type="button"
+              aria-label={`Go to slide ${index + 1}`}
+              onClick={() => setActiveSlide(index)}
+              className={`h-2.5 rounded-full transition-all duration-300 ${
+                index === activeSlide
+                  ? "w-6 bg-guvi-green shadow-[0_0_0_4px_rgba(25,217,80,0.12)]"
+                  : "w-2.5 bg-guvi-green/35 hover:bg-guvi-green/60"
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>
