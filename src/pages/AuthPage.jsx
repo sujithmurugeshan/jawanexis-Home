@@ -20,8 +20,8 @@ function AuthPage({ mode = "login" }) {
             <a href="#home" className="relative z-10 inline-flex items-center gap-3" aria-label="Back to Jawanexis home">
               <img src={logo3d} alt="" className="h-11 w-11 object-contain" aria-hidden="true" />
               <div>
-                <p className="text-2xl font-extrabold leading-none">Jawanexis</p>
-                <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.22em] text-white/60">Learn, Lead, Innovate</p>
+                <p className="text-2xl font-extrabold leading-none">Jawa EDTech</p>
+                <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.22em] text-white/60">Learn, Lead, Innovate!</p>
               </div>
             </a>
 
@@ -56,12 +56,12 @@ function AuthPage({ mode = "login" }) {
                 <div className="mb-7 flex items-center gap-3 lg:hidden">
                   <img src={logo3d} alt="" className="h-10 w-10 object-contain" aria-hidden="true" />
                   <div>
-                    <p className="text-xl font-extrabold leading-none">Jawanexis</p>
-                    <p className="mt-1 text-[8px] font-bold uppercase tracking-[0.18em] text-black/50">Learn, Lead, Innovate</p>
+                    <p className="text-xl font-extrabold leading-none">Jawa EDTech</p>
+                    <p className="mt-1 text-[8px] font-bold uppercase tracking-[0.18em] text-black/50">Learn, Lead, Innovate!</p>
                   </div>
                 </div>
                 <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-guvi-deepGreen">
-                  {isSignup ? "Join Jawanexis" : "Student portal"}
+                  {isSignup ? "Join Jawa EDTech" : "Student portal"}
                 </p>
                 <h2 className="mt-3 text-[34px] font-extrabold leading-tight tracking-tight text-black sm:text-[42px]">{title}</h2>
                 <p className="mt-3 text-[16px] font-medium leading-7 text-black/58">{subtitle}</p>
