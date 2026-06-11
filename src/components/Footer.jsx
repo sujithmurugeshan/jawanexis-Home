@@ -55,20 +55,8 @@ function getFooterHref(label) {
 }
 
 function FooterLink({ children }) {
-  let href = "#courses-page";
-  if (children === "Contact Us") {
-    href = "#contact";
-  } else if (children === "About Us") {
-    href = "#about-us";
-  } else if (children === "FAQs") {
-    href = "#contact";
-  }
   return (
-<<<<<<< HEAD
     <a href={getFooterHref(children)} className="block text-[15px] leading-6 text-slate-200 transition hover:text-guvi-green">
-=======
-    <a href={href} className="block text-[15px] leading-6 text-slate-200 transition hover:text-guvi-green">
->>>>>>> cfde2aa58185448672821584eebacff675c15b83
       {children}
     </a>
   );

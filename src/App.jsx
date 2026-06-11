@@ -31,13 +31,12 @@ function App() {
     return <AuthPage mode="signup" />;
   }
 
-<<<<<<< HEAD
   if (route === "#faq" || route === "#faqs") {
     return <FAQPage />;
-=======
+  }
+
   if (route === "#contact") {
     return <ContactPage />;
->>>>>>> cfde2aa58185448672821584eebacff675c15b83
   }
 
   return <Home />;
