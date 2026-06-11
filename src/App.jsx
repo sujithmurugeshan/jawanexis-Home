@@ -3,6 +3,7 @@ import AuthPage from "./pages/AuthPage.jsx";
 import FAQPage from "./pages/FAQPage.jsx";
 import Home from "./pages/Home.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
+import AboutPage from "./pages/AboutPage.jsx";
 
 function App() {
   const [route, setRoute] = useState(() => window.location.hash);
@@ -18,7 +19,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (["#faq", "#faqs", "#login", "#signup"].includes(route)) {
+    if (["#faq", "#faqs", "#login", "#signup", "#about-us", "#contact"].includes(route)) {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     }
   }, [route]);
@@ -37,6 +38,10 @@ function App() {
 
   if (route === "#contact") {
     return <ContactPage />;
+  }
+
+  if (route === "#about-us") {
+    return <AboutPage />;
   }
 
   return <Home />;
