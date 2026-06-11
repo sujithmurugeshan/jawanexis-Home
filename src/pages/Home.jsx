@@ -4,6 +4,7 @@ import FloatingChatButton from "../components/FloatingChatButton.jsx";
 import Footer from "../components/Footer.jsx";
 import Header from "../components/Header.jsx";
 import LiveCard from "../components/LiveCard.jsx";
+import SyllabusModal from "../components/SyllabusModal.jsx";
 import nativeLanguagesImage from "../assets/native-languages.png";
 import {
   accreditationItems,
@@ -16,6 +17,19 @@ import {
 } from "./homeData.jsx";
 
 function Home() {
+  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+
+  const handleOpenSyllabus = (courseTitle) => {
+    setSelectedCourse(courseTitle);
+    setIsSyllabusOpen(true);
+  };
+
+  const handleCloseSyllabus = () => {
+    setIsSyllabusOpen(false);
+    setSelectedCourse(null);
+  };
+
   return (
     <div className="min-h-screen bg-white text-guvi-ink">
       <Header />
@@ -23,7 +37,7 @@ function Home() {
       <main>
         <HeroOffer />
         <Accreditations />
-        <LiveClasses />
+        <LiveClasses onSyllabusClick={handleOpenSyllabus} />
         <JourneyOfLearners />
         <StudentTestimonials />
         <HiringStats />
@@ -35,6 +49,12 @@ function Home() {
 
       <Footer />
       <FloatingChatButton />
+
+      <SyllabusModal
+        isOpen={isSyllabusOpen}
+        onClose={handleCloseSyllabus}
+        courseTitle={selectedCourse}
+      />
     </div>
   );
 }
@@ -137,7 +157,7 @@ function Accreditations() {
   );
 }
 
-function LiveClasses() {
+function LiveClasses({ onSyllabusClick }) {
   return (
     <section id="internship" className="bg-white pb-[84px] pt-[94px]">
       <div className="shell">
@@ -157,7 +177,7 @@ function LiveClasses() {
           <div className="live-program-track auto-scroll-track">
             {[...liveCards, ...liveCards].map(([thumb, title, language], index) => (
               <div key={`${title}-${index}`} className="live-program-slide" aria-hidden={index >= liveCards.length}>
-                <LiveCard thumb={thumb} title={title} language={language} />
+                <LiveCard thumb={thumb} title={title} language={language} onSyllabusClick={onSyllabusClick} />
               </div>
             ))}
           </div>
