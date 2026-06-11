@@ -38,9 +38,25 @@ const socialLinks = [
   ["YouTube", "fa-brands fa-youtube", "bg-[#ff1a1a]"]
 ];
 
+function getFooterHref(label) {
+  if (label === "FAQs") {
+    return "#faq";
+  }
+
+  if (label === "Contact Us") {
+    return "#contact";
+  }
+
+  if (label === "About Us") {
+    return "#about-us";
+  }
+
+  return "#courses-page";
+}
+
 function FooterLink({ children }) {
   return (
-    <a href="#courses-page" className="block text-[15px] leading-6 text-slate-200 transition hover:text-guvi-green">
+    <a href={getFooterHref(children)} className="block text-[15px] leading-6 text-slate-200 transition hover:text-guvi-green">
       {children}
     </a>
   );
