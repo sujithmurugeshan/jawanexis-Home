@@ -92,10 +92,10 @@ function HeroOffer() {
       <div className="shell flex min-h-[374px] items-center">
         <div className="relative z-10 max-w-[760px] pt-1 xl:max-w-[930px]">
           <p className="text-[18px] font-semibold leading-tight tracking-[-0.01em] text-black sm:text-[25px]">
-            Some People Take a Break. Others Build an Advantage.
+            Companies Hire Skills.We Help You to Build them.
           </p>
           <h1 className="mt-5 text-[30px] font-extrabold leading-tight tracking-[-0.02em] text-black sm:text-[42px] lg:text-[46px]">
-            Save <span className="text-guvi-deepGreen">Rs. 5,000</span> on Jawa EDTech Zen Class
+            Save <span className="text-guvi-deepGreen">Rs. 7,777</span> on HR & IT Career Programs
           </h1>
           <div className="mt-7 inline-flex min-h-[48px] max-w-[760px] items-center rounded-full border-2 border-black bg-white px-5 text-[12px] font-extrabold leading-tight text-black shadow-[inset_10px_0_0_#19d950] sm:px-6 sm:text-[14px] lg:text-[15px]">
             HR Executive Training | HR Recruitment Training | Full Stack Development | Software Quality Testing(QA Testing) | Data Structure And Algorithms(DSA)
@@ -104,9 +104,9 @@ function HeroOffer() {
             href="#internship"
             className="mt-7 flex h-[48px] w-[220px] items-center justify-center rounded-md bg-black text-[17px] font-extrabold text-white shadow-sm sm:h-[54px] sm:w-[260px] sm:text-[21px]"
           >
-            Claim Rs. 5K Off Now
+            Claim Rs. 7,777 Off Now
           </a>
-          <p className="mt-4 text-[16px] font-medium text-black/70">*Summer Offer Ends Soon</p>
+          <p className="mt-4 text-[16px] font-medium text-black/70">*Offer Ends Soon</p>
         </div>
       </div>
     </section>
@@ -349,9 +349,8 @@ function LearningPace() {
             (tab) => (
               <button
                 key={tab}
-                className={`rounded-md border px-4 py-2 text-sm font-bold ${
-                  activeCourseTab === tab ? "border-guvi-green bg-guvi-green text-black" : "border-guvi-line bg-white text-black/70"
-                }`}
+                className={`rounded-md border px-4 py-2 text-sm font-bold ${activeCourseTab === tab ? "border-guvi-green bg-guvi-green text-black" : "border-guvi-line bg-white text-black/70"
+                  }`}
                 type="button"
                 onClick={() => setActiveCourseTab(tab)}
               >
@@ -512,11 +511,10 @@ function AchievementsGallery() {
               type="button"
               aria-label={`Go to slide ${index + 1}`}
               onClick={() => setActiveSlide(index)}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                index === activeSlide
+              className={`h-2.5 rounded-full transition-all duration-300 ${index === activeSlide
                   ? "w-6 bg-guvi-green shadow-[0_0_0_4px_rgba(25,217,80,0.12)]"
                   : "w-2.5 bg-guvi-green/35 hover:bg-guvi-green/60"
-              }`}
+                }`}
             />
           ))}
         </div>
