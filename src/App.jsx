@@ -7,6 +7,8 @@ import AboutPage from "./pages/AboutPage.jsx";
 import TermsConditionsPage from "./pages/TermsConditionsPage.jsx";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage.jsx";
 import RefundPolicyPage from "./pages/RefundPolicyPage.jsx";
+import FullStackCoursePage from "./pages/FullStackCoursePage.jsx";
+
 
 function App() {
   const [route, setRoute] = useState(() => window.location.hash);
@@ -69,6 +71,10 @@ function App() {
 
   if (route === "#refund-policy") {
     return <RefundPolicyPage />;
+  }
+
+  if (route === "#full-stack-development-course") {
+    return <FullStackCoursePage />;
   }
 
   return <Home />;

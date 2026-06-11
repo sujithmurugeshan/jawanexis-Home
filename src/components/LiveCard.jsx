@@ -21,7 +21,7 @@ function LiveCard({ thumb, title, language, onSyllabusClick }) {
             Syllabus
           </button>
           <a
-            href="#know-more"
+            href={title === "Full Stack Development" ? "#full-stack-development-course" : "#know-more"}
             className="flex h-10 items-center justify-center rounded-md bg-guvi-green text-sm font-extrabold text-black shadow-[0_8px_18px_rgba(21,213,77,0.22)]"
           >
             Know More
