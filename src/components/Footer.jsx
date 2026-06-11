@@ -30,8 +30,8 @@ const footerGroups = [
 ];
 
 const socialLinks = [
-  ["Facebook", "fa-brands fa-facebook-f", "bg-[#315ca8]"],
-  ["Instagram", "fa-brands fa-instagram", "bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7]"],
+  ["Facebook", "fa-brands fa-facebook-f", "bg-[#315ca8]", "https://www.facebook.com/profile.php?id=61574843888000&sk=followers"],
+  ["Instagram", "fa-brands fa-instagram", "bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7]", "https://www.instagram.com/jawaedtech/"],
   ["LinkedIn", "fa-brands fa-linkedin-in", "bg-[#2677b5]"],
   ["X", "fa-brands fa-x-twitter", "bg-black"],
   ["Telegram", "fa-brands fa-telegram", "bg-[#229ed9]"],
@@ -39,8 +39,16 @@ const socialLinks = [
 ];
 
 function FooterLink({ children }) {
+  let href = "#courses-page";
+  if (children === "Contact Us") {
+    href = "#contact";
+  } else if (children === "About Us") {
+    href = "#about-us";
+  } else if (children === "FAQs") {
+    href = "#contact";
+  }
   return (
-    <a href="#courses-page" className="block text-[15px] leading-6 text-slate-200 transition hover:text-guvi-green">
+    <a href={href} className="block text-[15px] leading-6 text-slate-200 transition hover:text-guvi-green">
       {children}
     </a>
   );
@@ -87,7 +95,7 @@ function FooterGroup({ group }) {
 
 function Footer() {
   return (
-    <footer id="contact" className="bg-guvi-ink text-white">
+    <footer className="bg-guvi-ink text-white">
       <div className="mx-auto max-w-[1138px] px-6 py-12 lg:px-5">
         <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-45">
           {footerGroups.map((group) => (
@@ -119,10 +127,12 @@ function Footer() {
             <div className="lg:justify-self-end">
               <h4 className="text-[15px] font-extrabold text-white lg:text-right">Follow us on</h4>
               <div className="mt-4 grid w-[92px] grid-cols-2 gap-4 lg:ml-auto">
-                {socialLinks.map(([label, icon, colorClass]) => (
+                {socialLinks.map(([label, icon, colorClass, url]) => (
                   <a
                     key={label}
-                    href="#contact"
+                    href={url || "#contact"}
+                    target={url ? "_blank" : undefined}
+                    rel={url ? "noopener noreferrer" : undefined}
                     className={`flex h-[38px] w-[38px] items-center justify-center rounded-full text-[19px] text-white transition hover:scale-105 ${colorClass}`}
                     aria-label={label}
                   >
