@@ -786,7 +786,7 @@ function SyllabusModal({ isOpen, onClose, courseTitle }) {
               {/* Submit */}
               <button
                 type="submit"
-                className="w-full h-12 bg-guvi-green hover:bg-[#12c443] active:bg-[#0fa336] text-white font-extrabold text-[16px] rounded-md transition duration-200 shadow-md mt-6 flex items-center justify-center cursor-pointer"
+                className="w-full h-12 btn-glossy-green font-extrabold text-[16px] rounded-md mt-6 flex items-center justify-center cursor-pointer"
               >
                 Download Syllabus
               </button>

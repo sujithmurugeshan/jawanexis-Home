@@ -202,12 +202,42 @@ function HeroOffer() {
           <h1 className="mt-5 text-[30px] font-extrabold leading-tight tracking-[-0.02em] text-black sm:text-[42px] lg:text-[46px]">
             Save <span className="text-guvi-deepGreen">Rs. 7,777</span> on HR & IT Career Programs
           </h1>
-          <div className="mt-7 inline-flex min-h-[48px] max-w-[760px] items-center rounded-full border-2 border-black bg-white px-5 text-[12px] font-extrabold leading-tight text-black shadow-[inset_10px_0_0_#19d950] sm:px-6 sm:text-[14px] lg:text-[15px]">
-            HR Executive Training | HR Recruitment Training | Full Stack Development | Software Quality Testing(QA Testing) | Data Structure And Algorithms(DSA)
+          <div className="mt-7 inline-flex flex-col gap-y-3 rounded-[24px] md:rounded-[28px] border-2 border-black bg-gradient-to-r from-guvi-mint to-white py-4 pl-9 pr-7 shadow-[inset_12px_0_0_#19d950] max-w-[760px] lg:max-w-[880px]">
+            {/* First line: 3 courses */}
+            <div className="flex flex-wrap gap-x-6 gap-y-2.5 items-center">
+              {[
+                "HR Executive Training",
+                "HR Recruitment Training",
+                "Full Stack Development"
+              ].map((course) => (
+                <span
+                  key={course}
+                  className="flex items-center gap-2 text-[15px] sm:text-[16px] font-extrabold text-black cursor-default whitespace-nowrap"
+                >
+                  <span className="h-2.5 w-2.5 rounded-full bg-guvi-green animate-pulse shrink-0" />
+                  <span>{course}</span>
+                </span>
+              ))}
+            </div>
+            {/* Second line: 2 courses */}
+            <div className="flex flex-wrap gap-x-6 gap-y-2.5 items-center">
+              {[
+                "Software Quality Testing (QA Testing)",
+                "Data Structure And Algorithms (DSA)"
+              ].map((course) => (
+                <span
+                  key={course}
+                  className="flex items-center gap-2 text-[15px] sm:text-[16px] font-extrabold text-black cursor-default whitespace-nowrap"
+                >
+                  <span className="h-2.5 w-2.5 rounded-full bg-guvi-green animate-pulse shrink-0" />
+                  <span>{course}</span>
+                </span>
+              ))}
+            </div>
           </div>
           <a
             href="#internship"
-            className="mt-7 flex h-[48px] w-[220px] items-center justify-center rounded-md bg-black text-[17px] font-extrabold text-white shadow-sm sm:h-[54px] sm:w-[260px] sm:text-[21px]"
+            className="mt-7 flex h-[48px] w-[220px] items-center justify-center rounded-md btn-glossy-green text-[17px] font-extrabold sm:h-[54px] sm:w-[260px] sm:text-[21px]"
           >
             Claim Rs. 7,777 Off Now
           </a>
@@ -328,12 +358,20 @@ function StudentTestimonials() {
             ref={slider.trackRef}
             {...slider.trackHandlers}
           >
-            {learnerCards.map(([name, company, course, story]) => (
+            {learnerCards.map(([name, company, course, story, photo]) => (
               <article key={name} className="testimonial-slide-card">
                 <div className="flex items-center gap-4">
-                  <div className="flex h-[70px] w-[70px] shrink-0 items-center justify-center rounded-full bg-guvi-green text-[24px] font-extrabold text-black">
-                    {name.charAt(0)}
-                  </div>
+                  {photo ? (
+                    <img
+                      src={photo}
+                      alt={`${name} photo`}
+                      className="h-[70px] w-[70px] shrink-0 rounded-full object-cover border border-guvi-line shadow-lift"
+                    />
+                  ) : (
+                    <div className="flex h-[70px] w-[70px] shrink-0 items-center justify-center rounded-full bg-guvi-green text-[24px] font-extrabold text-black">
+                      {name.charAt(0)}
+                    </div>
+                  )}
                   <div>
                     <h3 className="text-[22px] font-extrabold leading-tight text-guvi-ink">{name}</h3>
                     <p className="mt-1 text-[16px] font-extrabold text-black/55">{company}</p>
