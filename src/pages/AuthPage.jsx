@@ -6,7 +6,7 @@ function AuthPage({ mode = "login" }) {
   const title = isSignup ? "Create your account" : "Welcome back";
   const subtitle = isSignup
     ? "Start learning with live classes, mentor guidance, and placement support."
-    : "Login to continue your learning journey with Jawanexis.";
+    : "Login to continue your learning journey with JAWA EDTech.";
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -17,7 +17,7 @@ function AuthPage({ mode = "login" }) {
       <div className="mx-auto flex min-h-[calc(100vh-48px)] max-w-[1180px] items-center">
         <section className="grid w-full overflow-hidden rounded-[8px] border border-guvi-line bg-white shadow-soft lg:grid-cols-[0.92fr_1.08fr]">
           <div className="auth-brand-panel relative hidden min-h-[680px] flex-col justify-between overflow-hidden bg-[#07110b] p-10 text-white lg:flex">
-            <a href="#home" className="relative z-10 inline-flex items-center gap-3" aria-label="Back to Jawanexis home">
+            <a href="#home" className="relative z-10 inline-flex items-center gap-3" aria-label="Back to JAWA EDTech home">
               <img src={logo3d} alt="" className="h-11 w-11 object-contain" aria-hidden="true" />
               <div>
                 <p className="text-2xl font-extrabold leading-none">Jawa EDTech</p>
@@ -88,7 +88,7 @@ function AuthPage({ mode = "login" }) {
                   {!isSignup ? <a href="#login" className="text-guvi-deepGreen hover:text-black">Forgot password?</a> : null}
                 </div>
 
-                <button type="submit" className="mt-2 h-12 rounded-[8px] bg-guvi-green text-[16px] font-extrabold text-black shadow-lift transition hover:-translate-y-0.5">
+                <button type="submit" className="mt-2 h-12 rounded-[8px] btn-glossy-green text-[16px] font-extrabold">
                   {isSignup ? "Create Account" : "Login"}
                 </button>
               </form>

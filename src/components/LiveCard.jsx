@@ -22,7 +22,7 @@ function LiveCard({ thumb, title, language, onSyllabusClick }) {
           </button>
           <a
             href="#know-more"
-            className="flex h-10 items-center justify-center rounded-md bg-guvi-green text-sm font-extrabold text-black shadow-[0_8px_18px_rgba(21,213,77,0.22)]"
+            className="flex h-10 items-center justify-center rounded-md btn-glossy-green text-sm font-extrabold"
           >
             Know More
           </a>

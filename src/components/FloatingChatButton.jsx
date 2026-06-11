@@ -19,7 +19,7 @@ function getJawaReply(message) {
   }
 
   if (text.includes("placement") || text.includes("job") || text.includes("career")) {
-    return "Jawanexis programs include placement guidance after course completion. Jawa can help you choose a course based on your target role, current skill level, and language preference.";
+    return "JAWA EDTech programs include placement guidance after course completion. Jawa can help you choose a course based on your target role, current skill level, and language preference.";
   }
 
   if (text.includes("live") || text.includes("class") || text.includes("mentor")) {
@@ -50,7 +50,7 @@ function getJawaReply(message) {
     return "Jawa can help you pick from HR Executive Training, HR Recruitment Training, Full Stack Development, QA Testing, and DSA. Tell me your background and target role, and I will suggest a path.";
   }
 
-  return "I can help with Jawanexis courses, live classes, placement guidance, fees, and contact details. Tell me what you want to learn or the role you are aiming for.";
+  return "I can help with JAWA EDTech courses, live classes, placement guidance, fees, and contact details. Tell me what you want to learn or the role you are aiming for.";
 }
 
 function FloatingChatButton() {
@@ -140,11 +140,10 @@ function FloatingChatButton() {
               {messages.map((message) => (
                 <div key={message.id} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
                   <div
-                    className={`max-w-[84%] rounded-lg px-4 py-3 text-sm leading-6 ${
-                      message.role === "user"
+                    className={`max-w-[84%] rounded-lg px-4 py-3 text-sm leading-6 ${message.role === "user"
                         ? "bg-guvi-green font-bold text-black shadow-[0_6px_16px_rgba(25,217,80,0.22)]"
                         : "border border-guvi-line bg-white font-medium text-guvi-ink shadow-sm"
-                    }`}
+                      }`}
                   >
                     {message.text}
                   </div>
@@ -190,7 +189,7 @@ function FloatingChatButton() {
                 onChange={(event) => setInput(event.target.value)}
               />
               <button
-                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-guvi-green text-black shadow-[0_8px_18px_rgba(25,217,80,0.25)] transition hover:bg-guvi-deepGreen hover:text-white disabled:cursor-not-allowed disabled:bg-guvi-line disabled:text-black/35 disabled:shadow-none"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md btn-glossy-green"
                 type="submit"
                 aria-label="Send message to Jawa"
                 disabled={!input.trim() || isTyping}
@@ -204,7 +203,7 @@ function FloatingChatButton() {
 
       <div className="pointer-events-auto flex items-center gap-3">
         <button
-          className="flex h-[68px] w-[68px] items-center justify-center rounded-full border-4 border-white bg-guvi-green text-black shadow-[0_12px_30px_rgba(15,23,42,0.28)] ring-4 ring-guvi-green/20 transition hover:scale-105 hover:bg-guvi-deepGreen hover:text-white"
+          className="flex h-[68px] w-[68px] items-center justify-center rounded-full border-4 border-white btn-glossy-green shadow-[0_12px_30px_rgba(15,23,42,0.28)] ring-4 ring-[#19d950]/20"
           type="button"
           aria-label={isOpen ? "Close Jawa AI chat" : "Open Jawa AI chat"}
           onClick={() => setIsOpen((currentState) => !currentState)}
