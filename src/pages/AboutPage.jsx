@@ -295,22 +295,22 @@ function AboutPage() {
         </section>
 
         {/* TESTIMONIALS STACK SECTION */}
-        <section className="py-20 lg:py-28 bg-white border-t border-guvi-line/40 relative overflow-hidden">
+        <section className="py-20 lg:py-24 bg-white border-t border-guvi-line/40 relative overflow-hidden">
           <div className="shell">
-            <div className="text-center max-w-[800px] mx-auto mb-16">
+            <div className="text-center max-w-[1120px] mx-auto mb-16">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-guvi-mint px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-guvi-deepGreen">
                 <Heart size={14} className="fill-current" /> WALL OF LOVE
               </span>
-              <h2 className="mt-4 text-[32px] font-extrabold text-black sm:text-[44px]">
+              <h2 className="mt-7 text-[42px] font-extrabold leading-tight text-black sm:text-[56px]">
                 Stories of Success
               </h2>
-              <p className="mt-4 text-[16px] font-medium text-guvi-muted">
+              <p className="mt-7 text-[18px] font-medium leading-8 text-guvi-muted sm:text-[20px]">
                 See how our graduates secured placements, elevated their careers, and achieved professional milestones. Click the active card to send it behind and view the next.
               </p>
             </div>
 
             {/* 3D Stack Container */}
-            <div className="relative mx-auto max-w-[640px] h-[420px] sm:h-[340px] md:h-[300px] flex items-center justify-center">
+            <div className="relative mx-auto flex h-[430px] max-w-[800px] items-start justify-center sm:h-[380px] md:h-[350px]">
               {cardsOrder.map((originalIndex, orderIndex) => {
                 const item = testimonials[originalIndex];
 
@@ -325,7 +325,7 @@ function AboutPage() {
                 if (isTransitioning) {
                   if (orderIndex === 0) {
                     // Top card exits
-                    transformStyle = "translate(125%, -20px) rotate(8deg) scale(0.95)";
+                    transformStyle = "translate(120%, -18px) rotate(7deg) scale(0.94)";
                     opacityStyle = 0;
                   } else if (orderIndex === 1) {
                     // Second card goes to front
@@ -335,13 +335,13 @@ function AboutPage() {
                     pointerEvents = "pointer-events-auto cursor-pointer";
                   } else if (orderIndex === 2) {
                     // Third card goes to second
-                    transformStyle = "translate(0, 16px) scale(0.95)";
+                    transformStyle = "translate(0, 14px) scale(0.94)";
                     opacityStyle = 0.9;
                     zIndexStyle = 20;
                   } else if (orderIndex === 3) {
                     // Fourth card goes to third
-                    transformStyle = "translate(0, 32px) scale(0.9)";
-                    opacityStyle = 0.8;
+                    transformStyle = "translate(0, 28px) scale(0.88)";
+                    opacityStyle = 0.72;
                     zIndexStyle = 10;
                   }
                 } else {
@@ -350,13 +350,13 @@ function AboutPage() {
                     opacityStyle = 1;
                     pointerEvents = "pointer-events-auto cursor-pointer";
                   } else if (orderIndex === 1) {
-                    transformStyle = "translate(0, 16px) scale(0.95)";
+                    transformStyle = "translate(0, 14px) scale(0.94)";
                     opacityStyle = 0.9;
                   } else if (orderIndex === 2) {
-                    transformStyle = "translate(0, 32px) scale(0.9)";
-                    opacityStyle = 0.8;
+                    transformStyle = "translate(0, 28px) scale(0.88)";
+                    opacityStyle = 0.72;
                   } else if (orderIndex === 3) {
-                    transformStyle = "translate(0, 48px) scale(0.85)";
+                    transformStyle = "translate(0, 42px) scale(0.82)";
                     opacityStyle = 0; // Pre-load card hidden under stack
                   }
                 }
@@ -370,36 +370,36 @@ function AboutPage() {
                       opacity: opacityStyle,
                       zIndex: zIndexStyle,
                     }}
-                    className={`absolute w-full top-0 bg-white rounded-2xl border border-guvi-line p-6 md:p-8 shadow-soft transition-all duration-500 ease-out select-none flex flex-col justify-between h-[360px] sm:h-[280px] md:h-[250px] ${pointerEvents}`}
+                    className={`absolute top-0 flex h-[372px] w-full select-none flex-col justify-between rounded-[18px] border border-[#cfe9d5] bg-white px-6 py-7 shadow-[0_28px_80px_-42px_rgba(15,23,42,0.65)] transition-all duration-500 ease-out sm:h-[310px] sm:px-10 sm:py-8 md:h-[312px] ${pointerEvents}`}
                   >
                     <div>
-                      <div className="flex justify-between items-start gap-4">
+                      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                         <div>
-                          <h4 className="text-[17px] md:text-[19px] font-extrabold text-black">
+                          <h4 className="text-[21px] font-extrabold leading-tight text-black md:text-[24px]">
                             {item.name}
                           </h4>
-                          <p className="text-[12px] md:text-[13px] font-bold text-guvi-deepGreen uppercase tracking-wider mt-0.5">
+                          <p className="mt-2 text-[14px] font-extrabold uppercase tracking-wider text-guvi-deepGreen md:text-[15px]">
                             {item.role}
                           </p>
                         </div>
-                        <span className="inline-flex text-[11px] font-extrabold bg-guvi-mint text-guvi-deepGreen px-3 py-1 rounded-full whitespace-nowrap">
+                        <span className="inline-flex w-fit whitespace-nowrap rounded-full bg-guvi-mint px-4 py-2 text-[12px] font-extrabold text-guvi-deepGreen md:text-[13px]">
                           {item.course}
                         </span>
                       </div>
 
-                      <div className="mt-4 relative">
-                        <Quote size={40} className="text-guvi-green/15 absolute -top-5 -left-4 pointer-events-none" />
-                        <p className="text-[14px] md:text-[15px] leading-relaxed text-guvi-muted font-medium italic relative z-10">
+                      <div className="relative mt-7">
+                        <Quote size={48} className="absolute -left-6 -top-7 text-guvi-green/15 pointer-events-none" />
+                        <p className="relative z-10 text-[17px] font-medium leading-8 text-[#253041] md:text-[20px] md:leading-9">
                           "{item.quote}"
                         </p>
                       </div>
                     </div>
 
-                    <div className="border-t border-slate-100 pt-3 flex justify-between items-center mt-auto">
-                      <span className="text-[11px] font-extrabold tracking-wider text-slate-400 uppercase">
+                    <div className="mt-auto flex items-center justify-between gap-4 border-t border-slate-100 pt-4">
+                      <span className="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 sm:text-[13px]">
                         Jawa EdTech Wall of Love
                       </span>
-                      <span className="text-[12px] font-extrabold text-guvi-deepGreen flex items-center gap-1">
+                      <span className="flex items-center gap-1 text-[12px] font-extrabold text-guvi-deepGreen sm:text-[14px]">
                         Click card to next <ChevronRight size={14} />
                       </span>
                     </div>
@@ -409,14 +409,14 @@ function AboutPage() {
             </div>
 
             {/* Pagination Controls */}
-            <div className="mt-12 flex justify-center items-center gap-6">
-              <span className="text-[14px] font-extrabold text-guvi-muted">
+            <div className="mt-3 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+              <span className="text-[15px] font-extrabold text-guvi-muted sm:text-[16px]">
                 Showing Testimonial <span className="text-black font-black">{currentIndex + 1}</span> of {testimonials.length}
               </span>
               <button
                 onClick={handleNext}
                 disabled={isTransitioning}
-                className="flex items-center justify-center h-10 w-28 bg-black hover:bg-guvi-deepGreen text-white text-[13px] font-extrabold rounded-full transition-colors duration-300 shadow-md disabled:opacity-50"
+                className="flex h-12 w-36 items-center justify-center rounded-full bg-black text-[15px] font-extrabold text-white shadow-[0_14px_28px_-16px_rgba(0,0,0,0.8)] transition-colors duration-300 hover:bg-guvi-deepGreen disabled:opacity-50"
                 aria-label="Next Testimonial"
               >
                 Next {currentIndex + 1 === testimonials.length ? "↺" : "→"}
