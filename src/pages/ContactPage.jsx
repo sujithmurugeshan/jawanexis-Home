@@ -316,7 +316,7 @@ function ContactPage() {
                   {/* Submit button */}
                   <button
                     type="submit"
-                    className="w-full h-12 bg-[#00a852] hover:bg-[#009448] active:bg-[#00803e] text-white font-extrabold text-[16px] rounded-lg transition duration-200 shadow-md mt-6 flex items-center justify-center cursor-pointer"
+                    className="w-full h-12 btn-glossy-green font-extrabold text-[16px] rounded-lg mt-6 flex items-center justify-center cursor-pointer"
                   >
                     Send
                   </button>

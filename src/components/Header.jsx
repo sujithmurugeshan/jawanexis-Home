@@ -9,7 +9,7 @@ function Header() {
   return (
     <header className="sticky top-0 z-40 bg-white shadow-nav">
       <div className="shell flex h-14 items-center justify-between gap-4">
-        <a href="#home" className="flex min-w-[160px] items-center gap-2" aria-label="Jawanexis home">
+        <a href="#home" className="flex min-w-[160px] items-center gap-2" aria-label="JAWA EDTech home">
           <img
             src={logo3d}
             alt=""
@@ -17,7 +17,7 @@ function Header() {
             aria-hidden="true"
           />
           <div className="flex flex-col leading-none">
-            <span className="text-lg font-extrabold tracking-tight text-black">Jawan EDTech</span>
+            <span className="text-lg font-extrabold tracking-tight text-black">Jawa EDTech</span>
             <span className="mt-0.5 text-[6px] font-bold tracking-[0.16em] text-black/60">LEARN, LEAD, INNOVATE!</span>
           </div>
         </a>
@@ -43,7 +43,7 @@ function Header() {
           </a>
           <a
             href="#signup"
-            className="flex h-9 min-w-[84px] items-center justify-center rounded-md bg-guvi-green px-4 text-[15px] font-extrabold text-black shadow-lift"
+            className="flex h-9 min-w-[84px] items-center justify-center rounded-md btn-glossy-green px-4 text-[15px] font-extrabold"
           >
             Sign up
           </a>
@@ -76,7 +76,7 @@ function Header() {
               <a href="#login" className="rounded-md border border-guvi-green px-4 py-2.5 text-center text-sm font-bold text-black">
                 Login
               </a>
-              <a href="#signup" className="rounded-md bg-guvi-green px-4 py-2.5 text-center text-sm font-bold text-black">
+              <a href="#signup" className="rounded-md btn-glossy-green px-4 py-2.5 text-center text-sm font-bold">
                 Sign up
               </a>
             </div>

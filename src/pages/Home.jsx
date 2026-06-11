@@ -7,13 +7,12 @@ import LiveCard from "../components/LiveCard.jsx";
 import SyllabusModal from "../components/SyllabusModal.jsx";
 import nativeLanguagesImage from "../assets/native-languages.png";
 import {
-  accreditationItems,
   achievementPhotos,
-  companyLogos,
   journeyLearners,
   learnerCards,
   learningCourses,
-  liveCards
+  liveCards,
+  studentCompanyRows
 } from "./homeData.jsx";
 
 function Home() {
@@ -36,10 +35,10 @@ function Home() {
 
       <main>
         <HeroOffer />
-        <Accreditations />
         <LiveClasses onSyllabusClick={handleOpenSyllabus} />
         <JourneyOfLearners />
         <StudentTestimonials />
+        <StudentCompanies />
         <HiringStats />
         <LearningPace />
         <NativeLanguages />
@@ -61,7 +60,28 @@ function Home() {
 
 function useManualSlider(itemCount) {
   const trackRef = useRef(null);
+  const dragStateRef = useRef({ isDown: false, startX: 0, scrollLeft: 0 });
+  const scrollFrameRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const updateActiveIndex = useCallback(() => {
+    const track = trackRef.current;
+
+    if (!track?.children.length) {
+      return;
+    }
+
+    const nextIndex = Array.from(track.children).reduce((closestIndex, child, index) => {
+      const currentDistance = Math.abs(child.offsetLeft - track.scrollLeft - track.offsetLeft);
+      const closestChild = track.children[closestIndex];
+      const closestDistance = Math.abs(closestChild.offsetLeft - track.scrollLeft - track.offsetLeft);
+
+      return currentDistance < closestDistance ? index : closestIndex;
+    }, 0);
+
+    setActiveIndex(nextIndex);
+  }, []);
 
   const scrollToIndex = useCallback((index) => {
     const nextIndex = (index + itemCount) % itemCount;
@@ -78,12 +98,72 @@ function useManualSlider(itemCount) {
     }
   }, [itemCount]);
 
+  const handlePointerDown = useCallback((event) => {
+    const track = trackRef.current;
+
+    if (!track) {
+      return;
+    }
+
+    dragStateRef.current = {
+      isDown: true,
+      startX: event.clientX,
+      scrollLeft: track.scrollLeft
+    };
+    track.setPointerCapture(event.pointerId);
+    setIsDragging(true);
+  }, []);
+
+  const handlePointerMove = useCallback((event) => {
+    const track = trackRef.current;
+    const dragState = dragStateRef.current;
+
+    if (!track || !dragState.isDown) {
+      return;
+    }
+
+    event.preventDefault();
+    track.scrollLeft = dragState.scrollLeft - (event.clientX - dragState.startX);
+  }, []);
+
+  const finishDrag = useCallback((event) => {
+    const track = trackRef.current;
+
+    if (!dragStateRef.current.isDown) {
+      return;
+    }
+
+    dragStateRef.current.isDown = false;
+    if (track?.hasPointerCapture?.(event.pointerId)) {
+      track.releasePointerCapture(event.pointerId);
+    }
+    setIsDragging(false);
+    updateActiveIndex();
+  }, [updateActiveIndex]);
+
+  const handleScroll = useCallback(() => {
+    if (scrollFrameRef.current) {
+      window.cancelAnimationFrame(scrollFrameRef.current);
+    }
+
+    scrollFrameRef.current = window.requestAnimationFrame(updateActiveIndex);
+  }, [updateActiveIndex]);
+
   return {
     activeIndex,
+    isDragging,
     trackRef,
     goNext: () => scrollToIndex(activeIndex + 1),
     goPrevious: () => scrollToIndex(activeIndex - 1),
-    scrollToIndex
+    scrollToIndex,
+    trackHandlers: {
+      onPointerDown: handlePointerDown,
+      onPointerMove: handlePointerMove,
+      onPointerUp: finishDrag,
+      onPointerCancel: finishDrag,
+      onPointerLeave: finishDrag,
+      onScroll: handleScroll
+    }
   };
 }
 
@@ -122,35 +202,46 @@ function HeroOffer() {
           <h1 className="mt-5 text-[30px] font-extrabold leading-tight tracking-[-0.02em] text-black sm:text-[42px] lg:text-[46px]">
             Save <span className="text-guvi-deepGreen">Rs. 7,777</span> on HR & IT Career Programs
           </h1>
-          <div className="mt-7 inline-flex min-h-[48px] max-w-[760px] items-center rounded-full border-2 border-black bg-white px-5 text-[12px] font-extrabold leading-tight text-black shadow-[inset_10px_0_0_#19d950] sm:px-6 sm:text-[14px] lg:text-[15px]">
-            HR Executive Training | HR Recruitment Training | Full Stack Development | Software Quality Testing(QA Testing) | Data Structure And Algorithms(DSA)
+          <div className="mt-7 inline-flex flex-col gap-y-3 rounded-[24px] md:rounded-[28px] border-2 border-black bg-gradient-to-r from-guvi-mint to-white py-4 pl-9 pr-7 shadow-[inset_12px_0_0_#19d950] max-w-[760px] lg:max-w-[880px]">
+            {/* First line: 3 courses */}
+            <div className="flex flex-wrap gap-x-6 gap-y-2.5 items-center">
+              {[
+                "HR Executive Training",
+                "HR Recruitment Training",
+                "Full Stack Development"
+              ].map((course) => (
+                <span
+                  key={course}
+                  className="flex items-center gap-2 text-[15px] sm:text-[16px] font-extrabold text-black cursor-default whitespace-nowrap"
+                >
+                  <span className="h-2.5 w-2.5 rounded-full bg-guvi-green animate-pulse shrink-0" />
+                  <span>{course}</span>
+                </span>
+              ))}
+            </div>
+            {/* Second line: 2 courses */}
+            <div className="flex flex-wrap gap-x-6 gap-y-2.5 items-center">
+              {[
+                "Software Quality Testing (QA Testing)",
+                "Data Structure And Algorithms (DSA)"
+              ].map((course) => (
+                <span
+                  key={course}
+                  className="flex items-center gap-2 text-[15px] sm:text-[16px] font-extrabold text-black cursor-default whitespace-nowrap"
+                >
+                  <span className="h-2.5 w-2.5 rounded-full bg-guvi-green animate-pulse shrink-0" />
+                  <span>{course}</span>
+                </span>
+              ))}
+            </div>
           </div>
           <a
             href="#internship"
-            className="mt-7 flex h-[48px] w-[220px] items-center justify-center rounded-md bg-black text-[17px] font-extrabold text-white shadow-sm sm:h-[54px] sm:w-[260px] sm:text-[21px]"
+            className="mt-7 flex h-[48px] w-[220px] items-center justify-center rounded-md btn-glossy-green text-[17px] font-extrabold sm:h-[54px] sm:w-[260px] sm:text-[21px]"
           >
             Claim Rs. 7,777 Off Now
           </a>
           <p className="mt-4 text-[16px] font-medium text-black/70">*Offer Ends Soon</p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Accreditations() {
-  return (
-    <section className="bg-guvi-soft py-[66px]">
-      <div className="shell">
-        <h2 className="text-center text-[26px] font-medium text-black">Our Students Work On</h2>
-        <div className="logo-marquee mt-8" aria-label="Companies where our students work">
-          <div className="logo-track">
-            {[...accreditationItems, ...accreditationItems].map((item, index) => (
-              <article key={`${item.name}-${index}`} className="logo-card" aria-hidden={index >= accreditationItems.length}>
-                <img src={item.logo} alt={`${item.name} logo`} className="company-logo-img" />
-              </article>
-            ))}
-          </div>
         </div>
       </div>
     </section>
@@ -203,23 +294,38 @@ function JourneyOfLearners() {
           <h2 className="text-[28px] font-extrabold text-guvi-ink">Journey Of Our Learners</h2>
         </div>
         <div className="manual-feedback-slider">
-          <div className="manual-feedback-track journey-slider-track" ref={slider.trackRef}>
+          <div
+            className={`manual-feedback-track journey-slider-track ${slider.isDragging ? "manual-feedback-track-dragging" : ""}`}
+            ref={slider.trackRef}
+            {...slider.trackHandlers}
+          >
             {journeyLearners.map((learner) => (
               <article key={`${learner.name}-${learner.company}`} className="journey-slide-card">
                 <div className="journey-slide-top">
-                  <img src={learner.photo} alt={`${learner.name} photo`} className="journey-photo" />
-                  <div className="mt-5">
-                    <h3 className="text-[22px] font-extrabold leading-tight text-guvi-ink">{learner.name}</h3>
-                    <p className="mt-2 text-[15px] font-extrabold uppercase tracking-[0.12em] text-guvi-deepGreen">{learner.role}</p>
-                  </div>
+                  {learner.photo ? (
+                    <img src={learner.photo} alt={`${learner.name} photo`} className="journey-photo" />
+                  ) : (
+                    <div className="journey-photo journey-photo-fallback" aria-label={`${learner.name} photo`}>
+                      {learner.name.charAt(0)}
+                    </div>
+                  )}
                 </div>
                 <div className="journey-slide-body">
-                  <span className="journey-badge">1</span>
-                  <div>
-                    <p className="text-sm font-bold text-black/45">Placed at</p>
-                    <p className="mt-1 text-[20px] font-extrabold leading-tight text-guvi-ink">{learner.company}</p>
-                    {learner.location ? <p className="mt-2 text-sm font-bold text-black/50">{learner.location}</p> : null}
+                  <h3 className="journey-learner-name">
+                    <span>{learner.name}</span>
+                    <span className="journey-linkedin-badge" aria-hidden="true">in</span>
+                  </h3>
+                  <p className="journey-learner-role">{learner.role}</p>
+                  <p className="journey-working-label">Working At</p>
+                  <div className="journey-company-lockup">
+                    <p className="journey-company-name">{learner.company}</p>
+                    {learner.companyLogo ? (
+                      <img src={learner.companyLogo} alt={`${learner.company} logo`} className="journey-company-logo" />
+                    ) : (
+                      <span className="journey-company-mark" aria-hidden="true">{learner.companyMark || learner.company.charAt(0)}</span>
+                    )}
                   </div>
+                  {learner.location ? <p className="journey-location">{learner.location}</p> : null}
                 </div>
               </article>
             ))}
@@ -247,13 +353,25 @@ function StudentTestimonials() {
           <h2 className="text-[28px] font-extrabold text-guvi-ink">What Our Students Are Saying!</h2>
         </div>
         <div className="manual-feedback-slider">
-          <div className="manual-feedback-track testimonials-track" ref={slider.trackRef}>
-            {learnerCards.map(([name, company, course, story]) => (
+          <div
+            className={`manual-feedback-track testimonials-track ${slider.isDragging ? "manual-feedback-track-dragging" : ""}`}
+            ref={slider.trackRef}
+            {...slider.trackHandlers}
+          >
+            {learnerCards.map(([name, company, course, story, photo]) => (
               <article key={name} className="testimonial-slide-card">
                 <div className="flex items-center gap-4">
-                  <div className="flex h-[70px] w-[70px] shrink-0 items-center justify-center rounded-full bg-guvi-green text-[24px] font-extrabold text-black">
-                    {name.charAt(0)}
-                  </div>
+                  {photo ? (
+                    <img
+                      src={photo}
+                      alt={`${name} photo`}
+                      className="h-[70px] w-[70px] shrink-0 rounded-full object-cover border border-guvi-line shadow-lift"
+                    />
+                  ) : (
+                    <div className="flex h-[70px] w-[70px] shrink-0 items-center justify-center rounded-full bg-guvi-green text-[24px] font-extrabold text-black">
+                      {name.charAt(0)}
+                    </div>
+                  )}
                   <div>
                     <h3 className="text-[22px] font-extrabold leading-tight text-guvi-ink">{name}</h3>
                     <p className="mt-1 text-[16px] font-extrabold text-black/55">{company}</p>
@@ -277,6 +395,40 @@ function StudentTestimonials() {
   );
 }
 
+function getCompanyWordmarkClass(name) {
+  return name.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+function StudentCompanies() {
+  return (
+    <section className="student-companies-section">
+      <div className="shell">
+        <h2 className="text-center text-[30px] font-extrabold text-guvi-ink">Where Do Our Students Work?</h2>
+        <div className="company-wall" aria-label="Companies where our students work">
+          {studentCompanyRows.map((row, rowIndex) => (
+            <div key={`company-row-${rowIndex}`} className={`company-wall-row company-wall-row-${rowIndex + 1}`}>
+              {[...row, ...row].map((company, index) => (
+                <article key={`${company.name}-${rowIndex}-${index}`} className="company-work-card" aria-hidden={index >= row.length}>
+                  {company.logo ? (
+                    <img src={company.logo} alt={`${company.name} logo`} className="company-work-logo" />
+                  ) : (
+                    <span
+                      className={`company-wordmark company-wordmark-${getCompanyWordmarkClass(company.name)}`}
+                      style={{ "--brand-color": company.color }}
+                    >
+                      {company.name}
+                    </span>
+                  )}
+                </article>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function JourneyCompanyLogo({ name }) {
   if (name === "GNIKUL") {
     return <span className="journey-company journey-company-gnikul">GNIKUL</span>;
@@ -295,10 +447,10 @@ function JourneyCompanyLogo({ name }) {
 
 function HiringStats() {
   const proudStats = [
-    ["4464724", "Learners"],
-    ["194", "Mentors"],
-    ["58892935", "Lines of Code Submission"],
-    ["1673", "Videos"]
+    ["1000+", "Learners"],
+    ["10+", "Mentors"],
+    ["Innovative", "Learning Approach"],
+    ["50+", "Career Workshops"]
   ];
 
   const proudInsights = [
@@ -310,17 +462,7 @@ function HiringStats() {
   return (
     <section id="about-us" className="bg-white py-16">
       <div className="shell">
-        <h2 className="text-center text-[24px] font-extrabold text-guvi-ink">Where Do Our Students Work?</h2>
-        <div className="company-work-slider">
-          <div className="company-work-track auto-scroll-track">
-            {[...companyLogos, ...companyLogos].map((company, index) => (
-              <article key={`${company.name}-${index}`} className="company-work-card" aria-hidden={index >= companyLogos.length}>
-                <img src={company.logo} alt={`${company.name} logo`} className="company-work-logo" />
-              </article>
-            ))}
-          </div>
-        </div>
-        <div className="mx-auto mt-14 max-w-[1096px]">
+        <div className="mx-auto max-w-[1096px]">
           <h3 className="text-center text-[32px] font-extrabold leading-tight text-[#0f172a]">We are proud of...</h3>
           <div className="mt-8 grid gap-[15px] sm:grid-cols-2 lg:grid-cols-4">
             {proudStats.map(([value, label]) => (
