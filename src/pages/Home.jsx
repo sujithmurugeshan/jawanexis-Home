@@ -60,7 +60,28 @@ function Home() {
 
 function useManualSlider(itemCount) {
   const trackRef = useRef(null);
+  const dragStateRef = useRef({ isDown: false, startX: 0, scrollLeft: 0 });
+  const scrollFrameRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const updateActiveIndex = useCallback(() => {
+    const track = trackRef.current;
+
+    if (!track?.children.length) {
+      return;
+    }
+
+    const nextIndex = Array.from(track.children).reduce((closestIndex, child, index) => {
+      const currentDistance = Math.abs(child.offsetLeft - track.scrollLeft - track.offsetLeft);
+      const closestChild = track.children[closestIndex];
+      const closestDistance = Math.abs(closestChild.offsetLeft - track.scrollLeft - track.offsetLeft);
+
+      return currentDistance < closestDistance ? index : closestIndex;
+    }, 0);
+
+    setActiveIndex(nextIndex);
+  }, []);
 
   const scrollToIndex = useCallback((index) => {
     const nextIndex = (index + itemCount) % itemCount;
@@ -77,12 +98,72 @@ function useManualSlider(itemCount) {
     }
   }, [itemCount]);
 
+  const handlePointerDown = useCallback((event) => {
+    const track = trackRef.current;
+
+    if (!track) {
+      return;
+    }
+
+    dragStateRef.current = {
+      isDown: true,
+      startX: event.clientX,
+      scrollLeft: track.scrollLeft
+    };
+    track.setPointerCapture(event.pointerId);
+    setIsDragging(true);
+  }, []);
+
+  const handlePointerMove = useCallback((event) => {
+    const track = trackRef.current;
+    const dragState = dragStateRef.current;
+
+    if (!track || !dragState.isDown) {
+      return;
+    }
+
+    event.preventDefault();
+    track.scrollLeft = dragState.scrollLeft - (event.clientX - dragState.startX);
+  }, []);
+
+  const finishDrag = useCallback((event) => {
+    const track = trackRef.current;
+
+    if (!dragStateRef.current.isDown) {
+      return;
+    }
+
+    dragStateRef.current.isDown = false;
+    if (track?.hasPointerCapture?.(event.pointerId)) {
+      track.releasePointerCapture(event.pointerId);
+    }
+    setIsDragging(false);
+    updateActiveIndex();
+  }, [updateActiveIndex]);
+
+  const handleScroll = useCallback(() => {
+    if (scrollFrameRef.current) {
+      window.cancelAnimationFrame(scrollFrameRef.current);
+    }
+
+    scrollFrameRef.current = window.requestAnimationFrame(updateActiveIndex);
+  }, [updateActiveIndex]);
+
   return {
     activeIndex,
+    isDragging,
     trackRef,
     goNext: () => scrollToIndex(activeIndex + 1),
     goPrevious: () => scrollToIndex(activeIndex - 1),
-    scrollToIndex
+    scrollToIndex,
+    trackHandlers: {
+      onPointerDown: handlePointerDown,
+      onPointerMove: handlePointerMove,
+      onPointerUp: finishDrag,
+      onPointerCancel: finishDrag,
+      onPointerLeave: finishDrag,
+      onScroll: handleScroll
+    }
   };
 }
 
@@ -183,23 +264,38 @@ function JourneyOfLearners() {
           <h2 className="text-[28px] font-extrabold text-guvi-ink">Journey Of Our Learners</h2>
         </div>
         <div className="manual-feedback-slider">
-          <div className="manual-feedback-track journey-slider-track" ref={slider.trackRef}>
+          <div
+            className={`manual-feedback-track journey-slider-track ${slider.isDragging ? "manual-feedback-track-dragging" : ""}`}
+            ref={slider.trackRef}
+            {...slider.trackHandlers}
+          >
             {journeyLearners.map((learner) => (
               <article key={`${learner.name}-${learner.company}`} className="journey-slide-card">
                 <div className="journey-slide-top">
-                  <img src={learner.photo} alt={`${learner.name} photo`} className="journey-photo" />
-                  <div className="mt-5">
-                    <h3 className="text-[22px] font-extrabold leading-tight text-guvi-ink">{learner.name}</h3>
-                    <p className="mt-2 text-[15px] font-extrabold uppercase tracking-[0.12em] text-guvi-deepGreen">{learner.role}</p>
-                  </div>
+                  {learner.photo ? (
+                    <img src={learner.photo} alt={`${learner.name} photo`} className="journey-photo" />
+                  ) : (
+                    <div className="journey-photo journey-photo-fallback" aria-label={`${learner.name} photo`}>
+                      {learner.name.charAt(0)}
+                    </div>
+                  )}
                 </div>
                 <div className="journey-slide-body">
-                  <span className="journey-badge">1</span>
-                  <div>
-                    <p className="text-sm font-bold text-black/45">Placed at</p>
-                    <p className="mt-1 text-[20px] font-extrabold leading-tight text-guvi-ink">{learner.company}</p>
-                    {learner.location ? <p className="mt-2 text-sm font-bold text-black/50">{learner.location}</p> : null}
+                  <h3 className="journey-learner-name">
+                    <span>{learner.name}</span>
+                    <span className="journey-linkedin-badge" aria-hidden="true">in</span>
+                  </h3>
+                  <p className="journey-learner-role">{learner.role}</p>
+                  <p className="journey-working-label">Working At</p>
+                  <div className="journey-company-lockup">
+                    <p className="journey-company-name">{learner.company}</p>
+                    {learner.companyLogo ? (
+                      <img src={learner.companyLogo} alt={`${learner.company} logo`} className="journey-company-logo" />
+                    ) : (
+                      <span className="journey-company-mark" aria-hidden="true">{learner.companyMark || learner.company.charAt(0)}</span>
+                    )}
                   </div>
+                  {learner.location ? <p className="journey-location">{learner.location}</p> : null}
                 </div>
               </article>
             ))}
@@ -227,7 +323,11 @@ function StudentTestimonials() {
           <h2 className="text-[28px] font-extrabold text-guvi-ink">What Our Students Are Saying!</h2>
         </div>
         <div className="manual-feedback-slider">
-          <div className="manual-feedback-track testimonials-track" ref={slider.trackRef}>
+          <div
+            className={`manual-feedback-track testimonials-track ${slider.isDragging ? "manual-feedback-track-dragging" : ""}`}
+            ref={slider.trackRef}
+            {...slider.trackHandlers}
+          >
             {learnerCards.map(([name, company, course, story]) => (
               <article key={name} className="testimonial-slide-card">
                 <div className="flex items-center gap-4">

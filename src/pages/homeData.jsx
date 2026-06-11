@@ -5,11 +5,15 @@ import courseUiux from "../assets/course-uiux.png";
 import awardPlaceholder from "../assets/hero-learning.png";
 import abcConsultantsLogo from "../assets/company-logos/abc-consultants.jpg";
 import airtableLogo from "../assets/company-logos/airtable.jpg";
+import balajiPhoto from "../assets/learner-journey/balaji-v.jpeg";
+import careernetLogo from "../assets/learner-company-logos/careernet.png";
 import cielLogo from "../assets/company-logos/ciel.jpg";
 import codingmartLogo from "../assets/company-logos/codingmart.jpg";
 import deelLogo from "../assets/company-logos/deel.jpg";
+import fresaLogo from "../assets/learner-company-logos/fresa-technologies.png";
 import notionLogo from "../assets/company-logos/notion.jpg";
 import peoplefyLogo from "../assets/company-logos/peoplefy.jpg";
+import russellTobinLogo from "../assets/learner-company-logos/russell-tobin.png";
 import quickRecruitLogo from "../assets/company-logos/quick-recruit.jpg";
 import ripplingLogo from "../assets/company-logos/rippling.jpg";
 import teamleaseLogo from "../assets/company-logos/teamlease.jpg";
@@ -19,11 +23,20 @@ import dhanasekarPhoto from "../assets/learner-journey/dhanasekar-selvam.jpg";
 import guganPhoto from "../assets/learner-journey/gugan.jpg";
 import hariharasudhanPhoto from "../assets/learner-journey/hariharasudhan-sudhagar.jpg";
 import harikrishnanPhoto from "../assets/learner-journey/harikrishnan-dhanasekaran.jpg";
+import laxhariLogo from "../assets/learner-company-logos/laxhari-infotech.png";
+import madhumithaPhoto from "../assets/learner-journey/madhumitha.jpeg";
 import mohanPhoto from "../assets/learner-journey/mohan-prasad.jpg";
 import mohammedPhoto from "../assets/learner-journey/mohammed-hashid.jpg";
+import gokulPhoto from "../assets/learner-journey/gokul-t.jpeg";
+import muthuGroupLogo from "../assets/learner-company-logos/muthu-group.png";
+import mulecraftLogo from "../assets/learner-company-logos/mulecraft-digital.png";
 import nithyasreePhoto from "../assets/learner-journey/nithyasree.jpg";
 import parthibanPhoto from "../assets/learner-journey/parthiban-sundararaju.jpg";
+import prevajLogo from "../assets/learner-company-logos/prevaj.png";
 import shanmugamPhoto from "../assets/learner-journey/shanmugam-gopal.jpg";
+import shanmugavelPhoto from "../assets/learner-journey/shanmugavel.jpeg";
+import tcsLogo from "../assets/learner-company-logos/tcs.png";
+import tvsMotorLogo from "../assets/learner-company-logos/tvs-motor.png";
 import achievement1 from "../assets/achievements/achievement-1.jpeg";
 import achievement2 from "../assets/achievements/achievement-2.jpeg";
 import achievement3 from "../assets/achievements/achievement-3.jpeg";
@@ -104,77 +117,120 @@ export const journeyLearners = [
     role: "HR Executive",
     company: "Muthu Group Companies",
     location: "Coimbatore",
-    photo: brahadeeshPhoto
+    photo: brahadeeshPhoto,
+    companyLogo: muthuGroupLogo
   },
   {
     name: "Parthiban Sundararaju",
     role: "HR Executive",
     company: "Tata Consultancy Services",
     location: "Kochi",
-    photo: parthibanPhoto
+    photo: parthibanPhoto,
+    companyLogo: tcsLogo
+  },
+  {
+    name: "Madhumitha",
+    role: "Talent Acquisition Executive",
+    company: "Expertspro INC",
+    location: "Coimbatore",
+    photo: madhumithaPhoto,
+    companyMark: "E"
+  },
+  {
+    name: "Balaji V",
+    role: "HR Associate",
+    company: "Hashtag Infosystems",
+    location: "",
+    photo: balajiPhoto,
+    companyMark: "#"
+  },
+  {
+    name: "Shanmugavel",
+    role: "HR Senior Executive Operations",
+    company: "TVS Motor Company",
+    location: "Chennai",
+    photo: shanmugavelPhoto,
+    companyLogo: tvsMotorLogo
+  },
+  {
+    name: "Gokul T",
+    role: "HR PGET",
+    company: "URC Construction",
+    location: "Chennai",
+    photo: gokulPhoto,
+    companyMark: "URC"
   },
   {
     name: "Anbu R",
     role: "HR Executive",
     company: "TVS Motor Company",
     location: "Chennai",
-    photo: anbuPhoto
+    photo: anbuPhoto,
+    companyLogo: tvsMotorLogo
   },
   {
     name: "Mohan Prasad",
     role: "Senior Associate HR Operations",
     company: "Russell Tobin",
     location: "New York",
-    photo: mohanPhoto
+    photo: mohanPhoto,
+    companyLogo: russellTobinLogo
   },
   {
     name: "Hariharasudhan Sudhagar",
     role: "Full Stack Developer",
     company: "Laxhari Infotech",
     location: "",
-    photo: hariharasudhanPhoto
+    photo: hariharasudhanPhoto,
+    companyLogo: laxhariLogo
   },
   {
     name: "Mohammed Hashid",
     role: "Full Stack Developer",
     company: "AES Technologies",
     location: "",
-    photo: mohammedPhoto
+    photo: mohammedPhoto,
+    companyMark: "AES"
   },
   {
     name: "Shanmugam Gopal",
     role: "Senior Developer",
     company: "Fresa Technologies",
     location: "",
-    photo: shanmugamPhoto
+    photo: shanmugamPhoto,
+    companyLogo: fresaLogo
   },
   {
     name: "Dhanasekar Selvam",
     role: "Full Stack Developer",
     company: "Prevaj",
     location: "",
-    photo: dhanasekarPhoto
+    photo: dhanasekarPhoto,
+    companyLogo: prevajLogo
   },
   {
     name: "Gugan",
     role: "Senior Mulesoft Developer",
     company: "Mulecraft Digital",
     location: "Salem",
-    photo: guganPhoto
+    photo: guganPhoto,
+    companyLogo: mulecraftLogo
   },
   {
     name: "HariKrishnan Dhanasekaran",
     role: "Full Stack Developer",
     company: "Mulecraft Digital",
     location: "",
-    photo: harikrishnanPhoto
+    photo: harikrishnanPhoto,
+    companyLogo: mulecraftLogo
   },
   {
     name: "Nithyasree",
     role: "HR-IT Recruiter",
     company: "Career Net",
     location: "Coimbatore",
-    photo: nithyasreePhoto
+    photo: nithyasreePhoto,
+    companyLogo: careernetLogo
   }
 ];
 
