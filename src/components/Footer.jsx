@@ -51,12 +51,33 @@ function getFooterHref(label) {
     return "#about-us";
   }
 
+  if (label === "Privacy Policy") {
+    return "#privacy-policy";
+  }
+
+  if (label === "Refund Policy") {
+    return "#refund-policy";
+  }
+
+  if (label === "Terms and Conditions") {
+    return "#terms-and-conditions";
+  }
+
   return "#courses-page";
 }
 
 function FooterLink({ children }) {
+  const label = typeof children === "string" ? children : Array.isArray(children) ? children[0] : children;
+  const href = getFooterHref(label);
+  const isLegal = ["#privacy-policy", "#refund-policy", "#terms-and-conditions"].includes(href);
+
   return (
-    <a href={getFooterHref(children)} className="block text-[15px] leading-6 text-slate-200 transition hover:text-guvi-green">
+    <a
+      href={href}
+      target={isLegal ? "_blank" : undefined}
+      rel={isLegal ? "noopener noreferrer" : undefined}
+      className="block text-[15px] leading-6 text-slate-200 transition hover:text-guvi-green"
+    >
       {children}
     </a>
   );
@@ -153,10 +174,10 @@ function Footer() {
         </div>
 
         <div className="mt-8 flex flex-col gap-4 border-t border-white/30 pt-5 text-[13px] text-slate-200 md:flex-row md:items-center md:justify-end">
-          <a href="#contact" className="underline underline-offset-2 transition hover:text-guvi-green">
+          <a href="#terms-and-conditions" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 transition hover:text-guvi-green">
             Terms and Conditions
           </a>
-          <a href="#contact" className="underline underline-offset-2 transition hover:text-guvi-green">
+          <a href="#privacy-policy" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 transition hover:text-guvi-green">
             Privacy Policy
           </a>
           <span className="text-slate-200">&copy; {new Date().getFullYear()} Jawa EDTech. All rights reserved.</span>
