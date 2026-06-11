@@ -8,7 +8,7 @@ import FloatingChatButton from "../components/FloatingChatButton.jsx";
 import sooryaPhoto from "../assets/soorya.png";
 import anishaPhoto from "../assets/anisha.png";
 import nithinPhoto from "../assets/nithin.png";
-import sunithaPhoto from "../assets/sunitha.png";
+import sunithaPhoto from "../assets/sunitha.jpg";
 
 // Custom decorative SVG pattern for background
 function BackgroundPattern({ className }) {
@@ -313,7 +313,7 @@ function AboutPage() {
             <div className="relative mx-auto max-w-[640px] h-[420px] sm:h-[340px] md:h-[300px] flex items-center justify-center">
               {cardsOrder.map((originalIndex, orderIndex) => {
                 const item = testimonials[originalIndex];
-                
+
                 // We only render the first 4 cards to keep DOM lightweight and performant
                 if (orderIndex >= 4) return null;
 
@@ -386,7 +386,7 @@ function AboutPage() {
                           {item.course}
                         </span>
                       </div>
-                      
+
                       <div className="mt-4 relative">
                         <Quote size={40} className="text-guvi-green/15 absolute -top-5 -left-4 pointer-events-none" />
                         <p className="text-[14px] md:text-[15px] leading-relaxed text-guvi-muted font-medium italic relative z-10">
