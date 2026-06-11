@@ -4,6 +4,12 @@ import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import FloatingChatButton from "../components/FloatingChatButton.jsx";
 
+// Import team member photos
+import sooryaPhoto from "../assets/soorya.png";
+import anishaPhoto from "../assets/anisha.png";
+import nithinPhoto from "../assets/nithin.png";
+import sunithaPhoto from "../assets/sunitha.png";
+
 // Custom decorative SVG pattern for background
 function BackgroundPattern({ className }) {
   return (
@@ -37,6 +43,7 @@ const teamMembers = [
   {
     name: "Soorya Jawahar",
     role: "Founder & CEO",
+    photo: sooryaPhoto,
     initials: "SJ",
     gradient: "from-[#0b8a32] to-[#19d950]",
     description: "Driving the strategic vision and educational excellence of Jawa EdTech to empower global talent."
@@ -44,6 +51,7 @@ const teamMembers = [
   {
     name: "Anisha",
     role: "Senior HR - Training & Development",
+    photo: anishaPhoto,
     initials: "AN",
     gradient: "from-blue-600 to-indigo-500",
     description: "Structuring practical, industry-first curricula and mentoring candidates for career readiness."
@@ -51,6 +59,7 @@ const teamMembers = [
   {
     name: "Nitinchand",
     role: "Tech Advisor",
+    photo: nithinPhoto,
     initials: "NC",
     gradient: "from-purple-600 to-pink-500",
     description: "Guiding the technological roadmap and integration of state-of-the-art tools in developer courses."
@@ -58,6 +67,7 @@ const teamMembers = [
   {
     name: "Sunitha Prakash",
     role: "Digital Marketing Executive",
+    photo: sunithaPhoto,
     initials: "SP",
     gradient: "from-amber-500 to-orange-500",
     description: "Expanding Jawa EdTech's outreach to make quality education accessible to aspiring students."
@@ -253,9 +263,17 @@ function AboutPage() {
                   className="bg-white rounded-2xl border border-guvi-line/60 p-6 text-center hover:shadow-card hover:-translate-y-1.5 transition-all duration-300 group"
                 >
                   <div className="relative mx-auto h-24 w-24 mb-6">
-                    <div className={`flex h-full w-full items-center justify-center rounded-full bg-gradient-to-tr ${member.gradient} text-white font-extrabold text-2xl shadow-lift group-hover:rotate-12 transition-transform duration-500`}>
-                      {member.initials}
-                    </div>
+                    {member.photo ? (
+                      <img
+                        src={member.photo}
+                        alt={member.name}
+                        className="h-full w-full rounded-full object-cover border-2 border-guvi-green shadow-lift group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div className={`flex h-full w-full items-center justify-center rounded-full bg-gradient-to-tr ${member.gradient} text-white font-extrabold text-2xl shadow-lift group-hover:rotate-12 transition-transform duration-500`}>
+                        {member.initials}
+                      </div>
+                    )}
                     <div className="absolute -bottom-1 -right-1 bg-white h-7 w-7 rounded-full flex items-center justify-center shadow-sm border border-slate-100">
                       <div className="h-4.5 w-4.5 rounded-full bg-guvi-green animate-pulse" />
                     </div>
