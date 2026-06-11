@@ -1,5 +1,284 @@
 import { useEffect, useState } from "react";
 import { X, CheckCircle } from "lucide-react";
+import { jsPDF } from "jspdf";
+
+const courseSyllabi = {
+  "HR Executive Training": {
+    title: "HR Executive Training",
+    modules: [
+      {
+        num: 1,
+        title: "HR Fundamentals & Corporate Environment",
+        desc: "Understand the core responsibilities of HR professionals and how HR supports business growth. Learn organizational structures, workplace policies, and professional HR practices."
+      },
+      {
+        num: 2,
+        title: "Recruitment & Talent Acquisition",
+        desc: "Learn the complete hiring process from requirement gathering to candidate onboarding. Gain practical exposure to modern recruitment strategies and talent acquisition techniques."
+      },
+      {
+        num: 3,
+        title: "Candidate Screening & Interview Management",
+        desc: "Develop skills in resume screening, candidate evaluation, and interview coordination. Learn how to identify the right talent efficiently."
+      },
+      {
+        num: 4,
+        title: "Employee Onboarding & Documentation",
+        desc: "Master employee onboarding procedures, joining formalities, and HR documentation. Ensure a seamless employee onboarding experience."
+      },
+      {
+        num: 5,
+        title: "Payroll Processing & Compensation Management",
+        desc: "Learn salary structures, payroll processing, deductions, and employee benefits management. Understand payroll systems used in organizations."
+      },
+      {
+        num: 6,
+        title: "Statutory Compliance & Labour Laws",
+        desc: "Gain knowledge of PF, ESI, Gratuity, and labor law compliance requirements. Learn essential legal responsibilities of HR professionals."
+      },
+      {
+        num: 7,
+        title: "Employee Engagement & Workplace Culture",
+        desc: "Explore strategies to improve employee satisfaction, retention, and organizational culture. Learn engagement initiatives that drive productivity."
+      },
+      {
+        num: 8,
+        title: "Performance Management System (PMS)",
+        desc: "Understand goal setting, KPI tracking, performance reviews, and appraisal processes. Learn how organizations evaluate employee performance."
+      },
+      {
+        num: 9,
+        title: "HR Analytics & HRMS Tools",
+        desc: "Work with HR reports, metrics, dashboards, and HR software platforms. Develop data-driven HR decision-making skills."
+      },
+      {
+        num: 10,
+        title: "Exit Management & Real-Time HR Project",
+        desc: "Learn resignation handling, exit interviews, and employee offboarding processes. Gain practical experience through real-world HR projects."
+      }
+    ]
+  },
+  "HR Recruitment Training": {
+    title: "HR Recruitment Training",
+    modules: [
+      {
+        num: 1,
+        title: "Recruitment Industry Overview",
+        desc: "Understand the recruitment ecosystem, hiring models, and career opportunities in talent acquisition. Learn the fundamentals of modern recruitment."
+      },
+      {
+        num: 2,
+        title: "Job Analysis & Requirement Gathering",
+        desc: "Learn how recruiters understand client requirements and create effective job descriptions. Develop strong requirement analysis skills."
+      },
+      {
+        num: 3,
+        title: "Candidate Sourcing Strategies",
+        desc: "Master sourcing through LinkedIn, job portals, social media, and networking platforms. Build quality talent pipelines effectively."
+      },
+      {
+        num: 4,
+        title: "Talent Mapping & Market Research",
+        desc: "Learn talent mapping techniques and competitor hiring analysis. Identify and engage top candidates strategically."
+      },
+      {
+        num: 5,
+        title: "Resume Screening & Candidate Assessment",
+        desc: "Develop expertise in evaluating resumes and assessing candidate suitability. Learn practical shortlisting techniques."
+      },
+      {
+        num: 6,
+        title: "Interview Coordination & Stakeholder Management",
+        desc: "Manage interviews, candidate communication, and stakeholder expectations professionally. Improve hiring coordination skills."
+      },
+      {
+        num: 7,
+        title: "Technical & HR Interview Basics",
+        desc: "Understand interview methodologies and candidate evaluation frameworks. Learn how recruiters support hiring decisions."
+      },
+      {
+        num: 8,
+        title: "Offer Management & Joining Process",
+        desc: "Handle salary negotiations, offer rollouts, and candidate engagement activities. Ensure smooth candidate conversions."
+      },
+      {
+        num: 9,
+        title: "ATS Tools & Recruitment Automation",
+        desc: "Gain hands-on experience with Applicant Tracking Systems and recruitment tools. Improve hiring efficiency through technology."
+      },
+      {
+        num: 10,
+        title: "Live Recruitment Project & Placement Preparation",
+        desc: "Work on real hiring requirements and recruitment simulations. Prepare for recruitment careers with practical exposure and interview support."
+      }
+    ]
+  },
+  "Full Stack Development": {
+    title: "Full Stack Development with AI",
+    modules: [
+      {
+        num: 1,
+        title: "Programming & Web Development Fundamentals",
+        desc: "Learn HTML, CSS, JavaScript, and programming concepts from the ground up. Build a strong foundation in web development."
+      },
+      {
+        num: 2,
+        title: "Responsive Front-End Development",
+        desc: "Create modern, mobile-friendly user interfaces using industry best practices. Develop visually appealing web applications."
+      },
+      {
+        num: 3,
+        title: "React.js Application Development",
+        desc: "Build dynamic and interactive applications using React.js. Learn component-based architecture and state management."
+      },
+      {
+        num: 4,
+        title: "Backend Development with Node.js",
+        desc: "Develop powerful server-side applications and REST APIs. Understand backend workflows and application architecture."
+      },
+      {
+        num: 5,
+        title: "Database Design & Management",
+        desc: "Learn SQL and NoSQL database concepts with hands-on implementation. Manage and optimize application data effectively."
+      },
+      {
+        num: 6,
+        title: "REST API Development & Integration",
+        desc: "Create and integrate APIs that connect frontend and backend systems. Learn industry-standard communication protocols."
+      },
+      {
+        num: 7,
+        title: "Authentication & Application Security",
+        desc: "Implement login systems, access control, and secure authentication methods. Protect applications from common vulnerabilities."
+      },
+      {
+        num: 8,
+        title: "AI Integration & Prompt Engineering",
+        desc: "Explore AI-powered application development and prompt engineering techniques. Learn how AI enhances modern software solutions."
+      },
+      {
+        num: 9,
+        title: "Cloud Deployment & DevOps Fundamentals",
+        desc: "Deploy applications on cloud platforms and manage production environments. Learn Git, GitHub, and deployment workflows."
+      },
+      {
+        num: 10,
+        title: "Industry-Level Capstone Project",
+        desc: "Build a complete full-stack application with AI integration. Showcase your skills through a portfolio-ready project."
+      }
+    ]
+  },
+  "Software Quality Testing(QA Testing)": {
+    title: "Software Quality Testing (QA Testing)",
+    modules: [
+      {
+        num: 1,
+        title: "Software Testing Fundamentals",
+        desc: "Understand testing methodologies, SDLC, and STLC concepts. Learn the importance of quality assurance in software development."
+      },
+      {
+        num: 2,
+        title: "Manual Testing Concepts",
+        desc: "Learn test planning, execution, validation, and bug reporting techniques. Gain practical testing experience."
+      },
+      {
+        num: 3,
+        title: "Test Case Design & Documentation",
+        desc: "Create effective test cases, scenarios, and testing documentation. Improve software quality through structured testing."
+      },
+      {
+        num: 4,
+        title: "Agile Testing & Defect Management",
+        desc: "Work within Agile environments and manage defects efficiently. Collaborate effectively with development teams."
+      },
+      {
+        num: 5,
+        title: "Database Testing",
+        desc: "Validate backend data using SQL queries and database testing techniques. Ensure data accuracy and consistency."
+      },
+      {
+        num: 6,
+        title: "API Testing with Postman",
+        desc: "Test web services and APIs using industry-standard tools. Verify application integrations and functionality."
+      },
+      {
+        num: 7,
+        title: "Selenium Automation Testing",
+        desc: "Automate testing processes using Selenium WebDriver. Improve testing efficiency and productivity."
+      },
+      {
+        num: 8,
+        title: "Automation Frameworks & CI/CD Basics",
+        desc: "Understand automation frameworks and continuous testing practices. Learn modern QA workflows."
+      },
+      {
+        num: 9,
+        title: "Real-Time Testing Project",
+        desc: "Apply testing skills in a live project environment. Experience industry-level QA processes."
+      },
+      {
+        num: 10,
+        title: "Interview Preparation & Placement Support",
+        desc: "Prepare for QA interviews with mock assessments and practical exercises. Build confidence for successful placements."
+      }
+    ]
+  },
+  "DSA": {
+    title: "Data Structures & Algorithms (DSA)",
+    modules: [
+      {
+        num: 1,
+        title: "Programming Foundations",
+        desc: "Develop strong coding fundamentals and logical thinking abilities. Build the base required for advanced problem solving."
+      },
+      {
+        num: 2,
+        title: "Complexity Analysis",
+        desc: "Learn Time Complexity and Space Complexity concepts. Write efficient and optimized code."
+      },
+      {
+        num: 3,
+        title: "Arrays & Strings Problem Solving",
+        desc: "Master the most commonly used data structures in programming. Solve practical coding challenges effectively."
+      },
+      {
+        num: 4,
+        title: "Linked Lists, Stacks & Queues",
+        desc: "Understand linear data structures and their real-world applications. Strengthen your coding and analytical skills."
+      },
+      {
+        num: 5,
+        title: "Recursion & Backtracking",
+        desc: "Learn advanced problem-solving techniques using recursion. Tackle complex coding challenges confidently."
+      },
+      {
+        num: 6,
+        title: "Searching & Sorting Algorithms",
+        desc: "Master essential algorithms used in interviews and software development. Improve coding efficiency and performance."
+      },
+      {
+        num: 7,
+        title: "Trees & Binary Search Trees",
+        desc: "Explore hierarchical data structures and traversal techniques. Solve advanced coding problems effectively."
+      },
+      {
+        num: 8,
+        title: "Graphs & Advanced Algorithms",
+        desc: "Learn BFS, DFS, shortest path algorithms, and graph traversal concepts. Build expertise in advanced programming topics."
+      },
+      {
+        num: 9,
+        title: "Dynamic Programming",
+        desc: "Understand optimization techniques used in competitive programming and technical interviews. Master one of the most important DSA concepts."
+      },
+      {
+        num: 10,
+        title: "Coding Interview Preparation & Competitive Programming",
+        desc: "Practice company-level coding questions and interview challenges. Get placement-ready with structured interview preparation."
+      }
+    ]
+  }
+};
 
 function SyllabusModal({ isOpen, onClose, courseTitle }) {
   const [formData, setFormData] = useState({
@@ -108,58 +387,138 @@ function SyllabusModal({ isOpen, onClose, courseTitle }) {
   };
 
   const triggerDownload = () => {
-    const syllabusContent = `===========================================================
-JAWA EDTECH - COURSE SYLLABUS
-===========================================================
-Course: ${courseTitle || "Professional Career Program"}
-Generated for: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.countryCode} ${formData.phone}
-Language Preference: ${formData.language}
-===========================================================
+    const doc = new jsPDF();
+    
+    // Add Jawan EdTech header bar
+    doc.setFillColor(11, 138, 50); // Deep green
+    doc.rect(0, 0, 210, 8, "F");
 
-MODULE 1: INDUSTRY OVERVIEW & ESSENTIALS (Weeks 1-4)
------------------------------------------------------------
-• Introduction to core paradigms, tools, and workflows
-• Industry standard practices and setting up development tools
-• Fundamentals of target domain systems and foundations
-• Practical assignments & base evaluations
+    // Logo / Name
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(22);
+    doc.setTextColor(17, 17, 17);
+    doc.text("Jawa EDTech", 14, 24);
 
-MODULE 2: CORE CURRICULUM & DEPTH (Weeks 5-12)
------------------------------------------------------------
-• Hands-on modules with 5+ major projects
-• In-depth analysis of intermediate structures and advanced patterns
-• Code quality assessments, optimization, and structure design
-• Weekly mentor-guided labs and feedback reviews
+    // Tagline
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(8);
+    doc.setTextColor(11, 138, 50);
+    doc.text("LEARN, LEAD, INNOVATE!", 14, 29);
 
-MODULE 3: INTEGRATIONS & REAL-WORLD APPLICATIONS (Weeks 13-18)
------------------------------------------------------------
-• Live API integrations and third-party tools
-• High-performance testing and test-driven optimization
-• Collaborative team capstone project under mentor advice
-• Deployment pipelines, automation, and hosting strategies
+    // Divider
+    doc.setDrawColor(215, 234, 220); // guvi line #d7eadc
+    doc.setLineWidth(0.5);
+    doc.line(14, 34, 196, 34);
 
-MODULE 4: PLACEMENT GUIDANCE & PREPARATION (Weeks 19-24)
------------------------------------------------------------
-• Profile and Resume building workshops
-• Mock interview drills (technical & behavioral round previews)
-• Exclusive job referral pool with 500+ corporate hiring partners
-• Placement portal credentials & direct application guidance
+    // Course Title mapping
+    const mappedCourse = courseSyllabi[courseTitle] || {
+      title: courseTitle || "Professional Training Program",
+      modules: []
+    };
 
-Thank you for choosing Jawa EdTech.
-For details, visit http://localhost:5173/ or contact us at support@jawaedtech.com
-`;
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(16);
+    doc.setTextColor(11, 138, 50);
+    doc.text(mappedCourse.title.toUpperCase(), 14, 44);
+    doc.setFontSize(11);
+    doc.setTextColor(17, 17, 17);
+    doc.text("Official Curriculum Syllabus", 14, 50);
 
-    const blob = new Blob([syllabusContent], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
+    // Candidate Details Box (Light background)
+    doc.setFillColor(244, 255, 247); // guvi soft #f4fff7
+    doc.rect(14, 55, 182, 32, "F");
+    doc.setDrawColor(215, 234, 220); // guvi line #d7eadc
+    doc.rect(14, 55, 182, 32, "S");
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(9);
+    doc.setTextColor(11, 138, 50);
+    doc.text("CANDIDATE INFORMATION", 18, 61);
+
+    doc.setFont("helvetica", "normal");
+    doc.setTextColor(17, 17, 17);
+    doc.setFontSize(9);
+    doc.text(`Name: ${formData.name}`, 18, 67);
+    doc.text(`Email: ${formData.email}`, 18, 72);
+    doc.text(`Phone: ${formData.countryCode} ${formData.phone}`, 18, 77);
+    doc.text(`Language: ${formData.language}`, 18, 82);
+
+    doc.text(`Education: ${formData.education}`, 110, 67);
+    doc.text(`Profile: ${formData.profile}`, 110, 72);
+    doc.text(`Graduation Year: ${formData.graduationYear}`, 110, 77);
+
+    // Syllabus Content Intro
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.setTextColor(17, 17, 17);
+    doc.text("Curriculum Structure (10 Modules)", 14, 96);
+    
+    // Draw Modules
+    let yOffset = 104;
+    const pageHeight = 297; // A4 height in mm
+    
+    mappedCourse.modules.forEach((mod) => {
+      // Check if we need a new page (module takes about 25mm max)
+      if (yOffset + 24 > pageHeight - 20) {
+        doc.addPage();
+        
+        // Add green header bar on next page
+        doc.setFillColor(11, 138, 50);
+        doc.rect(0, 0, 210, 8, "F");
+        
+        yOffset = 20; // reset yOffset
+      }
+
+      // Module badge
+      doc.setFillColor(233, 248, 239); // guvi mint #e9f8ef
+      doc.roundedRect(14, yOffset, 22, 6, 1, 1, "F");
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(8);
+      doc.setTextColor(11, 138, 50);
+      doc.text(`MODULE ${mod.num}`, 16, yOffset + 4.2);
+
+      // Module Title
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(10);
+      doc.setTextColor(17, 17, 17);
+      doc.text(mod.title, 40, yOffset + 4.5);
+
+      // Module Description (Word wrapping)
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(9);
+      doc.setTextColor(75, 75, 75); // guvi muted #4b4b4b
+      const descLines = doc.splitTextToSize(mod.desc, 156);
+      doc.text(descLines, 40, yOffset + 10);
+
+      yOffset += 12 + (descLines.length * 4.5);
+    });
+
+    // Check if footer space matches or needs new page
+    if (yOffset + 25 > pageHeight - 20) {
+      doc.addPage();
+      doc.setFillColor(11, 138, 50);
+      doc.rect(0, 0, 210, 8, "F");
+      yOffset = 20;
+    }
+
+    // Footer Contact & Branding Block
+    doc.setDrawColor(215, 234, 220);
+    doc.line(14, yOffset + 5, 196, yOffset + 5);
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(9);
+    doc.setTextColor(11, 138, 50);
+    doc.text("Jawa EdTech Career Preparation Programs", 14, yOffset + 12);
+    
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(8);
+    doc.setTextColor(100, 100, 100);
+    doc.text("Contact: hr@jawaedtech.com | +91 97906 31286", 14, yOffset + 17);
+    doc.text("Jawa Incubation Centre, No: 54 Bharathi Park 7th Cross, Saibaba Colony, Coimbatore, Tamil Nadu, India", 14, yOffset + 21);
+
+    // Trigger PDF file download
     const cleanCourseName = (courseTitle || "Course").replace(/[^a-zA-Z0-9]/g, "_");
-    link.download = `${cleanCourseName}_Syllabus.txt`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    doc.save(`${cleanCourseName}_Syllabus.pdf`);
   };
 
   const handleSubmit = (e) => {
