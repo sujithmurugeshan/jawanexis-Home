@@ -2,12 +2,16 @@ import { useEffect, useState } from "react";
 import AuthPage from "./pages/AuthPage.jsx";
 import FAQPage from "./pages/FAQPage.jsx";
 import Home from "./pages/Home.jsx";
+import ContactPage from "./pages/ContactPage.jsx";
 
 function App() {
   const [route, setRoute] = useState(() => window.location.hash);
 
   useEffect(() => {
-    const handleHashChange = () => setRoute(window.location.hash);
+    const handleHashChange = () => {
+      setRoute(window.location.hash);
+      window.scrollTo(0, 0);
+    };
 
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
@@ -27,8 +31,13 @@ function App() {
     return <AuthPage mode="signup" />;
   }
 
+<<<<<<< HEAD
   if (route === "#faq" || route === "#faqs") {
     return <FAQPage />;
+=======
+  if (route === "#contact") {
+    return <ContactPage />;
+>>>>>>> cfde2aa58185448672821584eebacff675c15b83
   }
 
   return <Home />;

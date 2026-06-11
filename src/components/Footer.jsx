@@ -30,8 +30,8 @@ const footerGroups = [
 ];
 
 const socialLinks = [
-  ["Facebook", "fa-brands fa-facebook-f", "bg-[#315ca8]"],
-  ["Instagram", "fa-brands fa-instagram", "bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7]"],
+  ["Facebook", "fa-brands fa-facebook-f", "bg-[#315ca8]", "https://www.facebook.com/profile.php?id=61574843888000&sk=followers"],
+  ["Instagram", "fa-brands fa-instagram", "bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7]", "https://www.instagram.com/jawaedtech/"],
   ["LinkedIn", "fa-brands fa-linkedin-in", "bg-[#2677b5]"],
   ["X", "fa-brands fa-x-twitter", "bg-black"],
   ["Telegram", "fa-brands fa-telegram", "bg-[#229ed9]"],
@@ -55,8 +55,20 @@ function getFooterHref(label) {
 }
 
 function FooterLink({ children }) {
+  let href = "#courses-page";
+  if (children === "Contact Us") {
+    href = "#contact";
+  } else if (children === "About Us") {
+    href = "#about-us";
+  } else if (children === "FAQs") {
+    href = "#contact";
+  }
   return (
+<<<<<<< HEAD
     <a href={getFooterHref(children)} className="block text-[15px] leading-6 text-slate-200 transition hover:text-guvi-green">
+=======
+    <a href={href} className="block text-[15px] leading-6 text-slate-200 transition hover:text-guvi-green">
+>>>>>>> cfde2aa58185448672821584eebacff675c15b83
       {children}
     </a>
   );
@@ -101,29 +113,18 @@ function FooterGroup({ group }) {
   );
 }
 
-function StoreButton({ icon, title, subtitle }) {
-  return (
-    <a href="#contact" className="flex h-[47px] w-[150px] items-center gap-2 rounded-md border border-slate-200 px-3 text-white transition hover:border-guvi-green hover:text-guvi-green">
-      <i className={`${icon} text-[22px]`} aria-hidden="true" />
-      <span className="leading-none">
-        <span className="block text-[10px] font-bold">{subtitle}</span>
-        <span className="block text-[18px] font-extrabold">{title}</span>
-      </span>
-    </a>
-  );
-}
-
 function Footer() {
   return (
-    <footer id="contact" className="bg-guvi-ink text-white">
+    <footer className="bg-guvi-ink text-white">
       <div className="mx-auto max-w-[1138px] px-6 py-12 lg:px-5">
-<div className="grid gap-14 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-45">          {footerGroups.map((group) => (
+        <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-45">
+          {footerGroups.map((group) => (
             <FooterGroup key={group.title} group={group} />
           ))}
         </div>
 
         <div className="mt-9 border-t border-white/30 pt-8">
-          <div className="grid gap-10 lg:grid-cols-[1.35fr_0.5fr_0.34fr] lg:items-start">
+          <div className="grid gap-10 lg:grid-cols-[1.6fr_0.4fr] lg:items-start">
             <div>
               <div className="flex flex-wrap items-center gap-4">
                 <img src={logo} alt="Jawa EDTech logo" className="h-14 w-14 rounded-lg object-contain" />
@@ -143,13 +144,15 @@ function Footer() {
               </p>
             </div>
 
-            <div>
-              <h4 className="text-[15px] font-extrabold text-white">Follow us on</h4>
-              <div className="mt-4 grid w-[144px] grid-cols-3 gap-4">
-                {socialLinks.map(([label, icon, colorClass]) => (
+            <div className="lg:justify-self-end">
+              <h4 className="text-[15px] font-extrabold text-white lg:text-right">Follow us on</h4>
+              <div className="mt-4 grid w-[92px] grid-cols-2 gap-4 lg:ml-auto">
+                {socialLinks.map(([label, icon, colorClass, url]) => (
                   <a
                     key={label}
-                    href="#contact"
+                    href={url || "#contact"}
+                    target={url ? "_blank" : undefined}
+                    rel={url ? "noopener noreferrer" : undefined}
                     className={`flex h-[38px] w-[38px] items-center justify-center rounded-full text-[19px] text-white transition hover:scale-105 ${colorClass}`}
                     aria-label={label}
                   >
@@ -157,14 +160,6 @@ function Footer() {
                   </a>
                 ))}
               </div>
-            </div>
-
-            <div className="grid gap-3 justify-start lg:justify-end">
-              <StoreButton icon="fa-brands fa-apple" subtitle="Download on the" title="App Store" />
-              <StoreButton icon="fa-brands fa-google-play" subtitle="GET IT ON" title="Google Play" />
-              <a href="#internship" className="flex h-12 w-[150px] items-center justify-center rounded-md border border-slate-200 text-sm font-extrabold text-white transition hover:border-guvi-green hover:bg-guvi-green hover:text-black">
-                Refer & Earn
-              </a>
             </div>
           </div>
         </div>
