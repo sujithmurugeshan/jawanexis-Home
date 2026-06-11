@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import FloatingChatButton from "../components/FloatingChatButton.jsx";
 import Footer from "../components/Footer.jsx";
@@ -43,15 +43,20 @@ function useManualSlider(itemCount) {
   const trackRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const scrollToIndex = (index) => {
+  const scrollToIndex = useCallback((index) => {
     const nextIndex = (index + itemCount) % itemCount;
+    const track = trackRef.current;
+    const target = track?.children[nextIndex];
+
     setActiveIndex(nextIndex);
-    trackRef.current?.children[nextIndex]?.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: "start"
-    });
-  };
+
+    if (track && target) {
+      track.scrollTo({
+        left: target.offsetLeft - track.offsetLeft,
+        behavior: "smooth"
+      });
+    }
+  }, [itemCount]);
 
   return {
     activeIndex,
@@ -148,24 +153,14 @@ function LiveClasses() {
           </p>
         </div>
 
-        <div className="mt-[64px] grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-          {liveCards.map(([thumb, title, language]) => (
-            <LiveCard key={title} thumb={thumb} title={title} language={language} />
-          ))}
-        </div>
-
-        <div className="mt-[52px] flex items-center justify-center gap-6">
-          <button className="flex h-8 w-8 items-center justify-center rounded-full border border-black/40 text-black/40" type="button" aria-label="Previous programs">
-            <ArrowLeft size={20} aria-hidden="true" />
-          </button>
-          <div className="flex h-[35px] items-center gap-[11px] rounded-full bg-guvi-soft px-4">
-            {[0, 1, 2, 3, 4].map((dot) => (
-              <span key={dot} className={`h-[13px] w-[13px] rounded-full ${dot === 0 ? "bg-guvi-green" : "bg-guvi-green/35"}`} />
+        <div className="live-program-carousel">
+          <div className="live-program-track auto-scroll-track">
+            {[...liveCards, ...liveCards].map(([thumb, title, language], index) => (
+              <div key={`${title}-${index}`} className="live-program-slide" aria-hidden={index >= liveCards.length}>
+                <LiveCard thumb={thumb} title={title} language={language} />
+              </div>
             ))}
           </div>
-          <button className="flex h-8 w-8 items-center justify-center rounded-full border border-black text-black" type="button" aria-label="Next programs">
-            <ArrowRight size={20} aria-hidden="true" />
-          </button>
         </div>
 
         <div className="mt-[45px] text-center">
@@ -296,12 +291,14 @@ function HiringStats() {
     <section id="about-us" className="bg-white py-16">
       <div className="shell">
         <h2 className="text-center text-[24px] font-extrabold text-guvi-ink">Where Do Our Students Work?</h2>
-        <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-5">
-          {companyLogos.map((company) => (
-            <div key={company.name} className="flex h-[74px] items-center justify-center rounded-md border border-guvi-line bg-white px-4">
-              <img src={company.logo} alt={`${company.name} logo`} className="company-grid-logo" />
-            </div>
-          ))}
+        <div className="company-work-slider">
+          <div className="company-work-track auto-scroll-track">
+            {[...companyLogos, ...companyLogos].map((company, index) => (
+              <article key={`${company.name}-${index}`} className="company-work-card" aria-hidden={index >= companyLogos.length}>
+                <img src={company.logo} alt={`${company.name} logo`} className="company-work-logo" />
+              </article>
+            ))}
+          </div>
         </div>
         <div className="mx-auto mt-14 max-w-[1096px]">
           <h3 className="text-center text-[32px] font-extrabold leading-tight text-[#0f172a]">We are proud of...</h3>
@@ -334,6 +331,7 @@ function LearningPace() {
   const [activeCourseTab, setActiveCourseTab] = useState("All");
   const visibleCourses =
     activeCourseTab === "All" ? learningCourses : learningCourses.filter(([, title]) => title === activeCourseTab);
+  const marqueeCourses = visibleCourses.length > 1 ? [...visibleCourses, ...visibleCourses] : visibleCourses;
 
   return (
     <section id="courses-page" className="bg-guvi-soft py-20">
@@ -359,20 +357,22 @@ function LearningPace() {
             )
           )}
         </div>
-        <div className="mt-8 grid gap-5 lg:grid-cols-4">
-          {visibleCourses.map(([category, title, type, image]) => (
-            <article key={title} className="overflow-hidden rounded-lg bg-white shadow-sm">
-              <div className="h-[150px] overflow-hidden">
-                <img src={image} alt={`${title} course preview`} className="h-full w-full object-cover" />
-              </div>
-              <div className="p-5">
-                <span className="rounded-md bg-black px-3 py-1 text-xs font-extrabold text-white">{type}</span>
-                <p className="mt-4 text-xs font-bold text-guvi-deepGreen">{category}</p>
-                <h3 className="mt-2 min-h-[48px] text-[16px] font-extrabold leading-6 text-guvi-ink">{title}</h3>
-                <p className="mt-4 text-sm font-bold text-black/55">Tamil, English</p>
-              </div>
-            </article>
-          ))}
+        <div className="course-carousel">
+          <div className={`course-carousel-track ${visibleCourses.length > 1 ? "auto-scroll-track auto-scroll-track-slow" : ""}`}>
+            {marqueeCourses.map(([category, title, type, image], index) => (
+              <article key={`${title}-${index}`} className="course-slide-card" aria-hidden={index >= visibleCourses.length}>
+                <div className="h-[150px] overflow-hidden">
+                  <img src={image} alt={`${title} course preview`} className="h-full w-full object-cover" />
+                </div>
+                <div className="p-5">
+                  <span className="rounded-md bg-black px-3 py-1 text-xs font-extrabold text-white">{type}</span>
+                  <p className="mt-4 text-xs font-bold text-guvi-deepGreen">{category}</p>
+                  <h3 className="mt-2 min-h-[48px] text-[16px] font-extrabold leading-6 text-guvi-ink">{title}</h3>
+                  <p className="mt-4 text-sm font-bold text-black/55">Tamil, English</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
         <div className="mt-8 text-center">
           <a href="#courses-page" className="inline-flex h-10 items-center justify-center rounded-md bg-black px-6 text-sm font-extrabold text-white">
