@@ -44,6 +44,44 @@ export const accreditationItems = [
   { name: "Quick Recruit", logo: quickRecruitLogo }
 ];
 
+export const studentCompanyRows = [
+  [
+    { name: "Siemens", color: "#009999" },
+    { name: "Aspire Systems", color: "#6a3ea1" },
+    { name: "Ideas2IT", color: "#1f4e79" },
+    { name: "Cartoon Mango", color: "#1d1d1f" },
+    { name: "Larsen & Toubro", color: "#1675bc" },
+    { name: "Lenovo", color: "#e2231a" },
+    { name: "Justdial", color: "#1b75bb" },
+    { name: "Thoughtworks", color: "#00a88e" },
+    { name: "Amazon", color: "#232f3e" },
+    ...accreditationItems.slice(0, 3)
+  ],
+  [
+    { name: "TCS", color: "#e91e63" },
+    { name: "Wipro", color: "#6f2dbd" },
+    { name: "Accenture", color: "#a100ff" },
+    { name: "CaratLane", color: "#7b3fb2" },
+    { name: "Comcast", color: "#52565a" },
+    { name: "Klenty", color: "#8a8fb9" },
+    { name: "Zoho", color: "#0a7f3f" },
+    { name: "Virtusa", color: "#3d348b" },
+    ...accreditationItems.slice(3, 6)
+  ],
+  [
+    { name: "IBM", color: "#0f62fe" },
+    { name: "JLL", color: "#e31b23" },
+    { name: "Fiserv", color: "#f36f21" },
+    { name: "Tech Mahindra", color: "#d71920" },
+    { name: "Grappus", color: "#111111" },
+    { name: "Cognizant", color: "#0033a0" },
+    { name: "PayPal", color: "#003087" },
+    { name: "Capgemini", color: "#00a3e0" },
+    { name: "HCL", color: "#0067b1" },
+    ...accreditationItems.slice(6)
+  ]
+];
+
 export const liveCards = [
   [courseData, "HR Executive Training", "Tamil, English"],
   [courseGenai, "HR Recruitment Training", "Tamil, English"],
@@ -220,8 +258,6 @@ export const awardSlides = [
     image: awardPlaceholder
   }
 ];
-
-export const companyLogos = accreditationItems;
 
 export const learningCourses = [
   ["Human Resources", "HR Executive Training", "Paid", courseUiux],

@@ -7,13 +7,12 @@ import LiveCard from "../components/LiveCard.jsx";
 import SyllabusModal from "../components/SyllabusModal.jsx";
 import nativeLanguagesImage from "../assets/native-languages.png";
 import {
-  accreditationItems,
   achievementPhotos,
-  companyLogos,
   journeyLearners,
   learnerCards,
   learningCourses,
-  liveCards
+  liveCards,
+  studentCompanyRows
 } from "./homeData.jsx";
 
 function Home() {
@@ -36,10 +35,10 @@ function Home() {
 
       <main>
         <HeroOffer />
-        <Accreditations />
         <LiveClasses onSyllabusClick={handleOpenSyllabus} />
         <JourneyOfLearners />
         <StudentTestimonials />
+        <StudentCompanies />
         <HiringStats />
         <LearningPace />
         <NativeLanguages />
@@ -132,25 +131,6 @@ function HeroOffer() {
             Claim Rs. 7,777 Off Now
           </a>
           <p className="mt-4 text-[16px] font-medium text-black/70">*Offer Ends Soon</p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Accreditations() {
-  return (
-    <section className="bg-guvi-soft py-[66px]">
-      <div className="shell">
-        <h2 className="text-center text-[26px] font-medium text-black">Our Students Work On</h2>
-        <div className="logo-marquee mt-8" aria-label="Companies where our students work">
-          <div className="logo-track">
-            {[...accreditationItems, ...accreditationItems].map((item, index) => (
-              <article key={`${item.name}-${index}`} className="logo-card" aria-hidden={index >= accreditationItems.length}>
-                <img src={item.logo} alt={`${item.name} logo`} className="company-logo-img" />
-              </article>
-            ))}
-          </div>
         </div>
       </div>
     </section>
@@ -277,6 +257,40 @@ function StudentTestimonials() {
   );
 }
 
+function getCompanyWordmarkClass(name) {
+  return name.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+function StudentCompanies() {
+  return (
+    <section className="student-companies-section">
+      <div className="shell">
+        <h2 className="text-center text-[30px] font-extrabold text-guvi-ink">Where Do Our Students Work?</h2>
+        <div className="company-wall" aria-label="Companies where our students work">
+          {studentCompanyRows.map((row, rowIndex) => (
+            <div key={`company-row-${rowIndex}`} className={`company-wall-row company-wall-row-${rowIndex + 1}`}>
+              {[...row, ...row].map((company, index) => (
+                <article key={`${company.name}-${rowIndex}-${index}`} className="company-work-card" aria-hidden={index >= row.length}>
+                  {company.logo ? (
+                    <img src={company.logo} alt={`${company.name} logo`} className="company-work-logo" />
+                  ) : (
+                    <span
+                      className={`company-wordmark company-wordmark-${getCompanyWordmarkClass(company.name)}`}
+                      style={{ "--brand-color": company.color }}
+                    >
+                      {company.name}
+                    </span>
+                  )}
+                </article>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function JourneyCompanyLogo({ name }) {
   if (name === "GNIKUL") {
     return <span className="journey-company journey-company-gnikul">GNIKUL</span>;
@@ -310,17 +324,7 @@ function HiringStats() {
   return (
     <section id="about-us" className="bg-white py-16">
       <div className="shell">
-        <h2 className="text-center text-[24px] font-extrabold text-guvi-ink">Where Do Our Students Work?</h2>
-        <div className="company-work-slider">
-          <div className="company-work-track auto-scroll-track">
-            {[...companyLogos, ...companyLogos].map((company, index) => (
-              <article key={`${company.name}-${index}`} className="company-work-card" aria-hidden={index >= companyLogos.length}>
-                <img src={company.logo} alt={`${company.name} logo`} className="company-work-logo" />
-              </article>
-            ))}
-          </div>
-        </div>
-        <div className="mx-auto mt-14 max-w-[1096px]">
+        <div className="mx-auto max-w-[1096px]">
           <h3 className="text-center text-[32px] font-extrabold leading-tight text-[#0f172a]">We are proud of...</h3>
           <div className="mt-8 grid gap-[15px] sm:grid-cols-2 lg:grid-cols-4">
             {proudStats.map(([value, label]) => (

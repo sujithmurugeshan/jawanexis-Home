@@ -4,6 +4,9 @@ import FAQPage from "./pages/FAQPage.jsx";
 import Home from "./pages/Home.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
+import TermsConditionsPage from "./pages/TermsConditionsPage.jsx";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage.jsx";
+import RefundPolicyPage from "./pages/RefundPolicyPage.jsx";
 
 function App() {
   const [route, setRoute] = useState(() => window.location.hash);
@@ -19,7 +22,19 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (["#faq", "#faqs", "#login", "#signup", "#about-us", "#contact"].includes(route)) {
+    if (
+      [
+        "#faq",
+        "#faqs",
+        "#login",
+        "#signup",
+        "#about-us",
+        "#contact",
+        "#terms-and-conditions",
+        "#privacy-policy",
+        "#refund-policy"
+      ].includes(route)
+    ) {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     }
   }, [route]);
@@ -42,6 +57,18 @@ function App() {
 
   if (route === "#about-us") {
     return <AboutPage />;
+  }
+
+  if (route === "#terms-and-conditions") {
+    return <TermsConditionsPage />;
+  }
+
+  if (route === "#privacy-policy") {
+    return <PrivacyPolicyPage />;
+  }
+
+  if (route === "#refund-policy") {
+    return <RefundPolicyPage />;
   }
 
   return <Home />;
