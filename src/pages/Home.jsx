@@ -447,10 +447,10 @@ function JourneyCompanyLogo({ name }) {
 
 function HiringStats() {
   const proudStats = [
-    ["4464724", "Learners"],
-    ["194", "Mentors"],
-    ["58892935", "Lines of Code Submission"],
-    ["1673", "Videos"]
+    ["1000+", "Learners"],
+    ["10+", "Mentors"],
+    ["Innovative", "Learning Approach"],
+    ["50+", "Career Workshops"]
   ];
 
   const proudInsights = [
