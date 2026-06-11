@@ -161,6 +161,226 @@ a {
   object-fit: contain;
 }
 
+.student-companies-section {
+  overflow: hidden;
+  background: #f7f8fa;
+  padding-block: 60px 48px;
+}
+
+.company-wall {
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  margin-top: 36px;
+  margin-left: -50vw;
+  overflow: hidden;
+  padding-block: 0;
+}
+
+.company-wall-row {
+  display: flex;
+  width: max-content;
+  gap: 28px;
+  padding-block: 10px;
+  animation: company-wall-scroll 30s linear infinite;
+  will-change: transform;
+}
+
+.company-wall-row-2 {
+  margin-left: -96px;
+  animation-duration: 32s;
+  animation-direction: reverse;
+  animation-delay: -10s;
+}
+
+.company-wall-row-3 {
+  margin-left: -48px;
+  animation-duration: 31s;
+  animation-delay: -18s;
+}
+
+.company-wall:hover .company-wall-row {
+  animation-play-state: running;
+}
+
+.company-wall .company-work-card {
+  width: 150px;
+  height: 56px;
+  border: 0;
+  border-radius: 6px;
+  padding: 9px 18px;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.09);
+}
+
+.company-wall .company-work-logo {
+  width: 122px;
+  max-height: 38px;
+}
+
+.company-wordmark {
+  display: flex;
+  position: relative;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-color, #263244);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.05;
+  text-align: center;
+  white-space: normal;
+}
+
+.company-wordmark-siemens,
+.company-wordmark-ibm {
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.company-wordmark-lenovo {
+  min-height: 28px;
+  padding-inline: 10px;
+  background: #e2231a;
+  color: #ffffff;
+  font-size: 17px;
+  line-height: 28px;
+}
+
+.company-wordmark-justdial {
+  font-size: 17px;
+}
+
+.company-wordmark-thoughtworks {
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.company-wordmark-amazon {
+  color: #232f3e;
+  font-size: 18px;
+  text-transform: lowercase;
+}
+
+.company-wordmark-amazon::after {
+  content: "";
+  position: absolute;
+  right: 8px;
+  bottom: -5px;
+  width: 34px;
+  height: 8px;
+  border-bottom: 3px solid #ff9900;
+  border-radius: 0 0 50% 50%;
+}
+
+.company-wordmark-tcs {
+  font-size: 22px;
+  text-transform: lowercase;
+}
+
+.company-wordmark-wipro {
+  color: #7b2cbf;
+  font-size: 17px;
+}
+
+.company-wordmark-accenture {
+  color: #111111;
+  font-size: 17px;
+}
+
+.company-wordmark-accenture::before {
+  content: ">";
+  position: absolute;
+  top: -11px;
+  left: 46px;
+  color: #a100ff;
+  font-size: 19px;
+  font-weight: 900;
+}
+
+.company-wordmark-caratlane {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.company-wordmark-comcast {
+  color: #54565a;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.company-wordmark-klenty {
+  color: #8a94a6;
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.company-wordmark-zoho {
+  color: #22823a;
+  font-size: 19px;
+  font-weight: 900;
+}
+
+.company-wordmark-virtusa {
+  color: #342f8f;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.company-wordmark-jll {
+  color: #cf1f2e;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.company-wordmark-fiserv {
+  color: #f37021;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.company-wordmark-tech-mahindra {
+  color: #d71920;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.company-wordmark-grappus {
+  color: #050505;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.company-wordmark-cognizant {
+  color: #1f58a8;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.company-wordmark-paypal {
+  color: #003087;
+  font-size: 19px;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.company-wordmark-capgemini {
+  color: #00a3e0;
+  font-size: 16px;
+  font-family: Georgia, serif;
+  font-weight: 700;
+}
+
+.company-wordmark-hcl {
+  color: #0b73bb;
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 900;
+}
+
 .auth-brand-panel::before {
   content: "";
   position: absolute;
@@ -798,6 +1018,16 @@ a {
   }
 }
 
+@keyframes company-wall-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @media (max-width: 1100px) {
   .shell {
     padding-inline: 24px;
@@ -908,6 +1138,34 @@ a {
   .company-work-logo {
     width: 164px;
     max-height: 56px;
+  }
+
+  .student-companies-section {
+    padding-block: 46px 36px;
+  }
+
+  .company-wall {
+    margin-top: 26px;
+  }
+
+  .company-wall-row {
+    gap: 16px;
+    padding-block: 6px;
+  }
+
+  .company-wall .company-work-card {
+    width: 126px;
+    height: 46px;
+    padding: 7px 12px;
+  }
+
+  .company-wall .company-work-logo {
+    width: 102px;
+    max-height: 30px;
+  }
+
+  .company-wordmark {
+    font-size: 12px;
   }
 
   .live-program-slide,
