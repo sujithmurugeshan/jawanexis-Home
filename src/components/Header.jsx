@@ -36,9 +36,31 @@ const courseItems = [
   }
 ];
 
+const internshipItems = [
+  {
+    label: "HR Executive Training",
+    href: "#hr-executive-internship",
+    desc: "Core HR, Payroll & Compliance",
+    icon: Briefcase
+  },
+  {
+    label: "HR Recruitment Training",
+    href: "#hr-recruitment-internship",
+    desc: "Talent Sourcing & Interview Prep",
+    icon: UserPlus
+  },
+  {
+    label: "Full Stack Development",
+    href: "#full-stack-development-internship",
+    desc: "Web Dev & AI Integration",
+    icon: Code2
+  }
+];
+
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileCoursesOpen, setMobileCoursesOpen] = useState(false);
+  const [mobileInternshipOpen, setMobileInternshipOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-40 bg-white shadow-nav">
@@ -73,6 +95,42 @@ function Header() {
                     <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 w-80 rounded-xl bg-white border border-guvi-line shadow-menu opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 z-50 p-2 before:content-[''] before:absolute before:-top-3 before:left-0 before:right-0 before:h-3">
                       <div className="grid gap-1">
                         {courseItems.map((course) => {
+                          const Icon = course.icon;
+                          return (
+                            <a
+                              key={course.label}
+                              href={course.href}
+                              className="flex items-start gap-3 rounded-lg p-2.5 hover:bg-guvi-soft transition-colors duration-150"
+                            >
+                              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-guvi-mint text-guvi-green">
+                                <Icon className="h-5 w-5" />
+                              </div>
+                              <div className="text-left">
+                                <h5 className="text-sm font-bold text-guvi-ink leading-tight">{course.label}</h5>
+                                <p className="text-xs text-guvi-muted font-medium mt-0.5 leading-snug">{course.desc}</p>
+                              </div>
+                            </a>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+              if (item.label === "Internship") {
+                return (
+                  <div key={item.label} className="relative group/intern py-2">
+                    <button
+                      type="button"
+                      className="flex h-9 items-center gap-1 rounded-md border border-transparent px-2 hover:border-guvi-green hover:bg-guvi-soft cursor-pointer text-[15px] font-bold text-guvi-ink"
+                    >
+                      <span>{item.label}</span>
+                      <ChevronDown size={14} className="transition-transform duration-200 group-hover/intern:rotate-180" />
+                    </button>
+                    
+                    <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 w-80 rounded-xl bg-white border border-guvi-line shadow-menu opacity-0 invisible translate-y-2 group-hover/intern:opacity-100 group-hover/intern:visible group-hover/intern:translate-y-0 transition-all duration-200 z-50 p-2 before:content-[''] before:absolute before:-top-3 before:left-0 before:right-0 before:h-3">
+                      <div className="grid gap-1">
+                        {internshipItems.map((course) => {
                           const Icon = course.icon;
                           return (
                             <a
@@ -159,6 +217,46 @@ function Header() {
                               className="flex items-center gap-3 rounded-md px-2 py-2 hover:bg-guvi-soft"
                               onClick={() => {
                                 setMobileCoursesOpen(false);
+                                setMobileOpen(false);
+                              }}
+                            >
+                              <div className="flex h-7 w-7 items-center justify-center rounded bg-guvi-mint text-guvi-green">
+                                <Icon className="h-4 w-4" />
+                              </div>
+                              <div className="flex flex-col text-left">
+                                <span className="text-xs font-bold text-guvi-ink">{course.label}</span>
+                                <span className="text-[10px] text-guvi-muted leading-tight">{course.desc}</span>
+                              </div>
+                            </a>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+              if (item.label === "Internship") {
+                return (
+                  <div key={item.label} className="grid gap-1">
+                    <button
+                      type="button"
+                      onClick={() => setMobileInternshipOpen(!mobileInternshipOpen)}
+                      className="flex items-center justify-between w-full rounded-md px-2 py-1.5 text-sm font-bold text-left hover:bg-guvi-soft cursor-pointer text-guvi-ink"
+                    >
+                      <span>{item.label}</span>
+                      <ChevronDown size={16} className={`transition-transform duration-200 ${mobileInternshipOpen ? "rotate-180" : ""}`} />
+                    </button>
+                    {mobileInternshipOpen && (
+                      <div className="grid gap-1 pl-4 mt-1 border-l border-guvi-line">
+                        {internshipItems.map((course) => {
+                          const Icon = course.icon;
+                          return (
+                            <a
+                              key={course.label}
+                              href={course.href}
+                              className="flex items-center gap-3 rounded-md px-2 py-2 hover:bg-guvi-soft"
+                              onClick={() => {
+                                setMobileInternshipOpen(false);
                                 setMobileOpen(false);
                               }}
                             >

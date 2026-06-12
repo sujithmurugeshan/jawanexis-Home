@@ -1848,3 +1848,137 @@ a {
   }
 }
 
+/* ─────────────── Internship Intro Section ─────────────── */
+.internship-intro-section {
+  width: 100%;
+}
+
+.internship-intro-shell {
+  max-width: 900px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+/* Top area: white background */
+.internship-intro-top {
+  background: #ffffff;
+  padding: 56px 0 40px;
+}
+
+.internship-intro-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #111827;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+}
+
+.internship-intro-desc {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #4b5563;
+  font-weight: 500;
+  margin: 0 0 36px;
+  max-width: 780px;
+}
+
+.internship-intro-img-wrap {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+.internship-intro-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Bottom area: soft green background */
+.internship-intro-bottom {
+  background: linear-gradient(180deg, #f0fdf4 0%, #ecfdf5 50%, #f0fdf4 100%);
+  padding: 48px 0 56px;
+  border-top: 1px solid #dcfce7;
+  border-bottom: 1px solid #dcfce7;
+}
+
+.internship-intro-why-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #111827;
+  margin: 0 0 28px;
+  letter-spacing: -0.01em;
+}
+
+.internship-intro-benefits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.internship-intro-benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.internship-intro-benefit-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 800;
+  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.25);
+  margin-top: 2px;
+}
+
+.internship-intro-benefit-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.5;
+}
+
+.internship-intro-benefit-desc {
+  font-size: 14px;
+  font-weight: 500;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 639px) {
+  .internship-intro-top {
+    padding: 36px 0 28px;
+  }
+  .internship-intro-title {
+    font-size: 24px;
+  }
+  .internship-intro-desc {
+    font-size: 14px;
+  }
+  .internship-intro-bottom {
+    padding: 32px 0 40px;
+  }
+  .internship-intro-why-title {
+    font-size: 22px;
+  }
+  .internship-intro-benefit-num {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+  }
+}
+

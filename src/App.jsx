@@ -13,6 +13,7 @@ import QATestingCoursePage from "./pages/QATestingCoursePage.jsx";
 import DSACoursePage from "./pages/DSACoursePage.jsx";
 import FullStackCoursePage from "./pages/FullStackCoursePage.jsx";
 import TeamProfilePage from "./pages/TeamProfilePage.jsx";
+import InternshipPage from "./pages/InternshipPage.jsx";
 
 
 function App() {
@@ -44,7 +45,10 @@ function App() {
         "#hr-recruitment-course",
         "#full-stack-development-course",
         "#qa-testing-course",
-        "#dsa-course"
+        "#dsa-course",
+        "#hr-executive-internship",
+        "#hr-recruitment-internship",
+        "#full-stack-development-internship"
       ].includes(route)
     ) {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
@@ -106,6 +110,18 @@ function App() {
   if (route.startsWith("#team/")) {
     const slug = route.replace("#team/", "");
     return <TeamProfilePage slug={slug} />;
+  }
+
+  if (route === "#hr-executive-internship") {
+    return <InternshipPage courseKey="hr-executive" />;
+  }
+
+  if (route === "#hr-recruitment-internship") {
+    return <InternshipPage courseKey="hr-recruitment" />;
+  }
+
+  if (route === "#full-stack-development-internship") {
+    return <InternshipPage courseKey="full-stack" />;
   }
 
   return <Home />;

@@ -588,7 +588,7 @@ function HiringCompanies() {
 }
 
 /* ─────────────── CORE COURSE PAGE COMPONENT ─────────────── */
-export default function CoursePage({ courseKey }) {
+export default function CoursePage({ courseKey, isInternship }) {
   const config = coursesConfig[courseKey];
 
   if (!config) {
@@ -633,11 +633,12 @@ export default function CoursePage({ courseKey }) {
 
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans">
-      <Header />
+      {!isInternship && <Header />}
       <main>
 
         {/* ── HERO SECTION ── */}
-        <section className="relative overflow-hidden"
+        {!isInternship && (
+          <section className="relative overflow-hidden"
           style={{ background: "linear-gradient(175deg,#f0fff4 0%,#f4fff7 40%,#ffffff 100%)" }}>
           <div style={{
             position: "absolute", left: "-6%", top: "30%", width: 320, height: 400,
@@ -729,6 +730,7 @@ export default function CoursePage({ courseKey }) {
             </div>
           </div>
         </section>
+        )}
 
         {/* ── 1. GET CAREER-READY PERKS SECTION ── */}
         <section className="py-16 bg-white">
@@ -1125,7 +1127,7 @@ export default function CoursePage({ courseKey }) {
         </div>
       )}
 
-      <Footer />
+      {!isInternship && <Footer />}
     </div>
   );
 }
