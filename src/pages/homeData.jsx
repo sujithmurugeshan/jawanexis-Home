@@ -126,6 +126,22 @@ export const navItems = [
 
 export const journeyLearners = [
   {
+    name: "Shanmugavel",
+    role: "HR Senior Executive Operations",
+    company: "TVS Motor Company",
+    location: "Chennai",
+    photo: shanmugavelPhoto,
+    companyLogo: tvsMotorLogo
+  },
+  {
+    name: "Madhumitha",
+    role: "Talent Acquisition Executive",
+    company: "Expertspro INC",
+    location: "Coimbatore",
+    photo: madhumithaPhoto,
+    companyMark: "E"
+  },
+  {
     name: "Brahadeesh Kalyan",
     role: "HR Executive",
     company: "Muthu Group Companies",
@@ -142,28 +158,12 @@ export const journeyLearners = [
     companyLogo: tcsLogo
   },
   {
-    name: "Madhumitha",
-    role: "Talent Acquisition Executive",
-    company: "Expertspro INC",
-    location: "Coimbatore",
-    photo: madhumithaPhoto,
-    companyMark: "E"
-  },
-  {
     name: "Balaji V",
     role: "HR Associate",
     company: "Hashtag Infosystems",
     location: "",
     photo: balajiPhoto,
     companyMark: "#"
-  },
-  {
-    name: "Shanmugavel",
-    role: "HR Senior Executive Operations",
-    company: "TVS Motor Company",
-    location: "Chennai",
-    photo: shanmugavelPhoto,
-    companyLogo: tvsMotorLogo
   },
   {
     name: "Gokul T",
