@@ -1,5 +1,23 @@
 import { Globe2 } from "lucide-react";
 
+const getCourseHash = (title) => {
+  switch (title) {
+    case "Full Stack Development":
+      return "#full-stack-development-course";
+    case "HR Executive Training":
+      return "#hr-executive-course";
+    case "HR Recruitment Training":
+      return "#hr-recruitment-course";
+    case "Software Quality Testing(QA Testing)":
+    case "Software Quality Testing (QA Testing)":
+      return "#qa-testing-course";
+    case "DSA":
+      return "#dsa-course";
+    default:
+      return "#know-more";
+  }
+};
+
 function LiveCard({ thumb, title, language, onSyllabusClick }) {
   return (
     <article className="overflow-hidden rounded-lg bg-white shadow-[0_3px_18px_rgba(15,23,42,0.08)]">
@@ -16,18 +34,13 @@ function LiveCard({ thumb, title, language, onSyllabusClick }) {
           <button
             type="button"
             onClick={() => onSyllabusClick?.(title)}
-            className="flex h-10 items-center justify-center rounded-md border border-black text-sm font-bold text-black transition hover:border-guvi-deepGreen hover:text-guvi-deepGreen"
+            className="flex h-10 items-center justify-center rounded-md border border-black text-sm font-bold text-black transition hover:border-guvi-deepGreen hover:text-guvi-deepGreen cursor-pointer"
           >
             Syllabus
           </button>
           <a
-<<<<<<< HEAD
-            href={title === "Full Stack Development" ? "#full-stack-development-course" : "#know-more"}
+            href={getCourseHash(title)}
             className="flex h-10 items-center justify-center rounded-md bg-guvi-green text-sm font-extrabold text-black shadow-[0_8px_18px_rgba(21,213,77,0.22)]"
-=======
-            href="#know-more"
-            className="flex h-10 items-center justify-center rounded-md btn-glossy-green text-sm font-extrabold"
->>>>>>> 56cfbd282b880f031b53b35a7a5782433271c7ef
           >
             Know More
           </a>

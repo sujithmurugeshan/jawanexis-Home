@@ -7,6 +7,10 @@ import AboutPage from "./pages/AboutPage.jsx";
 import TermsConditionsPage from "./pages/TermsConditionsPage.jsx";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage.jsx";
 import RefundPolicyPage from "./pages/RefundPolicyPage.jsx";
+import HRExecutiveCoursePage from "./pages/HRExecutiveCoursePage.jsx";
+import HRRecruitmentCoursePage from "./pages/HRRecruitmentCoursePage.jsx";
+import QATestingCoursePage from "./pages/QATestingCoursePage.jsx";
+import DSACoursePage from "./pages/DSACoursePage.jsx";
 import FullStackCoursePage from "./pages/FullStackCoursePage.jsx";
 
 
@@ -34,7 +38,12 @@ function App() {
         "#contact",
         "#terms-and-conditions",
         "#privacy-policy",
-        "#refund-policy"
+        "#refund-policy",
+        "#hr-executive-course",
+        "#hr-recruitment-course",
+        "#full-stack-development-course",
+        "#qa-testing-course",
+        "#dsa-course"
       ].includes(route)
     ) {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
@@ -73,8 +82,24 @@ function App() {
     return <RefundPolicyPage />;
   }
 
+  if (route === "#hr-executive-course") {
+    return <HRExecutiveCoursePage />;
+  }
+
+  if (route === "#hr-recruitment-course") {
+    return <HRRecruitmentCoursePage />;
+  }
+
   if (route === "#full-stack-development-course") {
     return <FullStackCoursePage />;
+  }
+
+  if (route === "#qa-testing-course") {
+    return <QATestingCoursePage />;
+  }
+
+  if (route === "#dsa-course") {
+    return <DSACoursePage />;
   }
 
   return <Home />;
