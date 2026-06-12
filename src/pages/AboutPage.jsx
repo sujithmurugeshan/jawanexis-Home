@@ -378,18 +378,23 @@ function AboutPage() {
 
       <main className="relative z-10">
         {/* HERO SECTION */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-guvi-soft/80 to-white py-20 lg:py-28">
-          <BackgroundPattern className="absolute -left-10 top-12 opacity-50 hidden md:block" />
-          <BackgroundPattern className="absolute -right-10 bottom-8 opacity-50 hidden md:block" />
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#052412] via-[#094021] to-[#02170b] py-24 lg:py-32 text-white">
+          {/* Glowing blur effects */}
+          <div className="absolute left-[10%] top-[10%] w-[300px] h-[300px] bg-[#19d950]/15 rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute right-[10%] bottom-[10%] w-[350px] h-[350px] bg-[#0b8a32]/20 rounded-full blur-[120px] pointer-events-none" />
+          
+          <BackgroundPattern className="absolute -left-10 top-12 opacity-30 hidden md:block" />
+          <BackgroundPattern className="absolute -right-10 bottom-8 opacity-30 hidden md:block" />
+          
           <div className="shell text-center relative z-10">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-guvi-mint px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-guvi-deepGreen">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-md px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#19d950] border border-white/10 shadow-sm">
               <Sparkles size={14} /> Who We Are
             </span>
-            <h1 className="mt-6 text-[38px] font-extrabold leading-[1.15] text-black sm:text-[54px] lg:text-[62px]">
+            <h1 className="mt-6 text-[38px] font-extrabold leading-[1.15] text-white sm:text-[54px] lg:text-[62px]">
               Empowering Next-Gen Professionals <br className="hidden sm:inline" />
-              with <span className="text-guvi-deepGreen">Real-World Expertise</span>
+              with <span className="text-[#19d950] drop-shadow-[0_2px_8px_rgba(25,217,80,0.15)]">Real-World Expertise</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-[760px] text-[16px] font-medium leading-8 text-guvi-muted sm:text-[18px]">
+            <p className="mx-auto mt-6 max-w-[760px] text-[16px] font-medium leading-8 text-emerald-100/80 sm:text-[18px]">
               Jawa EdTech bridges the gap between traditional learning and industry requirements. We deliver job-focused training programs across emerging domains, preparing candidates to stand out in today's competitive job market.
             </p>
           </div>
