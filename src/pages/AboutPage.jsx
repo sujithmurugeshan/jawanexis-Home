@@ -43,10 +43,10 @@ function BackgroundPattern({ className }) {
 }
 
 const teamMembers = [
-  { name: "Soorya Jawahar", role: "Founder & CEO", badge: "FOUNDER & CEO", photo: sooryaPhoto },
-  { name: "Anisha", role: "Senior HR - Training & Development", badge: "SENIOR HR", photo: anishaPhoto },
-  { name: "Nitinchand", role: "Tech Advisor", badge: "TECH ADVISOR", photo: nithinPhoto },
-  { name: "Sunitha Prakash", role: "Digital Marketing Executive", badge: "DIGITAL MARKETING", photo: sunithaPhoto }
+  { name: "Soorya Jawahar", role: "Founder & CEO", badge: "FOUNDER & CEO", photo: sooryaPhoto, slug: "soorya-jawahar" },
+  { name: "Anisha", role: "Senior HR - Training & Development", badge: "SENIOR HR", photo: anishaPhoto, slug: "anisha-riya" },
+  { name: "Nitinchand", role: "Tech Advisor", badge: "TECH ADVISOR", photo: nithinPhoto, slug: "nitinchand-saravanan" },
+  { name: "Sunitha Prakash", role: "Digital Marketing Executive", badge: "DIGITAL MARKETING", photo: sunithaPhoto, slug: "sunitha-prakash" }
 ];
 
 const testimonials = [
@@ -486,10 +486,10 @@ function AboutPage() {
                   <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm px-3.5 py-1.5 rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.06)] border border-slate-100/50 transition-all duration-300 group-hover:opacity-0 group-hover:pointer-events-none z-20">
                     <span className="text-[10px] tracking-wider font-extrabold text-slate-700 uppercase font-sans">{member.badge}</span>
                   </div>
-                  <button className="absolute top-4 left-4 bg-black hover:bg-neutral-800 text-white flex items-center gap-1.5 px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.18)] pointer-events-none group-hover:pointer-events-auto z-20">
+                  <a href={`#team/${member.slug}`} className="absolute top-4 left-4 bg-black hover:bg-neutral-800 text-white flex items-center gap-1.5 px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.18)] pointer-events-none group-hover:pointer-events-auto z-20 no-underline">
                     <LogIn size={13} className="stroke-[2.5]" />
                     <span className="text-[11px] font-extrabold tracking-wide font-sans">View Profile</span>
-                  </button>
+                  </a>
                   <div className="absolute bottom-0 left-0 right-0 bg-[#8cc63f] px-6 py-5 transition-transform duration-300 ease-out translate-y-full group-hover:translate-y-0 z-20 text-left">
                     <h4 className="text-white font-extrabold text-[18px] tracking-wide font-sans leading-tight">{member.name}</h4>
                     <p className="text-white/90 font-medium text-[12px] mt-0.5 font-sans leading-snug">{member.role}</p>

@@ -8,6 +8,7 @@ import TermsConditionsPage from "./pages/TermsConditionsPage.jsx";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage.jsx";
 import RefundPolicyPage from "./pages/RefundPolicyPage.jsx";
 import FullStackCoursePage from "./pages/FullStackCoursePage.jsx";
+import TeamProfilePage from "./pages/TeamProfilePage.jsx";
 
 
 function App() {
@@ -75,6 +76,11 @@ function App() {
 
   if (route === "#full-stack-development-course") {
     return <FullStackCoursePage />;
+  }
+
+  if (route.startsWith("#team/")) {
+    const slug = route.replace("#team/", "");
+    return <TeamProfilePage slug={slug} />;
   }
 
   return <Home />;

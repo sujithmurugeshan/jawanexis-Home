@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, GraduationCap, MapPin } from "lucide-react";
 import FloatingChatButton from "../components/FloatingChatButton.jsx";
 import Footer from "../components/Footer.jsx";
 import Header from "../components/Header.jsx";
 import LiveCard from "../components/LiveCard.jsx";
 import SyllabusModal from "../components/SyllabusModal.jsx";
-import nativeLanguagesImage from "../assets/native-languages.png";
+import nativeLanguagesImage from "../assets/native-languages.jpg";
 import {
   achievementPhotos,
   journeyLearners,
@@ -313,7 +313,6 @@ function JourneyOfLearners() {
                 <div className="journey-slide-body">
                   <h3 className="journey-learner-name">
                     <span>{learner.name}</span>
-                    <span className="journey-linkedin-badge" aria-hidden="true">in</span>
                   </h3>
                   <p className="journey-learner-role">{learner.role}</p>
                   <p className="journey-working-label">Working At</p>
@@ -604,11 +603,27 @@ function AchievementsGallery() {
     return () => window.clearInterval(timer);
   }, [totalSlides, isHovered]);
 
+  // Color palette for college logo initials
+  const logoColors = [
+    { bg: "#e8f5e9", text: "#2e7d32" },
+    { bg: "#e3f2fd", text: "#1565c0" },
+    { bg: "#fce4ec", text: "#c62828" },
+    { bg: "#fff3e0", text: "#e65100" },
+    { bg: "#f3e5f5", text: "#6a1b9a" },
+    { bg: "#e0f2f1", text: "#00695c" },
+  ];
+
   return (
     <section className="bg-white py-20">
       <div className="shell">
-        <div className="text-center">
-          <h2 className="text-[32px] font-extrabold text-guvi-ink">Achievements</h2>
+        <div className="text-center mb-4">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-guvi-mint px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-guvi-deepGreen mb-4">
+            <GraduationCap size={14} /> Academic Partners
+          </span>
+          <h2 className="text-[32px] font-extrabold text-guvi-ink sm:text-[40px]">Our Academic Collaborations</h2>
+          <p className="mt-3 max-w-[600px] mx-auto text-[15px] font-medium text-guvi-muted">
+            Partnering with leading institutions to deliver industry-relevant training and career development programs.
+          </p>
         </div>
 
         <div
@@ -620,7 +635,7 @@ function AchievementsGallery() {
             type="button"
             onClick={showPrevious}
             className="hidden h-11 w-11 items-center justify-center rounded-full border border-black/30 bg-white text-black shadow-sm transition hover:-translate-y-0.5 hover:border-guvi-green hover:bg-guvi-green/10 md:flex"
-            aria-label="Previous achievements"
+            aria-label="Previous collaborations"
           >
             <ArrowLeft size={18} />
           </button>
@@ -631,25 +646,63 @@ function AchievementsGallery() {
               style={{ transform: `translateX(-${activeSlide * 100}%)` }}
             >
               {Array.from({ length: totalSlides }).map((_, slideIndex) => (
-                <div key={`achievement-slide-${slideIndex}`} className="min-w-full">
+                <div key={`collab-slide-${slideIndex}`} className="min-w-full">
                   <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
                     {achievementPhotos
                       .slice(slideIndex * photosPerSlide, slideIndex * photosPerSlide + photosPerSlide)
-                      .map((photo) => (
-                        <article
-                          key={photo.id}
-                          className="h-full min-h-[300px] overflow-hidden rounded-[20px] border border-slate-200 bg-white shadow-[0_18px_40px_-24px_rgba(15,23,42,0.45)] transition duration-300 hover:-translate-y-1 hover:border-guvi-green hover:shadow-[0_24px_50px_-22px_rgba(16,185,129,0.35)]"
-                        >
-                          <img
-                            src={photo.src}
-                            alt={photo.alt}
-                            className="h-full w-full object-cover"
-                            onError={(e) => {
-                              e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%23f0f0f0' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='16' fill='%23999'%3EAdd image file%3C/text%3E%3C/svg%3E";
-                            }}
-                          />
-                        </article>
-                      ))}
+                      .map((photo) => {
+                        const colorSet = logoColors[(photo.id - 1) % logoColors.length];
+                        const initial = photo.college.charAt(0).toUpperCase();
+                        return (
+                          <article
+                            key={photo.id}
+                            className="h-full overflow-hidden rounded-[20px] border border-slate-200 bg-white shadow-[0_18px_40px_-24px_rgba(15,23,42,0.45)] transition duration-300 hover:-translate-y-1 hover:border-guvi-green hover:shadow-[0_24px_50px_-22px_rgba(16,185,129,0.35)]"
+                          >
+                            <div className="min-h-[260px] overflow-hidden">
+                              <img
+                                src={photo.src}
+                                alt={photo.alt}
+                                className="h-full w-full object-cover"
+                                onError={(e) => {
+                                  e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%23f0f0f0' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='16' fill='%23999'%3EAdd image file%3C/text%3E%3C/svg%3E";
+                                }}
+                              />
+                            </div>
+                            {/* College info bar */}
+                            <div className="flex items-center gap-3 px-5 py-4 border-t border-slate-100">
+                              <div
+                                className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center bg-white border border-slate-100 overflow-hidden p-0.5"
+                              >
+                                {photo.logo ? (
+                                  <img
+                                    src={photo.logo}
+                                    alt={`${photo.college} logo`}
+                                    className="w-full h-full object-contain"
+                                    onError={(e) => {
+                                      e.target.style.display = 'none';
+                                      e.target.parentElement.innerHTML = `<div class="w-full h-full flex items-center justify-center font-extrabold text-[16px]" style="background: ${colorSet.bg}; color: ${colorSet.text}">${initial}</div>`;
+                                    }}
+                                  />
+                                ) : (
+                                  <div
+                                    className="w-full h-full flex items-center justify-center font-extrabold text-[16px]"
+                                    style={{ background: colorSet.bg, color: colorSet.text }}
+                                  >
+                                    {initial}
+                                  </div>
+                                )}
+                              </div>
+                              <div className="min-w-0">
+                                <h4 className="text-[14px] font-bold text-guvi-ink leading-tight truncate">{photo.college}</h4>
+                                <div className="flex items-center gap-1 mt-0.5">
+                                  <MapPin size={11} className="text-guvi-muted flex-shrink-0" />
+                                  <span className="text-[12px] font-semibold text-guvi-muted">{photo.location}</span>
+                                </div>
+                              </div>
+                            </div>
+                          </article>
+                        );
+                      })}
                   </div>
                 </div>
               ))}
@@ -660,7 +713,7 @@ function AchievementsGallery() {
             type="button"
             onClick={showNext}
             className="hidden h-11 w-11 items-center justify-center rounded-full border border-black/30 bg-white text-black shadow-sm transition hover:-translate-y-0.5 hover:border-guvi-green hover:bg-guvi-green/10 md:flex"
-            aria-label="Next achievements"
+            aria-label="Next collaborations"
           >
             <ArrowRight size={18} />
           </button>

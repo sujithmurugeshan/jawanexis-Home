@@ -22,31 +22,33 @@ function Header() {
           </div>
         </a>
 
-        <nav className="hidden flex-1 items-center gap-4 text-[15px] font-bold text-guvi-ink lg:flex" aria-label="Primary navigation">
-          {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="flex h-9 items-center rounded-md border border-transparent px-2 hover:border-guvi-green hover:bg-guvi-soft"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
+        <div className="hidden items-center gap-6 lg:flex">
+          <nav className="flex items-center gap-4 text-[15px] font-bold text-guvi-ink" aria-label="Primary navigation">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="flex h-9 items-center rounded-md border border-transparent px-2 hover:border-guvi-green hover:bg-guvi-soft"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <a
-            href="#login"
-            className="flex h-9 min-w-[76px] items-center justify-center rounded-md border border-guvi-green px-4 text-[15px] font-extrabold text-black"
-          >
-            Login
-          </a>
-          <a
-            href="#signup"
-            className="flex h-9 min-w-[84px] items-center justify-center rounded-md btn-glossy-green px-4 text-[15px] font-extrabold"
-          >
-            Sign up
-          </a>
+          <div className="flex items-center gap-3">
+            <a
+              href="#login"
+              className="flex h-9 min-w-[76px] items-center justify-center rounded-md border border-guvi-green px-4 text-[15px] font-extrabold text-black"
+            >
+              Login
+            </a>
+            <a
+              href="#signup"
+              className="flex h-9 min-w-[84px] items-center justify-center rounded-md btn-glossy-green px-4 text-[15px] font-extrabold"
+            >
+              Sign up
+            </a>
+          </div>
         </div>
 
         <button
