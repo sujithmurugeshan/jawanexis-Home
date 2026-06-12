@@ -1,132 +1,94 @@
 import React from "react";
+import chatgptLogoPng from "../assets/chatgpt-logo.png";
+import powerbiLogoPng from "../assets/powerbi-logo.png";
+import excelHrLogoPng from "../assets/excel-hr-logo.png";
+import eightfoldLogoPng from "../assets/eightfold-logo.png";
+import paradoxLogoPng from "../assets/paradox-logo.png";
+import javascriptLogoPng from "../assets/fs_js.png";
+import htmlLogoPng from "../assets/fs_html.png";
+import cssLogoPng from "../assets/fs_css.png";
+import tailwindcssLogoPng from "../assets/fs_tailwind.png";
+import reactLogoPng from "../assets/fs_react.png";
+import reduxLogoPng from "../assets/fs_redux.png";
+import mysqlLogoPng from "../assets/fs_mysql.png";
+import mongodbLogoPng from "../assets/fs_mongodb.png";
+import nodejsLogoPng from "../assets/fs_node.png";
+import expressjsLogoPng from "../assets/fs_express.png";
+import postmanLogoPng from "../assets/fs_postman.png";
+import awsLogoPng from "../assets/fs_aws.png";
+import vscodeLogoPng from "../assets/fs_vscode.png";
+import mongooseLogoPng from "../assets/fs_mongoose.png";
+import githubLogoPng from "../assets/fs_github.png";
+import gitLogoPng from "../assets/fs_git.png";
+import cursoraiLogoPng from "../assets/fs_cursor.png";
 
 // Standard SVG logos for various course tools
 export const JavaScriptLogo = () => (
-  <svg width="52" height="52" viewBox="0 0 50 50" fill="none">
-    <rect width="50" height="50" fill="#F7DF1E" rx="2"/>
-    <text x="28" y="38" fontFamily="Arial Black, sans-serif" fontSize="22" fontWeight="900" fill="#000">JS</text>
-  </svg>
+  <img src={javascriptLogoPng} alt="JavaScript" width="52" height="52" className="object-contain" />
 );
 
 export const HTMLLogo = () => (
-  <svg width="52" height="52" viewBox="0 0 64 72" fill="none">
-    <path d="M8 0L14 58L32 64L50 58L56 0H8Z" fill="#E34F26"/>
-    <path d="M32 58V8H50L47 52L32 58Z" fill="#EF652A"/>
-    <path d="M32 29H19L18 19H32V10H8L11 38H32V29Z" fill="white"/>
-    <path d="M32 40L44 37L46 19H32V29H43L42 36L32 38V40Z" fill="white"/>
-  </svg>
+  <img src={htmlLogoPng} alt="HTML" width="52" height="52" className="object-contain" />
 );
 
 export const CSSLogo = () => (
-  <svg width="52" height="52" viewBox="0 0 64 72" fill="none">
-    <path d="M8 0L14 58L32 64L50 58L56 0H8Z" fill="#1572B6"/>
-    <path d="M32 58V8H50L47 52L32 58Z" fill="#33A9DC"/>
-    <path d="M32 29H19L18 19H32V10H8L11 38H32V29Z" fill="white" fillOpacity="0.9"/>
-    <path d="M32 40L44 37L46 19H32V29H43L42 36L32 38V40Z" fill="white"/>
-  </svg>
+  <img src={cssLogoPng} alt="CSS" width="52" height="52" className="object-contain" />
 );
 
 export const TailwindCSSLogo = () => (
-  <svg width="54" height="34" viewBox="0 0 54 33" fill="none">
-    <path d="M27 0C19.8 0 15.3 3.6 13.5 10.8C16.2 7.2 19.35 5.85 22.95 6.75C25.004 7.263 26.472 8.754 28.097 10.403C30.744 13.09 33.808 16.2 40.5 16.2C47.7 16.2 52.2 12.6 54 5.4C51.3 9 48.15 10.35 44.55 9.45C42.496 8.937 41.028 7.446 39.403 5.797C36.756 3.11 33.692 0 27 0ZM13.5 16.2C6.3 16.2 1.8 19.8 0 27C2.7 23.4 5.85 22.05 9.45 22.95C11.504 23.463 12.972 24.954 14.597 26.603C17.244 29.29 20.308 32.4 27 32.4C34.2 32.4 38.7 28.8 40.5 21.6C37.8 25.2 34.65 26.55 31.05 25.65C28.996 25.137 27.528 23.646 25.903 21.997C23.256 19.31 20.192 16.2 13.5 16.2Z" fill="#38BDF8"/>
-  </svg>
+  <img src={tailwindcssLogoPng} alt="TailwindCSS" width="52" height="52" className="object-contain" />
 );
 
 export const ReactLogo = () => (
-  <svg width="54" height="54" viewBox="-11.5 -10.23 23 20.46" fill="none">
-    <circle cx="0" cy="0" r="2.05" fill="#61DAFB"/>
-    <g stroke="#61DAFB" strokeWidth="1" fill="none">
-      <ellipse rx="11" ry="4.2"/>
-      <ellipse rx="11" ry="4.2" transform="rotate(60)"/>
-      <ellipse rx="11" ry="4.2" transform="rotate(120)"/>
-    </g>
-  </svg>
+  <img src={reactLogoPng} alt="React" width="52" height="52" className="object-contain" />
 );
 
 export const ReduxLogo = () => (
-  <svg width="52" height="52" viewBox="0 0 100 100" fill="none">
-    <path d="M65.6 65.6C68.2 62.3 69.7 58 69.3 53.4C68.7 46.2 63.7 39.9 57 37.4L54.5 36.4L52.7 38.6C51.4 40.2 50.5 42.1 50.1 44.1C47.3 43 44.9 41.1 43.4 38.5C40.8 34 41.5 28.1 44.9 24.3L46.6 22.4L44.2 21.2C40 19.2 35.2 18.3 30.4 18.9C19.6 20.1 11 28.8 10 39.6C9.5 45 11 50.3 14.2 54.5L15.6 56.3L17.7 55.2C19.3 54.3 21 53.7 22.8 53.4C21.8 56.2 21.8 59.2 22.8 62C25.2 68.6 31.8 72.7 38.7 72C41.4 71.7 44 70.8 46.2 69.3L47.9 68.2L47.5 66.2C47.1 64.2 47.3 62.1 48 60.3C49.2 61.1 50.2 62.1 51 63.3C53.3 66.9 53.6 71.5 51.8 75.4L50.8 77.6L53.2 78.3C55.1 78.8 57.1 79 59.1 79C71 79 80.9 69.9 81.4 58C81.7 52.4 79.7 47 76 42.8L74.6 41.2L72.7 42.2C71.1 43 69.3 43.4 67.4 43.5C67.2 50.9 66.4 58.9 65.6 65.6Z" fill="#764ABC"/>
-  </svg>
+  <img src={reduxLogoPng} alt="Redux" width="52" height="52" className="object-contain" />
 );
 
 export const MySQLLogo = () => (
-  <svg width="56" height="38" viewBox="0 0 110 72" fill="none">
-    <text x="2" y="35" fontFamily="Arial, sans-serif" fontSize="26" fontWeight="900" fill="#00758F">My</text>
-    <text x="2" y="65" fontFamily="Arial, sans-serif" fontSize="26" fontWeight="900" fill="#F29111">SQL</text>
-  </svg>
+  <img src={mysqlLogoPng} alt="MySQL" width="52" height="52" className="object-contain" />
 );
 
 export const MongoDBLogo = () => (
-  <svg width="44" height="54" viewBox="0 0 32 66" fill="none">
-    <path d="M16 0C16 0 2 20 2 38C2 49.2 8.3 58.4 16 62C23.7 58.4 30 49.2 30 38C30 20 16 0 16 0Z" fill="#13AA52"/>
-    <path d="M16 62V44" stroke="#B8C4BB" strokeWidth="3" strokeLinecap="round"/>
-    <circle cx="16" cy="38" r="5" fill="#F9FBFA"/>
-  </svg>
+  <img src={mongodbLogoPng} alt="MongoDB" width="52" height="52" className="object-contain" />
 );
 
 export const NodeJsLogo = () => (
-  <svg width="50" height="56" viewBox="0 0 54 62" fill="none">
-    <path d="M27 0L54 15.5V46.5L27 62L0 46.5V15.5L27 0Z" fill="#339933"/>
-    <text x="13" y="38" fontFamily="Arial Black, sans-serif" fontSize="17" fontWeight="900" fill="white">JS</text>
-  </svg>
+  <img src={nodejsLogoPng} alt="NodeJs" width="52" height="52" className="object-contain" />
 );
 
 export const ExpressJsLogo = () => (
-  <svg width="60" height="30" viewBox="0 0 120 40" fill="none">
-    <text x="4" y="32" fontFamily="Arial, sans-serif" fontSize="32" fontWeight="300" fill="#1a1a1a" letterSpacing="-1">ex</text>
-  </svg>
+  <img src={expressjsLogoPng} alt="ExpressJs" width="52" height="52" className="object-contain" />
 );
 
 export const PostmanLogo = () => (
-  <svg width="50" height="50" viewBox="0 0 100 100" fill="none">
-    <circle cx="50" cy="50" r="50" fill="#FF6C37"/>
-    <path d="M68 42C68 53.2 59.4 62.3 48 63.8V56C54.6 54.6 59.5 48.9 59.5 42C59.5 34.3 53.2 28 45.5 28C37.8 28 31.5 34.3 31.5 42C31.5 48.9 36.4 54.6 43 56V63.8C31.6 62.3 23 53.2 23 42C23 30.4 32.4 21 44 21C55.6 21 65 30.4 65 42H68Z" fill="white"/>
-    <circle cx="45" cy="42" r="8" fill="white"/>
-  </svg>
+  <img src={postmanLogoPng} alt="Postman" width="52" height="52" className="object-contain" />
 );
 
 export const AWSLogo = () => (
-  <svg width="56" height="36" viewBox="0 0 120 70" fill="none">
-    <text x="10" y="30" fontFamily="Arial Black, sans-serif" fontSize="28" fontWeight="900" fill="#232F3E">aws</text>
-    <path d="M25 45 Q60 60 95 45" stroke="#FF9900" strokeWidth="5" strokeLinecap="round" fill="none"/>
-    <polygon points="90,38 95,45 100,40" fill="#FF9900"/>
-  </svg>
+  <img src={awsLogoPng} alt="AWS" width="52" height="52" className="object-contain" />
 );
 
 export const VSCodeLogo = () => (
-  <svg width="50" height="50" viewBox="0 0 100 100" fill="none">
-    <path d="M74 8L38 42L15 26C12.5 24.3 9 25.8 8 28.7L1 57.3C-0.2 61.6 1.3 66.2 4.9 68.8L28 85L74 90C77.2 90.3 80.4 88.4 81.5 85.4L99 27.5C100.9 22.5 97.2 17.2 91.9 17.2L74 8Z" fill="#2196F3"/>
-    <path d="M74 8L85 33L74 57L38 42L74 8Z" fill="#1565C0"/>
-    <path d="M1 57.3C-0.2 61.6 1.3 66.2 4.9 68.8L28 85L38 42L1 57.3Z" fill="#B71C1C" fillOpacity="0.8"/>
-  </svg>
+  <img src={vscodeLogoPng} alt="VSCode" width="52" height="52" className="object-contain" />
 );
 
 export const MongooseLogo = () => (
-  <svg width="60" height="30" viewBox="0 0 160 50" fill="none">
-    <text x="2" y="38" fontFamily="Georgia, serif" fontSize="28" fontStyle="italic" fontWeight="bold" fill="#880000" letterSpacing="-1">mongoose</text>
-  </svg>
+  <img src={mongooseLogoPng} alt="Mongoose" width="52" height="52" className="object-contain" />
 );
 
 export const GitHubLogo = () => (
-  <svg width="50" height="50" viewBox="0 0 98 96" fill="none">
-    <path fillRule="evenodd" clipRule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z" fill="#24292f"/>
-  </svg>
+  <img src={githubLogoPng} alt="GitHub" width="52" height="52" className="object-contain" />
 );
 
 export const GitLogo = () => (
-  <svg width="50" height="50" viewBox="0 0 92 92" fill="none">
-    <path d="M90.156 41.965L50.036 1.848a5.913 5.913 0 0 0-8.354 0L33.177 10.354l10.569 10.569a7.02 7.02 0 0 1 7.226 1.683 7.03 7.03 0 0 1 1.673 7.275l10.186 10.185a7.01 7.01 0 0 1 7.271 1.679 7.035 7.035 0 0 1 0 9.935 7.04 7.04 0 0 1-9.937 0 7.038 7.038 0 0 1-1.516-7.658L48.934 33.684v26.551a7.038 7.038 0 0 1 1.863 1.132 7.035 7.035 0 0 1 0 9.937 7.04 7.04 0 0 1-9.937 0 7.035 7.035 0 0 1 0-9.937 7.05 7.05 0 0 1 2.334-1.532V33.432a7.038 7.038 0 0 1-2.334-1.529 7.038 7.038 0 0 1-1.516-7.68L29.196 14.054 1.845 41.404a5.913 5.913 0 0 0 0 8.354L41.964 90.156a5.913 5.913 0 0 0 8.354 0l39.838-39.837a5.91 5.91 0 0 0 0-8.354z" fill="#F05032"/>
-  </svg>
+  <img src={gitLogoPng} alt="Git" width="52" height="52" className="object-contain" />
 );
 
 export const CursorAILogo = () => (
-  <svg width="50" height="50" viewBox="0 0 100 100" fill="none">
-    <rect width="100" height="100" rx="14" fill="#1a1a1a"/>
-    <rect x="18" y="18" width="64" height="64" rx="6" fill="#2d2d2d"/>
-    <path d="M35 50L50 35L65 50" stroke="#4ade80" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M50 35V68" stroke="#4ade80" strokeWidth="4" strokeLinecap="round"/>
-    <rect x="30" y="68" width="14" height="3" rx="1.5" fill="#64748b"/>
-  </svg>
+  <img src={cursoraiLogoPng} alt="CursorAI" width="52" height="52" className="object-contain" />
 );
 
 // New tools logos
@@ -190,13 +152,7 @@ export const OfficeLogo = () => (
 );
 
 export const PowerBiLogo = () => (
-  <svg width="52" height="52" viewBox="0 0 32 32" fill="none">
-    <rect x="4" y="18" width="6" height="10" rx="1.5" fill="#e2b100" />
-    <rect x="13" y="10" width="6" height="18" rx="1.5" fill="#f2c811" />
-    <rect x="22" y="4" width="6" height="24" rx="1.5" fill="#ffd93b" />
-    <path d="M13 10h6v18h-6z" fill="#d4a300" opacity="0.15" />
-    <rect x="4" y="18" width="6" height="10" rx="1.5" fill="#c29300" opacity="0.25" />
-  </svg>
+  <img src={powerbiLogoPng} alt="Power BI" width="52" height="52" className="object-contain" />
 );
 
 export const LinkedInLogo = () => (
@@ -356,41 +312,30 @@ export const GeeksforGeeksLogo = () => (
 );
 
 export const ChatGPTLogo = () => (
-  <svg width="52" height="52" viewBox="0 0 24 24" fill="none">
-    <rect width="24" height="24" rx="6" fill="#10a37f" />
-    <path d="M17.65 11.23a3.52 3.52 0 0 0-.15-1.84 3.53 3.53 0 0 0-1.07-1.42 3.5 3.5 0 0 0-1.82-.67 3.53 3.53 0 0 0-1.92.17 3.53 3.53 0 0 0-1.63-1.22 3.52 3.52 0 0 0-1.93-.05 3.51 3.51 0 0 0-1.68 1.11A3.54 3.54 0 0 0 6.6 9.07c0 .66.19 1.3.54 1.84A3.51 3.51 0 0 0 7 12.77a3.53 3.53 0 0 0 1.07 1.42 3.52 3.52 0 0 0 1.83.67c.64.08 1.29-.02 1.91-.29A3.52 3.52 0 0 0 13.43 16a3.53 3.53 0 0 0 1.93.05 3.5 3.5 0 0 0 1.68-1.12 3.54 3.54 0 0 0 .84-1.77 3.5 3.5 0 0 0 1.93-.24 3.52 3.52 0 0 0 1.54-1.25c.34-.54.54-1.17.54-1.82a3.54 3.54 0 0 0-.28-.62zm-5.07 3.42a2.38 2.38 0 0 1-1.27-.47l.08-.05 3.2-1.85a.5.5 0 0 0 .25-.43v-4.5l1.41.81a.06.06 0 0 1 .03.04v3.69a2.39 2.39 0 0 1-1.7 2.76zm-3.8-1.24a2.41 2.41 0 0 1-.46-1.27l.09.05 3.2 1.85a.5.5 0 0 0 .5 0l3.9-2.25v1.63a.06.06 0 0 1-.03.05l-3.2 1.85a2.39 2.39 0 0 1-3.95-.92l-.05-.01zm-.79-3.92a2.39 2.39 0 0 1 .8-1.03l.09.05 3.2 1.85a.5.5 0 0 0 .25.43v4.5l-1.41-.81a.06.06 0 0 1-.03-.04v-3.7a2.39 2.39 0 0 1-2.9-1.28zm2.46-3a2.38 2.38 0 0 1 1.27.47l-.09.05-3.2 1.85a.5.5 0 0 0-.25.43v4.5l-1.41-.81a.06.06 0 0 1-.03-.05v-3.69A2.39 2.39 0 0 1 10.45 6.5zm3.8 1.25c.19.4.35.83.46 1.27l-.09-.05-3.2-1.85a.5.5 0 0 0-.5 0l-3.9 2.25V9.49a.06.06 0 0 1 .03-.05l3.2-1.85a2.39 2.39 0 0 1 3.95.92l.05.01zm.79 3.92a2.39 2.39 0 0 1-.8 1.03l-.09-.05-3.2-1.85a.5.5 0 0 0-.25-.43v-4.5l1.41.81a.06.06 0 0 1 .03.04v3.69a2.39 2.39 0 0 1 2.9 1.28l.05.01zm.16-.83a1 1 0 1 0-1 1 1.01 1.01 0 0 0 1-1z" fill="white" />
-  </svg>
+  <img src={chatgptLogoPng} alt="ChatGPT" width="52" height="52" className="object-contain" />
 );
 
 export const GeminiLogo = () => (
-  <svg width="52" height="52" viewBox="0 0 100 100" fill="none">
-    <path d="M50 0c0 27.614 22.386 50 50 50c-27.614 0-50 22.386-50 50c0-27.614-22.386-50-50-50c27.614 0 50-22.386 50-50z" fill="url(#gemini-sparkle-grad)" />
+  <svg width="52" height="52" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 5 Q50 50 5 50 Q50 50 50 95 Q50 50 95 50 Q50 50 50 5 Z" fill="url(#gemini-sparkle-grad)" />
     <defs>
-      <linearGradient id="gemini-sparkle-grad" x1="15" y1="15" x2="85" y2="85" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#4285F4" />
-        <stop offset="35%" stopColor="#9B72F8" />
-        <stop offset="70%" stopColor="#D96570" />
-        <stop offset="100%" stopColor="#F48B29" />
+      <linearGradient id="gemini-sparkle-grad" x1="0" y1="100" x2="100" y2="0" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stopColor="#38BDF8" />
+        <stop offset="50%" stopColor="#8B5CF6" />
+        <stop offset="100%" stopColor="#EC4899" />
       </linearGradient>
     </defs>
   </svg>
 );
 
 export const EightfoldLogo = () => (
-  <svg width="52" height="52" viewBox="0 0 100 100" fill="none">
-    <path d="M30 65c-8.284 0-15-6.716-15-15s6.716-15 15-15c5.38 0 10.1 2.834 12.72 7.086C45.36 46.5 48.74 50 52 50c3.26 0 6.64-3.5 9.28-7.914C63.9 37.834 68.62 35 74 35c8.284 0 15 6.716 15 15s-6.716 15-15 15c-5.38 0-10.1-2.834-12.72-7.086C58.64 53.5 55.26 50 52 50c-3.26 0-6.64 3.5-9.28 7.914C40.1 62.166 35.38 65 30 65z" stroke="url(#eightfold-loop-grad)" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-    <defs>
-      <linearGradient id="eightfold-loop-grad" x1="15" y1="50" x2="89" y2="50" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#00A3C4" />
-        <stop offset="50%" stopColor="#00C4B4" />
-        <stop offset="100%" stopColor="#00A3C4" />
-      </linearGradient>
-    </defs>
-  </svg>
+  <img src={eightfoldLogoPng} alt="Eightfold AI" width="52" height="52" className="object-contain" />
 );
 
 export const ParadoxLogo = () => (
-  <svg width="52" height="52" viewBox="0 0 100 100" fill="none">
-    <path d="M78.284 21.716A40 40 0 1 0 88.284 50a40 40 0 0 0-2.072-12.68" stroke="#00B4D8" strokeWidth="12" strokeLinecap="round" fill="none" />
-  </svg>
+  <img src={paradoxLogoPng} alt="Paradox AI" width="52" height="52" className="object-contain" />
+);
+
+export const ExcelHRAnalyticsLogo = () => (
+  <img src={excelHrLogoPng} alt="Excel Advanced HR Analytics" width="52" height="52" className="object-contain" />
 );
