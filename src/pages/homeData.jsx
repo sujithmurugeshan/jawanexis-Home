@@ -50,6 +50,7 @@ import jeppiaarLogo from "../assets/college-logos/jeppiaar.webp";
 import psgrLogo from "../assets/college-logos/psgr.png";
 import holycrossLogo from "../assets/college-logos/holycross.png";
 import drngpitechLogo from "../assets/college-logos/drngpitech.png";
+import nehruLogo from "../assets/college-logos/nehru.png";
 
 import balajiTestimonialPhoto from "../assets/learner-journey/balaji_testimonial.jpg";
 import anbuTestimonialPhoto from "../assets/learner-journey/anbu_testimonial.jpg";
@@ -347,12 +348,12 @@ export const learningCourses = [
 ];
 
 export const achievementPhotos = [
-  { id: 1, src: achievement1, alt: "Adhitya School of Business - Coimbatore", college: "Adhitya School of Business", location: "Coimbatore", logo: adhityaLogo },
+  { id: 1, src: achievement1, alt: "PSGR Krishnammal - Coimbatore", college: "PSGR Krishnammal", location: "Coimbatore", logo: psgrLogo },
   { id: 2, src: achievement2, alt: "Dr.NGP College of Arts and Science - Coimbatore", college: "Dr.NGP College of Arts and Science", location: "Coimbatore", logo: drngpascLogo },
-  { id: 3, src: achievement3, alt: "Jeppiar University - Chennai", college: "Jeppiar University", location: "Chennai", logo: jeppiaarLogo },
-  { id: 4, src: achievement4, alt: "PSGR Krishnammal - Coimbatore", college: "PSGR Krishnammal", location: "Coimbatore", logo: psgrLogo },
-  { id: 5, src: achievement5, alt: "Holy Cross - Trichy", college: "Holy Cross", location: "Trichy", logo: holycrossLogo },
-  { id: 6, src: achievement6, alt: "Dr.NGP iTech - Coimbatore", college: "Dr.NGP iTech", location: "Coimbatore", logo: drngpitechLogo }
+  { id: 3, src: achievement3, alt: "Holy Cross - Trichy", college: "Holy Cross", location: "Trichy", logo: holycrossLogo },
+  { id: 4, src: achievement4, alt: "Nehru Institute of Information Technology & Management - Coimbatore", college: "Nehru Institute of Information Technology & Management", location: "Coimbatore", logo: nehruLogo },
+  { id: 5, src: achievement5, alt: "Jeppiaar University - Chennai", college: "Jeppiaar University", location: "Chennai", logo: jeppiaarLogo },
+  { id: 6, src: achievement6, alt: "Adhitya School of Business - Coimbatore", college: "Adhitya School of Business", location: "Coimbatore", logo: adhityaLogo }
 ];
 
 export const footerColumns = [

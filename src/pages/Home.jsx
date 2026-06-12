@@ -658,7 +658,7 @@ function AchievementsGallery() {
                             key={photo.id}
                             className="h-full overflow-hidden rounded-[20px] border border-slate-200 bg-white shadow-[0_18px_40px_-24px_rgba(15,23,42,0.45)] transition duration-300 hover:-translate-y-1 hover:border-guvi-green hover:shadow-[0_24px_50px_-22px_rgba(16,185,129,0.35)]"
                           >
-                            <div className="min-h-[260px] overflow-hidden">
+                            <div className="h-[240px] w-full overflow-hidden">
                               <img
                                 src={photo.src}
                                 alt={photo.alt}

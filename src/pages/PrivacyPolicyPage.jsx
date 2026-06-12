@@ -24,7 +24,7 @@ function PrivacyPolicyPage() {
               Privacy Policy
             </h1>
             <p className="mx-auto mt-3 max-w-[760px] text-[15px] font-medium leading-relaxed text-guvi-muted">
-              Last updated: June 11, 2026 • Your privacy and personal data security are our top priorities.
+              Your privacy and personal data security are our top priorities.
             </p>
           </div>
         </section>

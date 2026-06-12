@@ -24,7 +24,7 @@ function RefundPolicyPage() {
               Refund Policy
             </h1>
             <p className="mx-auto mt-3 max-w-[760px] text-[15px] font-medium leading-relaxed text-guvi-muted">
-              Last updated: June 11, 2026 • Please read our refund terms carefully before course subscription.
+              Please read our refund terms carefully before course subscription.
             </p>
           </div>
         </section>
