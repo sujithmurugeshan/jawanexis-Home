@@ -326,7 +326,7 @@ const ApplyForm = ({ data, onChange, onPhoneChange, onSubmit, submitted }) => (
             </button>
           </div>
           <button type="submit"
-            className="w-full h-12 bg-[#19d950] hover:bg-[#12c443] text-black font-extrabold text-base rounded-lg shadow-md transition duration-200 flex items-center justify-center cursor-pointer">
+            className="w-full h-12 btn-glossy-green font-extrabold text-base rounded-lg flex items-center justify-center cursor-pointer">
             Apply Now
           </button>
           <p className="text-[10px] text-gray-400 leading-snug text-center">
@@ -358,16 +358,16 @@ function FaqSection({ faqs, title }) {
             const isOpen = open === idx;
             return (
               <div key={idx}
-                className={`rounded-2xl border transition-all duration-200 overflow-hidden ${isOpen ? "border-violet-200 bg-violet-50/40" : "border-gray-100 bg-gray-50/60 hover:border-gray-200"}`}>
+                className={`rounded-2xl border transition-all duration-200 overflow-hidden ${isOpen ? "border-green-200 bg-green-50/40" : "border-gray-100 bg-gray-50/60 hover:border-gray-200"}`}>
                 <button
                   onClick={() => setOpen(isOpen ? null : idx)}
                   className="w-full flex items-center justify-between px-6 py-5 text-left gap-4"
                 >
-                  <span className={`text-[15px] font-semibold leading-snug ${isOpen ? "text-violet-800" : "text-gray-800"}`}>
+                  <span className={`text-[15px] font-semibold leading-snug ${isOpen ? "text-green-800" : "text-gray-800"}`}>
                     {faq.q}
                   </span>
                   <span className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center border transition-colors ${
-                    isOpen ? "bg-violet-600 border-violet-600 text-white" : "border-gray-300 text-gray-500"
+                    isOpen ? "bg-guvi-green border-guvi-green text-black" : "border-gray-300 text-gray-500"
                   }`}>
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                       style={{ transform: isOpen ? "rotate(45deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
@@ -403,7 +403,7 @@ function CoursePreviewTabs({ previewContent }) {
   const currentTab = tabs.find(t => t.id === activeTab) || tabs[0];
 
   return (
-    <div className="bg-[#fafaff] border border-gray-100 rounded-3xl p-6 md:p-8 shadow-[0_8px_30px_rgba(99,102,241,0.02)]">
+    <div className="bg-[#fafaff] border border-gray-100 rounded-3xl p-6 md:p-8 shadow-[0_8px_30px_rgba(25,217,80,0.03)]">
       {/* Tabs Menu */}
       <div className="flex flex-wrap gap-2 border-b border-gray-200 pb-4 mb-6">
         {tabs.map(tab => {
@@ -415,11 +415,11 @@ function CoursePreviewTabs({ previewContent }) {
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-extrabold transition-all duration-200 cursor-pointer ${
                 isActive
-                  ? "bg-violet-600 text-white shadow-md"
-                  : "text-gray-500 hover:text-violet-600 hover:bg-violet-50"
+                  ? "btn-glossy-green border-transparent"
+                  : "text-gray-500 hover:text-green-600 hover:bg-green-50"
               }`}
             >
-              <IconComponent size={16} className={isActive ? "text-white" : "text-violet-500"} />
+              <IconComponent size={16} className={isActive ? "text-black" : "text-green-500"} />
               <span>{tab.label}</span>
             </button>
           );
@@ -443,7 +443,7 @@ function CoursePreviewTabs({ previewContent }) {
           <div className="space-y-3.5">
             {currentTab.content.map((item, idx) => (
               <div key={idx} className="flex items-start gap-3 text-sm font-medium text-gray-600 leading-relaxed">
-                <ChevronRight size={16} className="text-violet-500 mt-0.5 flex-shrink-0" />
+                <ChevronRight size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
                 <span>{item}</span>
               </div>
             ))}
@@ -453,8 +453,8 @@ function CoursePreviewTabs({ previewContent }) {
         {currentTab.type === "tags" && (
           <div className="flex flex-wrap gap-3.5">
             {currentTab.content.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-violet-50/60 border border-violet-100 text-sm font-bold text-violet-800">
-                <span className="w-1.5 h-1.5 rounded-full bg-violet-500 flex-shrink-0" />
+              <div key={idx} className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-green-50/60 border border-green-100 text-sm font-bold text-green-800">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#19d950] flex-shrink-0" />
                 {item}
               </div>
             ))}
@@ -478,7 +478,7 @@ function TestimonialsSection({ testimonials }) {
     <section className="py-16 bg-gray-50 overflow-hidden border-t border-b border-gray-100">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-violet-50 border border-violet-100 text-violet-700 text-xs font-bold uppercase tracking-wider mb-3">
+          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-green-50 border border-green-100 text-green-700 text-xs font-bold uppercase tracking-wider mb-3">
             ❤️ Wall of Love
           </span>
           <h2 className="text-[26px] md:text-[34px] font-extrabold text-gray-900 tracking-tight">
@@ -638,20 +638,20 @@ export default function CoursePage({ courseKey }) {
 
         {/* ── HERO SECTION ── */}
         <section className="relative overflow-hidden"
-          style={{ background: "linear-gradient(175deg,#ecebff 0%,#f4f3ff 40%,#ffffff 100%)" }}>
+          style={{ background: "linear-gradient(175deg,#f0fff4 0%,#f4fff7 40%,#ffffff 100%)" }}>
           <div style={{
             position: "absolute", left: "-6%", top: "30%", width: 320, height: 400,
-            background: "radial-gradient(ellipse at center,rgba(167,139,250,0.35) 0%,transparent 70%)",
+            background: "radial-gradient(ellipse at center,rgba(25,217,80,0.25) 0%,transparent 70%)",
             borderRadius: "50%", pointerEvents: "none"
           }} />
           <div style={{
             position: "absolute", right: "-6%", top: "30%", width: 320, height: 400,
-            background: "radial-gradient(ellipse at center,rgba(167,139,250,0.35) 0%,transparent 70%)",
+            background: "radial-gradient(ellipse at center,rgba(25,217,80,0.25) 0%,transparent 70%)",
             borderRadius: "50%", pointerEvents: "none"
           }} />
 
           <div className="relative z-10 flex flex-col items-center text-center pt-10 pb-4 px-4">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-purple-200 text-purple-700 text-xs font-extrabold uppercase tracking-widest mb-5 shadow-sm">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-green-200 text-green-700 text-xs font-extrabold uppercase tracking-widest mb-5 shadow-sm">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-ping" />
               JawaEdTech Certified
             </span>
@@ -663,7 +663,7 @@ export default function CoursePage({ courseKey }) {
             </p>
             <div className="mt-8 mb-4">
               <button id="hero-enroll-btn" onClick={() => setShowModal(true)}
-                className="inline-flex h-[52px] min-w-[200px] items-center justify-center rounded-lg bg-[#19d950] text-[17px] font-extrabold text-black shadow-[0_8px_28px_rgba(25,217,80,0.40)] transition hover:scale-105 hover:bg-[#12c443] cursor-pointer">
+                className="inline-flex h-[52px] min-w-[200px] items-center justify-center rounded-lg btn-glossy-green text-[17px] font-extrabold cursor-pointer">
                 Enroll Now
               </button>
             </div>
@@ -676,16 +676,16 @@ export default function CoursePage({ courseKey }) {
               {/* ── Left Feature Cards ── */}
               <div className="flex flex-col gap-5 w-full md:w-[220px] lg:w-[250px] shrink-0">
                 {/* Card 1 */}
-                <div className="bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-[0_4px_24px_rgba(139,92,246,0.10)] border border-purple-100 hover:shadow-[0_8px_32px_rgba(139,92,246,0.18)] hover:-translate-y-0.5 transition-all duration-200">
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center mb-3 shadow-sm">
+                <div className="bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-[0_4px_24px_rgba(25,217,80,0.08)] border border-green-100 hover:shadow-[0_8px_32px_rgba(25,217,80,0.15)] hover:-translate-y-0.5 transition-all duration-200">
+                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center mb-3 shadow-sm">
                     <BookOpen size={17} className="text-white stroke-[2.5]" />
                   </div>
                   <h4 className="font-extrabold text-[14px] text-gray-900 mb-1.5 leading-snug">100% Practical Training</h4>
                   <p className="text-[12px] text-gray-500 font-medium leading-relaxed">Learn through hands-on assignments, projects, and real-world scenarios.</p>
                 </div>
                 {/* Card 2 */}
-                <div className="bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-[0_4px_24px_rgba(139,92,246,0.10)] border border-purple-100 hover:shadow-[0_8px_32px_rgba(139,92,246,0.18)] hover:-translate-y-0.5 transition-all duration-200">
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center mb-3 shadow-sm">
+                <div className="bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-[0_4px_24px_rgba(25,217,80,0.08)] border border-green-100 hover:shadow-[0_8px_32px_rgba(25,217,80,0.15)] hover:-translate-y-0.5 transition-all duration-200">
+                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center mb-3 shadow-sm">
                     <Users size={17} className="text-white stroke-[2.5]" />
                   </div>
                   <h4 className="font-extrabold text-[14px] text-gray-900 mb-1.5 leading-snug">Expert Mentor Guidance</h4>
@@ -697,7 +697,7 @@ export default function CoursePage({ courseKey }) {
               <div className="relative flex-1 flex justify-center items-end min-w-0 md:max-w-[500px] lg:max-w-[560px] xl:max-w-[620px]">
                 {/* Subtle glow behind the image */}
                 <div className="absolute inset-x-0 bottom-0 h-3/4 rounded-3xl pointer-events-none"
-                  style={{ background: "radial-gradient(ellipse at 50% 90%,rgba(167,139,250,0.18) 0%,transparent 70%)" }} />
+                  style={{ background: "radial-gradient(ellipse at 50% 90%,rgba(25,217,80,0.12) 0%,transparent 70%)" }} />
                 <img
                   src={config.studentsImg}
                   alt={`JawaEdTech ${config.title} Students`}
@@ -709,16 +709,16 @@ export default function CoursePage({ courseKey }) {
               {/* ── Right Feature Cards ── */}
               <div className="flex flex-col gap-5 w-full md:w-[220px] lg:w-[250px] shrink-0">
                 {/* Card 3 */}
-                <div className="bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-[0_4px_24px_rgba(139,92,246,0.10)] border border-purple-100 hover:shadow-[0_8px_32px_rgba(139,92,246,0.18)] hover:-translate-y-0.5 transition-all duration-200">
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center mb-3 shadow-sm">
+                <div className="bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-[0_4px_24px_rgba(25,217,80,0.08)] border border-green-100 hover:shadow-[0_8px_32px_rgba(25,217,80,0.15)] hover:-translate-y-0.5 transition-all duration-200">
+                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center mb-3 shadow-sm">
                     <Laptop size={17} className="text-white stroke-[2.5]" />
                   </div>
                   <h4 className="font-extrabold text-[14px] text-gray-900 mb-1.5 leading-snug">Portfolio &amp; Project Building</h4>
                   <p className="text-[12px] text-gray-500 font-medium leading-relaxed">Build industry-level projects and create a job-ready portfolio.</p>
                 </div>
                 {/* Card 4 */}
-                <div className="bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-[0_4px_24px_rgba(139,92,246,0.10)] border border-purple-100 hover:shadow-[0_8px_32px_rgba(139,92,246,0.18)] hover:-translate-y-0.5 transition-all duration-200">
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center mb-3 shadow-sm">
+                <div className="bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-[0_4px_24px_rgba(25,217,80,0.08)] border border-green-100 hover:shadow-[0_8px_32px_rgba(25,217,80,0.15)] hover:-translate-y-0.5 transition-all duration-200">
+                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center mb-3 shadow-sm">
                     <Award size={17} className="text-white stroke-[2.5]" />
                   </div>
                   <h4 className="font-extrabold text-[14px] text-gray-900 mb-1.5 leading-snug">Career Support &amp; Certification</h4>
@@ -820,8 +820,8 @@ export default function CoursePage({ courseKey }) {
         <section className="py-16 bg-white border-t border-b border-gray-100" id="preview-section">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-violet-50 border border-violet-100 text-violet-700 text-xs font-extrabold uppercase tracking-wider mb-4">
-                <Search size={12} className="text-violet-600" />
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-50 border border-green-100 text-green-700 text-xs font-extrabold uppercase tracking-wider mb-4">
+                <Search size={12} className="text-green-600" />
                 Course Preview &amp; Insights
               </span>
               <h2 className="text-[28px] md:text-[36px] font-extrabold text-gray-900 tracking-tight">
@@ -842,7 +842,7 @@ export default function CoursePage({ courseKey }) {
         </section>
 
         {/* ── 3. COURSE SYLLABUS SECTION ── */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8" style={{ background: "#f4f5ff" }} id="syllabus-section">
+        <section className="py-16 px-4 sm:px-6 lg:px-8" style={{ background: "#f4fff7" }} id="syllabus-section">
           <div className="max-w-5xl mx-auto">
             {/* Heading */}
             <div className="text-center mb-10">
@@ -855,7 +855,7 @@ export default function CoursePage({ courseKey }) {
             </div>
 
             {/* Outer card */}
-            <div className="bg-white rounded-3xl shadow-[0_4px_40px_rgba(99,102,241,0.10)] overflow-hidden">
+            <div className="bg-white rounded-3xl shadow-[0_4px_40px_rgba(25,217,80,0.06)] overflow-hidden">
               <div className="grid grid-cols-1 md:grid-cols-[200px_1fr]" style={{ minHeight: 480 }}>
 
                 {/* Left: module buttons */}
@@ -866,8 +866,8 @@ export default function CoursePage({ courseKey }) {
                       <button key={m.id} onClick={() => setActiveModule(idx)}
                         className={`w-full text-left px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 border cursor-pointer ${
                           isActive
-                            ? "border-2 border-violet-500 text-violet-700 font-bold bg-violet-50/60"
-                            : "border border-gray-200 text-gray-600 hover:border-violet-300 hover:text-violet-600 hover:bg-violet-50/30"
+                            ? "border-2 border-green-500 text-green-700 font-bold bg-green-50/60"
+                            : "border border-gray-200 text-gray-600 hover:border-green-300 hover:text-green-600 hover:bg-green-50/30"
                         }`}>
                         Module {m.id}
                       </button>
@@ -898,7 +898,7 @@ export default function CoursePage({ courseKey }) {
                   <div className="mt-8 flex justify-end">
                     <button
                       onClick={() => setShowModal(true)}
-                      className="px-7 py-3 rounded-xl bg-[#19d950] hover:bg-[#12c443] text-black font-extrabold text-sm shadow-md transition hover:scale-105 cursor-pointer">
+                      className="px-7 py-3 rounded-xl btn-glossy-green font-extrabold text-sm cursor-pointer">
                       Download Syllabus
                     </button>
                   </div>
@@ -923,11 +923,11 @@ export default function CoursePage({ courseKey }) {
             {/* Clean square/rounded-square cards layout with original logos */}
             <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
               {config.tools.map(({ name, logoKey }) => (
-                <div key={name} className="flex flex-col items-center justify-center bg-white border border-gray-150 rounded-2xl p-5 w-[120px] h-[120px] shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-violet-200 transition-all duration-300 group cursor-default">
+                <div key={name} className="flex flex-col items-center justify-center bg-white border border-gray-150 rounded-2xl p-5 w-[120px] h-[120px] shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-green-200 transition-all duration-300 group cursor-default">
                   <div className="flex items-center justify-center w-14 h-14 object-contain mb-2 transition-transform duration-300 group-hover:scale-110">
                     {LOGO_MAP[logoKey] || <span className="text-xs font-bold text-gray-400">{name.substring(0, 3)}</span>}
                   </div>
-                  <span className="text-xs font-bold text-gray-700 text-center leading-tight transition-colors group-hover:text-violet-600">{name}</span>
+                  <span className="text-xs font-bold text-gray-700 text-center leading-tight transition-colors group-hover:text-green-600">{name}</span>
                 </div>
               ))}
             </div>
@@ -960,7 +960,7 @@ export default function CoursePage({ courseKey }) {
                   backgroundSize: "18px 18px"
                 }} />
                 <div className="relative z-10">
-                  <p className="text-xs font-bold text-violet-600 uppercase tracking-widest mb-1">{config.title} Course</p>
+                  <p className="text-xs font-bold text-green-600 uppercase tracking-widest mb-1">{config.title} Course</p>
                   <div className="flex items-baseline gap-3 mt-2 mb-1">
                     <span className="text-[40px] font-extrabold text-gray-900 leading-none">{config.price}</span>
                     <span className="text-xl font-semibold text-gray-400 line-through">{config.strikethroughPrice}</span>
@@ -971,9 +971,9 @@ export default function CoursePage({ courseKey }) {
                   <ul className="space-y-3 mb-8">
                     {config.features.map(f => (
                       <li key={f} className="flex items-center gap-3 text-sm font-semibold text-gray-700">
-                        <span className="w-5 h-5 rounded-full bg-violet-100 flex items-center justify-center flex-shrink-0">
+                        <span className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
                           <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                            <path d="M2 5L4 7L8 3" stroke="#7c3aed" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M2 5L4 7L8 3" stroke="#16a34a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
                         </span>
                         {f}
@@ -983,7 +983,7 @@ export default function CoursePage({ courseKey }) {
                 </div>
                 <div className="relative z-10">
                   <button onClick={() => setShowModal(true)}
-                    className="w-full h-12 rounded-xl bg-[#19d950] hover:bg-[#12c443] text-black font-extrabold text-base shadow-md transition hover:scale-[1.02] cursor-pointer">
+                    className="w-full h-12 rounded-xl btn-glossy-green font-extrabold text-base cursor-pointer">
                     Apply Now
                   </button>
                 </div>
@@ -991,13 +991,13 @@ export default function CoursePage({ courseKey }) {
 
               {/* Card 2: Internship Course (if exists) */}
               {config.hasInternshipCard && (
-                <div className="bg-white rounded-3xl border border-[#e8e6ff] p-8 shadow-sm relative overflow-hidden flex flex-col justify-between">
+                <div className="bg-white rounded-3xl border border-[#c9f2cf] p-8 shadow-sm relative overflow-hidden flex flex-col justify-between">
                   <div className="absolute inset-0 opacity-[0.04]" style={{
-                    backgroundImage: "radial-gradient(circle, #6366f1 1px, transparent 1px)",
+                    backgroundImage: "radial-gradient(circle, #19d950 1px, transparent 1px)",
                     backgroundSize: "18px 18px"
                   }} />
                   <div className="relative z-10">
-                    <p className="text-xs font-bold text-violet-600 uppercase tracking-widest mb-1">{config.title} Internship</p>
+                    <p className="text-xs font-bold text-green-600 uppercase tracking-widest mb-1">{config.title} Internship</p>
                     <div className="flex items-baseline gap-3 mt-2 mb-1">
                       <span className="text-[40px] font-extrabold text-gray-900 leading-none">{config.internshipPrice}</span>
                       <span className="text-xl font-semibold text-gray-400 line-through">{config.internshipStrikethrough}</span>
@@ -1020,7 +1020,7 @@ export default function CoursePage({ courseKey }) {
                   </div>
                   <div className="relative z-10">
                     <button onClick={() => setShowModal(true)}
-                      className="w-full h-12 rounded-xl bg-[#19d950] hover:bg-[#12c443] text-black font-extrabold text-base shadow-md transition hover:scale-[1.02] cursor-pointer">
+                      className="w-full h-12 rounded-xl btn-glossy-green font-extrabold text-base cursor-pointer">
                       Apply Now
                     </button>
                   </div>
@@ -1029,11 +1029,11 @@ export default function CoursePage({ courseKey }) {
             </div>
 
             {/* Internship note */}
-            <div className="flex items-start gap-3 bg-violet-50 border border-violet-200 rounded-2xl px-6 py-4">
-              <span className="text-violet-500 mt-0.5 flex-shrink-0 text-lg">ℹ️</span>
-              <p className="text-sm font-semibold text-violet-800">
+            <div className="flex items-start gap-3 bg-green-50 border border-green-200 rounded-2xl px-6 py-4">
+              <span className="text-green-500 mt-0.5 flex-shrink-0 text-lg">ℹ️</span>
+              <p className="text-sm font-semibold text-green-800">
                 For the 2-month internship program, please{" "}
-                <button onClick={() => setShowModal(true)} className="underline font-bold hover:text-violet-600 transition cursor-pointer">
+                <button onClick={() => setShowModal(true)} className="underline font-bold hover:text-green-600 transition cursor-pointer">
                   contact us
                 </button>{" "}
                 for more details.
@@ -1112,7 +1112,7 @@ export default function CoursePage({ courseKey }) {
                     </button>
                   </div>
                   <button type="submit"
-                    className="w-full h-12 bg-[#19d950] hover:bg-[#12c443] text-black font-extrabold text-base rounded-lg shadow-md transition flex items-center justify-center cursor-pointer">
+                    className="w-full h-12 btn-glossy-green font-extrabold text-base rounded-lg flex items-center justify-center cursor-pointer">
                     Apply Now
                   </button>
                   <p className="text-[10px] text-gray-400 leading-snug text-center">

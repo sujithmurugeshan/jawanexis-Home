@@ -503,12 +503,12 @@ function LearningPace() {
             Choose from 1000+ exclusive courses with new courses being published every month.
           </p>
         </div>
-        <div className="mt-7 flex flex-wrap justify-center gap-3">
+         <div className="mt-7 flex flex-wrap justify-center gap-3">
           {courseTabs.map(
             (tab) => (
               <button
                 key={tab}
-                className={`rounded-md border px-4 py-2 text-sm font-bold ${activeCourseTab === tab ? "border-guvi-green bg-guvi-green text-black" : "border-guvi-line bg-white text-black/70"
+                className={`rounded-md px-4 py-2 text-sm font-bold transition duration-200 cursor-pointer ${activeCourseTab === tab ? "btn-glossy-green border-transparent" : "border border-guvi-line bg-white text-black/70 hover:bg-guvi-soft"
                   }`}
                 type="button"
                 onClick={() => setActiveCourseTab(tab)}
