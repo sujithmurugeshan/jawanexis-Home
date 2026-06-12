@@ -12,6 +12,7 @@ import HRRecruitmentCoursePage from "./pages/HRRecruitmentCoursePage.jsx";
 import QATestingCoursePage from "./pages/QATestingCoursePage.jsx";
 import DSACoursePage from "./pages/DSACoursePage.jsx";
 import FullStackCoursePage from "./pages/FullStackCoursePage.jsx";
+import TeamProfilePage from "./pages/TeamProfilePage.jsx";
 
 
 function App() {
@@ -100,6 +101,11 @@ function App() {
 
   if (route === "#dsa-course") {
     return <DSACoursePage />;
+  }
+
+  if (route.startsWith("#team/")) {
+    const slug = route.replace("#team/", "");
+    return <TeamProfilePage slug={slug} />;
   }
 
   return <Home />;

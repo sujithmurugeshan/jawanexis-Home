@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { Eye, Target, Users, Sparkles, Heart, LogIn, Star } from "lucide-react";
+import { Eye, Target, Users, Sparkles, Heart, LogIn, Star, Rocket, Binoculars, Cloud } from "lucide-react";
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import FloatingChatButton from "../components/FloatingChatButton.jsx";
@@ -43,10 +43,10 @@ function BackgroundPattern({ className }) {
 }
 
 const teamMembers = [
-  { name: "Soorya Jawahar", role: "Founder & CEO", badge: "FOUNDER & CEO", photo: sooryaPhoto },
-  { name: "Anisha", role: "Senior HR - Training & Development", badge: "SENIOR HR", photo: anishaPhoto },
-  { name: "Nitinchand", role: "Tech Advisor", badge: "TECH ADVISOR", photo: nithinPhoto },
-  { name: "Sunitha Prakash", role: "Digital Marketing Executive", badge: "DIGITAL MARKETING", photo: sunithaPhoto }
+  { name: "Soorya Jawahar", role: "Founder & CEO", badge: "FOUNDER & CEO", photo: sooryaPhoto, slug: "soorya-jawahar" },
+  { name: "Anisha", role: "Senior HR - Training & Development", badge: "SENIOR HR", photo: anishaPhoto, slug: "anisha-riya" },
+  { name: "Nitinchand", role: "Tech Advisor", badge: "TECH ADVISOR", photo: nithinPhoto, slug: "nitinchand-saravanan" },
+  { name: "Sunitha Prakash", role: "Digital Marketing Executive", badge: "DIGITAL MARKETING", photo: sunithaPhoto, slug: "sunitha-prakash" }
 ];
 
 const testimonials = [
@@ -349,12 +349,25 @@ function WallOfLove() {
           0%, 100% { transform: scale(1); opacity: 0.4; }
           50% { transform: scale(1.15); opacity: 0.6; }
         }
+        @keyframes tab-fade-in {
+          from { opacity: 0; transform: translateY(6px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .tab-content-animate {
+          animation: tab-fade-in 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
       `}</style>
     </section>
   );
 }
 
 function AboutPage() {
+  const [activeTab, setActiveTab] = useState("mission");
+
+  const missionText = "To deliver practical, industry-relevant training and career development programs that help learners gain real-world expertise, achieve their goals, and succeed in their chosen careers.";
+
+  const visionText = "To empower individuals with the skills, confidence, and opportunities needed to build successful careers and create a meaningful impact in the professional world.";
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, []);
@@ -383,29 +396,68 @@ function AboutPage() {
         </section>
 
         {/* VISION & MISSION */}
-        <section className="py-16 bg-white border-y border-guvi-line/40">
-          <div className="shell">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-              <div className="relative group overflow-hidden rounded-2xl border border-guvi-line bg-gradient-to-br from-white to-guvi-soft/30 p-8 shadow-sm transition-all duration-300 hover:shadow-card hover:-translate-y-1">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-guvi-green text-black shadow-lift group-hover:scale-110 transition-transform duration-300">
-                  <Eye size={24} className="stroke-[2.5]" />
+        <section className="py-20 bg-white border-y border-guvi-line/40">
+          <div className="shell max-w-[800px] mx-auto px-4 text-center">
+            {/* Tabs Header */}
+            <div className="flex items-center justify-center gap-8 sm:gap-16 mb-10 border-b border-slate-100 pb-0.5">
+              {/* Mission Tab */}
+              <button
+                type="button"
+                onClick={() => setActiveTab("mission")}
+                className="flex items-center pb-3 cursor-pointer select-none focus:outline-none relative group"
+              >
+                <span
+                  className={`text-[24px] sm:text-[32px] font-extrabold transition-colors duration-200 pb-1.5 ${
+                    activeTab === "mission" ? "text-black border-b-[3.5px] border-[#15b957]" : "text-black/35 hover:text-black/55"
+                  }`}
+                >
+                  Our Mission
+                </span>
+                {activeTab === "mission" && (
+                  <div className="ml-2.5 text-[#15b957] flex items-center relative -top-1">
+                    <Rocket size={30} className="transform -rotate-12 animate-pulse" />
+                    <Cloud size={13} className="absolute -bottom-1 -left-1 opacity-70" />
+                    <Cloud size={15} className="absolute -bottom-2 -left-2.5 opacity-40" />
+                  </div>
+                )}
+              </button>
+
+              {/* Vision Tab */}
+              <button
+                type="button"
+                onClick={() => setActiveTab("vision")}
+                className="flex items-center pb-3 cursor-pointer select-none focus:outline-none relative group"
+              >
+                <span
+                  className={`text-[24px] sm:text-[32px] font-extrabold transition-colors duration-200 pb-1.5 ${
+                    activeTab === "vision" ? "text-black border-b-[3.5px] border-[#15b957]" : "text-black/35 hover:text-black/55"
+                  }`}
+                >
+                  Our Vision
+                </span>
+                {activeTab === "vision" && (
+                  <div className="ml-2.5 text-[#15b957] flex items-center relative -top-1">
+                    <Binoculars size={30} className="animate-pulse" />
+                  </div>
+                )}
+              </button>
+            </div>
+
+            {/* Tabs Content */}
+            <div className="min-h-[160px] flex flex-col justify-center items-center max-w-[700px] mx-auto">
+              {activeTab === "mission" ? (
+                <div key="mission" className="tab-content-animate">
+                  <p className="text-[17px] sm:text-[19px] font-medium leading-[1.8] text-slate-800">
+                    {missionText}
+                  </p>
                 </div>
-                <h2 className="mt-6 text-[22px] font-extrabold text-black">Our Vision</h2>
-                <p className="mt-4 text-[16px] font-medium leading-7 text-guvi-muted">
-                  To empower individuals with the skills, confidence, and opportunities needed to build successful careers and create a meaningful impact in the professional world.
-                </p>
-                <div className="absolute top-0 right-0 h-24 w-24 bg-guvi-green/5 rounded-bl-full pointer-events-none" />
-              </div>
-              <div className="relative group overflow-hidden rounded-2xl border border-guvi-line bg-gradient-to-br from-white to-guvi-soft/30 p-8 shadow-sm transition-all duration-300 hover:shadow-card hover:-translate-y-1">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-guvi-green text-black shadow-lift group-hover:scale-110 transition-transform duration-300">
-                  <Target size={24} className="stroke-[2.5]" />
+              ) : (
+                <div key="vision" className="tab-content-animate">
+                  <p className="text-[17px] sm:text-[19px] font-medium leading-[1.8] text-slate-800">
+                    {visionText}
+                  </p>
                 </div>
-                <h2 className="mt-6 text-[22px] font-extrabold text-black">Our Mission</h2>
-                <p className="mt-4 text-[16px] font-medium leading-7 text-guvi-muted">
-                  To deliver practical, industry-relevant training and career development programs that help learners gain real-world expertise, achieve their goals, and succeed in their chosen careers.
-                </p>
-                <div className="absolute top-0 right-0 h-24 w-24 bg-guvi-green/5 rounded-bl-full pointer-events-none" />
-              </div>
+              )}
             </div>
           </div>
         </section>
@@ -434,10 +486,10 @@ function AboutPage() {
                   <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm px-3.5 py-1.5 rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.06)] border border-slate-100/50 transition-all duration-300 group-hover:opacity-0 group-hover:pointer-events-none z-20">
                     <span className="text-[10px] tracking-wider font-extrabold text-slate-700 uppercase font-sans">{member.badge}</span>
                   </div>
-                  <button className="absolute top-4 left-4 bg-black hover:bg-neutral-800 text-white flex items-center gap-1.5 px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.18)] pointer-events-none group-hover:pointer-events-auto z-20">
+                  <a href={`#team/${member.slug}`} className="absolute top-4 left-4 bg-black hover:bg-neutral-800 text-white flex items-center gap-1.5 px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.18)] pointer-events-none group-hover:pointer-events-auto z-20 no-underline">
                     <LogIn size={13} className="stroke-[2.5]" />
                     <span className="text-[11px] font-extrabold tracking-wide font-sans">View Profile</span>
-                  </button>
+                  </a>
                   <div className="absolute bottom-0 left-0 right-0 bg-[#8cc63f] px-6 py-5 transition-transform duration-300 ease-out translate-y-full group-hover:translate-y-0 z-20 text-left">
                     <h4 className="text-white font-extrabold text-[18px] tracking-wide font-sans leading-tight">{member.name}</h4>
                     <p className="text-white/90 font-medium text-[12px] mt-0.5 font-sans leading-snug">{member.role}</p>

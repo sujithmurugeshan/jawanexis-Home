@@ -44,6 +44,13 @@ import achievement4 from "../assets/achievements/achievement-4.jpeg";
 import achievement5 from "../assets/achievements/achievement-5.jpeg";
 import achievement6 from "../assets/achievements/achievement-6.jpeg";
 
+import adhityaLogo from "../assets/college-logos/adhitya.png";
+import drngpascLogo from "../assets/college-logos/drngpasc.png";
+import jeppiaarLogo from "../assets/college-logos/jeppiaar.webp";
+import psgrLogo from "../assets/college-logos/psgr.png";
+import holycrossLogo from "../assets/college-logos/holycross.png";
+import drngpitechLogo from "../assets/college-logos/drngpitech.png";
+
 import balajiTestimonialPhoto from "../assets/learner-journey/balaji_testimonial.jpg";
 import anbuTestimonialPhoto from "../assets/learner-journey/anbu_testimonial.jpg";
 import shanmugavelTestimonialPhoto from "../assets/learner-journey/shanmugavel_testimonial.jpg";
@@ -119,6 +126,22 @@ export const navItems = [
 
 export const journeyLearners = [
   {
+    name: "Shanmugavel",
+    role: "HR Senior Executive Operations",
+    company: "TVS Motor Company",
+    location: "Chennai",
+    photo: shanmugavelPhoto,
+    companyLogo: tvsMotorLogo
+  },
+  {
+    name: "Madhumitha",
+    role: "Talent Acquisition Executive",
+    company: "Expertspro INC",
+    location: "Coimbatore",
+    photo: madhumithaPhoto,
+    companyMark: "E"
+  },
+  {
     name: "Brahadeesh Kalyan",
     role: "HR Executive",
     company: "Muthu Group Companies",
@@ -135,28 +158,12 @@ export const journeyLearners = [
     companyLogo: tcsLogo
   },
   {
-    name: "Madhumitha",
-    role: "Talent Acquisition Executive",
-    company: "Expertspro INC",
-    location: "Coimbatore",
-    photo: madhumithaPhoto,
-    companyMark: "E"
-  },
-  {
     name: "Balaji V",
     role: "HR Associate",
     company: "Hashtag Infosystems",
     location: "",
     photo: balajiPhoto,
     companyMark: "#"
-  },
-  {
-    name: "Shanmugavel",
-    role: "HR Senior Executive Operations",
-    company: "TVS Motor Company",
-    location: "Chennai",
-    photo: shanmugavelPhoto,
-    companyLogo: tvsMotorLogo
   },
   {
     name: "Gokul T",
@@ -340,12 +347,12 @@ export const learningCourses = [
 ];
 
 export const achievementPhotos = [
-  { id: 1, src: achievement1, alt: "Achievement 1" },
-  { id: 2, src: achievement2, alt: "Achievement 2" },
-  { id: 3, src: achievement3, alt: "Achievement 3" },
-  { id: 4, src: achievement4, alt: "Achievement 4" },
-  { id: 5, src: achievement5, alt: "Achievement 5" },
-  { id: 6, src: achievement6, alt: "Achievement 6" }
+  { id: 1, src: achievement1, alt: "Adhitya School of Business - Coimbatore", college: "Adhitya School of Business", location: "Coimbatore", logo: adhityaLogo },
+  { id: 2, src: achievement2, alt: "Dr.NGP College of Arts and Science - Coimbatore", college: "Dr.NGP College of Arts and Science", location: "Coimbatore", logo: drngpascLogo },
+  { id: 3, src: achievement3, alt: "Jeppiar University - Chennai", college: "Jeppiar University", location: "Chennai", logo: jeppiaarLogo },
+  { id: 4, src: achievement4, alt: "PSGR Krishnammal - Coimbatore", college: "PSGR Krishnammal", location: "Coimbatore", logo: psgrLogo },
+  { id: 5, src: achievement5, alt: "Holy Cross - Trichy", college: "Holy Cross", location: "Trichy", logo: holycrossLogo },
+  { id: 6, src: achievement6, alt: "Dr.NGP iTech - Coimbatore", college: "Dr.NGP iTech", location: "Coimbatore", logo: drngpitechLogo }
 ];
 
 export const footerColumns = [
