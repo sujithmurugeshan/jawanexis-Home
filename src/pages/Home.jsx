@@ -317,7 +317,6 @@ function JourneyOfLearners() {
                   <p className="journey-learner-role">{learner.role}</p>
                   <p className="journey-working-label">Working At</p>
                   <div className="journey-company-lockup">
-                    <p className="journey-company-name">{learner.company}</p>
                     {learner.companyLogo ? (
                       <img src={learner.companyLogo} alt={`${learner.company} logo`} className="journey-company-logo" />
                     ) : (
