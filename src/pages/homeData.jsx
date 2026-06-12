@@ -17,6 +17,32 @@ import russellTobinLogo from "../assets/learner-company-logos/russell-tobin.png"
 import quickRecruitLogo from "../assets/company-logos/quick-recruit.jpg";
 import ripplingLogo from "../assets/company-logos/rippling.jpg";
 import teamleaseLogo from "../assets/company-logos/teamlease.jpg";
+import siemensLogo from "../assets/company-logos/siemens.png";
+import aspireSystemsLogo from "../assets/company-logos/aspire-systems.png";
+import ideas2itLogo from "../assets/company-logos/ideas2it.png";
+import cartoonMangoLogo from "../assets/company-logos/cartoon-mango.png";
+import larsenToubroLogo from "../assets/company-logos/larsen-toubro.png";
+import lenovoLogo from "../assets/company-logos/lenovo.png";
+import justdialLogo from "../assets/company-logos/justdial.png";
+import thoughtworksLogo from "../assets/company-logos/thoughtworks.png";
+import amazonLogo from "../assets/company-logos/amazon.png";
+import wiproLogo from "../assets/company-logos/wipro.png";
+import accentureLogo from "../assets/company-logos/accenture.png";
+import caratlaneLogo from "../assets/company-logos/caratlane.png";
+import comcastLogo from "../assets/company-logos/comcast.png";
+import klentyLogo from "../assets/company-logos/klenty.png";
+import zohoLogo from "../assets/company-logos/zoho.png";
+import virtusaLogo from "../assets/company-logos/virtusa.png";
+import ibmLogo from "../assets/company-logos/ibm.png";
+import jllLogo from "../assets/company-logos/jll.png";
+import fiservLogo from "../assets/company-logos/fiserv.png";
+import techMahindraLogo from "../assets/company-logos/tech-mahindra.png";
+import grappusLogo from "../assets/company-logos/grappus.png";
+import cognizantLogo from "../assets/company-logos/cognizant.png";
+import paypalLogo from "../assets/company-logos/paypal.png";
+import capgeminiLogo from "../assets/company-logos/capgemini.png";
+import hclLogo from "../assets/company-logos/hcl.png";
+import tcsShowcaseLogo from "../assets/company-logos/tcs.png";
 import anbuPhoto from "../assets/learner-journey/anbu-r.jpg";
 import brahadeeshPhoto from "../assets/learner-journey/brahadeesh-kalyan.jpg";
 import dhanasekarPhoto from "../assets/learner-journey/dhanasekar-selvam.jpg";
@@ -37,6 +63,10 @@ import shanmugamPhoto from "../assets/learner-journey/shanmugam-gopal.jpg";
 import shanmugavelPhoto from "../assets/learner-journey/shanmugavel.jpeg";
 import tcsLogo from "../assets/learner-company-logos/tcs.png";
 import tvsMotorLogo from "../assets/learner-company-logos/tvs-motor.png";
+import expertsproLogo from "../assets/learner-company-logos/expertspro.png";
+import hashtagLogo from "../assets/learner-company-logos/hashtag-infosystems.png";
+import aesLogo from "../assets/learner-company-logos/aes-technologies.png";
+import urcLogo from "../assets/learner-company-logos/urc-construction.png";
 import achievement1 from "../assets/achievements/achievement-1.jpeg";
 import achievement2 from "../assets/achievements/achievement-2.jpeg";
 import achievement3 from "../assets/achievements/achievement-3.jpeg";
@@ -73,38 +103,38 @@ export const accreditationItems = [
 
 export const studentCompanyRows = [
   [
-    { name: "Siemens", color: "#009999" },
-    { name: "Aspire Systems", color: "#6a3ea1" },
-    { name: "Ideas2IT", color: "#1f4e79" },
-    { name: "Cartoon Mango", color: "#1d1d1f" },
-    { name: "Larsen & Toubro", color: "#1675bc" },
-    { name: "Lenovo", color: "#e2231a" },
-    { name: "Justdial", color: "#1b75bb" },
-    { name: "Thoughtworks", color: "#00a88e" },
-    { name: "Amazon", color: "#232f3e" },
+    { name: "Siemens", color: "#009999", logo: siemensLogo },
+    { name: "Aspire Systems", color: "#6a3ea1", logo: aspireSystemsLogo },
+    { name: "Ideas2IT", color: "#1f4e79", logo: ideas2itLogo },
+    { name: "Cartoon Mango", color: "#1d1d1f", logo: cartoonMangoLogo },
+    { name: "Larsen & Tourbo", color: "#1675bc", logo: larsenToubroLogo },
+    { name: "Lenovo", color: "#e2231a", logo: lenovoLogo },
+    { name: "Justdial", color: "#1b75bb", logo: justdialLogo },
+    { name: "Thoughtworks", color: "#00a88e", logo: thoughtworksLogo },
+    { name: "Amazon", color: "#232f3e", logo: amazonLogo },
     ...accreditationItems.slice(0, 3)
   ],
   [
-    { name: "TCS", color: "#e91e63" },
-    { name: "Wipro", color: "#6f2dbd" },
-    { name: "Accenture", color: "#a100ff" },
-    { name: "CaratLane", color: "#7b3fb2" },
-    { name: "Comcast", color: "#52565a" },
-    { name: "Klenty", color: "#8a8fb9" },
-    { name: "Zoho", color: "#0a7f3f" },
-    { name: "Virtusa", color: "#3d348b" },
+    { name: "TCS", color: "#e91e63", logo: tcsShowcaseLogo },
+    { name: "Wipro", color: "#6f2dbd", logo: wiproLogo },
+    { name: "Accenture", color: "#a100ff", logo: accentureLogo },
+    { name: "CaratLane", color: "#7b3fb2", logo: caratlaneLogo },
+    { name: "Comcast", color: "#52565a", logo: comcastLogo },
+    { name: "Klenty", color: "#8a8fb9", logo: klentyLogo },
+    { name: "Zoho", color: "#0a7f3f", logo: zohoLogo },
+    { name: "Virtusa", color: "#3d348b", logo: virtusaLogo },
     ...accreditationItems.slice(3, 6)
   ],
   [
-    { name: "IBM", color: "#0f62fe" },
-    { name: "JLL", color: "#e31b23" },
-    { name: "Fiserv", color: "#f36f21" },
-    { name: "Tech Mahindra", color: "#d71920" },
-    { name: "Grappus", color: "#111111" },
-    { name: "Cognizant", color: "#0033a0" },
-    { name: "PayPal", color: "#003087" },
-    { name: "Capgemini", color: "#00a3e0" },
-    { name: "HCL", color: "#0067b1" },
+    { name: "IBM", color: "#0f62fe", logo: ibmLogo },
+    { name: "JLL", color: "#e31b23", logo: jllLogo },
+    { name: "Fiserv", color: "#f36f21", logo: fiservLogo },
+    { name: "Tech Mahindra", color: "#d71920", logo: techMahindraLogo },
+    { name: "Grappus", color: "#111111", logo: grappusLogo },
+    { name: "Cognizant", color: "#0033a0", logo: cognizantLogo },
+    { name: "PayPal", color: "#003087", logo: paypalLogo },
+    { name: "Capgemini", color: "#00a3e0", logo: capgeminiLogo },
+    { name: "HCL", color: "#0067b1", logo: hclLogo },
     ...accreditationItems.slice(6)
   ]
 ];
@@ -127,6 +157,14 @@ export const navItems = [
 
 export const journeyLearners = [
   {
+    name: "Parthiban Sundararaju",
+    role: "HR Executive",
+    company: "Tata Consultancy Services",
+    location: "Kochi",
+    photo: parthibanPhoto,
+    companyLogo: tcsLogo
+  },
+  {
     name: "Shanmugavel",
     role: "HR Senior Executive Operations",
     company: "TVS Motor Company",
@@ -140,7 +178,7 @@ export const journeyLearners = [
     company: "Expertspro INC",
     location: "Coimbatore",
     photo: madhumithaPhoto,
-    companyMark: "E"
+    companyLogo: expertsproLogo
   },
   {
     name: "Brahadeesh Kalyan",
@@ -151,20 +189,12 @@ export const journeyLearners = [
     companyLogo: muthuGroupLogo
   },
   {
-    name: "Parthiban Sundararaju",
-    role: "HR Executive",
-    company: "Tata Consultancy Services",
-    location: "Kochi",
-    photo: parthibanPhoto,
-    companyLogo: tcsLogo
-  },
-  {
     name: "Balaji V",
     role: "HR Associate",
     company: "Hashtag Infosystems",
-    location: "",
+    location: "Coimbatore",
     photo: balajiPhoto,
-    companyMark: "#"
+    companyLogo: hashtagLogo
   },
   {
     name: "Gokul T",
@@ -172,7 +202,7 @@ export const journeyLearners = [
     company: "URC Construction",
     location: "Chennai",
     photo: gokulPhoto,
-    companyMark: "URC"
+    companyLogo: urcLogo
   },
   {
     name: "Anbu R",
@@ -194,7 +224,7 @@ export const journeyLearners = [
     name: "Hariharasudhan Sudhagar",
     role: "Full Stack Developer",
     company: "Laxhari Infotech",
-    location: "",
+    location: "Coimbatore",
     photo: hariharasudhanPhoto,
     companyLogo: laxhariLogo
   },
@@ -202,15 +232,15 @@ export const journeyLearners = [
     name: "Mohammed Hashid",
     role: "Full Stack Developer",
     company: "AES Technologies",
-    location: "",
+    location: "Coimbatore",
     photo: mohammedPhoto,
-    companyMark: "AES"
+    companyLogo: aesLogo
   },
   {
     name: "Shanmugam Gopal",
     role: "Senior Developer",
     company: "Fresa Technologies",
-    location: "",
+    location: "Chennai",
     photo: shanmugamPhoto,
     companyLogo: fresaLogo
   },
@@ -218,7 +248,7 @@ export const journeyLearners = [
     name: "Dhanasekar Selvam",
     role: "Full Stack Developer",
     company: "Prevaj",
-    location: "",
+    location: "Chennai",
     photo: dhanasekarPhoto,
     companyLogo: prevajLogo
   },
@@ -234,7 +264,7 @@ export const journeyLearners = [
     name: "HariKrishnan Dhanasekaran",
     role: "Full Stack Developer",
     company: "Mulecraft Digital",
-    location: "",
+    location: "Salem",
     photo: harikrishnanPhoto,
     companyLogo: mulecraftLogo
   },

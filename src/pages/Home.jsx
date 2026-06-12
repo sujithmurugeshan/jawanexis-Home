@@ -408,7 +408,26 @@ function StudentCompanies() {
               {[...row, ...row].map((company, index) => (
                 <article key={`${company.name}-${rowIndex}-${index}`} className="company-work-card" aria-hidden={index >= row.length}>
                   {company.logo ? (
-                    <img src={company.logo} alt={`${company.name} logo`} className="company-work-logo" />
+                    <>
+                      <img
+                        src={company.logo}
+                        alt={`${company.name} logo`}
+                        className="company-work-logo"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                          const fallback = e.currentTarget.parentElement.querySelector('.company-wordmark');
+                          if (fallback) {
+                            fallback.style.display = 'inline-flex';
+                          }
+                        }}
+                      />
+                      <span
+                        className={`company-wordmark company-wordmark-${getCompanyWordmarkClass(company.name)}`}
+                        style={{ "--brand-color": company.color, display: 'none' }}
+                      >
+                        {company.name}
+                      </span>
+                    </>
                   ) : (
                     <span
                       className={`company-wordmark company-wordmark-${getCompanyWordmarkClass(company.name)}`}
