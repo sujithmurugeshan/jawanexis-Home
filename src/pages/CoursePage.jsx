@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
+import { API_BASE_URL } from "../config";
+
 import { CheckCircle2, X, ChevronRight, Star, Search, BookOpen, Award, Briefcase, Sparkles, Users, Laptop, FileText, MessageSquare } from "lucide-react";
 import { coursesConfig } from "../data/coursesConfig.js";
 import {
@@ -267,7 +269,8 @@ const SelectField = ({ name, value, onChange, placeholder, children }) => (
 );
 
 /* ─────────────── Lead Application Form ─────────────── */
-const ApplyForm = ({ data, onChange, onPhoneChange, onSubmit, submitted }) => (
+const ApplyForm = ({ data, onChange, onPhoneChange, onSubmit, submitted, loading, error }) => (
+
   <div className="w-full bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-[0_8px_40px_rgba(0,0,0,0.07)] sticky top-24">
     {submitted ? (
       <div className="flex flex-col items-center justify-center py-12 text-center">
@@ -279,6 +282,8 @@ const ApplyForm = ({ data, onChange, onPhoneChange, onSubmit, submitted }) => (
     ) : (
       <>
         <h3 className="text-[20px] font-extrabold text-gray-900 text-center mb-5">Apply now to Unlock Offer!</h3>
+        {error && <div className="mb-4 p-2 bg-red-50 text-red-600 font-semibold rounded border border-red-200 text-sm">{error}</div>}
+
         <form onSubmit={onSubmit} className="space-y-3">
           <input type="text" name="name" value={data.name} onChange={onChange} placeholder="Name" required
             className="w-full h-11 px-4 border border-gray-200 rounded-lg text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-400/40 placeholder:text-gray-400"/>
@@ -300,6 +305,7 @@ const ApplyForm = ({ data, onChange, onPhoneChange, onSubmit, submitted }) => (
           </div>
           <SelectField name="education" value={data.education} onChange={onChange} placeholder="Education Qualification">
             <option>10th/12th Pass</option><option>Diploma / ITI</option>
+
             <option>Under Graduate (Engineering)</option>
             <option>Under Graduate (Arts/Science/Commerce)</option>
             <option>Post Graduate</option><option>PhD / Research Scholar</option>
@@ -325,9 +331,10 @@ const ApplyForm = ({ data, onChange, onPhoneChange, onSubmit, submitted }) => (
               Have a Coupon code? <span className="underline">Redeem</span>
             </button>
           </div>
-          <button type="submit"
-            className="w-full h-12 btn-glossy-green font-extrabold text-base rounded-lg flex items-center justify-center cursor-pointer">
-            Apply Now
+          <button type="submit" disabled={loading}
+            className="w-full h-12 btn-glossy-green font-extrabold text-base rounded-lg flex items-center justify-center cursor-pointer disabled:opacity-50">
+            {loading ? "Submitting..." : "Apply Now"}
+
           </button>
           <p className="text-[10px] text-gray-400 leading-snug text-center">
             By registering, I agree to be contacted via phone, SMS, or email for offers &amp; products, even if I am on a DNC/NDNC list.
@@ -610,6 +617,9 @@ export default function CoursePage({ courseKey, isInternship }) {
   const [modalOk, setModalOk] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [activeModule, setActiveModule] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [serverError, setServerError] = useState("");
+
 
   useEffect(() => { window.scrollTo(0, 0); }, [courseKey]);
   useEffect(() => {
@@ -620,13 +630,50 @@ export default function CoursePage({ courseKey, isInternship }) {
   const hc = (setter) => (e) => { const { name, value } = e.target; setter(p => ({ ...p, [name]: value })); };
   const hp = (setter) => (e) => setter(p => ({ ...p, phone: e.target.value.replace(/\D/g, "") }));
 
+  const submitForm = async (data, isModal) => {
+    setServerError("");
+    setLoading(true);
+    try {
+      const payload = {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        education: data.education,
+        graduationYear: parseInt(data.graduationYear) || undefined,
+        language: data.language,
+        courseKey: courseKey
+      };
+
+      const res = await fetch(`${API_BASE_URL}/api/internship/apply`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      
+      const resData = await res.json();
+      if (!res.ok) throw new Error(resData.detail || "Failed to submit application");
+
+      if (isModal) {
+        setModalOk(true);
+        setTimeout(() => { setModalOk(false); setShowModal(false); setModalForm(empty); }, 4000);
+      } else {
+        setPageOk(true);
+        setTimeout(() => { setPageOk(false); setFormData(empty); }, 4000);
+      }
+    } catch (err) {
+      setServerError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const submitPage = (e) => {
-    e.preventDefault(); setPageOk(true);
-    setTimeout(() => { setPageOk(false); setFormData(empty); }, 5000);
+    e.preventDefault(); 
+    submitForm(formData, false);
   };
   const submitModal = (e) => {
-    e.preventDefault(); setModalOk(true);
-    setTimeout(() => { setModalOk(false); setShowModal(false); setModalForm(empty); }, 5000);
+    e.preventDefault();
+    submitForm(modalForm, true);
   };
 
   const mod = config.modules[activeModule] || config.modules[0];
@@ -813,7 +860,8 @@ export default function CoursePage({ courseKey, isInternship }) {
                   </div>
                 </article>
               </div>
-              <ApplyForm data={formData} onChange={hc(setFormData)} onPhoneChange={hp(setFormData)} onSubmit={submitPage} submitted={pageOk} />
+              <ApplyForm data={formData} onChange={hc(setFormData)} onPhoneChange={hp(setFormData)} onSubmit={submitPage} submitted={pageOk} loading={loading} error={serverError} />
+
             </div>
           </div>
         </section>
@@ -1069,7 +1117,10 @@ export default function CoursePage({ courseKey, isInternship }) {
             ) : (
               <>
                 <h3 className="text-xl font-extrabold text-gray-900 text-center mb-6">Apply now to Unlock Offer!</h3>
-                <form onSubmit={submitModal} className="space-y-3">
+                {serverError && <div className="mt-4 p-3 bg-red-50 text-red-600 font-semibold rounded-md border border-red-200 text-sm">{serverError}</div>}
+
+                <form onSubmit={submitModal} className="mt-6 space-y-4">
+
                   <input type="text" name="name" value={modalForm.name} onChange={hc(setModalForm)} placeholder="Name" required
                     className="w-full h-11 px-4 border border-gray-200 rounded-lg text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-400/40 placeholder:text-gray-400" />
                   <input type="email" name="email" value={modalForm.email} onChange={hc(setModalForm)} placeholder="Email" required
@@ -1088,6 +1139,7 @@ export default function CoursePage({ courseKey, isInternship }) {
                   </div>
                   <SelectField name="education" value={modalForm.education} onChange={hc(setModalForm)} placeholder="Education Qualification">
                     <option>10th/12th Pass</option><option>Diploma / ITI</option>
+
                     <option>Under Graduate (Engineering)</option>
                     <option>Under Graduate (Arts/Science/Commerce)</option>
                     <option>Post Graduate</option><option>PhD / Research Scholar</option>
@@ -1113,9 +1165,10 @@ export default function CoursePage({ courseKey, isInternship }) {
                       Have a Coupon code? <span className="underline">Redeem</span>
                     </button>
                   </div>
-                  <button type="submit"
-                    className="w-full h-12 btn-glossy-green font-extrabold text-base rounded-lg flex items-center justify-center cursor-pointer">
-                    Apply Now
+                  <button type="submit" disabled={loading}
+                    className="w-full h-12 btn-glossy-green font-extrabold text-base rounded-xl flex items-center justify-center cursor-pointer mt-6 disabled:opacity-50">
+                    {loading ? "Submitting..." : "Submit Application"}
+
                   </button>
                   <p className="text-[10px] text-gray-400 leading-snug text-center">
                     By registering, I agree to be contacted via phone, SMS, or email for offers &amp; products, even if I am on a DNC/NDNC list.

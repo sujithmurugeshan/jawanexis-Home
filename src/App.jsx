@@ -14,6 +14,7 @@ import DSACoursePage from "./pages/DSACoursePage.jsx";
 import FullStackCoursePage from "./pages/FullStackCoursePage.jsx";
 import TeamProfilePage from "./pages/TeamProfilePage.jsx";
 import InternshipPage from "./pages/InternshipPage.jsx";
+import AdminDashboard from "./pages/AdminDashboard.jsx";
 
 
 function App() {
@@ -48,7 +49,9 @@ function App() {
         "#dsa-course",
         "#hr-executive-internship",
         "#hr-recruitment-internship",
-        "#full-stack-development-internship"
+        "#full-stack-development-internship",
+        "#admin"
+
       ].includes(route)
     ) {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
@@ -122,6 +125,10 @@ function App() {
 
   if (route === "#full-stack-development-internship") {
     return <InternshipPage courseKey="full-stack" />;
+  }
+
+  if (route === "#admin") {
+    return <AdminDashboard />;
   }
 
   return <Home />;

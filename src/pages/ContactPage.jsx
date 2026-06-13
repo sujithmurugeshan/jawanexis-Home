@@ -3,6 +3,8 @@ import { Phone, Mail, MapPin, CheckCircle } from "lucide-react";
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import FloatingChatButton from "../components/FloatingChatButton.jsx";
+import { API_BASE_URL } from "../config";
+
 
 // Custom SVG component representing the green triangle dots in the background
 function DecorativeTriangles({ className }) {
@@ -99,21 +101,46 @@ function ContactPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const [serverError, setServerError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setServerError("");
+    setLoading(true);
+
     if (validateForm()) {
-      setIsSubmitted(true);
-      // Reset form after a brief period
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          subject: "",
-          message: ""
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/contact`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
         });
-      }, 5000);
+
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.detail || "Failed to send message");
+        }
+
+        setIsSubmitted(true);
+        // Reset form after a brief period
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            subject: "",
+            message: ""
+          });
+        }, 5000);
+      } catch (err) {
+        setServerError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      setLoading(false);
     }
   };
 
@@ -207,6 +234,8 @@ function ContactPage() {
               <p className="text-sm text-gray-500 mt-1 font-semibold">
                 Feel free to stop by and say hi !
               </p>
+
+              {serverError && <div className="mt-4 p-3 bg-red-50 text-red-600 font-semibold rounded-md border border-red-200 text-sm">{serverError}</div>}
 
               {isSubmitted ? (
                 <div className="flex flex-col items-center justify-center py-16 text-center">
@@ -316,9 +345,11 @@ function ContactPage() {
                   {/* Submit button */}
                   <button
                     type="submit"
-                    className="w-full h-12 btn-glossy-green font-extrabold text-[16px] rounded-lg mt-6 flex items-center justify-center cursor-pointer"
+                    disabled={loading}
+                    className="w-full h-12 btn-glossy-green font-extrabold text-[16px] rounded-lg mt-6 flex items-center justify-center cursor-pointer disabled:opacity-50"
                   >
-                    Send
+                    {loading ? "Sending..." : "Send"}
+
                   </button>
                 </form>
               )}

@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import InternshipIntro from "../components/InternshipIntro.jsx";
+import { API_BASE_URL } from "../config";
+
 import { 
   CheckCircle2, X, ChevronRight, Award, Briefcase, BookOpen, 
   Clock, ShieldCheck, GraduationCap, ChevronDown, Check, UserCheck, Star, HelpCircle 
@@ -264,14 +266,44 @@ export default function InternshipPage({ courseKey }) {
     );
   }
 
-  const handleApplySubmit = (e) => {
+  const [serverError, setServerError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleApplySubmit = async (e) => {
     e.preventDefault();
-    setModalOk(true);
-    setTimeout(() => {
-      setModalOk(false);
-      setShowModal(false);
-      setFormData({ name: "", email: "", phone: "", education: "", graduationYear: "", language: "" });
-    }, 4000);
+    setServerError("");
+    setLoading(true);
+
+    try {
+      const payload = {
+        ...formData,
+        graduationYear: parseInt(formData.graduationYear),
+        courseKey: courseKey
+      };
+
+      const res = await fetch(`${API_BASE_URL}/api/internship/apply`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.detail || "Failed to submit application");
+      }
+
+      setModalOk(true);
+      setTimeout(() => {
+        setModalOk(false);
+        setShowModal(false);
+        setFormData({ name: "", email: "", phone: "", education: "", graduationYear: "", language: "" });
+      }, 4000);
+    } catch (err) {
+      setServerError(err.message);
+    } finally {
+      setLoading(false);
+    }
+
   };
 
   return (
@@ -603,6 +635,8 @@ export default function InternshipPage({ courseKey }) {
                   Enter your details below to request registration for the upcoming 1-month internship batch.
                 </p>
 
+                {serverError && <div className="mt-4 p-3 bg-red-50 text-red-600 font-semibold rounded-md border border-red-200 text-sm">{serverError}</div>}
+
                 <form onSubmit={handleApplySubmit} className="mt-6 space-y-4">
                   <div>
                     <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Full Name *</label>
@@ -691,9 +725,11 @@ export default function InternshipPage({ courseKey }) {
 
                   <button 
                     type="submit"
-                    className="w-full h-12 btn-glossy-green font-extrabold text-base rounded-xl flex items-center justify-center cursor-pointer mt-6"
+                    disabled={loading}
+                    className="w-full h-12 btn-glossy-green font-extrabold text-base rounded-xl flex items-center justify-center cursor-pointer mt-6 disabled:opacity-50"
                   >
-                    Submit Application
+                    {loading ? "Submitting..." : "Submit Application"}
+
                   </button>
                   <p className="text-[10px] text-gray-400 leading-snug text-center mt-2">
                     By submitting, I agree to be contacted via WhatsApp, call, or email regarding batch schedules and enrollment steps.

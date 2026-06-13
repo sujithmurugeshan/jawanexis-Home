@@ -1,5 +1,7 @@
-import { Menu, X, ChevronDown, Briefcase, UserPlus, Code2, Bug, Cpu } from "lucide-react";
-import { useState } from "react";
+import { Menu, X, ChevronDown, Briefcase, UserPlus, Code2, Bug, Cpu, LogOut, User, ChevronRight, LayoutDashboard } from "lucide-react";
+import { API_BASE_URL } from "../config";
+import { useState, useEffect } from "react";
+
 import logo3d from "../assets/3dlogo.png";
 import { navItems } from "../pages/homeData.jsx";
 
@@ -61,6 +63,56 @@ function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileCoursesOpen, setMobileCoursesOpen] = useState(false);
   const [mobileInternshipOpen, setMobileInternshipOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [userName, setUserName] = useState("");
+
+  const fetchUser = async (token) => {
+    if (!token) return;
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/auth/me`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setUserName(data.name.split(" ")[0]); // Get first name
+        setIsAdmin(data.isAdmin || false);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("jawa_token");
+    setIsLoggedIn(!!token);
+    if (token) fetchUser(token);
+    
+    const handleStorageChange = () => {
+      const t = localStorage.getItem("jawa_token");
+      setIsLoggedIn(!!t);
+      if (t) fetchUser(t);
+      else setUserName("");
+    };
+    
+    window.addEventListener("storage", handleStorageChange);
+    // Add a custom event listener so AuthPage can trigger updates immediately on the same window
+    window.addEventListener("jawa_auth_change", handleStorageChange);
+    
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+      window.removeEventListener("jawa_auth_change", handleStorageChange);
+    };
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("jawa_token");
+    setUserName("");
+    setIsAdmin(false);
+    window.dispatchEvent(new Event("jawa_auth_change"));
+    window.location.hash = "#home";
+  };
+
 
   return (
     <header className="sticky top-0 z-40 bg-white shadow-nav">
@@ -166,18 +218,45 @@ function Header() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <a
-              href="#login"
-              className="flex h-9 min-w-[76px] items-center justify-center rounded-md border border-guvi-green px-4 text-[15px] font-extrabold text-black"
-            >
-              Login
-            </a>
-            <a
-              href="#signup"
-              className="flex h-9 min-w-[84px] items-center justify-center rounded-md btn-glossy-green px-4 text-[15px] font-extrabold"
-            >
-              Sign up
-            </a>
+            {isLoggedIn ? (
+              <>
+                {isAdmin && (
+                  <a
+                    href="#admin"
+                    className="flex h-9 items-center justify-center rounded-md border border-guvi-green bg-guvi-soft px-3 text-sm font-extrabold text-guvi-green transition-colors hover:bg-guvi-mint"
+                  >
+                    Admin Dashboard
+                  </a>
+                )}
+                <div className="flex items-center gap-2 text-sm font-extrabold text-guvi-ink mr-2">
+                  <div className="w-8 h-8 rounded-full bg-guvi-soft text-guvi-green flex items-center justify-center">
+                    <User size={16} />
+                  </div>
+                  <span className="capitalize">{userName || "Student"}</span>
+                </div>
+                <button
+                  onClick={handleLogout}
+                  className="flex h-9 min-w-[84px] items-center justify-center gap-2 rounded-md border border-red-200 text-red-600 px-4 text-sm font-extrabold hover:bg-red-50 transition-colors cursor-pointer"
+                >
+                  <LogOut size={16} /> Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <a
+                  href="#login"
+                  className="flex h-9 min-w-[76px] items-center justify-center rounded-md border border-guvi-green px-4 text-[15px] font-extrabold text-black"
+                >
+                  Login
+                </a>
+                <a
+                  href="#signup"
+                  className="flex h-9 min-w-[84px] items-center justify-center rounded-md btn-glossy-green px-4 text-[15px] font-extrabold"
+                >
+                  Sign up
+                </a>
+              </>
+            )}
           </div>
         </div>
 
@@ -286,13 +365,25 @@ function Header() {
                 </a>
               );
             })}
-            <div className="mt-2 grid grid-cols-2 gap-3">
-              <a href="#login" className="rounded-md border border-guvi-green px-4 py-2.5 text-center text-sm font-bold text-black">
-                Login
-              </a>
-              <a href="#signup" className="rounded-md btn-glossy-green px-4 py-2.5 text-center text-sm font-bold">
-                Sign up
-              </a>
+            <div className="mt-2 grid grid-cols-1 gap-3">
+              {isLoggedIn ? (
+                <button 
+                  onClick={() => { handleLogout(); setMobileOpen(false); }}
+                  className="rounded-md border border-red-200 bg-red-50 px-4 py-2.5 text-center text-sm font-bold text-red-600 flex items-center justify-center gap-2"
+                >
+                  <LogOut size={16} /> Logout
+                </button>
+              ) : (
+                <div className="grid grid-cols-2 gap-3">
+                  <a href="#login" className="rounded-md border border-guvi-green px-4 py-2.5 text-center text-sm font-bold text-black" onClick={() => setMobileOpen(false)}>
+                    Login
+                  </a>
+                  <a href="#signup" className="rounded-md btn-glossy-green px-4 py-2.5 text-center text-sm font-bold" onClick={() => setMobileOpen(false)}>
+                    Sign up
+                  </a>
+                </div>
+              )}
+
             </div>
           </div>
         </div>

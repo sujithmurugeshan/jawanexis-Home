@@ -1,15 +1,85 @@
+import { useState } from "react";
 import { ArrowLeft, CheckCircle2, Eye, LockKeyhole, Mail, Phone, User } from "lucide-react";
+import { GoogleLogin } from "@react-oauth/google";
+import { API_BASE_URL } from "../config";
 import logo3d from "../assets/3dlogo.png";
 
 function AuthPage({ mode = "login" }) {
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", password: "", confirmPassword: "" });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
   const isSignup = mode === "signup";
   const title = isSignup ? "Create your account" : "Welcome back";
   const subtitle = isSignup
     ? "Start learning with live classes, mentor guidance, and placement support."
     : "Login to continue your learning journey with JAWA EDTech.";
 
-  const handleSubmit = (event) => {
+  const handleChange = (e) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    setError("");
+    setSuccess(false);
+
+    if (isSignup && formData.password !== formData.confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const endpoint = isSignup ? "/api/auth/register" : "/api/auth/login";
+      const payload = isSignup 
+        ? { name: formData.name, email: formData.email, phone: formData.phone, password: formData.password }
+        : { email: formData.email, password: formData.password };
+
+      const res = await fetch(`${API_BASE_URL}${endpoint}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.detail || "Authentication failed");
+      }
+
+      localStorage.setItem("jawa_token", data.access_token);
+      window.dispatchEvent(new Event("jawa_auth_change"));
+      setSuccess(true);
+      window.location.hash = "#home";
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/auth/google`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id_token: credentialResponse.credential }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.detail || "Google authentication failed");
+      
+      localStorage.setItem("jawa_token", data.access_token);
+      window.dispatchEvent(new Event("jawa_auth_change"));
+      setSuccess(true);
+      window.location.hash = "#home";
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -67,17 +137,20 @@ function AuthPage({ mode = "login" }) {
                 <p className="mt-3 text-[16px] font-medium leading-7 text-black/58">{subtitle}</p>
               </div>
 
+              {error && <div className="mb-4 rounded-md bg-red-50 p-3 text-sm font-bold text-red-600 border border-red-200">{error}</div>}
+              {success && <div className="mb-4 rounded-md bg-green-50 p-3 text-sm font-bold text-green-600 border border-green-200">Successfully authenticated! Redirecting...</div>}
+
               <form className="grid gap-4" onSubmit={handleSubmit}>
                 {isSignup ? (
-                  <Field icon={<User size={18} />} label="Full name" type="text" placeholder="Enter your name" autoComplete="name" />
+                  <Field icon={<User size={18} />} label="Full name" type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Enter your name" autoComplete="name" required />
                 ) : null}
-                <Field icon={<Mail size={18} />} label="Email address" type="email" placeholder="Enter your email" autoComplete="email" />
+                <Field icon={<Mail size={18} />} label="Email address" type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Enter your email" autoComplete="email" required />
                 {isSignup ? (
-                  <Field icon={<Phone size={18} />} label="Phone number" type="tel" placeholder="Enter your mobile number" autoComplete="tel" />
+                  <Field icon={<Phone size={18} />} label="Phone number" type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="Enter your mobile number" autoComplete="tel" required />
                 ) : null}
-                <Field icon={<LockKeyhole size={18} />} label="Password" type="password" placeholder="Enter your password" autoComplete={isSignup ? "new-password" : "current-password"} hasReveal />
+                <Field icon={<LockKeyhole size={18} />} label="Password" type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Enter your password" autoComplete={isSignup ? "new-password" : "current-password"} hasReveal required />
                 {isSignup ? (
-                  <Field icon={<LockKeyhole size={18} />} label="Confirm password" type="password" placeholder="Confirm your password" autoComplete="new-password" hasReveal />
+                  <Field icon={<LockKeyhole size={18} />} label="Confirm password" type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} placeholder="Confirm your password" autoComplete="new-password" hasReveal required />
                 ) : null}
 
                 <div className="flex flex-wrap items-center justify-between gap-3 text-sm font-bold">
@@ -88,8 +161,9 @@ function AuthPage({ mode = "login" }) {
                   {!isSignup ? <a href="#login" className="text-guvi-deepGreen hover:text-black">Forgot password?</a> : null}
                 </div>
 
-                <button type="submit" className="mt-2 h-12 rounded-[8px] btn-glossy-green text-[16px] font-extrabold">
-                  {isSignup ? "Create Account" : "Login"}
+                <button type="submit" disabled={loading} className="mt-2 h-12 rounded-[8px] btn-glossy-green text-[16px] font-extrabold disabled:opacity-50">
+                  {loading ? "Please wait..." : (isSignup ? "Create Account" : "Login")}
+
                 </button>
               </form>
 
@@ -99,10 +173,18 @@ function AuthPage({ mode = "login" }) {
                 <span className="h-px flex-1 bg-guvi-line" />
               </div>
 
-              <button type="button" className="flex h-12 w-full items-center justify-center gap-3 rounded-[8px] border border-guvi-line bg-white text-sm font-extrabold text-black transition hover:border-guvi-green hover:bg-guvi-soft">
-                <i className="fa-brands fa-google text-[17px]" aria-hidden="true" />
-                Continue with Google
-              </button>
+              <div className="flex justify-center w-full">
+                <GoogleLogin
+                  onSuccess={handleGoogleSuccess}
+                  onError={() => setError("Google Login Failed")}
+                  useOneTap
+                  theme="outline"
+                  size="large"
+                  text={isSignup ? "signup_with" : "signin_with"}
+                  width="100%"
+                />
+              </div>
+
 
               <p className="mt-8 text-center text-sm font-bold text-black/55">
                 {isSignup ? "Already have an account?" : "Do not have an account?"}{" "}
