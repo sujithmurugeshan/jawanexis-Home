@@ -1,0 +1,40 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: jawa_db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: jawa_edtech
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d jawa_edtech"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build: .
+    container_name: jawa_api
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://admin:password@db:5432/jawa_edtech?schema=public
+      - JWT_SECRET=supersecretjwtkey_change_in_prod
+      - FRONTEND_ORIGIN=http://localhost:5173
+      - SMTP_HOST=smtp.gmail.com
+      - SMTP_PORT=587
+      - SMTP_USER=test@example.com
+      - SMTP_PASS=testpass
+      - GOOGLE_CLIENT_ID=your_google_client_id.apps.googleusercontent.com
+    depends_on:
+      db:
+        condition: service_healthy
+    command: /bin/sh -c "npx prisma migrate deploy && npm start"
+
+volumes:
+  pgdata:

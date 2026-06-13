@@ -1,0 +1,7 @@
+node_modules
+*.log
+*.err
+.vscode
+dist/
+.env
+sheets-credentials.json
