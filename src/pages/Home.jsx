@@ -6,6 +6,8 @@ import Header from "../components/Header.jsx";
 import LiveCard from "../components/LiveCard.jsx";
 import SyllabusModal from "../components/SyllabusModal.jsx";
 import nativeLanguagesImage from "../assets/native-languages.jpg";
+import posterBoat from "../assets/poster-boat.png";
+import posterBoatHr from "../assets/poster-boat-hr.png";
 import {
   achievementPhotos,
   journeyLearners,
@@ -14,6 +16,39 @@ import {
   liveCards,
   studentCompanyRows
 } from "./homeData.jsx";
+
+const heroOfferPanels = [
+  {
+    eyebrow: "Companies Hire Skills.We Help You to Build them.",
+    title: (
+      <>
+        Save <span className="text-guvi-deepGreen">Rs. 7,777</span> on IT Career Programs
+      </>
+    ),
+    image: posterBoat,
+    rows: [
+      ["HR Executive Training", "HR Recruitment Training", "Full Stack Development"],
+      ["Software Quality Testing (QA Testing)", "Data Structure And Algorithms (DSA)"],
+    ],
+    cta: "Claim Rs. 7,777 Off Now",
+    note: "*Offer Ends Soon",
+  },
+  {
+    eyebrow: "Premium Career Development Centre in Coimbatore",
+    title: (
+      <>
+        Expert’s in Human Resource Development course
+      </>
+    ),
+    image: posterBoatHr,
+    rows: [
+      ["Human Resource Development", "Full Stack Development"],
+      ["DSA Course", "Quality Testing Course"],
+    ],
+    cta: "Explore Career Programs",
+    note: "Build practical HR and IT skills with career-focused training.",
+  },
+];
 
 function Home() {
   const [selectedCourse, setSelectedCourse] = useState(null);
@@ -192,56 +227,67 @@ function SliderControls({ activeIndex, count, onNext, onPrevious, onSelect }) {
 }
 
 function HeroOffer() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % heroOfferPanels.length);
+    }, 5200);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
   return (
     <section id="home" className="hero-offer">
-      <div className="shell flex min-h-[374px] items-center">
-        <div className="relative z-10 max-w-[760px] pt-1 xl:max-w-[930px]">
-          <p className="text-[18px] font-semibold leading-tight tracking-[-0.01em] text-black sm:text-[25px]">
-            Companies Hire Skills.We Help You to Build them.
-          </p>
-          <h1 className="mt-5 text-[30px] font-extrabold leading-tight tracking-[-0.02em] text-black sm:text-[42px] lg:text-[46px]">
-            Save <span className="text-guvi-deepGreen">Rs. 7,777</span> on HR & IT Career Programs
-          </h1>
-          <div className="mt-7 inline-flex flex-col gap-y-3 rounded-[24px] md:rounded-[28px] border-2 border-black bg-gradient-to-r from-guvi-mint to-white py-4 pl-9 pr-7 shadow-[inset_12px_0_0_#19d950] max-w-[760px] lg:max-w-[880px]">
-            {/* First line: 3 courses */}
-            <div className="flex flex-wrap gap-x-6 gap-y-2.5 items-center">
-              {[
-                "HR Executive Training",
-                "HR Recruitment Training",
-                "Full Stack Development"
-              ].map((course) => (
-                <span
-                  key={course}
-                  className="flex items-center gap-2 text-[15px] sm:text-[16px] font-extrabold text-black cursor-default whitespace-nowrap"
-                >
-                  <span className="h-2.5 w-2.5 rounded-full bg-guvi-green animate-pulse shrink-0" />
-                  <span>{course}</span>
-                </span>
-              ))}
+      <div className="hero-offer-viewport">
+        <div
+          className="hero-offer-track"
+          style={{ transform: `translateX(-${activeSlide * 100}%)` }}
+        >
+        {heroOfferPanels.map((panel) => (
+          <article className="hero-offer-card" key={panel.eyebrow}>
+            <div className="hero-offer-art" aria-hidden="true">
+              <img src={panel.image} alt="" />
             </div>
-            {/* Second line: 2 courses */}
-            <div className="flex flex-wrap gap-x-6 gap-y-2.5 items-center">
-              {[
-                "Software Quality Testing (QA Testing)",
-                "Data Structure And Algorithms (DSA)"
-              ].map((course) => (
-                <span
-                  key={course}
-                  className="flex items-center gap-2 text-[15px] sm:text-[16px] font-extrabold text-black cursor-default whitespace-nowrap"
+            <div className="shell flex min-h-[374px] items-center">
+              <div className="relative z-10 max-w-[760px] pt-1 xl:max-w-[930px]">
+                <p className="text-[18px] font-semibold leading-tight tracking-[-0.01em] text-black sm:text-[25px]">
+                  {panel.eyebrow}
+                </p>
+                <h1 className="mt-5 text-[30px] font-extrabold leading-tight tracking-[-0.02em] text-black sm:text-[42px] lg:text-[46px]">
+                  {panel.title}
+                </h1>
+                {panel.description ? (
+                  <p className="mt-3 max-w-[900px] text-[16px] font-extrabold leading-7 text-black/68 sm:text-[19px]">
+                    {panel.description}
+                  </p>
+                ) : null}
+                <div className="mt-7 inline-flex max-w-[760px] flex-col gap-y-3 rounded-[24px] border-2 border-black bg-gradient-to-r from-guvi-mint to-white py-4 pl-9 pr-7 shadow-[inset_12px_0_0_#19d950] md:rounded-[28px] lg:max-w-[880px]">
+                  {panel.rows.map((row) => (
+                    <div key={row.join("-")} className="flex flex-wrap items-center gap-x-6 gap-y-2.5">
+                      {row.map((course) => (
+                        <span
+                          key={course}
+                          className="flex cursor-default items-center gap-2 whitespace-nowrap text-[15px] font-extrabold text-black sm:text-[16px]"
+                        >
+                          <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-guvi-green animate-pulse" />
+                          <span>{course}</span>
+                        </span>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+                <a
+                  href="#internship"
+                  className="mt-7 flex h-[48px] w-[220px] items-center justify-center rounded-md btn-glossy-green text-[17px] font-extrabold sm:h-[54px] sm:w-[260px] sm:text-[21px]"
                 >
-                  <span className="h-2.5 w-2.5 rounded-full bg-guvi-green animate-pulse shrink-0" />
-                  <span>{course}</span>
-                </span>
-              ))}
+                  {panel.cta}
+                </a>
+                <p className="mt-4 text-[16px] font-medium text-black/70">{panel.note}</p>
+              </div>
             </div>
-          </div>
-          <a
-            href="#internship"
-            className="mt-7 flex h-[48px] w-[220px] items-center justify-center rounded-md btn-glossy-green text-[17px] font-extrabold sm:h-[54px] sm:w-[260px] sm:text-[21px]"
-          >
-            Claim Rs. 7,777 Off Now
-          </a>
-          <p className="mt-4 text-[16px] font-medium text-black/70">*Offer Ends Soon</p>
+          </article>
+        ))}
         </div>
       </div>
     </section>
