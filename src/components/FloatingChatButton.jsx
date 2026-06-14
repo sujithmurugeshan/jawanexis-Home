@@ -43,7 +43,7 @@ function getJawaReply(message) {
   }
 
   if (text.includes("fee") || text.includes("price") || text.includes("offer") || text.includes("discount")) {
-    return "The homepage currently highlights a Rs. 5,000 offer on Jawa Edtech Zen Class programs. For exact pricing, contact the admissions team so they can confirm the latest details.";
+    return "The homepage currently highlights a Rs. 5,000 offer on Jawa Edtech Live Class programs. For exact pricing, contact the admissions team so they can confirm the latest details.";
   }
 
   if (text.includes("course") || text.includes("program") || text.includes("suit")) {

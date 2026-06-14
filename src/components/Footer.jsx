@@ -86,14 +86,10 @@ function Footer() {
         {/* Top Section: Navigation Columns */}
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
           
-          {/* Column 1: ZEN CLASS */}
+          {/* Column 1: LIVE CLASSES */}
           <div>
             <h3 className="flex items-center gap-2 text-[15px] font-extrabold text-white">
-              ZEN CLASS
-              <span className="inline-flex h-5 items-center gap-1 rounded-[4px] bg-[#1c1c1e] px-2 text-[12px] font-extrabold text-slate-200">
-                <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
-                LIVE CLASS
-              </span>
+              LIVE CLASSES
             </h3>
             <div className="mt-4 space-y-3">
               <FooterLink>HR Executive Training</FooterLink>
