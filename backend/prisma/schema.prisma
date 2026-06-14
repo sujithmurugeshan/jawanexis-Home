@@ -4,7 +4,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -32,13 +32,6 @@ model ContactSubmission {
 }
 
 
-enum ApplicationStatus {
-  PENDING
-  CONTACTED
-  ENROLLED
-  REJECTED
-}
-
 model InternshipApplication {
   id             String            @id @default(uuid())
   courseKey      String
@@ -48,6 +41,6 @@ model InternshipApplication {
   education      String?
   graduationYear Int?
   language       String?
-  status         ApplicationStatus @default(PENDING)
+  status         String            @default("PENDING")
   createdAt      DateTime          @default(now())
 }

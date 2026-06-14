@@ -7,7 +7,7 @@ import LiveCard from "../components/LiveCard.jsx";
 import SyllabusModal from "../components/SyllabusModal.jsx";
 import nativeLanguagesImage from "../assets/native-languages.jpg";
 import posterBoat from "../assets/poster-boat.png";
-import posterBoatHr from "../assets/poster-boat-hr.png";
+import posterBoatHr from "../assets/poster-boat-hr.jpg";
 import {
   achievementPhotos,
   journeyLearners,
