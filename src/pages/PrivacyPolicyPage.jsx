@@ -71,7 +71,7 @@ function PrivacyPolicyPage() {
               <article className="lg:col-span-9 bg-white border border-guvi-line/60 rounded-xl p-6 sm:p-10 shadow-sm">
                 <div className="prose prose-slate max-w-none">
                   <p className="text-[16px] leading-7 font-medium text-guvi-muted mb-8">
-                    At Jawa EdTech, we value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website, enroll in our courses, or interact with our services.
+                    At JAWA EDTECH, we value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website, enroll in our courses, or interact with our services.
                   </p>
 
                   {/* Section 1 */}
@@ -159,7 +159,7 @@ function PrivacyPolicyPage() {
                       Information Sharing &amp; Disclosure
                     </h2>
                     <p className="text-[15px] leading-7 font-medium text-guvi-muted mb-3">
-                      Jawa EdTech does not sell, rent, trade, or compromise your personal information with external advertisers or third parties.
+                      JAWA EDTECH does not sell, rent, trade, or compromise your personal information with external advertisers or third parties.
                     </p>
                     <div className="bg-guvi-mint/40 border border-guvi-line/45 rounded-lg p-4 text-[15px] leading-relaxed font-medium text-guvi-muted">
                       💡 <strong>Trusted Partners:</strong> We may share data with service providers who assist in payment processing, backend server hosting, or corporate placement support. These partners are legally bound to protect your data and are not authorized to use it for marketing purposes.
@@ -201,7 +201,7 @@ function PrivacyPolicyPage() {
                       Third-Party Links
                     </h2>
                     <p className="text-[15px] leading-7 font-medium text-guvi-muted">
-                      Our platform may feature reference links to external websites, services, or documentation resources. Jawa EdTech is not responsible for the privacy practices, content, or policies of outside services. We recommend reviewing the terms of any website you visit.
+                      Our platform may feature reference links to external websites, services, or documentation resources. JAWA EDTECH is not responsible for the privacy practices, content, or policies of outside services. We recommend reviewing the terms of any website you visit.
                     </p>
                   </div>
 
@@ -212,7 +212,7 @@ function PrivacyPolicyPage() {
                       Policy Updates
                     </h2>
                     <p className="text-[15px] leading-7 font-medium text-guvi-muted">
-                      Jawa EdTech reserves the right to modify or replace this Privacy Policy at any time. Any changes will be published directly on this page with an updated modification date. Your continued enrollment or interaction with our services implies consent to the revised terms.
+                      JAWA EDTECH reserves the right to modify or replace this Privacy Policy at any time. Any changes will be published directly on this page with an updated modification date. Your continued enrollment or interaction with our services implies consent to the revised terms.
                     </p>
                   </div>
 
@@ -226,7 +226,7 @@ function PrivacyPolicyPage() {
                       If you have questions, feedback, or concerns regarding your privacy, data security, or this document, please reach out to us at:
                     </p>
                     <div className="mt-4 bg-slate-50 border border-slate-200 rounded-lg p-5">
-                      <p className="text-[15px] font-bold text-black mb-1">Jawa EdTech</p>
+                      <p className="text-[15px] font-bold text-black mb-1">JAWA EDTECH</p>
                       <p className="text-[14px] font-medium text-guvi-muted">
                         Email: <a href="mailto:hr@jawaedtech.com" className="text-guvi-deepGreen underline font-semibold">hr@jawaedtech.com</a>
                       </p>

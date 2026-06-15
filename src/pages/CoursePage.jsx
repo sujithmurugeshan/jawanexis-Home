@@ -389,7 +389,7 @@ function FaqSection({ faqs, title }) {
             Frequently Asked Questions
           </h2>
           <p className="mt-3 text-gray-500 font-medium">
-            Everything you need to know about the JawaEdTech {title} Program.
+            Everything you need to know about the JAWA EDTECH {title} Program.
           </p>
         </div>
 
@@ -1058,7 +1058,7 @@ export default function CoursePage({ courseKey, isInternship }) {
           <div className="relative z-10 flex flex-col items-center text-center pt-10 pb-4 px-4">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-green-200 text-green-700 text-xs font-extrabold uppercase tracking-widest mb-5 shadow-sm">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-ping" />
-              JawaEdTech Certified
+              JAWA EDTECH Certified
             </span>
             <h1 className="text-[28px] sm:text-[40px] md:text-[50px] font-extrabold leading-tight tracking-tight text-gray-900 max-w-[900px]">
               {config.heroTitle}
@@ -1105,7 +1105,7 @@ export default function CoursePage({ courseKey, isInternship }) {
                   style={{ background: "radial-gradient(ellipse at 50% 90%,rgba(25,217,80,0.12) 0%,transparent 70%)" }} />
                 <img
                   src={config.studentsImg}
-                  alt={`JawaEdTech ${config.title} Students`}
+                  alt={`JAWA EDTECH ${config.title} Students`}
                   className="relative w-full block object-contain object-bottom drop-shadow-xl"
                   style={{ maxHeight: 520, minHeight: 280 }}
                 />

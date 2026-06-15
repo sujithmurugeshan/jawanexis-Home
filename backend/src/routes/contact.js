@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
 
     // Fire and forget email notification
     sendEmail(
-      'sooryajawahar@gmail.com, hr@jawaedtech.com, jawaedtech@gmail.com, alerts.jawaedtech@gmail.com',
+      'sooryajawahar@gmail.com, hr@jawaedtech.com, JAWA EDTECH@gmail.com, alerts.JAWA EDTECH@gmail.com',
       `New Contact Submission: ${validatedData.subject}`,
       `Name: ${validatedData.name}\nEmail: ${validatedData.email}\nPhone: ${validatedData.phone}\nMessage:\n${validatedData.message}`
     );

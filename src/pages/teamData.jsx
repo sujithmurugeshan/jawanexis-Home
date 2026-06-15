@@ -10,9 +10,9 @@ const teamProfiles = {
     role: "Founder & CEO",
     photo: sooryaPhoto,
     about: [
-      "Soorya Jawahar is the Founder & CEO of Jawa EdTech, a leading training and career development platform focused on empowering students and professionals with industry-relevant skills. With a strong passion for education, workforce development, and innovation, he founded Jawa EdTech with a mission to bridge the gap between academic learning and industry expectations.",
-      "Under his leadership, Jawa EdTech has helped aspiring professionals gain practical knowledge through hands-on training, mentorship, and career-focused programs. His vision is to create a learning ecosystem where students are not only educated but also prepared to succeed in today's competitive job market.",
-      "As the Founder & CEO of Jawa EdTech, Soorya Jawahar is dedicated to transforming the education landscape by providing high-quality training programs that equip learners with real-world skills, confidence, and career opportunities."
+      "Soorya Jawahar is the Founder & CEO of JAWA EDTECH, a leading training and career development platform focused on empowering students and professionals with industry-relevant skills. With a strong passion for education, workforce development, and innovation, he founded JAWA EDTECH with a mission to bridge the gap between academic learning and industry expectations.",
+      "Under his leadership, JAWA EDTECH has helped aspiring professionals gain practical knowledge through hands-on training, mentorship, and career-focused programs. His vision is to create a learning ecosystem where students are not only educated but also prepared to succeed in today's competitive job market.",
+      "As the Founder & CEO of JAWA EDTECH, Soorya Jawahar is dedicated to transforming the education landscape by providing high-quality training programs that equip learners with real-world skills, confidence, and career opportunities."
     ],
     expertise: [
       "Human Resource Training & Development",
@@ -28,7 +28,7 @@ const teamProfiles = {
     ],
     roleDescription: "As the Founder & CEO, Soorya Jawahar is responsible for:",
     responsibilities: [
-      "Defining the vision and strategic direction of Jawa EdTech",
+      "Defining the vision and strategic direction of JAWA EDTECH",
       "Designing industry-oriented training programs",
       "Building partnerships with companies and industry experts",
       "Driving placement and career development initiatives",
@@ -51,17 +51,17 @@ const teamProfiles = {
     founderMessage: {
       title: "A Message from the Founder",
       paragraphs: [
-        "At Jawa EDTECH, we believe that true education is measured not by what is taught, but by what learners are empowered to achieve.",
+        "At JAWA EDTECH, we believe that true education is measured not by what is taught, but by what learners are empowered to achieve.",
         "In a world where industries evolve rapidly, success belongs to those who continuously learn, adapt, and grow. Our purpose is to create learning experiences that go beyond traditional training—equipping individuals with practical skills, professional confidence, and the mindset needed to excel in their careers.",
-        "Every course we offer is designed with a clear objective: to help learners become industry-ready, future-focused, and capable of creating meaningful impact in their chosen fields. Whether you are a student beginning your journey or a professional seeking growth, Jawa EDTECH is committed to supporting your ambitions with quality education, expert mentorship, and dedicated career guidance.",
+        "Every course we offer is designed with a clear objective: to help learners become industry-ready, future-focused, and capable of creating meaningful impact in their chosen fields. Whether you are a student beginning your journey or a professional seeking growth, JAWA EDTECH is committed to supporting your ambitions with quality education, expert mentorship, and dedicated career guidance.",
         "We are not just building courses; we are cultivating talent, unlocking potential, and shaping the professionals of tomorrow.",
-        "Thank you for choosing Jawa EDTECH as your partner in growth. Your success is the vision that drives us forward every day."
+        "Thank you for choosing JAWA EDTECH as your partner in growth. Your success is the vision that drives us forward every day."
       ],
       closing: "Warm Regards,",
       signature: "Soorya Jawahar",
-      signatureRole: "Founder & CEO, Jawa EDTECH"
+      signatureRole: "Founder & CEO, JAWA EDTECH"
     },
-    founderQuote: "Education creates knowledge, but practical learning creates careers. At Jawa EDTECH, we are committed to helping every learner transform their potential into professional success."
+    founderQuote: "Education creates knowledge, but practical learning creates careers. At JAWA EDTECH, we are committed to helping every learner transform their potential into professional success."
   },
 
   "anisha-riya": {
@@ -70,7 +70,7 @@ const teamProfiles = {
     role: "Senior HR Training & Development",
     photo: anishaPhoto,
     about: [
-      "Anisha Riya is a passionate HR Professional and HR Trainer dedicated to helping students and fresh graduates build successful careers in Human Resources. As the Senior HR Training & Development Specialist at Jawa EdTech, she focuses on transforming aspiring learners into industry-ready HR professionals through practical, hands-on learning experiences.",
+      "Anisha Riya is a passionate HR Professional and HR Trainer dedicated to helping students and fresh graduates build successful careers in Human Resources. As the Senior HR Training & Development Specialist at JAWA EDTECH, she focuses on transforming aspiring learners into industry-ready HR professionals through practical, hands-on learning experiences.",
       "With expertise in recruitment, HR operations, employee engagement, and career development, Anisha is committed to bridging the gap between academic learning and industry expectations. Through real-time HR projects, recruitment simulations, mock interviews, resume-building workshops, and personalized career guidance, she empowers students to develop the skills and confidence needed to succeed in the corporate world.",
       "Her mission is to equip learners with job-ready HR competencies that employers value and help them build rewarding careers in Human Resources."
     ],
@@ -117,9 +117,9 @@ const teamProfiles = {
     role: "Tech Advisor",
     photo: nithinPhoto,
     about: [
-      "Nitinchand Saravanan serves as the Tech Advisor at Jawa EdTech, bringing valuable expertise in technology, software development, and industry-driven learning solutions. With a strong passion for innovation and digital transformation, he plays a key role in guiding the organization's technical vision and ensuring that training programs align with current industry demands.",
+      "Nitinchand Saravanan serves as the Tech Advisor at JAWA EDTECH, bringing valuable expertise in technology, software development, and industry-driven learning solutions. With a strong passion for innovation and digital transformation, he plays a key role in guiding the organization's technical vision and ensuring that training programs align with current industry demands.",
       "As a technology mentor and advisor, Nitinchand is committed to helping students build practical skills that prepare them for successful careers in the IT industry. His focus on real-world learning, emerging technologies, and industry best practices enables learners to gain the knowledge and confidence needed to excel in today's competitive job market.",
-      "Through his strategic guidance and technical expertise, he supports Jawa EdTech's mission of creating career-ready professionals equipped with the skills employers seek."
+      "Through his strategic guidance and technical expertise, he supports JAWA EDTECH's mission of creating career-ready professionals equipped with the skills employers seek."
     ],
     expertise: [
       "Software Development & Engineering",
@@ -164,9 +164,9 @@ const teamProfiles = {
     role: "Digital Marketing Executive",
     photo: sunithaPhoto,
     about: [
-      "Sunitha Prakash is a dedicated Digital Marketing Executive at Jawa EdTech, passionate about helping students discover career opportunities through effective digital communication and strategic marketing initiatives. She specializes in building online brand presence, creating engaging content, and generating meaningful connections between learners and career-focused training programs.",
-      "With expertise in digital marketing, content creation, social media management, and lead generation, Sunitha plays a vital role in promoting Jawa EdTech's mission of empowering students with industry-relevant skills. Her focus is on creating impactful campaigns that reach aspiring professionals and guide them toward successful career paths.",
-      "By combining creativity with data-driven marketing strategies, she helps increase awareness of Jawa EdTech's training programs and supports the organization's growth in the education and skill development sector."
+      "Sunitha Prakash is a dedicated Digital Marketing Executive at JAWA EDTECH, passionate about helping students discover career opportunities through effective digital communication and strategic marketing initiatives. She specializes in building online brand presence, creating engaging content, and generating meaningful connections between learners and career-focused training programs.",
+      "With expertise in digital marketing, content creation, social media management, and lead generation, Sunitha plays a vital role in promoting JAWA EDTECH's mission of empowering students with industry-relevant skills. Her focus is on creating impactful campaigns that reach aspiring professionals and guide them toward successful career paths.",
+      "By combining creativity with data-driven marketing strategies, she helps increase awareness of JAWA EDTECH's training programs and supports the organization's growth in the education and skill development sector."
     ],
     expertise: [
       "Digital Marketing Strategy",
@@ -190,10 +190,10 @@ const teamProfiles = {
       "Supporting website content optimization and performance",
       "Managing paid advertising campaigns across digital platforms",
       "Tracking campaign performance and marketing analytics",
-      "Strengthening Jawa EdTech's brand presence and student outreach"
+      "Strengthening JAWA EDTECH's brand presence and student outreach"
     ],
     testimonials: [
-      "The information shared through Jawa EdTech's digital platforms helped me understand the course benefits clearly and make the right career decision.",
+      "The information shared through JAWA EDTECH's digital platforms helped me understand the course benefits clearly and make the right career decision.",
       "The content and career guidance posts created by the marketing team were informative and motivating. They encouraged me to join the program with confidence.",
       "The communication was clear, professional, and helpful throughout my learning journey. I always received timely updates and support."
     ],

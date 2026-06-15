@@ -15,11 +15,11 @@ function getJawaReply(message) {
   const text = message.toLowerCase();
 
   if (text.includes("contact") || text.includes("phone") || text.includes("email") || text.includes("support")) {
-    return "You can contact Jawa Edtech at +91 9790631286 or email hr@jawaedtech.com. You can also ask me about courses before contacting the team.";
+    return "You can contact JAWA EDTECH at +91 9790631286 or email hr@jawaedtech.com. You can also ask me about courses before contacting the team.";
   }
 
   if (text.includes("placement") || text.includes("job") || text.includes("career")) {
-    return "JAWA EDTech programs include placement guidance after course completion. Jawa can help you choose a course based on your target role, current skill level, and language preference.";
+    return "JAWA EDTECH programs include placement guidance after course completion. Jawa can help you choose a course based on your target role, current skill level, and language preference.";
   }
 
   if (text.includes("live") || text.includes("class") || text.includes("mentor")) {
@@ -43,14 +43,14 @@ function getJawaReply(message) {
   }
 
   if (text.includes("fee") || text.includes("price") || text.includes("offer") || text.includes("discount")) {
-    return "The homepage currently highlights a Rs. 5,000 offer on Jawa Edtech Live Class programs. For exact pricing, contact the admissions team so they can confirm the latest details.";
+    return "The homepage currently highlights a Rs. 5,000 offer on JAWA EDTECH Live Class programs. For exact pricing, contact the admissions team so they can confirm the latest details.";
   }
 
   if (text.includes("course") || text.includes("program") || text.includes("suit")) {
     return "Jawa can help you pick from HR Executive Training, HR Recruitment Training, Full Stack Development, QA Testing, and DSA. Tell me your background and target role, and I will suggest a path.";
   }
 
-  return "I can help with JAWA EDTech courses, live classes, placement guidance, fees, and contact details. Tell me what you want to learn or the role you are aiming for.";
+  return "I can help with JAWA EDTECH courses, live classes, placement guidance, fees, and contact details. Tell me what you want to learn or the role you are aiming for.";
 }
 
 function FloatingChatButton() {

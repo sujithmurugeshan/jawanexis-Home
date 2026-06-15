@@ -397,7 +397,7 @@ function SyllabusModal({ isOpen, onClose, courseTitle }) {
     doc.setFont("helvetica", "bold");
     doc.setFontSize(22);
     doc.setTextColor(17, 17, 17);
-    doc.text("Jawa EDTech", 14, 24);
+    doc.text("JAWA EDTECH", 14, 24);
 
     // Tagline
     doc.setFont("helvetica", "bold");
@@ -508,7 +508,7 @@ function SyllabusModal({ isOpen, onClose, courseTitle }) {
     doc.setFont("helvetica", "bold");
     doc.setFontSize(9);
     doc.setTextColor(11, 138, 50);
-    doc.text("Jawa EdTech Career Preparation Programs", 14, yOffset + 12);
+    doc.text("JAWA EDTECH Career Preparation Programs", 14, yOffset + 12);
     
     doc.setFont("helvetica", "normal");
     doc.setFontSize(8);

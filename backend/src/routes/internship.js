@@ -28,12 +28,12 @@ router.post('/apply', async (req, res) => {
     // Fire and forget emails
     sendEmail(
       validatedData.email,
-      'Application Received - JAWA EDTech',
+      'Application Received - JAWA EDTECH',
       `Dear ${validatedData.name},\n\nCongratulations! Thanks for applying for ${validatedData.courseKey}. Our team will contact you shortly.\n\nBest,\nJAWA EDTech Team`
     );
 
     sendEmail(
-      'sooryajawahar@gmail.com, hr@jawaedtech.com, jawaedtech@gmail.com, alerts.jawaedtech@gmail.com',
+      'sooryajawahar@gmail.com, hr@jawaedtech.com, JAWA EDTECH@gmail.com, alerts.JAWA EDTECH@gmail.com',
       `New Internship Application: ${validatedData.courseKey}`,
       `Name: ${validatedData.name}\nEmail: ${validatedData.email}\nPhone: ${validatedData.phone}\nCourse: ${validatedData.courseKey}`
     );

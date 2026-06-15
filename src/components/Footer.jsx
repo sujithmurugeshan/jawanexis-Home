@@ -136,15 +136,15 @@ function Footer() {
           {/* Left: Branding */}
           <div className="space-y-6">
             <div className="flex flex-wrap items-center gap-4">
-              <img src={logo} alt="Jawa EDTech logo" className="h-14 w-14 rounded-lg object-contain" />
+              <img src={logo} alt="JAWA EDTECH logo" className="h-14 w-14 rounded-lg object-contain" />
               <div>
-                <div className="text-[28px] font-extrabold leading-none text-white">Jawa EDTech</div>
+                <div className="text-[28px] font-extrabold leading-none text-white">JAWA EDTECH</div>
                 <p className="mt-1 text-[11px] font-extrabold tracking-[0.22em] text-guvi-green">LEARN, LEAD, INNOVATE!</p>
               </div>
             </div>
 
             <p className="text-[15px] font-medium leading-relaxed text-slate-300">
-              Jawa EDTech is a career-focused learning and skills development company delivering practical training in HR, full stack development, software testing, DSA, and placement preparation.
+              JAWA EDTECH is a career-focused learning and skills development company delivering practical training in HR, full stack development, software testing, DSA, and placement preparation.
             </p>
             <p className="text-[15px] font-medium leading-relaxed text-slate-300">
               Our programs combine live classes, mentor guidance, project practice, and career support to help learners build job-ready skills with confidence.
@@ -190,7 +190,7 @@ function Footer() {
           >
             Privacy Policy
           </a>
-          <span className="text-slate-400">&copy; 2026 Jawa EDTech. All rights reserved.</span>
+          <span className="text-slate-400">&copy; 2026 JAWA EDTECH. All rights reserved.</span>
         </div>
 
       </div>
