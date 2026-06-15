@@ -37,15 +37,15 @@ const heroOfferPanels = [
     eyebrow: "Premium Career Development Centre in Coimbatore",
     title: (
       <>
-        Expert’s in Human Resource Development course
+        Expert’s in HR Development course
       </>
     ),
     image: posterBoatHr,
     rows: [
-      ["Human Resource Development", "Full Stack Development"],
-      ["DSA Course", "Quality Testing Course"],
+      ["HR Executive Training", "HR Recruitment Training", "Full Stack Development"],
+      ["Software Quality Testing (QA Testing)", "Data Structure And Algorithms (DSA)"],
     ],
-    cta: "Explore Career Programs",
+    cta: " Explore Career Programs ",
     note: "Build practical HR and IT skills with career-focused training.",
   },
 ];
@@ -304,7 +304,7 @@ function LiveClasses({ onSyllabusClick }) {
             Live Classes + Placement Guidance
           </h2>
           <p className="mt-6 text-[18px] font-medium leading-[1.45] text-guvi-muted sm:text-[24px]">
-            Jawa EDTech offers one of the industry's leading Project Based Career Programs that promises
+            JAWA EDTECH offers one of the industry's leading Project Based Career Programs that promises
             <br className="hidden lg:block" />
             Placement Guidance on completing the program.
           </p>
@@ -320,11 +320,6 @@ function LiveClasses({ onSyllabusClick }) {
           </div>
         </div>
 
-        <div className="mt-[45px] text-center">
-          <a href="#courses-page" className="inline-flex h-[73px] w-[276px] items-center justify-center rounded-md border border-black text-[20px] font-bold text-black">
-            Explore All Programs
-          </a>
-        </div>
       </div>
     </section>
   );
@@ -551,6 +546,42 @@ function HiringStats() {
   );
 }
 
+const getCourseHash = (title) => {
+  switch (title) {
+    case "Full Stack Development":
+      return "#full-stack-development-course";
+    case "HR Executive Training":
+      return "#hr-executive-course";
+    case "HR Recruitment Training":
+      return "#hr-recruitment-course";
+    case "Software Quality Testing(QA Testing)":
+    case "Software Quality Testing (QA Testing)":
+      return "#qa-testing-course";
+    case "DSA":
+      return "#dsa-course";
+    default:
+      return "#know-more";
+  }
+};
+
+const getCourseImageStyle = (title) => {
+  switch (title) {
+    case "DSA":
+      return { backgroundColor: "#213643", objectFit: "contain" };
+    case "Full Stack Development":
+      return { backgroundColor: "#f8f9fa", objectFit: "contain" };
+    case "HR Executive Training":
+      return { backgroundColor: "#161717", objectFit: "contain" };
+    case "HR Recruitment Training":
+      return { backgroundColor: "#141319", objectFit: "contain" };
+    case "Software Quality Testing(QA Testing)":
+    case "Software Quality Testing (QA Testing)":
+      return { backgroundColor: "#0c1f47", objectFit: "contain" };
+    default:
+      return { objectFit: "cover" };
+  }
+};
+
 function LearningPace() {
   const courseTabs = ["All", ...learningCourses.map(([, title]) => title)];
   const [activeCourseTab, setActiveCourseTab] = useState("All");
@@ -585,25 +616,28 @@ function LearningPace() {
         <div className="course-carousel">
           <div className={`course-carousel-track ${visibleCourses.length > 1 ? "auto-scroll-track auto-scroll-track-slow" : ""}`}>
             {marqueeCourses.map(([category, title, type, image], index) => (
-              <article key={`${title}-${index}`} className="course-slide-card" aria-hidden={index >= visibleCourses.length}>
-                <div className="h-[150px] overflow-hidden">
-                  <img src={image} alt={`${title} course preview`} className="h-full w-full object-cover" />
-                </div>
-                <div className="p-5">
-                  <span className="rounded-md bg-black px-3 py-1 text-xs font-extrabold text-white">{type}</span>
-                  <p className="mt-4 text-xs font-bold text-guvi-deepGreen">{category}</p>
-                  <h3 className="mt-2 min-h-[48px] text-[16px] font-extrabold leading-6 text-guvi-ink">{title}</h3>
-                  <p className="mt-4 text-sm font-bold text-black/55">Tamil, English</p>
-                </div>
-              </article>
+              <a
+                key={`${title}-${index}`}
+                href={getCourseHash(title)}
+                className="course-slide-card block hover:no-underline"
+                aria-hidden={index >= visibleCourses.length}
+              >
+                <article>
+                  <div className="h-[150px] overflow-hidden">
+                    <img src={image} alt={`${title} course preview`} className="h-full w-full" style={getCourseImageStyle(title)} />
+                  </div>
+                  <div className="p-5">
+                    <span className="rounded-md bg-black px-3 py-1 text-xs font-extrabold text-white">{type}</span>
+                    <p className="mt-4 text-xs font-bold text-guvi-deepGreen">{category}</p>
+                    <h3 className="mt-2 min-h-[48px] text-[16px] font-extrabold leading-6 text-guvi-ink">{title}</h3>
+                    <p className="mt-4 text-sm font-bold text-black/55">Tamil, English</p>
+                  </div>
+                </article>
+              </a>
             ))}
           </div>
         </div>
-        <div className="mt-8 text-center">
-          <a href="#courses-page" className="inline-flex h-10 items-center justify-center rounded-md bg-black px-6 text-sm font-extrabold text-white">
-            Explore Courses
-          </a>
-        </div>
+        
       </div>
     </section>
   );

@@ -18,11 +18,29 @@ const getCourseHash = (title) => {
   }
 };
 
+const getCourseImageStyle = (title) => {
+  switch (title) {
+    case "DSA":
+      return { backgroundColor: "#213643", objectFit: "contain" };
+    case "Full Stack Development":
+      return { backgroundColor: "#f8f9fa", objectFit: "contain" };
+    case "HR Executive Training":
+      return { backgroundColor: "#161717", objectFit: "contain" };
+    case "HR Recruitment Training":
+      return { backgroundColor: "#141319", objectFit: "contain" };
+    case "Software Quality Testing(QA Testing)":
+    case "Software Quality Testing (QA Testing)":
+      return { backgroundColor: "#0c1f47", objectFit: "contain" };
+    default:
+      return { objectFit: "cover" };
+  }
+};
+
 function LiveCard({ thumb, title, language, onSyllabusClick }) {
   return (
     <article className="overflow-hidden rounded-lg bg-white shadow-[0_3px_18px_rgba(15,23,42,0.08)]">
       <div className="relative h-[150px] overflow-hidden bg-black">
-        <img src={thumb} alt={`${title} course preview`} className="h-full w-full object-cover" />
+        <img src={thumb} alt={`${title} course preview`} className="h-full w-full" style={getCourseImageStyle(title)} />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/10" />
       </div>
       <div className="flex min-h-[168px] flex-col p-5">
