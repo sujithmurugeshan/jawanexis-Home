@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowLeft, CheckCircle2, Eye, LockKeyhole, Mail, Phone, User } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Eye, EyeOff, LockKeyhole, Mail, Phone, User } from "lucide-react";
 import { GoogleLogin } from "@react-oauth/google";
 import { API_BASE_URL } from "../config";
 import logo3d from "../assets/3dlogo.png";
@@ -201,6 +201,9 @@ function AuthPage({ mode = "login" }) {
 }
 
 function Field({ icon, label, hasReveal = false, ...inputProps }) {
+  const [showPassword, setShowPassword] = useState(false);
+  const inputType = hasReveal ? (showPassword ? "text" : "password") : inputProps.type;
+
   return (
     <label className="grid gap-2">
       <span className="text-sm font-extrabold text-black/74">{label}</span>
@@ -209,10 +212,16 @@ function Field({ icon, label, hasReveal = false, ...inputProps }) {
         <input
           className="min-w-0 flex-1 bg-transparent text-[15px] font-bold text-black outline-none placeholder:text-black/34"
           {...inputProps}
+          type={inputType}
         />
         {hasReveal ? (
-          <button type="button" className="text-black/38" aria-label="Show password">
-            <Eye size={18} aria-hidden="true" />
+          <button 
+            type="button" 
+            className="text-black/38 hover:text-black/70" 
+            aria-label="Show password"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? <EyeOff size={18} aria-hidden="true" /> : <Eye size={18} aria-hidden="true" />}
           </button>
         ) : null}
       </span>
