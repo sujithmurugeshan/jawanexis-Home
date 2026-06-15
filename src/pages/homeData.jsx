@@ -2,6 +2,11 @@ import courseAi from "../assets/course-ai.png";
 import courseData from "../assets/course-data.png";
 import courseGenai from "../assets/course-genai.png";
 import courseUiux from "../assets/course-uiux.png";
+import courseFullstack from "../assets/course-fullstack.png";
+import courseHrExecutive from "../assets/course-hr-executive.png";
+import courseHrRecruitment from "../assets/course-hr-recruitment.png";
+import courseDsa from "../assets/course-dsa.png";
+import courseQa from "../assets/course-qa.png";
 import awardPlaceholder from "../assets/hero-learning.png";
 import abcConsultantsLogo from "../assets/company-logos/abc-consultants.jpg";
 import airtableLogo from "../assets/company-logos/airtable.jpg";
@@ -140,11 +145,11 @@ export const studentCompanyRows = [
 ];
 
 export const liveCards = [
-  [courseData, "HR Executive Training", "Tamil, English"],
-  [courseGenai, "HR Recruitment Training", "Tamil, English"],
-  [courseAi, "Full Stack Development", "Tamil, English"],
-  [courseUiux, "Software Quality Testing(QA Testing)", "Tamil, English"],
-  [courseData, "DSA", "Tamil, English"]
+  [courseHrExecutive, "HR Executive Training", "Tamil, English"],
+  [courseHrRecruitment, "HR Recruitment Training", "Tamil, English"],
+  [courseFullstack, "Full Stack Development", "Tamil, English"],
+  [courseQa, "Software Quality Testing(QA Testing)", "Tamil, English"],
+  [courseDsa, "DSA", "Tamil, English"]
 ];
 
 export const navItems = [
@@ -370,11 +375,11 @@ export const awardSlides = [
 ];
 
 export const learningCourses = [
-  ["Human Resources", "HR Executive Training", "Paid", courseUiux],
-  ["Human Resources", "HR Recruitment Training", "Paid", courseData],
-  ["Development", "Full Stack Development", "Paid", courseGenai],
-  ["Quality Assurance", "Software Quality Testing(QA Testing)", "Paid", courseAi],
-  ["Programming", "DSA", "Paid", courseData]
+  ["Human Resources", "HR Executive Training", "Paid", courseHrExecutive],
+  ["Human Resources", "HR Recruitment Training", "Paid", courseHrRecruitment],
+  ["Development", "Full Stack Development", "Paid", courseFullstack],
+  ["Quality Assurance", "Software Quality Testing(QA Testing)", "Paid", courseQa],
+  ["Programming", "DSA", "Paid", courseDsa]
 ];
 
 export const achievementPhotos = [

@@ -10,6 +10,11 @@ import fullstackPreviewImg from "../assets/fullstack-dev-team.png";
 import qaPreviewImg from "../assets/qa-testing-professional.png";
 import dsaPreviewImg from "../assets/dsa-coding-student.png";
 
+import courseFullstack from "../assets/course-fullstack.png";
+import courseHrExecutive from "../assets/course-hr-executive.png";
+import courseHrRecruitment from "../assets/course-hr-recruitment.png";
+import courseDsa from "../assets/course-dsa.png";
+import courseQa from "../assets/course-qa.png";
 
 export const coursesConfig = {
   "hr-executive": {
@@ -54,12 +59,11 @@ export const coursesConfig = {
     floatingLogoLeftKey: "excel",
     floatingLogoRightKey: "powerbi",
     tools: [
-      { name: "Excel Advanced HR Analytics", logoKey: "excel_hr" },
-      { name: "Power BI", logoKey: "powerbi" },
-      { name: "ChatGPT", logoKey: "chatgpt" },
-      { name: "Gemini", logoKey: "gemini" },
-      { name: "Eightfold AI", logoKey: "eightfold" },
-      { name: "Paradox AI", logoKey: "paradox" }
+      { name: "Keka", logoKey: "keka" },
+      { name: "greytHR", logoKey: "greythr" },
+      { name: "Darwinbox", logoKey: "darwinbox" },
+      { name: "Eightfold.ai", logoKey: "eightfold_img" },
+      { name: "Zoho Recruit", logoKey: "zoho_recruit" }
     ],
     previewContent: {
       tagline: "Become an HR Professional in just 90 Days",
@@ -241,12 +245,11 @@ export const coursesConfig = {
     floatingLogoLeftKey: "linkedin",
     floatingLogoRightKey: "naukri",
     tools: [
-      { name: "Excel Advanced HR Analytics", logoKey: "excel_hr" },
-      { name: "Power BI", logoKey: "powerbi" },
-      { name: "ChatGPT", logoKey: "chatgpt" },
-      { name: "Gemini", logoKey: "gemini" },
-      { name: "Eightfold AI", logoKey: "eightfold" },
-      { name: "Paradox AI", logoKey: "paradox" }
+      { name: "Keka", logoKey: "keka" },
+      { name: "greytHR", logoKey: "greythr" },
+      { name: "Darwinbox", logoKey: "darwinbox" },
+      { name: "Eightfold.ai", logoKey: "eightfold_img" },
+      { name: "Zoho Recruit", logoKey: "zoho_recruit" }
     ],
     previewContent: {
       tagline: "Become a Recruitment Professional in just 45 days",
@@ -771,8 +774,9 @@ export const coursesConfig = {
     subtitle: "DSA Training Program",
     heroTitle: "Jawa EDTECh DSA & Coding Interview Program",
     heroDesc: "Crack your dream product-company interviews. Master complexity analysis, arrays, lists, recursion, trees, graphs, dynamic programming, and competitive coding.",
-    previewImg: courseData,
+    previewImg: courseDsa,
     previewHumanImg: dsaPreviewImg,
+    studentsImg: studentsImg,
     studentsImg: studentsImg,
     price: "₹30,000",
     strikethroughPrice: "₹45,000",
