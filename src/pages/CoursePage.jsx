@@ -3,7 +3,7 @@ import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import { API_BASE_URL } from "../config";
 
-import { CheckCircle2, X, ChevronRight, Star, Search, BookOpen, Award, Briefcase, Sparkles, Users, Laptop, FileText, MessageSquare } from "lucide-react";
+import { CheckCircle2, CheckCircle, X, ChevronRight, Star, Search, BookOpen, Award, Briefcase, Sparkles, Users, Laptop, FileText, MessageSquare, Target, Zap, TrendingUp, GraduationCap } from "lucide-react";
 import { coursesConfig } from "../data/coursesConfig.js";
 import {
   JavaScriptLogo, HTMLLogo, CSSLogo, TailwindCSSLogo, ReactLogo, ReduxLogo,
@@ -415,81 +415,405 @@ function FaqSection({ faqs, title }) {
   );
 }
 
-/* ─────────────── Course Preview Tabs Component ─────────────── */
-function CoursePreviewTabs({ previewContent }) {
-  const [activeTab, setActiveTab] = useState("learn");
+/* ─────────────── Course Preview Cards Data (per course) ─────────────── */
+const PREVIEW_CARDS = {
+  "hr-executive": {
+    dur: "6", unit: "Months",
+    sub: "Practical. Industry-Focused. Career-Ready.",
+    why: [
+      "Become an HR Professional in just 6 Months",
+      "Industry-Focused Curriculum",
+      "Hands-On Practical Training",
+      "Real-Time HR Case Studies",
+      "Expert Mentor Guidance",
+      "Job-Oriented Learning Approach"
+    ],
+    skills: [
+      "Talent Acquisition & Recruitment",
+      "Employee Engagement",
+      "Performance Management",
+      "Payroll Processing",
+      "HR Operations & Administration",
+      "HR Documentation & Compliance",
+      "Workplace Policies & Procedures"
+    ],
+    benefits: [
+      "Practical Industry Exposure",
+      "Real-World Project Experience",
+      "Career-Ready Skill Development",
+      "Confidence to Handle HR Responsibilities",
+      "Professional Portfolio Building",
+      "Better Career Opportunities"
+    ],
+    diff: [
+      "Learn from Industry Experts",
+      "Work on Hands-On Assignments",
+      "Solve Real HR Business Scenarios",
+      "Industry-Relevant Training",
+      "Interactive Learning Sessions",
+      "Career Support & Guidance"
+    ],
+    outcomes: [
+      "Recruitment & Hiring Expertise",
+      "Employee Management Skills",
+      "Payroll Handling Knowledge",
+      "HR Compliance Understanding",
+      "Professional HR Communication",
+      "Industry-Ready HR Profile"
+    ],
+    cta: "Start Your HR Career with Confidence!"
+  },
+  "hr-recruitment": {
+    dur: "6", unit: "Months",
+    sub: "Source. Screen. Hire. Excel.",
+    why: [
+      "Become a Recruitment Pro in 6 Months",
+      "Practical Hiring Simulations",
+      "LinkedIn Recruiter Training",
+      "ATS Tool Mastery",
+      "Expert Recruiter Mentors",
+      "Placement-Ready Preparation"
+    ],
+    skills: [
+      "Candidate Sourcing Strategies",
+      "Resume Screening & Shortlisting",
+      "Interview Coordination",
+      "Talent Mapping & Market Research",
+      "Offer Management & Negotiation",
+      "ATS & Recruitment Automation",
+      "Employer Branding Basics"
+    ],
+    benefits: [
+      "Live Recruitment Simulations",
+      "Real-World Hiring Projects",
+      "Industry-Standard Tool Training",
+      "Confidence in End-to-End Hiring",
+      "Professional Sourcing Profile",
+      "Career Launch Support"
+    ],
+    diff: [
+      "Learn from Talent Acquisition Managers",
+      "Practice on Live Requirements",
+      "Master LinkedIn Recruiter",
+      "Simulate Real Hiring Workflows",
+      "Build a Sourcing Portfolio",
+      "Mock Interview Sessions"
+    ],
+    outcomes: [
+      "End-to-End Recruitment Skills",
+      "Talent Pipeline Building",
+      "ATS & CRM Proficiency",
+      "Salary Negotiation Expertise",
+      "Professional Recruiter Profile",
+      "Placement-Ready Confidence"
+    ],
+    cta: "Launch Your Recruitment Career Today!"
+  },
+  "full-stack": {
+    dur: "6", unit: "Months",
+    sub: "Code. Build. Deploy. Succeed.",
+    why: [
+      "Become a Job-Ready Full Stack Developer",
+      "Industry-Aligned Curriculum",
+      "100+ Hours of Project Work",
+      "AI Integration Module",
+      "Expert Developer Mentors",
+      "Portfolio & GitHub Ready"
+    ],
+    skills: [
+      "HTML5, CSS3 & JavaScript",
+      "React.js Frontend Development",
+      "Node.js & Express Backend",
+      "MongoDB & Database Design",
+      "REST API Development",
+      "Authentication & Security",
+      "AI Integration & Prompt Engineering"
+    ],
+    benefits: [
+      "Build Real-World Applications",
+      "Industry-Level Project Portfolio",
+      "Full Stack Certification",
+      "GitHub-Ready Code Projects",
+      "Resume & Interview Preparation",
+      "Placement Assistance"
+    ],
+    diff: [
+      "Learn from Senior Developers",
+      "Build Production-Ready Apps",
+      "AI-Powered Feature Development",
+      "Cloud Deployment Training",
+      "Code Review Sessions",
+      "Career Development Centre"
+    ],
+    outcomes: [
+      "Frontend & Backend Mastery",
+      "Database Design Skills",
+      "API Development Expertise",
+      "DevOps & Deployment Knowledge",
+      "AI Integration Capability",
+      "Job-Ready Developer Profile"
+    ],
+    cta: "Start Building Your Developer Career!"
+  },
+  "qa-testing": {
+    dur: "6", unit: "Months",
+    sub: "Test. Automate. Assure Quality.",
+    why: [
+      "Complete QA Testing Training",
+      "Manual & Automation Testing",
+      "Selenium WebDriver Mastery",
+      "API Testing with Postman",
+      "Real-Time Testing Projects",
+      "CI/CD Pipeline Experience"
+    ],
+    skills: [
+      "Manual Testing Techniques",
+      "Selenium Automation Testing",
+      "API Testing with Postman",
+      "SQL Database Testing",
+      "Agile Testing Methodologies",
+      "Test Case Design & Execution",
+      "Bug Reporting & Defect Tracking"
+    ],
+    benefits: [
+      "Hands-On Automation Labs",
+      "Industry-Standard Tool Training",
+      "QA Engineer Certification",
+      "Real Application Testing",
+      "Resume & Interview Prep",
+      "Placement Guidance"
+    ],
+    diff: [
+      "Learn from QA Professionals",
+      "Automate Real Test Scenarios",
+      "Work with CI/CD Pipelines",
+      "Use Jira for Defect Tracking",
+      "Practice on Live Applications",
+      "Mock QA Interview Rounds"
+    ],
+    outcomes: [
+      "Manual & Automation Testing",
+      "Selenium & TestNG Proficiency",
+      "API & Database Validation",
+      "Agile QA Process Knowledge",
+      "Test Documentation Skills",
+      "QA-Ready Professional Profile"
+    ],
+    cta: "Begin Your QA Testing Journey!"
+  },
+  "dsa": {
+    dur: "6", unit: "Months",
+    sub: "Think. Solve. Optimize. Crack.",
+    why: [
+      "Interview-Focused DSA Training",
+      "Complexity Analysis Mastery",
+      "LeetCode Pattern Practice",
+      "Dynamic Programming Module",
+      "Mock Technical Interviews",
+      "Product-Company Preparation"
+    ],
+    skills: [
+      "Arrays, Strings & Linked Lists",
+      "Stacks, Queues & Trees",
+      "Graphs & Graph Traversal",
+      "Recursion & Backtracking",
+      "Searching & Sorting Algorithms",
+      "Dynamic Programming",
+      "Competitive Programming"
+    ],
+    benefits: [
+      "Pattern-Based Problem Solving",
+      "Live Coding Walkthroughs",
+      "Company-Level Practice Problems",
+      "DSA Course Certification",
+      "Resume & Placement Support",
+      "Technical Interview Readiness"
+    ],
+    diff: [
+      "Learn from Competitive Programmers",
+      "Solve 300+ Coding Problems",
+      "Practice on LeetCode & HackerRank",
+      "Focus on Time & Space Optimization",
+      "Simulate Technical Interview Rounds",
+      "Structured Problem-Solving Approach"
+    ],
+    outcomes: [
+      "Strong Problem-Solving Skills",
+      "Algorithm Design Expertise",
+      "DP & Graph Mastery",
+      "Coding Interview Confidence",
+      "Competitive Programming Skills",
+      "Product-Company Ready Profile"
+    ],
+    cta: "Crack Your Dream Tech Interview!"
+  }
+};
 
-  const tabs = [
-    { id: "learn", label: "What You'll Learn", icon: BookOpen, content: previewContent.learningOutcomes, type: "list" },
-    { id: "master", label: "What You'll Master", icon: Award, content: previewContent.whatYoullMaster, type: "tags" },
-    { id: "careers", label: "Career Roles", icon: Briefcase, content: previewContent.careerOpportunities, type: "tags" },
-    { id: "why", label: "Why Choose Us", icon: Sparkles, content: previewContent.whyChoose, type: "bullets" }
-  ];
-
-  const currentTab = tabs.find(t => t.id === activeTab) || tabs[0];
+/* ─────────────── Course Preview Cards Component ─────────────── */
+function CoursePreviewCards({ courseKey, tagline, courseTitle }) {
+  const d = PREVIEW_CARDS[courseKey];
+  if (!d) return null;
 
   return (
-    <div className="bg-[#fafaff] border border-gray-100 rounded-3xl p-6 md:p-8 shadow-[0_8px_30px_rgba(25,217,80,0.03)]">
-      {/* Tabs Menu */}
-      <div className="flex flex-wrap gap-2 border-b border-gray-200 pb-4 mb-6">
-        {tabs.map(tab => {
-          const IconComponent = tab.icon;
-          const isActive = activeTab === tab.id;
-          return (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-extrabold transition-all duration-200 cursor-pointer ${
-                isActive
-                  ? "btn-glossy-green border-transparent"
-                  : "text-gray-500 hover:text-green-600 hover:bg-green-50"
-              }`}
-            >
-              <IconComponent size={16} className={isActive ? "text-black" : "text-green-500"} />
-              <span>{tab.label}</span>
-            </button>
-          );
-        })}
+    <div className="cp-wrapper">
+      {/* ── Hero Header (left text + right badge) ── */}
+      <div className="cp-hero">
+        <div className="cp-hero-left">
+          <span className="cp-badge-pill">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#0b8a32"/></svg>
+            COURSE PREVIEW & INSIGHTS
+          </span>
+          <h2 className="cp-hero-title">{tagline}</h2>
+          <p className="cp-hero-sub"><em>{d.sub}</em></p>
+        </div>
+        <div className="cp-hero-right">
+          <div className="cp-dur-circle">
+            <span className="cp-dur-label">JUST</span>
+            <span className="cp-dur-num">{d.dur}</span>
+            <span className="cp-dur-unit">{d.unit.toUpperCase()}</span>
+            <span className="cp-dur-stars">★ ★ ★</span>
+          </div>
+          {/* Decorative document icon */}
+          <div className="cp-decor-doc">
+            <svg width="80" height="90" viewBox="0 0 80 90" fill="none">
+              <rect x="8" y="6" width="56" height="72" rx="6" fill="#e9f8ef" stroke="#0b8a32" strokeWidth="1.5"/>
+              <rect x="16" y="16" width="30" height="4" rx="2" fill="#0b8a32" opacity="0.6"/>
+              <rect x="16" y="24" width="40" height="3" rx="1.5" fill="#c5e8d0"/>
+              <rect x="16" y="30" width="36" height="3" rx="1.5" fill="#c5e8d0"/>
+              <rect x="16" y="36" width="40" height="3" rx="1.5" fill="#c5e8d0"/>
+              <rect x="16" y="44" width="20" height="4" rx="2" fill="#0b8a32" opacity="0.4"/>
+              <rect x="16" y="52" width="40" height="3" rx="1.5" fill="#c5e8d0"/>
+              <rect x="16" y="58" width="34" height="3" rx="1.5" fill="#c5e8d0"/>
+              <circle cx="56" cy="16" r="8" fill="#0b8a32" opacity="0.15"/>
+              <path d="M53 16l2 2 4-4" stroke="#0b8a32" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <rect x="50" y="44" width="12" height="12" rx="2" fill="#fef3c7"/>
+              <path d="M54 48l2 2 3-3" stroke="#d97706" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+        </div>
       </div>
 
-      {/* Dynamic Tab Pane Content */}
-      <div className="transition-opacity duration-300 min-h-[220px]">
-        {currentTab.type === "list" && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {currentTab.content.map((item, idx) => (
-              <div key={idx} className="flex items-start gap-3">
-                <span className="text-green-500 mt-0.5 text-base">✦</span>
-                <span className="text-sm font-semibold text-gray-700 leading-relaxed">{item}</span>
-              </div>
-            ))}
+      {/* ── Top 3 Cards ── */}
+      <div className="cp-row-3">
+        {/* Card 1: Why Choose */}
+        <div className="cp-card">
+          <div className="cp-card-head">
+            <div className="cp-icon-wrap cp-icon-blue"><Target size={18} /></div>
+            <h4 className="cp-card-title"><span className="cp-emoji">⭐</span> Why Choose Our<br/>{courseTitle} Program?</h4>
           </div>
-        )}
+          <ul className="cp-list">
+            {d.why.map((item, i) => (
+              <li key={i}><CheckCircle size={14} className="cp-ic-green" /><span>{item}</span></li>
+            ))}
+          </ul>
+        </div>
 
-        {currentTab.type === "bullets" && (
-          <div className="space-y-3.5">
-            {currentTab.content.map((item, idx) => (
-              <div key={idx} className="flex items-start gap-3 text-sm font-medium text-gray-600 leading-relaxed">
-                <ChevronRight size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
-                <span>{item}</span>
-              </div>
-            ))}
+        {/* Card 2: Key Skills */}
+        <div className="cp-card">
+          <div className="cp-card-head">
+            <div className="cp-icon-wrap cp-icon-green">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/><path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>
+            </div>
+            <h4 className="cp-card-title">Key Skills<br/>You'll Master</h4>
           </div>
-        )}
+          <ul className="cp-list">
+            {d.skills.map((item, i) => (
+              <li key={i}><span className="cp-dot-green" /><span>{item}</span></li>
+            ))}
+          </ul>
+        </div>
 
-        {currentTab.type === "tags" && (
-          <div className="flex flex-wrap gap-3.5">
-            {currentTab.content.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-green-50/60 border border-green-100 text-sm font-bold text-green-800">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#19d950] flex-shrink-0" />
-                {item}
-              </div>
-            ))}
+        {/* Card 3: Benefits */}
+        <div className="cp-card">
+          <div className="cp-card-head">
+            <div className="cp-icon-wrap cp-icon-amber"><Award size={18} /></div>
+            <h4 className="cp-card-title"><span className="cp-emoji">🚀</span> Program<br/>Benefits</h4>
           </div>
-        )}
+          <ul className="cp-list">
+            {d.benefits.map((item, i) => (
+              <li key={i}><Star size={13} className="cp-ic-amber" fill="#f59e0b" /><span>{item}</span></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* ── Bottom 2 Cards ── */}
+      <div className="cp-row-2">
+        {/* Card 4: Differentiators */}
+        <div className="cp-card cp-card-wide">
+          <div className="cp-card-inner">
+            <div>
+              <div className="cp-card-head">
+                <div className="cp-icon-wrap cp-icon-purple"><BookOpen size={18} /></div>
+                <h4 className="cp-card-title">What Makes This<br/>Program Different?</h4>
+              </div>
+              <ul className="cp-list">
+                {d.diff.map((item, i) => (
+                  <li key={i}><ChevronRight size={14} className="cp-ic-green" /><span>{item}</span></li>
+                ))}
+              </ul>
+            </div>
+            <div className="cp-card-illus">
+              <svg width="100" height="80" viewBox="0 0 100 80" fill="none">
+                <rect x="10" y="20" width="50" height="36" rx="4" fill="#e0f2fe"/>
+                <rect x="14" y="24" width="42" height="28" rx="2" fill="#bae6fd"/>
+                <circle cx="35" cy="38" r="8" fill="#7dd3fc"/>
+                <path d="M30 45h10M27 50h16" stroke="#0284c7" strokeWidth="1.5" strokeLinecap="round"/>
+                <circle cx="75" cy="30" r="14" fill="#e9f8ef" stroke="#0b8a32" strokeWidth="1"/>
+                <path d="M70 30l3 3 6-6" stroke="#0b8a32" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <rect x="60" y="55" width="28" height="16" rx="3" fill="#dcfce7"/>
+                <path d="M65 63h18M65 67h12" stroke="#0b8a32" strokeWidth="1" strokeLinecap="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        {/* Card 5: Outcomes */}
+        <div className="cp-card cp-card-wide">
+          <div className="cp-card-inner">
+            <div style={{flex: 1}}>
+              <div className="cp-card-head">
+                <div className="cp-icon-wrap cp-icon-teal"><TrendingUp size={18} /></div>
+                <h4 className="cp-card-title">Your Outcome After {d.dur} {d.unit}</h4>
+              </div>
+              <div className="cp-outcomes-grid">
+                {d.outcomes.map((item, i) => (
+                  <div key={i} className="cp-outcome-item">
+                    <CheckCircle size={13} className="cp-ic-green" /><span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="cp-card-illus">
+              <svg width="90" height="90" viewBox="0 0 90 90" fill="none">
+                <rect x="25" y="30" width="40" height="50" rx="4" fill="#1e293b"/>
+                <rect x="30" y="35" width="14" height="10" rx="2" fill="#334155"/>
+                <rect x="48" y="35" width="12" height="10" rx="2" fill="#334155"/>
+                <circle cx="37" cy="54" r="3" fill="#0b8a32"/>
+                <path d="M32 62h10M32 67h7" stroke="#64748b" strokeWidth="1" strokeLinecap="round"/>
+                <path d="M55 75L70 50" stroke="#0b8a32" strokeWidth="3" strokeLinecap="round"/>
+                <path d="M65 52l6-3l-2 6" fill="#0b8a32"/>
+                <circle cx="55" cy="75" r="3" fill="#0b8a32" opacity="0.3"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── CTA ── */}
+      <div className="cp-cta-wrap">
+        <button
+          onClick={() => { const el = document.getElementById('syllabus-section'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }}
+          className="cp-cta-btn"
+        >
+          <GraduationCap size={20} />
+          <span>{d.cta}</span>
+        </button>
       </div>
     </div>
   );
 }
+
 
 /* ─────────────── Success Stories Testimonial Slider ─────────────── */
 function TestimonialsSection({ testimonials }) {
@@ -885,28 +1209,10 @@ export default function CoursePage({ courseKey, isInternship }) {
           </div>
         </section>
 
-        {/* ── 2. COURSE PREVIEW SECTION (CLEAN INTRO & TABS ONLY) ── */}
-        <section className="py-16 bg-white border-t border-b border-gray-100" id="preview-section">
+        {/* ── 2. COURSE PREVIEW & INSIGHTS (CARD-BASED LAYOUT) ── */}
+        <section className="cp-section" id="preview-section">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-10">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-50 border border-green-100 text-green-700 text-xs font-extrabold uppercase tracking-wider mb-4">
-                <Search size={12} className="text-green-600" />
-                Course Preview &amp; Insights
-              </span>
-              <h2 className="text-[28px] md:text-[36px] font-extrabold text-gray-900 tracking-tight">
-                {config.previewContent.tagline}
-              </h2>
-            </div>
-
-            {/* Description block only, preview image/photo on right and enroll buttons removed */}
-            <div className="max-w-3xl mx-auto text-center mb-12">
-              <p className="text-base md:text-[17px] leading-relaxed text-gray-600 font-medium">
-                {config.previewContent.description}
-              </p>
-            </div>
-
-            {/* Interactive Tabbed Outcomes Container */}
-            <CoursePreviewTabs previewContent={config.previewContent} />
+            <CoursePreviewCards courseKey={courseKey} tagline={config.previewContent.tagline} courseTitle={config.title} />
           </div>
         </section>
 
