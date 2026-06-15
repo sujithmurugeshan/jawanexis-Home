@@ -285,47 +285,66 @@ const ApplyForm = ({ data, onChange, onPhoneChange, onSubmit, submitted, loading
         {error && <div className="mb-4 p-2 bg-red-50 text-red-600 font-semibold rounded border border-red-200 text-sm">{error}</div>}
 
         <form onSubmit={onSubmit} className="space-y-3">
-          <input type="text" name="name" value={data.name} onChange={onChange} placeholder="Name" required
-            className="w-full h-11 px-4 border border-gray-200 rounded-lg text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-400/40 placeholder:text-gray-400"/>
-          <input type="email" name="email" value={data.email} onChange={onChange} placeholder="Email" required
-            className="w-full h-11 px-4 border border-gray-200 rounded-lg text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-400/40 placeholder:text-gray-400"/>
-          <div className="flex gap-2">
-            <div className="relative min-w-[88px]">
-              <select name="countryCode" value={data.countryCode} onChange={onChange}
-                className="w-full h-11 px-3 border border-gray-200 rounded-lg bg-gray-50 text-sm font-bold focus:outline-none cursor-pointer appearance-none pr-6">
-                <option value="+91">IN +91</option>
-                <option value="+1">US +1</option>
-                <option value="+44">UK +44</option>
-                <option value="+971">AE +971</option>
-              </select>
-              <DropArrow/>
-            </div>
-            <input type="tel" name="phone" value={data.phone} onChange={onPhoneChange} placeholder="Mobile Number" required
-              className="flex-1 h-11 px-4 border border-gray-200 rounded-lg text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-400/40 placeholder:text-gray-400"/>
+          <div>
+            <label className="mb-1 block text-[14px] font-bold text-gray-600">Name*</label>
+            <input type="text" name="name" value={data.name} onChange={onChange} placeholder="Enter your name" required
+              className="w-full h-10 px-3 border border-gray-300 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-400/40 placeholder:text-gray-400"/>
           </div>
-          <SelectField name="education" value={data.education} onChange={onChange} placeholder="Education Qualification">
-            <option>10th/12th Pass</option><option>Diploma / ITI</option>
-
-            <option>Under Graduate (Engineering)</option>
-            <option>Under Graduate (Arts/Science/Commerce)</option>
-            <option>Post Graduate</option><option>PhD / Research Scholar</option>
-          </SelectField>
-          <SelectField name="profile" value={data.profile} onChange={onChange} placeholder="Current Profile">
-            <option>College Student (Final Year)</option>
-            <option>College Student (1st/2nd/3rd Year)</option>
-            <option>Working Professional (IT)</option>
-            <option>Working Professional (Non-IT)</option>
-            <option>Job Seeker / Unemployed</option>
-            <option>Freelancer / Self-employed</option>
-          </SelectField>
-          <SelectField name="graduationYear" value={data.graduationYear} onChange={onChange} placeholder="Year of Graduation">
-            {Array.from({ length: 15 }, (_, i) => 2029 - i).map((y) => <option key={y}>{y}</option>)}
-            <option>Before 2015</option>
-          </SelectField>
-          <SelectField name="language" value={data.language} onChange={onChange} placeholder="Speaking Language">
-            <option>Tamil</option><option>English</option><option>Telugu</option>
-            <option>Kannada</option><option>Hindi</option><option>Malayalam</option><option>Other</option>
-          </SelectField>
+          <div>
+            <label className="mb-1 block text-[14px] font-bold text-gray-600">Email ID*</label>
+            <input type="email" name="email" value={data.email} onChange={onChange} placeholder="Enter your email" required
+              className="w-full h-10 px-3 border border-gray-300 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-400/40 placeholder:text-gray-400"/>
+          </div>
+          <div>
+            <label className="mb-1 block text-[14px] font-bold text-gray-600">Phone Number*</label>
+            <div className="flex gap-2">
+              <div className="relative min-w-[88px]">
+                <select name="countryCode" value={data.countryCode} onChange={onChange}
+                  className="w-full h-10 px-3 border border-gray-300 rounded-md bg-gray-50 text-sm font-bold focus:outline-none cursor-pointer appearance-none pr-6">
+                  <option value="+91">IN +91</option>
+                  <option value="+1">US +1</option>
+                  <option value="+44">UK +44</option>
+                  <option value="+971">AE +971</option>
+                </select>
+                <DropArrow/>
+              </div>
+              <input type="tel" name="phone" value={data.phone} onChange={onPhoneChange} placeholder="Enter phone number" required
+                className="flex-1 h-10 px-3 border border-gray-300 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-400/40 placeholder:text-gray-400"/>
+            </div>
+          </div>
+          <div>
+            <label className="mb-1 block text-[14px] font-bold text-gray-600">Educational Qualification*</label>
+            <SelectField name="education" value={data.education} onChange={onChange} placeholder="Education Qualification">
+              <option>Under Graduate (Engineering)</option>
+              <option>Under Graduate (Arts/Science/Commerce)</option>
+              <option>Post Graduate</option><option>PhD / Research Scholar</option>
+            </SelectField>
+          </div>
+          <div>
+            <label className="mb-1 block text-[14px] font-bold text-gray-600">Current Profile*</label>
+            <SelectField name="profile" value={data.profile} onChange={onChange} placeholder="Select">
+              <option>College Student (Final Year)</option>
+              <option>College Student (1st/2nd/3rd Year)</option>
+              <option>Working Professional (IT)</option>
+              <option>Working Professional (Non-IT)</option>
+              <option>Job Seeker / Unemployed</option>
+              <option>Freelancer / Self-employed</option>
+            </SelectField>
+          </div>
+          <div>
+            <label className="mb-1 block text-[14px] font-bold text-gray-600">Year of Graduation*</label>
+            <SelectField name="graduationYear" value={data.graduationYear} onChange={onChange} placeholder="Year of Graduation">
+              {Array.from({ length: 15 }, (_, i) => 2029 - i).map((y) => <option key={y}>{y}</option>)}
+              <option>Before 2015</option>
+            </SelectField>
+          </div>
+          <div>
+            <label className="mb-1 block text-[14px] font-bold text-gray-600">Speaking Language*</label>
+            <SelectField name="language" value={data.language} onChange={onChange} placeholder="Select">
+              <option>Tamil</option><option>English</option><option>Telugu</option>
+              <option>Kannada</option><option>Hindi</option><option>Malayalam</option><option>Other</option>
+            </SelectField>
+          </div>
           <div className="text-center">
             <button type="button" className="text-xs font-bold text-green-700 hover:underline">
               Have a Coupon code? <span className="underline">Redeem</span>
@@ -1121,45 +1140,64 @@ export default function CoursePage({ courseKey, isInternship }) {
 
                 <form onSubmit={submitModal} className="mt-6 space-y-4">
 
-                  <input type="text" name="name" value={modalForm.name} onChange={hc(setModalForm)} placeholder="Name" required
-                    className="w-full h-11 px-4 border border-gray-200 rounded-lg text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-400/40 placeholder:text-gray-400" />
-                  <input type="email" name="email" value={modalForm.email} onChange={hc(setModalForm)} placeholder="Email" required
-                    className="w-full h-11 px-4 border border-gray-200 rounded-lg text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-400/40 placeholder:text-gray-400" />
-                  <div className="flex gap-2">
-                    <div className="relative min-w-[88px]">
-                      <select name="countryCode" value={modalForm.countryCode} onChange={hc(setModalForm)}
-                        className="w-full h-11 px-3 border border-gray-200 rounded-lg bg-gray-50 text-sm font-bold focus:outline-none cursor-pointer appearance-none pr-6">
-                        <option value="+91">IN +91</option><option value="+1">US +1</option>
-                        <option value="+44">UK +44</option><option value="+971">AE +971</option>
-                      </select>
-                      <DropArrow />
-                    </div>
-                    <input type="tel" name="phone" value={modalForm.phone} onChange={hp(setModalForm)} placeholder="Mobile Number" required
-                      className="flex-1 h-11 px-4 border border-gray-200 rounded-lg text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-400/40 placeholder:text-gray-400" />
+                  <div>
+                    <label className="mb-1 block text-[14px] font-bold text-gray-600">Name*</label>
+                    <input type="text" name="name" value={modalForm.name} onChange={hc(setModalForm)} placeholder="Enter your name" required
+                      className="w-full h-10 px-3 border border-gray-300 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-400/40 placeholder:text-gray-400" />
                   </div>
-                  <SelectField name="education" value={modalForm.education} onChange={hc(setModalForm)} placeholder="Education Qualification">
-                    <option>10th/12th Pass</option><option>Diploma / ITI</option>
-
-                    <option>Under Graduate (Engineering)</option>
-                    <option>Under Graduate (Arts/Science/Commerce)</option>
-                    <option>Post Graduate</option><option>PhD / Research Scholar</option>
-                  </SelectField>
-                  <SelectField name="profile" value={modalForm.profile} onChange={hc(setModalForm)} placeholder="Current Profile">
-                    <option>College Student (Final Year)</option>
-                    <option>College Student (1st/2nd/3rd Year)</option>
-                    <option>Working Professional (IT)</option>
-                    <option>Working Professional (Non-IT)</option>
-                    <option>Job Seeker / Unemployed</option>
-                    <option>Freelancer / Self-employed</option>
-                  </SelectField>
-                  <SelectField name="graduationYear" value={modalForm.graduationYear} onChange={hc(setModalForm)} placeholder="Year of Graduation">
-                    {Array.from({ length: 15 }, (_, i) => 2029 - i).map(y => <option key={y}>{y}</option>)}
-                    <option>Before 2015</option>
-                  </SelectField>
-                  <SelectField name="language" value={modalForm.language} onChange={hc(setModalForm)} placeholder="Speaking Language">
-                    <option>Tamil</option><option>English</option><option>Telugu</option>
-                    <option>Kannada</option><option>Hindi</option><option>Malayalam</option><option>Other</option>
-                  </SelectField>
+                  <div>
+                    <label className="mb-1 block text-[14px] font-bold text-gray-600">Email ID*</label>
+                    <input type="email" name="email" value={modalForm.email} onChange={hc(setModalForm)} placeholder="Enter your email" required
+                      className="w-full h-10 px-3 border border-gray-300 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-400/40 placeholder:text-gray-400" />
+                  </div>
+                  <div>
+                    <label className="mb-1 block text-[14px] font-bold text-gray-600">Phone Number*</label>
+                    <div className="flex gap-2">
+                      <div className="relative min-w-[88px]">
+                        <select name="countryCode" value={modalForm.countryCode} onChange={hc(setModalForm)}
+                          className="w-full h-10 px-3 border border-gray-300 rounded-md bg-gray-50 text-sm font-bold focus:outline-none cursor-pointer appearance-none pr-6">
+                          <option value="+91">IN +91</option><option value="+1">US +1</option>
+                          <option value="+44">UK +44</option><option value="+971">AE +971</option>
+                        </select>
+                        <DropArrow />
+                      </div>
+                      <input type="tel" name="phone" value={modalForm.phone} onChange={hp(setModalForm)} placeholder="Enter phone number" required
+                        className="flex-1 h-10 px-3 border border-gray-300 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-green-400/40 placeholder:text-gray-400" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="mb-1 block text-[14px] font-bold text-gray-600">Educational Qualification*</label>
+                    <SelectField name="education" value={modalForm.education} onChange={hc(setModalForm)} placeholder="Education Qualification">
+                      <option>Under Graduate (Engineering)</option>
+                      <option>Under Graduate (Arts/Science/Commerce)</option>
+                      <option>Post Graduate</option><option>PhD / Research Scholar</option>
+                    </SelectField>
+                  </div>
+                  <div>
+                    <label className="mb-1 block text-[14px] font-bold text-gray-600">Current Profile*</label>
+                    <SelectField name="profile" value={modalForm.profile} onChange={hc(setModalForm)} placeholder="Select">
+                      <option>College Student (Final Year)</option>
+                      <option>College Student (1st/2nd/3rd Year)</option>
+                      <option>Working Professional (IT)</option>
+                      <option>Working Professional (Non-IT)</option>
+                      <option>Job Seeker / Unemployed</option>
+                      <option>Freelancer / Self-employed</option>
+                    </SelectField>
+                  </div>
+                  <div>
+                    <label className="mb-1 block text-[14px] font-bold text-gray-600">Year of Graduation*</label>
+                    <SelectField name="graduationYear" value={modalForm.graduationYear} onChange={hc(setModalForm)} placeholder="Year of Graduation">
+                      {Array.from({ length: 15 }, (_, i) => 2029 - i).map(y => <option key={y}>{y}</option>)}
+                      <option>Before 2015</option>
+                    </SelectField>
+                  </div>
+                  <div>
+                    <label className="mb-1 block text-[14px] font-bold text-gray-600">Speaking Language*</label>
+                    <SelectField name="language" value={modalForm.language} onChange={hc(setModalForm)} placeholder="Select">
+                      <option>Tamil</option><option>English</option><option>Telugu</option>
+                      <option>Kannada</option><option>Hindi</option><option>Malayalam</option><option>Other</option>
+                    </SelectField>
+                  </div>
                   <div className="text-center">
                     <button type="button" className="text-xs font-bold text-green-700 hover:underline">
                       Have a Coupon code? <span className="underline">Redeem</span>

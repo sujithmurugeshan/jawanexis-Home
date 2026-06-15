@@ -239,8 +239,10 @@ export default function InternshipPage({ courseKey }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    countryCode: "+91",
     phone: "",
     education: "",
+    profile: "",
     graduationYear: "",
     language: ""
   });
@@ -296,7 +298,7 @@ export default function InternshipPage({ courseKey }) {
       setTimeout(() => {
         setModalOk(false);
         setShowModal(false);
-        setFormData({ name: "", email: "", phone: "", education: "", graduationYear: "", language: "" });
+        setFormData({ name: "", email: "", countryCode: "+91", phone: "", education: "", profile: "", graduationYear: "", language: "" });
       }, 4000);
     } catch (err) {
       setServerError(err.message);
@@ -606,11 +608,11 @@ export default function InternshipPage({ courseKey }) {
       {/* ── APPLICATION OVERLAY FORM MODAL ── */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <div className="relative w-full max-w-lg overflow-hidden bg-white border border-green-150 shadow-2xl rounded-3xl">
+          <div className="relative w-full max-w-lg overflow-hidden bg-white border border-green-150 shadow-2xl rounded-[8px]">
             {/* Modal close */}
             <button 
               onClick={() => setShowModal(false)} 
-              className="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 transition cursor-pointer"
+              className="absolute top-4 right-4 z-20 p-2 text-white/80 hover:text-white transition cursor-pointer"
               aria-label="Close form"
             >
               <X size={20} />
@@ -627,11 +629,15 @@ export default function InternshipPage({ courseKey }) {
                 </p>
               </div>
             ) : (
-              <div className="p-6 sm:p-8 max-h-[90vh] overflow-y-auto">
-                <h4 className="text-xl sm:text-2xl font-extrabold text-gray-900 border-b border-green-100 pb-3">
-                  Apply for {config.title}
-                </h4>
-                <p className="mt-2 text-xs text-gray-400 font-semibold leading-relaxed">
+              <>
+                <div className="bg-[#00684f] px-6 py-5 text-white">
+                  <h4 className="text-xl font-extrabold tracking-wide">
+                    Apply for {config.title}
+                  </h4>
+                </div>
+
+                <div className="p-6 max-h-[82vh] overflow-y-auto">
+                <p className="mb-4 text-xs text-gray-400 font-semibold leading-relaxed">
                   Enter your details below to request registration for the upcoming 1-month internship batch.
                 </p>
 
@@ -639,94 +645,142 @@ export default function InternshipPage({ courseKey }) {
 
                 <form onSubmit={handleApplySubmit} className="mt-6 space-y-4">
                   <div>
-                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Full Name *</label>
+                    <label className="block text-[14px] font-bold text-gray-600 mb-1">Name*</label>
                     <input 
                       type="text" 
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full h-11 px-4 border border-gray-200 rounded-xl focus:border-green-500 focus:ring-1 focus:ring-green-500 outline-none text-sm font-medium transition"
-                      placeholder="e.g. John Doe"
+                      className="w-full h-10 px-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-guvi-green/35 focus:border-[#005c45]"
+                      placeholder="Enter your name"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Email Address *</label>
+                    <label className="block text-[14px] font-bold text-gray-600 mb-1">Email ID*</label>
                     <input 
                       type="email" 
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full h-11 px-4 border border-gray-200 rounded-xl focus:border-green-500 focus:ring-1 focus:ring-green-500 outline-none text-sm font-medium transition"
-                      placeholder="e.g. john@example.com"
+                      className="w-full h-10 px-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-guvi-green/35 focus:border-[#005c45]"
+                      placeholder="Enter your email"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">WhatsApp / Phone Number *</label>
+                    <label className="block text-[14px] font-bold text-gray-600 mb-1">Phone Number*</label>
                     <div className="flex gap-2">
-                      <span className="w-16 h-11 border border-gray-200 bg-gray-50 rounded-xl flex items-center justify-center text-sm font-bold text-gray-500">
-                        +91
-                      </span>
+                      <div className="relative">
+                        <select
+                          value={formData.countryCode}
+                          onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
+                          className="h-10 px-3 border border-gray-300 rounded-md bg-gray-50 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-guvi-green/35 focus:border-[#005c45] cursor-pointer appearance-none pr-8"
+                        >
+                          <option value="+91">IN +91</option>
+                          <option value="+1">US +1</option>
+                          <option value="+44">UK +44</option>
+                          <option value="+971">AE +971</option>
+                          <option value="+65">SG +65</option>
+                        </select>
+                        <ChevronDown className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-gray-700" size={16} />
+                      </div>
                       <input 
                         type="tel" 
                         required
                         pattern="[0-9]{10}"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/\D/g, "").slice(0,10) })}
-                        className="flex-1 h-11 px-4 border border-gray-200 rounded-xl focus:border-green-500 focus:ring-1 focus:ring-green-500 outline-none text-sm font-medium transition"
-                        placeholder="10-digit number"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Highest Qualification *</label>
-                      <input 
-                        type="text" 
-                        required
-                        value={formData.education}
-                        onChange={(e) => setFormData({ ...formData, education: e.target.value })}
-                        className="w-full h-11 px-4 border border-gray-200 rounded-xl focus:border-green-500 focus:ring-1 focus:ring-green-500 outline-none text-sm font-medium transition"
-                        placeholder="e.g. BCA, B.Tech, MBA"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Year of Graduation *</label>
-                      <input 
-                        type="number" 
-                        required
-                        min="1990"
-                        max="2032"
-                        value={formData.graduationYear}
-                        onChange={(e) => setFormData({ ...formData, graduationYear: e.target.value })}
-                        className="w-full h-11 px-4 border border-gray-200 rounded-xl focus:border-green-500 focus:ring-1 focus:ring-green-500 outline-none text-sm font-medium transition"
-                        placeholder="e.g. 2025"
+                        className="flex-1 h-10 px-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-guvi-green/35 focus:border-[#005c45]"
+                        placeholder="Enter phone number"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Preferred Language *</label>
-                    <select 
-                      required
-                      value={formData.language}
-                      onChange={(e) => setFormData({ ...formData, language: e.target.value })}
-                      className="w-full h-11 px-4 border border-gray-200 rounded-xl focus:border-green-500 focus:ring-1 focus:ring-green-500 outline-none text-sm font-medium transition"
-                    >
-                      <option value="">Select Language</option>
-                      <option value="tamil">Tamil</option>
-                      <option value="telugu">Telugu</option>
-                      <option value="kannada">Kannada</option>
-                      <option value="english">English</option>
-                    </select>
+                    <label className="block text-[14px] font-bold text-gray-600 mb-1">Educational Qualification*</label>
+                    <div className="relative">
+                      <select
+                        required
+                        value={formData.education}
+                        onChange={(e) => setFormData({ ...formData, education: e.target.value })}
+                        className={`w-full h-10 px-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-guvi-green/35 focus:border-[#005c45] appearance-none pr-8 cursor-pointer ${formData.education === "" ? "text-gray-400" : "text-black font-semibold"}`}
+                      >
+                        <option value="" disabled>Education Qualification</option>
+                        <option value="Under Graduate (Engineering)">Under Graduate (Engineering)</option>
+                        <option value="Under Graduate (Arts/Science/Commerce)">Under Graduate (Arts/Science/Commerce)</option>
+                        <option value="Post Graduate">Post Graduate</option>
+                        <option value="PhD / Research Scholar">PhD / Research Scholar</option>
+                      </select>
+                      <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-700" size={16} />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-[14px] font-bold text-gray-600 mb-1">Current Profile*</label>
+                    <div className="relative">
+                      <select
+                        required
+                        value={formData.profile}
+                        onChange={(e) => setFormData({ ...formData, profile: e.target.value })}
+                        className={`w-full h-10 px-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-guvi-green/35 focus:border-[#005c45] appearance-none pr-8 cursor-pointer ${formData.profile === "" ? "text-gray-400" : "text-black font-semibold"}`}
+                      >
+                        <option value="" disabled>Select</option>
+                        <option value="College Student (Final Year)">College Student (Final Year)</option>
+                        <option value="College Student (1st/2nd/3rd Year)">College Student (1st/2nd/3rd Year)</option>
+                        <option value="Working Professional (IT)">Working Professional (IT)</option>
+                        <option value="Working Professional (Non-IT)">Working Professional (Non-IT)</option>
+                        <option value="Job Seeker / Unemployed">Job Seeker / Unemployed</option>
+                        <option value="Freelancer / Self-employed">Freelancer / Self-employed</option>
+                      </select>
+                      <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-700" size={16} />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-[14px] font-bold text-gray-600 mb-1">Year of Graduation*</label>
+                    <div className="relative">
+                      <select
+                        required
+                        value={formData.graduationYear}
+                        onChange={(e) => setFormData({ ...formData, graduationYear: e.target.value })}
+                        className={`w-full h-10 px-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-guvi-green/35 focus:border-[#005c45] appearance-none pr-8 cursor-pointer ${formData.graduationYear === "" ? "text-gray-400" : "text-black font-semibold"}`}
+                      >
+                        <option value="" disabled>Year of Graduation</option>
+                        {Array.from({ length: 15 }, (_, i) => 2029 - i).map((year) => (
+                          <option key={year} value={year}>{year}</option>
+                        ))}
+                      </select>
+                      <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-700" size={16} />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-[14px] font-bold text-gray-600 mb-1">Speaking Language*</label>
+                    <div className="relative">
+                      <select
+                        required
+                        value={formData.language}
+                        onChange={(e) => setFormData({ ...formData, language: e.target.value })}
+                        className={`w-full h-10 px-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-guvi-green/35 focus:border-[#005c45] appearance-none pr-8 cursor-pointer ${formData.language === "" ? "text-gray-400" : "text-black font-semibold"}`}
+                      >
+                        <option value="" disabled>Select</option>
+                        <option value="Tamil">Tamil</option>
+                        <option value="English">English</option>
+                        <option value="Telugu">Telugu</option>
+                        <option value="Kannada">Kannada</option>
+                        <option value="Hindi">Hindi</option>
+                        <option value="Malayalam">Malayalam</option>
+                        <option value="Other">Other</option>
+                      </select>
+                      <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-700" size={16} />
+                    </div>
                   </div>
 
                   <button 
                     type="submit"
                     disabled={loading}
-                    className="w-full h-12 btn-glossy-green font-extrabold text-base rounded-xl flex items-center justify-center cursor-pointer mt-6 disabled:opacity-50"
+                    className="w-full h-12 btn-glossy-green font-extrabold text-base rounded-md flex items-center justify-center cursor-pointer mt-6 disabled:opacity-50"
                   >
                     {loading ? "Submitting..." : "Submit Application"}
 
@@ -736,6 +790,7 @@ export default function InternshipPage({ courseKey }) {
                   </p>
                 </form>
               </div>
+              </>
             )}
           </div>
         </div>

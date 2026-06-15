@@ -661,9 +661,6 @@ function SyllabusModal({ isOpen, onClose, courseTitle }) {
                     <option value="" disabled>
                       Education Qualification
                     </option>
-                    <option value="10th/12th Pass">10th/12th Pass</option>
-                    <option value="Diploma / ITI">Diploma / ITI</option>
-
                     <option value="Under Graduate (Engineering)">Under Graduate (Engineering)</option>
                     <option value="Under Graduate (Arts/Science/Commerce)">Under Graduate (Arts/Science/Commerce)</option>
                     <option value="Post Graduate">Post Graduate</option>
