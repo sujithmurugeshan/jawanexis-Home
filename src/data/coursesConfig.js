@@ -46,12 +46,11 @@ export const coursesConfig = {
     floatingLogoLeftKey: "excel",
     floatingLogoRightKey: "powerbi",
     tools: [
-      { name: "Excel Advanced HR Analytics", logoKey: "excel_hr" },
-      { name: "Power BI", logoKey: "powerbi" },
-      { name: "ChatGPT", logoKey: "chatgpt" },
-      { name: "Gemini", logoKey: "gemini" },
-      { name: "Eightfold AI", logoKey: "eightfold" },
-      { name: "Paradox AI", logoKey: "paradox" }
+      { name: "Keka", logoKey: "keka" },
+      { name: "greytHR", logoKey: "greythr" },
+      { name: "Darwinbox", logoKey: "darwinbox" },
+      { name: "Eightfold.ai", logoKey: "eightfold_img" },
+      { name: "Zoho Recruit", logoKey: "zoho_recruit" }
     ],
     previewContent: {
       tagline: "Become an HR Professional in just 90 Days",
@@ -231,12 +230,11 @@ export const coursesConfig = {
     floatingLogoLeftKey: "linkedin",
     floatingLogoRightKey: "naukri",
     tools: [
-      { name: "Excel Advanced HR Analytics", logoKey: "excel_hr" },
-      { name: "Power BI", logoKey: "powerbi" },
-      { name: "ChatGPT", logoKey: "chatgpt" },
-      { name: "Gemini", logoKey: "gemini" },
-      { name: "Eightfold AI", logoKey: "eightfold" },
-      { name: "Paradox AI", logoKey: "paradox" }
+      { name: "Keka", logoKey: "keka" },
+      { name: "greytHR", logoKey: "greythr" },
+      { name: "Darwinbox", logoKey: "darwinbox" },
+      { name: "Eightfold.ai", logoKey: "eightfold_img" },
+      { name: "Zoho Recruit", logoKey: "zoho_recruit" }
     ],
     previewContent: {
       tagline: "Become a Recruitment Professional in just 45 days",

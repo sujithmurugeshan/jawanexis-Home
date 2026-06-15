@@ -5,6 +5,13 @@ import { API_BASE_URL } from "../config";
 
 import { CheckCircle2, CheckCircle, X, ChevronRight, Star, Search, BookOpen, Award, Briefcase, Sparkles, Users, Laptop, FileText, MessageSquare, Target, Zap, TrendingUp, GraduationCap } from "lucide-react";
 import { coursesConfig } from "../data/coursesConfig.js";
+
+// HR Tool logo images
+import kekaLogo from "../assets/tool_keka.jpg";
+import greythrLogo from "../assets/tool_greythr.jpg";
+import darwinboxLogo from "../assets/tool_darwinbox.png";
+import eightfoldImgLogo from "../assets/tool_eightfold.png";
+import zohoRecruitLogo from "../assets/tool_zoho_recruit.png";
 import {
   JavaScriptLogo, HTMLLogo, CSSLogo, TailwindCSSLogo, ReactLogo, ReduxLogo,
   MySQLLogo, MongoDBLogo, NodeJsLogo, ExpressJsLogo, PostmanLogo, AWSLogo,
@@ -73,7 +80,14 @@ const LOGO_MAP = {
   leetcode: <LeetCodeLogo />,
   hackerrank: <HackerRankLogo />,
   codechef: <CodeChefLogo />,
-  geeksforgeeks: <GeeksforGeeksLogo />
+  geeksforgeeks: <GeeksforGeeksLogo />,
+
+  // HR tool image logos
+  keka: <img src={kekaLogo} alt="Keka" className="w-full h-full object-contain" />,
+  greythr: <img src={greythrLogo} alt="greytHR" className="w-full h-full object-contain" />,
+  darwinbox: <img src={darwinboxLogo} alt="Darwinbox" className="w-full h-full object-contain" />,
+  eightfold_img: <img src={eightfoldImgLogo} alt="Eightfold.ai" className="w-full h-full object-contain" />,
+  zoho_recruit: <img src={zohoRecruitLogo} alt="Zoho Recruit" className="w-full h-full object-contain" />
 };
 
 /* ─────────────── Hiring Partner SVGs ─────────────── */
@@ -1298,11 +1312,13 @@ export default function CoursePage({ courseKey, isInternship }) {
             {/* Clean square/rounded-square cards layout with original logos */}
             <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
               {config.tools.map(({ name, logoKey }) => (
-                <div key={name} className="flex flex-col items-center justify-center bg-white border border-gray-150 rounded-2xl p-5 w-[120px] h-[120px] shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-green-200 transition-all duration-300 group cursor-default">
-                  <div className="flex items-center justify-center w-14 h-14 object-contain mb-2 transition-transform duration-300 group-hover:scale-110">
-                    {LOGO_MAP[logoKey] || <span className="text-xs font-bold text-gray-400">{name.substring(0, 3)}</span>}
+                <div key={name} className="flex flex-col items-center justify-between bg-white border border-gray-150 rounded-2xl w-[140px] h-[140px] p-3 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-green-200 transition-all duration-300 group cursor-default">
+                  <div className="flex-1 flex items-center justify-center w-full transition-transform duration-300 group-hover:scale-110">
+                    <div className="w-20 h-20 flex items-center justify-center">
+                      {LOGO_MAP[logoKey] || <span className="text-xs font-bold text-gray-400">{name.substring(0, 3)}</span>}
+                    </div>
                   </div>
-                  <span className="text-xs font-bold text-gray-700 text-center leading-tight transition-colors group-hover:text-green-600">{name}</span>
+                  <span className="text-[11px] font-bold text-gray-700 text-center leading-tight transition-colors group-hover:text-green-600 whitespace-nowrap">{name}</span>
                 </div>
               ))}
             </div>
