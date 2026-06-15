@@ -397,7 +397,7 @@ function SyllabusModal({ isOpen, onClose, courseTitle }) {
     doc.setFont("helvetica", "bold");
     doc.setFontSize(22);
     doc.setTextColor(17, 17, 17);
-    doc.text("Jawa EDTech", 14, 24);
+    doc.text("Jawa EDTECh", 14, 24);
 
     // Tagline
     doc.setFont("helvetica", "bold");
@@ -508,12 +508,12 @@ function SyllabusModal({ isOpen, onClose, courseTitle }) {
     doc.setFont("helvetica", "bold");
     doc.setFontSize(9);
     doc.setTextColor(11, 138, 50);
-    doc.text("Jawa EdTech Career Preparation Programs", 14, yOffset + 12);
+    doc.text("Jawa EDTECh Career Preparation Programs", 14, yOffset + 12);
     
     doc.setFont("helvetica", "normal");
     doc.setFontSize(8);
     doc.setTextColor(100, 100, 100);
-    doc.text("Contact: hr@jawaedtech.com | +91 97906 31286", 14, yOffset + 17);
+    doc.text("Contact: hr@Jawa EDTECh.com | +91 97906 31286", 14, yOffset + 17);
     doc.text("Jawa Incubation Centre, No: 54 Bharathi Park 7th Cross, Saibaba Colony, Coimbatore, Tamil Nadu, India", 14, yOffset + 21);
 
     // Trigger PDF file download

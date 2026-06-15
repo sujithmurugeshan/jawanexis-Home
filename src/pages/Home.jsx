@@ -304,7 +304,7 @@ function LiveClasses({ onSyllabusClick }) {
             Live Classes + Placement Guidance
           </h2>
           <p className="mt-6 text-[18px] font-medium leading-[1.45] text-guvi-muted sm:text-[24px]">
-            Jawa EDTech offers one of the industry's leading Project Based Career Programs that promises
+            Jawa EDTECh offers one of the industry's leading Project Based Career Programs that promises
             <br className="hidden lg:block" />
             Placement Guidance on completing the program.
           </p>
@@ -627,11 +627,11 @@ function NativeLanguages() {
               Leading EdTech Platform for Learning in Native Languages.
             </h2>
             <p className="mt-5 text-[17px] font-medium leading-8 text-guvi-muted sm:text-[22px] sm:leading-[1.55]">
-              JAWA EDTECH helps learners build job-ready skills through practical online learning, career-focused training, and placement
+              Jawa EDTECh helps learners build job-ready skills through practical online learning, career-focused training, and placement
               guidance in regional and global languages.
             </p>
             <p className="mt-8 text-[20px] font-semibold text-guvi-ink sm:text-[24px]">
-              <span className="font-extrabold text-guvi-deepGreen">JAWA EDTECH</span>
+              <span className="font-extrabold text-guvi-deepGreen">Jawa EDTECh</span>
               <span> - Learn, Upskill, and Grow</span>
             </p>
           </div>

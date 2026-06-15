@@ -13,7 +13,7 @@ const internshipData = {
   "hr-executive": {
     title: "HR Executive",
     subtitle: "Build a Career in Human Resources with Practical HR Training",
-    description: "The HR Executive Internship Program at Jawa EdTech is designed for students, graduates, and aspiring HR professionals who want to gain practical exposure to Human Resource Management. This internship bridges the gap between academic learning and real corporate HR practices.",
+    description: "The HR Executive Internship Program at Jawa EDTECh is designed for students, graduates, and aspiring HR professionals who want to gain practical exposure to Human Resource Management. This internship bridges the gap between academic learning and real corporate HR practices.",
     description2: "Human Resources plays a vital role in every organization. From hiring the right talent and onboarding employees to managing records and supporting employee engagement, HR professionals contribute significantly to business growth. Our internship program provides hands-on experience and industry-relevant knowledge that helps learners become job-ready HR professionals.",
     description3: "During this 1-month internship, students will learn the fundamentals of HR operations, employee lifecycle management, HR documentation, onboarding processes, payroll basics, compliance support, and workplace communication.",
     curriculum: [
@@ -70,8 +70,8 @@ const internshipData = {
     ],
     originalFee: "₹7,000",
     discountedFee: "₹5,000",
-    whyChooseTitle: "Why Choose Jawa EdTech?",
-    whyChooseDesc: "At Jawa EdTech, we focus on practical learning rather than theoretical concepts. Our trainers bring industry experience and provide real-world HR exposure that helps students understand corporate HR environments and become confident professionals."
+    whyChooseTitle: "Why Choose Jawa EDTECh?",
+    whyChooseDesc: "At Jawa EDTECh, we focus on practical learning rather than theoretical concepts. Our trainers bring industry experience and provide real-world HR exposure that helps students understand corporate HR environments and become confident professionals."
   },
   "hr-recruitment": {
     title: "HR Recruitment",
@@ -199,7 +199,7 @@ const internshipData = {
     ],
     originalFee: "₹5,000",
     discountedFee: "₹3,500",
-    whyChooseTitle: "Why Start Your Development Career with Jawa EdTech?",
+    whyChooseTitle: "Why Start Your Development Career with Jawa EDTECh?",
     whyChooseDesc: "Technology companies look for candidates who can demonstrate practical skills and project experience. Our Full Stack Development Internship helps learners build real-world applications, strengthen coding abilities, and create an impressive portfolio for job opportunities."
   }
 };
@@ -227,7 +227,7 @@ const faqs = [
   },
   {
     q: "How can I enroll?",
-    a: "You can contact Jawa EdTech through the website, phone, or email to reserve your seat in the upcoming batch."
+    a: "You can contact Jawa EDTECh through the website, phone, or email to reserve your seat in the upcoming batch."
   }
 ];
 
@@ -589,7 +589,7 @@ export default function InternshipPage({ courseKey }) {
                     Start Your Professional Journey Today
                   </h4>
                   <p className="mt-3 text-xs sm:text-sm text-green-100 font-medium leading-relaxed">
-                    Whether you aspire to become an HR Executive, HR Recruiter, or Full Stack Developer, our internship programs provide the practical skills, mentorship, and industry exposure needed to build a successful career. Join Jawa EdTech and take the first step toward becoming industry-ready.
+                    Whether you aspire to become an HR Executive, HR Recruiter, or Full Stack Developer, our internship programs provide the practical skills, mentorship, and industry exposure needed to build a successful career. Join Jawa EDTECh and take the first step toward becoming industry-ready.
                   </p>
                 </div>
                 <button 

@@ -194,10 +194,10 @@ function ContactPage() {
                 <div>
                   <span className="block text-[14px] font-bold text-gray-400">Write to us</span>
                   <a
-                    href="mailto:hr@jawaedtech.com"
+                    href="mailto:hr@Jawa EDTECh.com"
                     className="block mt-1 text-[18px] font-extrabold text-[#0f172a] hover:text-guvi-green transition-colors"
                   >
-                    hr@jawaedtech.com
+                    hr@Jawa EDTECh.com
                   </a>
                 </div>
               </div>

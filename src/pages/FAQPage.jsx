@@ -4,7 +4,7 @@ import Header from "../components/Header.jsx";
 
 const faqs = [
   {
-    question: "Who can join Jawa EdTech courses?",
+    question: "Who can join Jawa EDTECh courses?",
     answer:
       "Our courses are designed for students, fresh graduates, job seekers, career switchers, and working professionals who want to gain industry-relevant skills and improve their career opportunities."
   },
@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     question: "Will I receive a certificate after course completion?",
-    answer: "Yes. Students who successfully complete the course will receive a course completion certificate from Jawa EdTech."
+    answer: "Yes. Students who successfully complete the course will receive a course completion certificate from Jawa EDTECh."
   },
   {
     question: "Are the courses practical or theory-based?",
@@ -45,9 +45,9 @@ const faqs = [
     answer: "We offer flexible learning options based on the program, including online, offline, and hybrid training modes."
   },
   {
-    question: "What makes Jawa EdTech different from other training institutes?",
+    question: "What makes Jawa EDTECh different from other training institutes?",
     answer:
-      "Jawa EdTech focuses on industry-oriented training, hands-on learning, expert mentorship, career guidance, placement support, and real-world project experience to help learners build successful careers."
+      "Jawa EDTECh focuses on industry-oriented training, hands-on learning, expert mentorship, career guidance, placement support, and real-world project experience to help learners build successful careers."
   },
   {
     question: "Will I work on real-time projects?",
@@ -65,8 +65,8 @@ const faqs = [
       "Yes. Our HR Executive Training program is specifically designed for fresh graduates and aspiring HR professionals looking to start a career in Human Resources."
   },
   {
-    question: "How can I contact Jawa EdTech for more information?",
-    answer: "Email: hr@jawaedtech.com. Phone: +91 97906 31286."
+    question: "How can I contact Jawa EDTECh for more information?",
+    answer: "Email: hr@Jawa EDTECh.com. Phone: +91 97906 31286."
   }
 ];
 
@@ -83,7 +83,7 @@ function FAQPage() {
                 Frequently Asked Questions
               </h1>
               <p className="mx-auto mt-4 max-w-[720px] text-[17px] font-medium leading-8 text-black/60">
-                Find quick answers about Jawa EdTech courses, certificates, projects, placement assistance, and enrollment.
+                Find quick answers about Jawa EDTECh courses, certificates, projects, placement assistance, and enrollment.
               </p>
             </div>
 

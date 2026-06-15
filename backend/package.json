@@ -1,7 +1,7 @@
 {
   "name": "jawa-edtech-backend",
   "version": "1.0.0",
-  "description": "Backend for JAWA EDTech",
+  "description": "Backend for Jawa EDTECh",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",

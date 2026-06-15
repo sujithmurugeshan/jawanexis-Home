@@ -14,7 +14,7 @@ function AuthPage({ mode = "login" }) {
   const title = isSignup ? "Create your account" : "Welcome back";
   const subtitle = isSignup
     ? "Start learning with live classes, mentor guidance, and placement support."
-    : "Login to continue your learning journey with JAWA EDTech.";
+    : "Login to continue your learning journey with Jawa EDTECh.";
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -87,10 +87,10 @@ function AuthPage({ mode = "login" }) {
       <div className="mx-auto flex min-h-[calc(100vh-48px)] max-w-[1180px] items-center">
         <section className="grid w-full overflow-hidden rounded-[8px] border border-guvi-line bg-white shadow-soft lg:grid-cols-[0.92fr_1.08fr]">
           <div className="auth-brand-panel relative hidden min-h-[680px] flex-col justify-between overflow-hidden bg-[#07110b] p-10 text-white lg:flex">
-            <a href="#home" className="relative z-10 inline-flex items-center gap-3" aria-label="Back to JAWA EDTech home">
+            <a href="#home" className="relative z-10 inline-flex items-center gap-3" aria-label="Back to Jawa EDTECh home">
               <img src={logo3d} alt="" className="h-11 w-11 object-contain" aria-hidden="true" />
               <div>
-                <p className="text-2xl font-extrabold leading-none">Jawa EDTech</p>
+                <p className="text-2xl font-extrabold leading-none">Jawa EDTECh</p>
                 <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.22em] text-white/60">Learn, Lead, Innovate!</p>
               </div>
             </a>
@@ -126,12 +126,12 @@ function AuthPage({ mode = "login" }) {
                 <div className="mb-7 flex items-center gap-3 lg:hidden">
                   <img src={logo3d} alt="" className="h-10 w-10 object-contain" aria-hidden="true" />
                   <div>
-                    <p className="text-xl font-extrabold leading-none">Jawa EDTech</p>
+                    <p className="text-xl font-extrabold leading-none">Jawa EDTECh</p>
                     <p className="mt-1 text-[8px] font-bold uppercase tracking-[0.18em] text-black/50">Learn, Lead, Innovate!</p>
                   </div>
                 </div>
                 <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-guvi-deepGreen">
-                  {isSignup ? "Join Jawa EDTech" : "Student portal"}
+                  {isSignup ? "Join Jawa EDTECh" : "Student portal"}
                 </p>
                 <h2 className="mt-3 text-[34px] font-extrabold leading-tight tracking-tight text-black sm:text-[42px]">{title}</h2>
                 <p className="mt-3 text-[16px] font-medium leading-7 text-black/58">{subtitle}</p>

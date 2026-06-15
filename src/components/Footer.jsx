@@ -2,7 +2,7 @@ import logo from "../assets/logo.png";
 
 const socialLinks = [
   ["Facebook", "fa-brands fa-facebook-f", "bg-[#315ca8]", "https://www.facebook.com/profile.php?id=61574843888000&sk=followers"],
-  ["Instagram", "fa-brands fa-instagram", "bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7]", "https://www.instagram.com/jawaedtech/"],
+  ["Instagram", "fa-brands fa-instagram", "bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7]", "https://www.instagram.com/Jawa EDTECh/"],
   ["LinkedIn", "fa-brands fa-linkedin-in", "bg-[#2677b5]"],
   ["X", "fa-brands fa-x-twitter", "bg-black"],
   ["Telegram", "fa-brands fa-telegram", "bg-[#229ed9]"],
@@ -136,15 +136,15 @@ function Footer() {
           {/* Left: Branding */}
           <div className="space-y-6">
             <div className="flex flex-wrap items-center gap-4">
-              <img src={logo} alt="Jawa EDTech logo" className="h-14 w-14 rounded-lg object-contain" />
+              <img src={logo} alt="Jawa EDTECh logo" className="h-14 w-14 rounded-lg object-contain" />
               <div>
-                <div className="text-[28px] font-extrabold leading-none text-white">Jawa EDTech</div>
+                <div className="text-[28px] font-extrabold leading-none text-white">Jawa EDTECh</div>
                 <p className="mt-1 text-[11px] font-extrabold tracking-[0.22em] text-guvi-green">LEARN, LEAD, INNOVATE!</p>
               </div>
             </div>
 
             <p className="text-[15px] font-medium leading-relaxed text-slate-300">
-              Jawa EDTech is a career-focused learning and skills development company delivering practical training in HR, full stack development, software testing, DSA, and placement preparation.
+              Jawa EDTECh is a career-focused learning and skills development company delivering practical training in HR, full stack development, software testing, DSA, and placement preparation.
             </p>
             <p className="text-[15px] font-medium leading-relaxed text-slate-300">
               Our programs combine live classes, mentor guidance, project practice, and career support to help learners build job-ready skills with confidence.
@@ -190,7 +190,7 @@ function Footer() {
           >
             Privacy Policy
           </a>
-          <span className="text-slate-400">&copy; 2026 Jawa EDTech. All rights reserved.</span>
+          <span className="text-slate-400">&copy; 2026 Jawa EDTECh. All rights reserved.</span>
         </div>
 
       </div>

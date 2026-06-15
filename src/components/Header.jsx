@@ -117,7 +117,7 @@ function Header() {
   return (
     <header className="sticky top-0 z-40 bg-white shadow-nav">
       <div className="shell flex h-14 items-center justify-between gap-4">
-        <a href="#home" className="flex min-w-[160px] items-center gap-2" aria-label="JAWA EDTech home">
+        <a href="#home" className="flex min-w-[160px] items-center gap-2" aria-label="Jawa EDTECh home">
           <img
             src={logo3d}
             alt=""
@@ -125,7 +125,7 @@ function Header() {
             aria-hidden="true"
           />
           <div className="flex flex-col leading-none">
-            <span className="text-lg font-extrabold tracking-tight text-black">Jawa EDTech</span>
+            <span className="text-lg font-extrabold tracking-tight text-black">Jawa EDTECh</span>
             <span className="mt-0.5 text-[6px] font-bold tracking-[0.16em] text-black/60">LEARN, LEAD, INNOVATE!</span>
           </div>
         </a>

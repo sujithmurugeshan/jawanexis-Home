@@ -375,7 +375,7 @@ function FaqSection({ faqs, title }) {
             Frequently Asked Questions
           </h2>
           <p className="mt-3 text-gray-500 font-medium">
-            Everything you need to know about the JawaEdTech {title} Program.
+            Everything you need to know about the Jawa EDTECh {title} Program.
           </p>
         </div>
 
@@ -429,9 +429,9 @@ function CoursePreviewTabs({ previewContent }) {
   const currentTab = tabs.find(t => t.id === activeTab) || tabs[0];
 
   return (
-    <div className="bg-[#fafaff] border border-gray-100 rounded-3xl p-6 md:p-8 shadow-[0_8px_30px_rgba(25,217,80,0.03)]">
-      {/* Tabs Menu */}
-      <div className="flex flex-wrap gap-2 border-b border-gray-200 pb-4 mb-6">
+    <div className="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-[0_8px_40px_rgba(25,217,80,0.06)]">
+      {/* Tab Navigation */}
+      <div style={{ background: "linear-gradient(135deg,#f0fdf4,#ffffff)" }} className="flex flex-wrap gap-1.5 border-b border-gray-100 p-4">
         {tabs.map(tab => {
           const IconComponent = tab.icon;
           const isActive = activeTab === tab.id;
@@ -439,49 +439,68 @@ function CoursePreviewTabs({ previewContent }) {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-extrabold transition-all duration-200 cursor-pointer ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-extrabold transition-all duration-200 cursor-pointer ${
                 isActive
-                  ? "btn-glossy-green border-transparent"
-                  : "text-gray-500 hover:text-green-600 hover:bg-green-50"
+                  ? "bg-green-600 text-white shadow-md scale-[1.02]"
+                  : "text-gray-500 hover:text-green-700 hover:bg-green-50/80"
               }`}
             >
-              <IconComponent size={16} className={isActive ? "text-black" : "text-green-500"} />
+              <IconComponent size={15} className={isActive ? "text-white" : "text-green-500"} />
               <span>{tab.label}</span>
             </button>
           );
         })}
       </div>
 
-      {/* Dynamic Tab Pane Content */}
-      <div className="transition-opacity duration-300 min-h-[220px]">
-        {currentTab.type === "list" && (
+      {/* Tab Content */}
+      <div className="p-6 md:p-8 min-h-[220px]">
+        {currentTab.id === "learn" && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {currentTab.content.map((item, idx) => (
-              <div key={idx} className="flex items-start gap-3">
-                <span className="text-green-500 mt-0.5 text-base">✦</span>
-                <span className="text-sm font-semibold text-gray-700 leading-relaxed">{item}</span>
+              <div key={idx} className="flex items-start gap-3.5 p-4 rounded-2xl bg-white border border-gray-100 shadow-[0_2px_8px_rgba(0,0,0,0.01)] hover:border-green-300 hover:shadow-[0_4px_16px_rgba(22,163,74,0.04)] hover:-translate-y-0.5 transition-all duration-300">
+                <span className="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm">
+                  <CheckCircle2 size={16} className="text-green-600 stroke-[2.5]" />
+                </span>
+                <span className="text-sm font-semibold text-gray-700 leading-relaxed mt-0.5">{item}</span>
               </div>
             ))}
           </div>
         )}
 
-        {currentTab.type === "bullets" && (
+        {currentTab.id === "master" && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {currentTab.content.map((item, idx) => (
+              <div key={idx} className="flex items-center gap-3.5 p-4 rounded-2xl bg-white border border-gray-100 shadow-[0_2px_8px_rgba(0,0,0,0.01)] hover:border-green-300 hover:shadow-[0_4px_16px_rgba(22,163,74,0.04)] hover:-translate-y-0.5 transition-all duration-300">
+                <span className="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <Award size={16} className="text-green-600 stroke-[2.5]" />
+                </span>
+                <span className="text-sm font-bold text-gray-800 leading-tight">{item}</span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {currentTab.id === "careers" && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {currentTab.content.map((item, idx) => (
+              <div key={idx} className="flex items-center gap-3.5 p-4 rounded-2xl bg-white border border-gray-100 shadow-[0_2px_8px_rgba(0,0,0,0.01)] hover:border-green-300 hover:shadow-[0_4px_16px_rgba(22,163,74,0.04)] hover:-translate-y-0.5 transition-all duration-300">
+                <span className="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <Briefcase size={16} className="text-green-600 stroke-[2.5]" />
+                </span>
+                <span className="text-sm font-bold text-gray-800 leading-tight">{item}</span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {currentTab.id === "why" && (
           <div className="space-y-3.5">
             {currentTab.content.map((item, idx) => (
-              <div key={idx} className="flex items-start gap-3 text-sm font-medium text-gray-600 leading-relaxed">
-                <ChevronRight size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
-                <span>{item}</span>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {currentTab.type === "tags" && (
-          <div className="flex flex-wrap gap-3.5">
-            {currentTab.content.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-green-50/60 border border-green-100 text-sm font-bold text-green-800">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#19d950] flex-shrink-0" />
-                {item}
+              <div key={idx} className="flex items-start gap-4 p-4.5 rounded-2xl bg-white border border-gray-100 shadow-[0_2px_8px_rgba(0,0,0,0.01)] hover:border-green-300 hover:shadow-[0_4px_20px_rgba(22,163,74,0.04)] transition-all duration-300">
+                <div className="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm">
+                  <Sparkles size={16} className="text-green-600 stroke-[2.5]" />
+                </div>
+                <span className="text-sm font-semibold text-gray-700 leading-relaxed">{item}</span>
               </div>
             ))}
           </div>
@@ -611,6 +630,123 @@ function HiringCompanies() {
       `}</style>
     </section>
   );
+}/* ─────────────── Course Overview Card Component ─────────────── */
+/* ─────────────── Course Preview Section Component ─────────────── */
+function CoursePreviewSection({ config }) {
+  const description = config.previewContent.description;
+  const sentences = description.split(/(?<=[.?!])\s+/).map(s => s.trim()).filter(Boolean);
+
+  if (sentences.length === 0) return null;
+
+  // Detect hook sentences (intro questions or bold statements)
+  let hookSentences = [];
+  if (sentences[0].endsWith("?") || (sentences[1] && (sentences[1].endsWith("?") || sentences[1].includes("!")))) {
+    if (sentences[0].endsWith("?")) {
+      hookSentences.push(sentences[0]);
+      if (sentences[1] && (sentences[1].includes("!") || sentences[1].length < 35)) {
+        hookSentences.push(sentences[1]);
+      }
+    } else {
+      hookSentences.push(sentences[0]);
+    }
+  } else {
+    hookSentences.push(sentences[0]);
+  }
+
+  const remainingSentences = sentences.slice(hookSentences.length);
+  
+  // Split remainder into two parts
+  const halfLength = Math.ceil(remainingSentences.length / 2);
+  const blockASentences = remainingSentences.slice(0, halfLength);
+  const blockBSentences = remainingSentences.slice(halfLength);
+
+  const hookText = hookSentences.join(" ");
+  const blockAText = blockASentences.join(" ");
+  const blockBText = blockBSentences.join(" ");
+
+  // Highlight key terms case-insensitively
+  const highlightKeyWords = (text) => {
+    const keywords = [
+      "real-world HR responsibilities",
+      "best talent",
+      "employee engagement",
+      "performance management",
+      "Payroll to develop the organization",
+      "hands-on projects",
+      "real-time case studies",
+      "succeed in today's job market",
+      "talent acquisition",
+      "find, screen, interview and hire",
+      "ways to recruit",
+      "find candidates",
+      "screen them",
+      "use the tools",
+      "Full Stack Developers",
+      "web applications",
+      "front end and the back end",
+      "projects and assignments",
+      "get help from experts",
+      "software development",
+      "identify defects",
+      "improve software quality",
+      "real-time testing projects",
+      "software quality assurance",
+      "problem-solving and programming skills",
+      "technical interviews",
+      "coding practice",
+      "logical thinking",
+      "algorithm optimization",
+      "interview preparation",
+      "Jawa EDTECh",
+      "Jawa EDTECh"
+    ];
+
+    let highlighted = text;
+    keywords.forEach(keyword => {
+      const regex = new RegExp(`\\b${keyword.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b`, 'gi');
+      highlighted = highlighted.replace(regex, (match) => {
+        return `<strong class="text-green-700 font-extrabold">${match}</strong>`;
+      });
+    });
+
+    return <span dangerouslySetInnerHTML={{ __html: highlighted }} />;
+  };
+
+  return (
+    <div className="flex flex-col gap-6 w-full select-text">
+      
+      {/* 1. Quote-style / Hook Callout Container (Full Width) */}
+      <div className="relative pl-8 py-4 border-l-4 border-green-500 bg-gradient-to-r from-green-50/50 via-green-50/10 to-transparent rounded-r-2xl shadow-[inset_1px_1px_2px_rgba(25,217,80,0.03)] group">
+        <span className="absolute -left-4 -top-6 text-[90px] text-green-200/40 font-serif select-none pointer-events-none leading-none">“</span>
+        <p className="text-lg md:text-xl font-extrabold text-green-900 leading-relaxed italic relative z-10">
+          {hookText}
+        </p>
+      </div>
+
+      {/* 2. Premium Content Containers in Two Columns */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch mt-2">
+        
+        {/* Block A Card */}
+        <div className="bg-gradient-to-br from-white to-gray-50/30 border-l-4 border-l-green-600/30 border border-gray-150 rounded-r-2xl rounded-l-md p-6 shadow-[0_4px_20px_rgba(0,0,0,0.015)] hover:border-l-green-600 hover:shadow-[0_8px_30px_rgba(25,217,80,0.03)] hover:border-gray-200 transition-all duration-300 relative flex flex-col justify-between">
+          <div className="absolute top-4 right-4 w-1.5 h-1.5 rounded-full bg-green-400" />
+          <p className="text-[15px] sm:text-base leading-relaxed text-gray-650 font-semibold">
+            {highlightKeyWords(blockAText)}
+          </p>
+        </div>
+
+        {/* Block B Card */}
+        {blockBText && (
+          <div className="bg-gradient-to-br from-white to-gray-50/30 border-l-4 border-l-green-600/30 border border-gray-150 rounded-r-2xl rounded-l-md p-6 shadow-[0_4px_20px_rgba(0,0,0,0.015)] hover:border-l-green-600 hover:shadow-[0_8px_30px_rgba(25,217,80,0.03)] hover:border-gray-200 transition-all duration-300 relative flex flex-col justify-between">
+            <div className="absolute top-4 right-4 w-1.5 h-1.5 rounded-full bg-green-400" />
+            <p className="text-[15px] sm:text-base leading-relaxed text-gray-650 font-semibold">
+              {highlightKeyWords(blockBText)}
+            </p>
+          </div>
+        )}
+
+      </div>
+    </div>
+  );
 }
 
 /* ─────────────── CORE COURSE PAGE COMPONENT ─────────────── */
@@ -706,6 +842,20 @@ export default function CoursePage({ courseKey, isInternship }) {
         {!isInternship && (
           <section className="relative overflow-hidden"
           style={{ background: "linear-gradient(175deg,#f0fff4 0%,#f4fff7 40%,#ffffff 100%)" }}>
+          
+          <style>{`
+            @keyframes badgeGlowPulse {
+              0%, 100% {
+                box-shadow: 0 0 8px rgba(34, 197, 94, 0.2);
+                border-color: rgba(187, 247, 208, 0.8);
+              }
+              50% {
+                box-shadow: 0 0 18px rgba(34, 197, 94, 0.6);
+                border-color: rgba(34, 197, 94, 0.6);
+              }
+            }
+          `}</style>
+
           <div style={{
             position: "absolute", left: "-6%", top: "30%", width: 320, height: 400,
             background: "radial-gradient(ellipse at center,rgba(25,217,80,0.25) 0%,transparent 70%)",
@@ -718,9 +868,16 @@ export default function CoursePage({ courseKey, isInternship }) {
           }} />
 
           <div className="relative z-10 flex flex-col items-center text-center pt-10 pb-4 px-4">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-green-200 text-green-700 text-xs font-extrabold uppercase tracking-widest mb-5 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-ping" />
-              JawaEdTech Certified
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/85 border text-green-700 text-xs font-extrabold uppercase tracking-widest mb-5"
+              style={{
+                animation: "badgeGlowPulse 3.2s infinite ease-in-out",
+                borderColor: "rgba(187, 247, 208, 0.8)"
+              }}>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              Jawa EDTECh Certified
             </span>
             <h1 className="text-[28px] sm:text-[40px] md:text-[50px] font-extrabold leading-tight tracking-tight text-gray-900 max-w-[900px]">
               {config.heroTitle}
@@ -767,7 +924,7 @@ export default function CoursePage({ courseKey, isInternship }) {
                   style={{ background: "radial-gradient(ellipse at 50% 90%,rgba(25,217,80,0.12) 0%,transparent 70%)" }} />
                 <img
                   src={config.studentsImg}
-                  alt={`JawaEdTech ${config.title} Students`}
+                  alt={`Jawa EDTECh ${config.title} Students`}
                   className="relative w-full block object-contain object-bottom drop-shadow-xl"
                   style={{ maxHeight: 520, minHeight: 280 }}
                 />
@@ -885,28 +1042,29 @@ export default function CoursePage({ courseKey, isInternship }) {
           </div>
         </section>
 
-        {/* ── 2. COURSE PREVIEW SECTION (CLEAN INTRO & TABS ONLY) ── */}
         <section className="py-16 bg-white border-t border-b border-gray-100" id="preview-section">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
               <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-50 border border-green-100 text-green-700 text-xs font-extrabold uppercase tracking-wider mb-4">
                 <Search size={12} className="text-green-600" />
                 Course Preview &amp; Insights
               </span>
-              <h2 className="text-[28px] md:text-[36px] font-extrabold text-gray-900 tracking-tight">
+              <h2 className="text-[28px] md:text-[36px] font-extrabold text-gray-900 tracking-tight leading-tight">
                 {config.previewContent.tagline}
               </h2>
             </div>
 
-            {/* Description block only, preview image/photo on right and enroll buttons removed */}
-            <div className="max-w-3xl mx-auto text-center mb-12">
-              <p className="text-base md:text-[17px] leading-relaxed text-gray-600 font-medium">
-                {config.previewContent.description}
-              </p>
-            </div>
+            <div className="flex flex-col gap-10">
+              
+              {/* Course Preview Content */}
+              <CoursePreviewSection config={config} />
 
-            {/* Interactive Tabbed Outcomes Container */}
-            <CoursePreviewTabs previewContent={config.previewContent} />
+              {/* Interactive Tabs */}
+              <div className="w-full">
+                <CoursePreviewTabs previewContent={config.previewContent} />
+              </div>
+
+            </div>
           </div>
         </section>
 
@@ -1101,7 +1259,7 @@ export default function CoursePage({ courseKey, isInternship }) {
             <div className="flex items-start gap-3 bg-green-50 border border-green-200 rounded-2xl px-6 py-4">
               <span className="text-green-500 mt-0.5 flex-shrink-0 text-lg">ℹ️</span>
               <p className="text-sm font-semibold text-green-800">
-                For the 2-month internship program, please{" "}
+                For the 1-month internship program, please{" "}
                 <button onClick={() => setShowModal(true)} className="underline font-bold hover:text-green-600 transition cursor-pointer">
                   contact us
                 </button>{" "}
