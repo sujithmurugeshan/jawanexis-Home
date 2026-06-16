@@ -14,7 +14,8 @@ import {
   GoogleWorkspaceLogo, SourcingToolsLogo, SeleniumLogo, JiraLogo, TestNGLogo,
   MavenLogo, SQLLogo, JenkinsLogo, DevToolsLogo, SwaggerLogo,
   CPlusPlusLogo, JavaLogo, PythonLogo, LeetCodeLogo, HackerRankLogo,
-  CodeChefLogo, GeeksforGeeksLogo, ChatGPTLogo, GeminiLogo, EightfoldLogo, ParadoxLogo
+  CodeChefLogo, GeeksforGeeksLogo, ChatGPTLogo, GeminiLogo, EightfoldLogo, ParadoxLogo,
+  KekaToolLogo, GreytHRToolLogo, DarwinboxToolLogo, EightfoldImgLogo, ZohoRecruitToolLogo
 } from "../components/ToolLogos.jsx";
 
 // Map tool keys to SVG components
@@ -73,7 +74,13 @@ const LOGO_MAP = {
   leetcode: <LeetCodeLogo />,
   hackerrank: <HackerRankLogo />,
   codechef: <CodeChefLogo />,
-  geeksforgeeks: <GeeksforGeeksLogo />
+  geeksforgeeks: <GeeksforGeeksLogo />,
+
+  keka: <KekaToolLogo />,
+  greythr: <GreytHRToolLogo />,
+  darwinbox: <DarwinboxToolLogo />,
+  eightfold_img: <EightfoldImgLogo />,
+  zoho_recruit: <ZohoRecruitToolLogo />
 };
 
 /* ─────────────── Hiring Partner SVGs ─────────────── */
@@ -1150,8 +1157,8 @@ export default function CoursePage({ courseKey, isInternship }) {
             {/* Clean square/rounded-square cards layout with original logos */}
             <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
               {config.tools.map(({ name, logoKey }) => (
-                <div key={name} className="flex flex-col items-center justify-center bg-white border border-gray-150 rounded-2xl p-5 w-[120px] h-[120px] shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-green-200 transition-all duration-300 group cursor-default">
-                  <div className="flex items-center justify-center w-14 h-14 object-contain mb-2 transition-transform duration-300 group-hover:scale-110">
+                <div key={name} className="flex flex-col items-center justify-center bg-white border border-gray-150 rounded-2xl p-5 w-[140px] h-[140px] shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-green-200 transition-all duration-300 group cursor-default">
+                  <div className="flex items-center justify-center w-20 h-20 mb-2 transition-transform duration-300 group-hover:scale-110 [&_img]:!w-[72px] [&_img]:!h-[72px] [&_svg]:!w-[72px] [&_svg]:!h-[72px]">
                     {LOGO_MAP[logoKey] || <span className="text-xs font-bold text-gray-400">{name.substring(0, 3)}</span>}
                   </div>
                   <span className="text-xs font-bold text-gray-700 text-center leading-tight transition-colors group-hover:text-green-600">{name}</span>

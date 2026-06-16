@@ -239,7 +239,7 @@ function WallOfLove() {
                         <img src={companyLogo} alt="Logo" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
                       </div>
                       <div>
-                        <div style={{ fontWeight: 800, fontSize: 16, color: "#8cc63f", fontFamily: "DM Sans, sans-serif" }}>
+                        <div style={{ fontWeight: 800, fontSize: 16, color: "#094021", fontFamily: "DM Sans, sans-serif" }}>
                           {item.name}
                         </div>
                         <div style={{ fontSize: 12, color: "#64748b", fontWeight: 600, marginTop: 2 }}>
@@ -495,7 +495,7 @@ function AboutPage() {
                     <LogIn size={13} className="stroke-[2.5]" />
                     <span className="text-[11px] font-extrabold tracking-wide font-sans">View Profile</span>
                   </a>
-                  <div className="absolute bottom-0 left-0 right-0 bg-[#8cc63f] px-6 py-5 transition-transform duration-300 ease-out translate-y-full group-hover:translate-y-0 z-20 text-left">
+                  <div className="absolute bottom-0 left-0 right-0 px-6 py-5 transition-transform duration-300 ease-out translate-y-full group-hover:translate-y-0 z-20 text-left" style={{ background: "linear-gradient(180deg, #15b957 0%, #0a8f3a 45%, #07692b 100%)" }}>
                     <h4 className="text-white font-extrabold text-[18px] tracking-wide font-sans leading-tight">{member.name}</h4>
                     <p className="text-white/90 font-medium text-[12px] mt-0.5 font-sans leading-snug">{member.role}</p>
                   </div>

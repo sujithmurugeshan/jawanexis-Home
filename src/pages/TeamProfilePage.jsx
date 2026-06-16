@@ -109,6 +109,7 @@ function TeamProfilePage({ slug }) {
         </section>
 
         {/* ─── ROLE AT Jawa EDTECh ─── */}
+        {slug !== "soorya-jawahar" && slug !== "nitinchand-saravanan" && slug !== "sunitha-prakash" && (
         <section className="tp-section tp-section--white">
           <div className="shell tp-content-width">
             <h2 className="tp-section-heading">
@@ -122,6 +123,7 @@ function TeamProfilePage({ slug }) {
             </ul>
           </div>
         </section>
+        )}
 
         {/* ─── WHAT STUDENTS SAY ─── */}
         <section className="tp-section tp-section--gray">

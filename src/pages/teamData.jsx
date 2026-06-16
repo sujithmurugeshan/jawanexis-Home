@@ -43,7 +43,7 @@ const teamProfiles = {
       "His vision of combining practical training with career support helped me transition from a student to a working professional with confidence."
     ],
     contact: {
-      email: "hr@Jawa EDTECh.com",
+      email: "hr@jawaedtech.com",
       phone: "+919790631286",
       linkedin: "https://www.linkedin.com/in/soorya-jawahar/"
     },
@@ -104,7 +104,7 @@ const teamProfiles = {
       "Anisha Ma'am always encouraged us to learn through practice. Her mentorship and career support helped me transition smoothly from college to the corporate world."
     ],
     contact: {
-      email: "hr@Jawa EDTECh.com",
+      email: "hr@jawaedtech.com",
       phone: "+919790631286",
       linkedin: "https://www.linkedin.com/in/anisha-riya-855b142a9/"
     },
@@ -151,7 +151,7 @@ const teamProfiles = {
       "His mentorship encouraged me to focus on real-world projects and industry best practices, which played a major role in improving my technical skills."
     ],
     contact: {
-      email: "hr@Jawa EDTECh.com",
+      email: "hr@jawaedtech.com",
       phone: "+919790631286",
       linkedin: "https://www.linkedin.com/in/nitinchand-saravanan-aa64131b4/"
     },
@@ -198,7 +198,7 @@ const teamProfiles = {
       "The communication was clear, professional, and helpful throughout my learning journey. I always received timely updates and support."
     ],
     contact: {
-      email: "hr@Jawa EDTECh.com",
+      email: "hr@jawaedtech.com",
       phone: "+919790631286",
       linkedin: "https://www.linkedin.com/in/sunitha-prakash-7054b62a1/"
     },
