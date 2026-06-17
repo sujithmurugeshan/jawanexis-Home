@@ -4,5 +4,6 @@ node_modules
 .vscode
 dist/
 .env
+backend/.env
 sheets-credentials.json
 .vercel
