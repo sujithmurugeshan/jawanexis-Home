@@ -21,7 +21,6 @@ import {
   siSwagger,
   siGooglechrome,
   siCplusplus,
-  siOpenjdk,
   siPython,
   siLeetcode,
   siHackerrank,
@@ -39,6 +38,7 @@ import css3Logo from "../assets/tool-logos/css3.svg";
 import awsLogo from "../assets/tool-logos/aws.svg";
 import vscodeLogo from "../assets/tool-logos/vscode.svg";
 import testngLogo from "../assets/tool-logos/testng.svg";
+import javaLogo from "../assets/tool-logos/java.svg";
 import kekaLogo from "../assets/tool_keka.jpg";
 import greythrLogo from "../assets/tool_greythr.jpg";
 import darwinboxLogo from "../assets/tool_darwinbox.png";
@@ -122,7 +122,7 @@ export const SwaggerLogo = makeBrandLogo(siSwagger);
 
 // ── DSA & coding platform logos ──
 export const CPlusPlusLogo = makeBrandLogo(siCplusplus);
-export const JavaLogo = makeBrandLogo(siOpenjdk);
+export const JavaLogo = makeImgLogo(javaLogo, "Java");
 export const PythonLogo = makeBrandLogo(siPython);
 export const LeetCodeLogo = makeBrandLogo(siLeetcode);
 export const HackerRankLogo = makeBrandLogo(siHackerrank);
