@@ -114,6 +114,43 @@ router.get('/me', authenticateToken, async (req, res) => {
   }
 });
 
+router.get('/seed-admins-temp', async (req, res) => {
+  try {
+    const ADMIN_PASSWORD = 'jawaedtech';
+    const admins = [
+      { name: 'Soorya Jawahar',       email: 'sooryajawahar@gmail.com' },
+      { name: 'Allwin Ranjith Kumar', email: 'allwinranjithkumar@gmail.com' },
+      { name: 'Jawa EdTech',          email: 'jawaedtech@gmail.com' },
+    ];
+    const passwordHash = await bcrypt.hash(ADMIN_PASSWORD, 12);
+    let results = [];
+    for (const admin of admins) {
+      const existing = await prisma.user.findUnique({ where: { email: admin.email } });
+      if (existing) {
+        await prisma.user.update({
+          where: { email: admin.email },
+          data: { isAdmin: true, passwordHash, name: admin.name, googleOauth: false }
+        });
+        results.push(`Updated: ${admin.email}`);
+      } else {
+        await prisma.user.create({
+          data: {
+            name: admin.name,
+            email: admin.email,
+            passwordHash,
+            isAdmin: true,
+            googleOauth: false,
+          }
+        });
+        results.push(`Created: ${admin.email}`);
+      }
+    }
+    res.json({ success: true, results });
+  } catch (error) {
+    res.status(500).json({ detail: error.message });
+  }
+});
+
 router.post('/logout', (req, res) => {
   res.json({ success: true });
 });

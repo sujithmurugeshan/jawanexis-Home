@@ -43,7 +43,7 @@ const heroOfferPanels = [
     ),
     image: posterBoatHr,
     rows: [
-      ["HR Executive Course", "HR Recruitment Course"]
+      ["HR Executive Course", "HR Recruitment Course", "HR Internship"]
     ],
     cta: " Explore Career Programs ",
     note: "Build practical HR and IT skills with career-focused course.",
