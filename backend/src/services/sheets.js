@@ -32,7 +32,7 @@ async function appendApplicationRow(data) {
 
     const response = await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'Sheet1!A:H', // Adjust 'Sheet1' if their sheet is named differently
+      range: 'dashboard_courses!A:H', // Pushing to dashboard_courses tab
       valueInputOption: 'USER_ENTERED',
       resource,
     });
@@ -74,7 +74,7 @@ async function appendJobApplicationRow(data) {
 
     const response = await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'Sheet1!A:H', // Pushing to Sheet1 of the new 'carrers' document
+      range: 'dashboard_job!A:H', // Pushing to dashboard_job tab
       valueInputOption: 'USER_ENTERED',
       resource,
     });
