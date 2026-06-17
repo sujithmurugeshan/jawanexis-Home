@@ -3,8 +3,14 @@ const path = require('path');
 
 async function appendApplicationRow(data) {
   try {
+    let keyFilePath = path.join(__dirname, '../../sheets-credentials.json');
+    const fs = require('fs');
+    if (!fs.existsSync(keyFilePath) && fs.existsSync('/etc/secrets/sheets-credentials.json')) {
+      keyFilePath = '/etc/secrets/sheets-credentials.json';
+    }
+
     const auth = new google.auth.GoogleAuth({
-      keyFile: path.join(__dirname, '../../sheets-credentials.json'),
+      keyFile: keyFilePath,
       scopes: ['https://www.googleapis.com/auth/spreadsheets'],
     });
 
@@ -45,8 +51,14 @@ async function appendApplicationRow(data) {
 
 async function appendJobApplicationRow(data) {
   try {
+    let keyFilePath = path.join(__dirname, '../../sheets-credentials.json');
+    const fs = require('fs');
+    if (!fs.existsSync(keyFilePath) && fs.existsSync('/etc/secrets/sheets-credentials.json')) {
+      keyFilePath = '/etc/secrets/sheets-credentials.json';
+    }
+
     const auth = new google.auth.GoogleAuth({
-      keyFile: path.join(__dirname, '../../sheets-credentials.json'),
+      keyFile: keyFilePath,
       scopes: ['https://www.googleapis.com/auth/spreadsheets'],
     });
 
