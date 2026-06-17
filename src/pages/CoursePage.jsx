@@ -375,7 +375,7 @@ function FaqSection({ faqs, title }) {
             Frequently Asked Questions
           </h2>
           <p className="mt-3 text-gray-500 font-medium">
-            Everything you need to know about the Jawa EDTECh {title} Program.
+            Everything you need to know about the JAWA EDTECH {title} Program.
           </p>
         </div>
 
@@ -697,8 +697,8 @@ function CoursePreviewSection({ config }) {
       "logical thinking",
       "algorithm optimization",
       "interview preparation",
-      "Jawa EDTECh",
-      "Jawa EDTECh"
+      "JAWA EDTECH",
+      "JAWA EDTECH"
     ];
 
     let highlighted = text;
@@ -877,7 +877,7 @@ export default function CoursePage({ courseKey, isInternship }) {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
               </span>
-              Jawa EDTECh Certified
+              JAWA EDTECH Certified
             </span>
             <h1 className="text-[28px] sm:text-[40px] md:text-[50px] font-extrabold leading-tight tracking-tight text-gray-900 max-w-[900px]">
               {config.heroTitle}
@@ -904,7 +904,7 @@ export default function CoursePage({ courseKey, isInternship }) {
                   <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center mb-3 shadow-sm">
                     <BookOpen size={17} className="text-white stroke-[2.5]" />
                   </div>
-                  <h4 className="font-extrabold text-[14px] text-gray-900 mb-1.5 leading-snug">100% Practical Training</h4>
+                  <h4 className="font-extrabold text-[14px] text-gray-900 mb-1.5 leading-snug">100% Practical Course</h4>
                   <p className="text-[12px] text-gray-500 font-medium leading-relaxed">Learn through hands-on assignments, projects, and real-world scenarios.</p>
                 </div>
                 {/* Card 2 */}
@@ -924,7 +924,7 @@ export default function CoursePage({ courseKey, isInternship }) {
                   style={{ background: "radial-gradient(ellipse at 50% 90%,rgba(25,217,80,0.12) 0%,transparent 70%)" }} />
                 <img
                   src={config.studentsImg}
-                  alt={`Jawa EDTECh ${config.title} Students`}
+                  alt={`JAWA EDTECH ${config.title} Students`}
                   className="relative w-full block object-contain object-bottom drop-shadow-xl"
                   style={{ maxHeight: 520, minHeight: 280 }}
                 />

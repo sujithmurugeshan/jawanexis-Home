@@ -4,6 +4,7 @@ import FAQPage from "./pages/FAQPage.jsx";
 import Home from "./pages/Home.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
+import CareersPage from "./pages/CareersPage.jsx";
 import TermsConditionsPage from "./pages/TermsConditionsPage.jsx";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage.jsx";
 import RefundPolicyPage from "./pages/RefundPolicyPage.jsx";
@@ -38,6 +39,7 @@ function App() {
         "#login",
         "#signup",
         "#about-us",
+        "#careers",
         "#contact",
         "#terms-and-conditions",
         "#privacy-policy",
@@ -76,6 +78,10 @@ function App() {
 
   if (route === "#about-us") {
     return <AboutPage />;
+  }
+
+  if (route === "#careers") {
+    return <CareersPage />;
   }
 
   if (route === "#terms-and-conditions") {

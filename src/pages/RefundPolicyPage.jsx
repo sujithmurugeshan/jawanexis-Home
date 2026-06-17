@@ -71,7 +71,7 @@ function RefundPolicyPage() {
               <article className="lg:col-span-9 bg-white border border-guvi-line/60 rounded-xl p-6 sm:p-10 shadow-sm">
                 <div className="prose prose-slate max-w-none">
                   <p className="text-[16px] leading-7 font-medium text-guvi-muted mb-8">
-                    At Jawa EDTECh, we strive to provide high-quality training programs, expert mentors, and a rich learning experience. Please read our refund policy carefully before enrolling in any of our courses.
+                    At JAWA EDTECH, we strive to provide high-quality course programs, expert mentors, and a rich learning experience. Please read our refund policy carefully before enrolling in any of our courses.
                   </p>
 
                   {/* Section 1 */}
@@ -81,7 +81,7 @@ function RefundPolicyPage() {
                       Course Enrollment Agreement
                     </h2>
                     <p className="text-[15px] leading-7 font-medium text-guvi-muted">
-                      By registering and enrolling in a training course offered by Jawa EDTECh, you acknowledge that you have read, understood, and agreed to be bound by the terms outlined in this Refund Policy.
+                      By registering and enrolling in a course course offered by JAWA EDTECH, you acknowledge that you have read, understood, and agreed to be bound by the terms outlined in this Refund Policy.
                     </p>
                   </div>
 
@@ -101,7 +101,7 @@ function RefundPolicyPage() {
                       </li>
                       <li className="flex items-start gap-3 text-[15px] leading-relaxed font-medium text-guvi-muted">
                         <CheckCircle2 size={18} className="text-guvi-green mt-0.5 shrink-0" />
-                        <span><strong>Course Cancellation:</strong> In case a scheduled course or batch is canceled entirely by Jawa EDTECh.</span>
+                        <span><strong>Course Cancellation:</strong> In case a scheduled course or batch is canceled entirely by JAWA EDTECH.</span>
                       </li>
                       <li className="flex items-start gap-3 text-[15px] leading-relaxed font-medium text-guvi-muted">
                         <CheckCircle2 size={18} className="text-guvi-green mt-0.5 shrink-0" />
@@ -122,7 +122,7 @@ function RefundPolicyPage() {
                     <ul className="space-y-3.5 pl-5">
                       <li className="flex items-start gap-3 text-[15px] leading-relaxed font-medium text-guvi-muted">
                         <XCircle size={18} className="text-red-500 mt-0.5 shrink-0" />
-                        <span>The student has attended classes, accessed training videos, or downloaded course materials.</span>
+                        <span>The student has attended classes, accessed course videos, or downloaded course materials.</span>
                       </li>
                       <li className="flex items-start gap-3 text-[15px] leading-relaxed font-medium text-guvi-muted">
                         <XCircle size={18} className="text-red-500 mt-0.5 shrink-0" />
@@ -134,7 +134,7 @@ function RefundPolicyPage() {
                       </li>
                       <li className="flex items-start gap-3 text-[15px] leading-relaxed font-medium text-guvi-muted">
                         <XCircle size={18} className="text-red-500 mt-0.5 shrink-0" />
-                        <span>The course has already commenced and training resources, syllabus repositories, or workspace credentials have been shared.</span>
+                        <span>The course has already commenced and course resources, syllabus repositories, or workspace credentials have been shared.</span>
                       </li>
                     </ul>
                   </div>
@@ -146,7 +146,7 @@ function RefundPolicyPage() {
                       Refund Processing
                     </h2>
                     <p className="text-[15px] leading-7 font-medium text-guvi-muted mb-3">
-                      If a refund request meets eligibility criteria and receives approval from Jawa EDTECh management:
+                      If a refund request meets eligibility criteria and receives approval from JAWA EDTECH management:
                     </p>
                     <div className="flex items-center gap-3.5 bg-slate-50 border border-slate-200 rounded-lg p-5">
                       <Calendar className="text-guvi-deepGreen shrink-0" size={24} />
@@ -163,7 +163,7 @@ function RefundPolicyPage() {
                       Course Transfer &amp; Batch Changes
                     </h2>
                     <p className="text-[15px] leading-7 font-medium text-guvi-muted">
-                      In lieu of refunds, Jawa EDTECh may, at its sole discretion, allow course transfers or batch changes:
+                      In lieu of refunds, JAWA EDTECH may, at its sole discretion, allow course transfers or batch changes:
                     </p>
                     <p className="mt-2 text-[15px] leading-7 font-medium text-guvi-muted">
                       Such requests are evaluated on a case-by-case basis, subject to course seat availability, batch capacity, and formal approval by the management. Administrative processing charges may apply for batch transfers.
@@ -177,7 +177,7 @@ function RefundPolicyPage() {
                       Policy Changes
                     </h2>
                     <p className="text-[15px] leading-7 font-medium text-guvi-muted">
-                      Jawa EDTECh reserves the right to modify, add, or amend any parts of this Refund Policy without prior notice. Any modifications take effect immediately upon posting to this page.
+                      JAWA EDTECH reserves the right to modify, add, or amend any parts of this Refund Policy without prior notice. Any modifications take effect immediately upon posting to this page.
                     </p>
                   </div>
 
@@ -191,9 +191,9 @@ function RefundPolicyPage() {
                       For any questions, requests, or disputes related to payments or refund claims, please contact our support desk:
                     </p>
                     <div className="mt-4 bg-slate-50 border border-slate-200 rounded-lg p-5">
-                      <p className="text-[15px] font-bold text-black mb-1">Jawa EDTECh Admissions Support</p>
+                      <p className="text-[15px] font-bold text-black mb-1">JAWA EDTECH Admissions Support</p>
                       <p className="text-[14px] font-medium text-guvi-muted">
-                        Email: <a href="mailto:hr@Jawa EDTECh.com" className="text-guvi-deepGreen underline font-semibold">hr@Jawa EDTECh.com</a>
+                        Email: <a href="mailto:hr@jawaedtech.com" className="text-guvi-deepGreen underline font-semibold">hr@jawaedtech.com</a>
                       </p>
                       <p className="text-[14px] font-medium text-guvi-muted">
                         Phone: <a href="tel:+919790631286" className="text-guvi-deepGreen underline font-semibold">+91 97906 31286</a>

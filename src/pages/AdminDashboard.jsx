@@ -3,7 +3,9 @@ import { ArrowLeft, RefreshCw, Briefcase, Mail, Phone, Calendar, UserCheck, Shie
 import { API_BASE_URL } from "../config";
 
 function AdminDashboard() {
+  const [activeTab, setActiveTab] = useState("internships"); // 'internships' or 'jobs'
   const [applications, setApplications] = useState([]);
+  const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -24,8 +26,17 @@ function AdminDashboard() {
       });
       const data = await res.json();
 
-      if (!res.ok) throw new Error(data.detail || "Failed to fetch data");
+      if (!res.ok) throw new Error(data.detail || "Failed to fetch internships");
       setApplications(data.data || []);
+
+      const jobRes = await fetch(`${API_BASE_URL}/api/jobs/apply`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      const jobData = await jobRes.json();
+
+      if (!jobRes.ok) throw new Error(jobData.detail || "Failed to fetch jobs");
+      setJobs(jobData.data || []);
+
     } catch (err) {
       setError(err.message);
     } finally {
@@ -33,12 +44,16 @@ function AdminDashboard() {
     }
   };
 
-  const updateStatus = async (id, newStatus) => {
+  const updateStatus = async (id, newStatus, isJob = false) => {
     const token = localStorage.getItem("jawa_token");
     if (!token) return;
     
     try {
-      const res = await fetch(`${API_BASE_URL}/api/internship/apply/${id}/status`, {
+      const endpoint = isJob 
+        ? `${API_BASE_URL}/api/jobs/apply/${id}/status`
+        : `${API_BASE_URL}/api/internship/apply/${id}/status`;
+
+      const res = await fetch(endpoint, {
         method: "PATCH",
         headers: { 
           "Content-Type": "application/json",
@@ -49,7 +64,11 @@ function AdminDashboard() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.detail || "Failed to update status");
       
-      setApplications(prev => prev.map(app => app.id === id ? { ...app, status: newStatus } : app));
+      if (isJob) {
+        setJobs(prev => prev.map(app => app.id === id ? { ...app, status: newStatus } : app));
+      } else {
+        setApplications(prev => prev.map(app => app.id === id ? { ...app, status: newStatus } : app));
+      }
     } catch (err) {
       alert("Error updating status: " + err.message);
     }
@@ -96,14 +115,35 @@ function AdminDashboard() {
           </div>
         ) : (
           <div className="rounded-xl border border-guvi-line bg-white shadow-sm overflow-hidden">
-            <div className="border-b border-guvi-line px-6 py-4 flex justify-between items-center bg-gray-50/50">
-              <h2 className="text-lg font-bold text-guvi-ink flex items-center gap-2">
-                <Briefcase size={20} className="text-guvi-green" />
-                Internship Applications
-              </h2>
-              <span className="bg-guvi-mint text-guvi-green text-xs font-bold px-2.5 py-1 rounded-full">
-                {applications.length} Total
-              </span>
+            <div className="border-b border-guvi-line bg-gray-50/50">
+              <div className="flex gap-4 px-6 pt-4">
+                <button
+                  onClick={() => setActiveTab("internships")}
+                  className={`pb-3 font-bold text-sm px-2 border-b-2 transition-colors ${
+                    activeTab === "internships" 
+                      ? "border-guvi-green text-guvi-green" 
+                      : "border-transparent text-gray-500 hover:text-gray-700"
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <Briefcase size={18} />
+                    Internship/Courses ({applications.length})
+                  </div>
+                </button>
+                <button
+                  onClick={() => setActiveTab("jobs")}
+                  className={`pb-3 font-bold text-sm px-2 border-b-2 transition-colors ${
+                    activeTab === "jobs" 
+                      ? "border-guvi-green text-guvi-green" 
+                      : "border-transparent text-gray-500 hover:text-gray-700"
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <UserCheck size={18} />
+                    Job Applications ({jobs.length})
+                  </div>
+                </button>
+              </div>
             </div>
             
             <div className="overflow-x-auto">
@@ -124,70 +164,138 @@ function AdminDashboard() {
                         Loading applications...
                       </td>
                     </tr>
-                  ) : applications.length === 0 ? (
-                    <tr>
-                      <td colSpan="5" className="px-6 py-8 text-center text-gray-500 font-medium">
-                        No applications found.
-                      </td>
-                    </tr>
-                  ) : (
-                    applications.map((app) => (
-                      <tr key={app.id} className="hover:bg-gray-50/50 transition-colors">
-                        <td className="px-6 py-4">
-                          <div className="font-bold text-gray-900">{app.name}</div>
-                          <div className="text-xs text-gray-500 mt-1">{app.education || "N/A"} • {app.graduationYear || "N/A"}</div>
-                        </td>
-                        <td className="px-6 py-4">
-                          <div className="flex items-center gap-2 text-gray-700">
-                            <Mail size={14} className="text-gray-400" />
-                            <a href={`mailto:${app.email}`} className="hover:text-guvi-green">{app.email}</a>
-                          </div>
-                          <div className="flex items-center gap-2 mt-1 text-gray-700">
-                            <Phone size={14} className="text-gray-400" />
-                            <a href={`tel:${app.phone}`} className="hover:text-guvi-green">{app.phone}</a>
-                          </div>
-                        </td>
-                        <td className="px-6 py-4">
-                          <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-blue-700 border border-blue-200">
-                            {app.courseKey}
-                          </span>
-                        </td>
-                        <td className="px-6 py-4">
-                          <div className="flex items-center gap-1.5">
-                            <Calendar size={14} className="text-gray-400" />
-                            {new Date(app.createdAt).toLocaleDateString()}
-                          </div>
-                        </td>
-                        <td className="px-6 py-4">
-                          <div className="flex items-center gap-2">
-                            <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-semibold border ${
-                              app.status === 'PENDING' ? 'bg-yellow-50 text-yellow-700 border-yellow-200' :
-                              app.status === 'ENROLLED' ? 'bg-green-50 text-green-700 border-green-200' :
-                              app.status === 'CONTACTED' ? 'bg-purple-50 text-purple-700 border-purple-200' :
-                              'bg-red-50 text-red-700 border-red-200'
-                            }`}>
-                              <span className={`h-1.5 w-1.5 rounded-full ${
-                                app.status === 'PENDING' ? 'bg-yellow-500' :
-                                app.status === 'ENROLLED' ? 'bg-green-500' :
-                                app.status === 'CONTACTED' ? 'bg-purple-500' :
-                                'bg-red-500'
-                              }`}></span>
-                              {app.status === 'ENROLLED' ? 'PAID / ENROLLED' : app.status}
-                            </span>
-                            <select 
-                              value={app.status}
-                              onChange={(e) => updateStatus(app.id, e.target.value)}
-                              className="ml-2 text-xs border border-gray-200 rounded p-1 text-gray-600 bg-white cursor-pointer focus:outline-none focus:border-guvi-green"
-                            >
-                              <option value="PENDING">Set Pending</option>
-                              <option value="CONTACTED">Mark Contacted</option>
-                              <option value="ENROLLED">Mark as Paid</option>
-                              <option value="REJECTED">Reject</option>
-                            </select>
-                          </div>
+                  ) : activeTab === "internships" ? (
+                    applications.length === 0 ? (
+                      <tr>
+                        <td colSpan="5" className="px-6 py-8 text-center text-gray-500 font-medium">
+                          No internship applications found.
                         </td>
                       </tr>
-                    ))
+                    ) : (
+                      applications.map((app) => (
+                        <tr key={app.id} className="hover:bg-gray-50/50 transition-colors">
+                          <td className="px-6 py-4">
+                            <div className="font-bold text-gray-900">{app.name}</div>
+                            <div className="text-xs text-gray-500 mt-1">{app.education || "N/A"} • {app.graduationYear || "N/A"}</div>
+                          </td>
+                          <td className="px-6 py-4">
+                            <div className="flex items-center gap-2 text-gray-700">
+                              <Mail size={14} className="text-gray-400" />
+                              <a href={`mailto:${app.email}`} className="hover:text-guvi-green">{app.email}</a>
+                            </div>
+                            <div className="flex items-center gap-2 mt-1 text-gray-700">
+                              <Phone size={14} className="text-gray-400" />
+                              <a href={`tel:${app.phone}`} className="hover:text-guvi-green">{app.phone}</a>
+                            </div>
+                          </td>
+                          <td className="px-6 py-4">
+                            <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-blue-700 border border-blue-200">
+                              {app.courseKey}
+                            </span>
+                          </td>
+                          <td className="px-6 py-4">
+                            <div className="flex items-center gap-1.5">
+                              <Calendar size={14} className="text-gray-400" />
+                              {new Date(app.createdAt).toLocaleDateString()}
+                            </div>
+                          </td>
+                          <td className="px-6 py-4">
+                            <div className="flex items-center gap-2">
+                              <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-semibold border ${
+                                app.status === 'PENDING' ? 'bg-yellow-50 text-yellow-700 border-yellow-200' :
+                                app.status === 'ENROLLED' ? 'bg-green-50 text-green-700 border-green-200' :
+                                app.status === 'CONTACTED' ? 'bg-purple-50 text-purple-700 border-purple-200' :
+                                'bg-red-50 text-red-700 border-red-200'
+                              }`}>
+                                <span className={`h-1.5 w-1.5 rounded-full ${
+                                  app.status === 'PENDING' ? 'bg-yellow-500' :
+                                  app.status === 'ENROLLED' ? 'bg-green-500' :
+                                  app.status === 'CONTACTED' ? 'bg-purple-500' :
+                                  'bg-red-500'
+                                }`}></span>
+                                {app.status === 'ENROLLED' ? 'PAID / ENROLLED' : app.status}
+                              </span>
+                              <select 
+                                value={app.status}
+                                onChange={(e) => updateStatus(app.id, e.target.value)}
+                                className="ml-2 text-xs border border-gray-200 rounded p-1 text-gray-600 bg-white cursor-pointer focus:outline-none focus:border-guvi-green"
+                              >
+                                <option value="PENDING">Set Pending</option>
+                                <option value="CONTACTED">Mark Contacted</option>
+                                <option value="ENROLLED">Mark as Paid</option>
+                                <option value="REJECTED">Reject</option>
+                              </select>
+                            </div>
+                          </td>
+                        </tr>
+                      ))
+                    )
+                  ) : (
+                    jobs.length === 0 ? (
+                      <tr>
+                        <td colSpan="5" className="px-6 py-8 text-center text-gray-500 font-medium">
+                          No job applications found.
+                        </td>
+                      </tr>
+                    ) : (
+                      jobs.map((job) => (
+                        <tr key={job.id} className="hover:bg-gray-50/50 transition-colors">
+                          <td className="px-6 py-4">
+                            <div className="font-bold text-gray-900">{job.name}</div>
+                            <div className="text-xs text-gray-500 mt-1">{job.education || "N/A"} • {job.graduationYear || "N/A"}</div>
+                          </td>
+                          <td className="px-6 py-4">
+                            <div className="flex items-center gap-2 text-gray-700">
+                              <Mail size={14} className="text-gray-400" />
+                              <a href={`mailto:${job.email}`} className="hover:text-guvi-green">{job.email}</a>
+                            </div>
+                            <div className="flex items-center gap-2 mt-1 text-gray-700">
+                              <Phone size={14} className="text-gray-400" />
+                              <a href={`tel:${job.phone}`} className="hover:text-guvi-green">{job.phone}</a>
+                            </div>
+                          </td>
+                          <td className="px-6 py-4">
+                            <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-blue-700 border border-blue-200">
+                              {job.jobTitle}
+                            </span>
+                          </td>
+                          <td className="px-6 py-4">
+                            <div className="flex items-center gap-1.5">
+                              <Calendar size={14} className="text-gray-400" />
+                              {new Date(job.createdAt).toLocaleDateString()}
+                            </div>
+                          </td>
+                          <td className="px-6 py-4">
+                            <div className="flex items-center gap-2">
+                              <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-semibold border ${
+                                job.status === 'PENDING' ? 'bg-yellow-50 text-yellow-700 border-yellow-200' :
+                                job.status === 'HIRED' ? 'bg-green-50 text-green-700 border-green-200' :
+                                job.status === 'INTERVIEWING' ? 'bg-purple-50 text-purple-700 border-purple-200' :
+                                'bg-red-50 text-red-700 border-red-200'
+                              }`}>
+                                <span className={`h-1.5 w-1.5 rounded-full ${
+                                  job.status === 'PENDING' ? 'bg-yellow-500' :
+                                  job.status === 'HIRED' ? 'bg-green-500' :
+                                  job.status === 'INTERVIEWING' ? 'bg-purple-500' :
+                                  'bg-red-500'
+                                }`}></span>
+                                {job.status}
+                              </span>
+                              <select 
+                                value={job.status}
+                                onChange={(e) => updateStatus(job.id, e.target.value, true)}
+                                className="ml-2 text-xs border border-gray-200 rounded p-1 text-gray-600 bg-white cursor-pointer focus:outline-none focus:border-guvi-green"
+                              >
+                                <option value="PENDING">Pending</option>
+                                <option value="INTERVIEWING">Interviewing</option>
+                                <option value="HIRED">Hired</option>
+                                <option value="REJECTED">Rejected</option>
+                              </select>
+                            </div>
+                          </td>
+                        </tr>
+                      ))
+                    )
                   )}
                 </tbody>
               </table>

@@ -4,9 +4,9 @@ const getCourseHash = (title) => {
   switch (title) {
     case "Full Stack Development":
       return "#full-stack-development-course";
-    case "HR Executive Training":
+    case "HR Executive Course":
       return "#hr-executive-course";
-    case "HR Recruitment Training":
+    case "HR Recruitment Course":
       return "#hr-recruitment-course";
     case "Software Quality Testing(QA Testing)":
     case "Software Quality Testing (QA Testing)":
@@ -19,27 +19,13 @@ const getCourseHash = (title) => {
 };
 
 const getCourseImageStyle = (title) => {
-  switch (title) {
-    case "DSA":
-      return { backgroundColor: "#213643", objectFit: "contain" };
-    case "Full Stack Development":
-      return { backgroundColor: "#f8f9fa", objectFit: "contain" };
-    case "HR Executive Training":
-      return { backgroundColor: "#161717", objectFit: "contain" };
-    case "HR Recruitment Training":
-      return { backgroundColor: "#141319", objectFit: "contain" };
-    case "Software Quality Testing(QA Testing)":
-    case "Software Quality Testing (QA Testing)":
-      return { backgroundColor: "#0c1f47", objectFit: "contain" };
-    default:
-      return { objectFit: "cover" };
-  }
+  return { objectFit: "fill" };
 };
 
 function LiveCard({ thumb, title, language, onSyllabusClick }) {
   return (
     <article className="overflow-hidden rounded-lg bg-white shadow-[0_3px_18px_rgba(15,23,42,0.08)]">
-      <div className="relative h-[150px] overflow-hidden bg-black">
+      <div className="relative aspect-video overflow-hidden bg-black">
         <img src={thumb} alt={`${title} course preview`} className="h-full w-full" style={getCourseImageStyle(title)} />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/10" />
       </div>

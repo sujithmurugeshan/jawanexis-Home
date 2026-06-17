@@ -194,10 +194,10 @@ function ContactPage() {
                 <div>
                   <span className="block text-[14px] font-bold text-gray-400">Write to us</span>
                   <a
-                    href="mailto:hr@Jawa EDTECh.com"
+                    href="mailto:hr@jawaedtech.com"
                     className="block mt-1 text-[18px] font-extrabold text-[#0f172a] hover:text-guvi-green transition-colors"
                   >
-                    hr@Jawa EDTECh.com
+                    hr@jawaedtech.com
                   </a>
                 </div>
               </div>
@@ -258,9 +258,8 @@ function ContactPage() {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className={`w-full px-3.5 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-guvi-green/35 focus:border-guvi-green ${
-                        errors.name ? "border-red-500 focus:ring-red-200 focus:border-red-500" : "border-gray-200"
-                      }`}
+                      className={`w-full px-3.5 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-guvi-green/35 focus:border-guvi-green ${errors.name ? "border-red-500 focus:ring-red-200 focus:border-red-500" : "border-gray-200"
+                        }`}
                       placeholder="Enter your name"
                     />
                     {errors.name && <p className="mt-1 text-xs text-red-500 font-semibold">{errors.name}</p>}
@@ -277,9 +276,8 @@ function ContactPage() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className={`w-full px-3.5 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-guvi-green/35 focus:border-guvi-green ${
-                        errors.email ? "border-red-500 focus:ring-red-200 focus:border-red-500" : "border-gray-200"
-                      }`}
+                      className={`w-full px-3.5 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-guvi-green/35 focus:border-guvi-green ${errors.email ? "border-red-500 focus:ring-red-200 focus:border-red-500" : "border-gray-200"
+                        }`}
                       placeholder="Enter your email"
                     />
                     {errors.email && <p className="mt-1 text-xs text-red-500 font-semibold">{errors.email}</p>}
@@ -296,9 +294,8 @@ function ContactPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handlePhoneChange}
-                      className={`w-full px-3.5 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-guvi-green/35 focus:border-guvi-green ${
-                        errors.phone ? "border-red-500 focus:ring-red-200 focus:border-red-500" : "border-gray-200"
-                      }`}
+                      className={`w-full px-3.5 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-guvi-green/35 focus:border-guvi-green ${errors.phone ? "border-red-500 focus:ring-red-200 focus:border-red-500" : "border-gray-200"
+                        }`}
                       placeholder="Enter your phone number"
                     />
                     {errors.phone && <p className="mt-1 text-xs text-red-500 font-semibold">{errors.phone}</p>}
@@ -315,9 +312,8 @@ function ContactPage() {
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      className={`w-full px-3.5 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-guvi-green/35 focus:border-guvi-green ${
-                        errors.subject ? "border-red-500 focus:ring-red-200 focus:border-red-500" : "border-gray-200"
-                      }`}
+                      className={`w-full px-3.5 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-guvi-green/35 focus:border-guvi-green ${errors.subject ? "border-red-500 focus:ring-red-200 focus:border-red-500" : "border-gray-200"
+                        }`}
                       placeholder="Enter the subject"
                     />
                     {errors.subject && <p className="mt-1 text-xs text-red-500 font-semibold">{errors.subject}</p>}
@@ -334,9 +330,8 @@ function ContactPage() {
                       rows="4"
                       value={formData.message}
                       onChange={handleChange}
-                      className={`w-full px-3.5 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-guvi-green/35 focus:border-guvi-green resize-none ${
-                        errors.message ? "border-red-500 focus:ring-red-200 focus:border-red-500" : "border-gray-200"
-                      }`}
+                      className={`w-full px-3.5 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-guvi-green/35 focus:border-guvi-green resize-none ${errors.message ? "border-red-500 focus:ring-red-200 focus:border-red-500" : "border-gray-200"
+                        }`}
                       placeholder="Enter your message"
                     />
                     {errors.message && <p className="mt-1 text-xs text-red-500 font-semibold">{errors.message}</p>}

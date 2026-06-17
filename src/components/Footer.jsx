@@ -2,7 +2,7 @@ import logo from "../assets/logo.png";
 
 const socialLinks = [
   ["Facebook", "fa-brands fa-facebook-f", "bg-[#315ca8]", "https://www.facebook.com/profile.php?id=61574843888000&sk=followers"],
-  ["Instagram", "fa-brands fa-instagram", "bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7]", "https://www.instagram.com/Jawa EDTECh/"],
+  ["Instagram", "fa-brands fa-instagram", "bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7]", "https://www.instagram.com/JAWA EDTECH/"],
   ["LinkedIn", "fa-brands fa-linkedin-in", "bg-[#2677b5]"],
   ["X", "fa-brands fa-x-twitter", "bg-black"],
   ["Telegram", "fa-brands fa-telegram", "bg-[#229ed9]"],
@@ -26,6 +26,10 @@ function getFooterHref(label) {
     return "#privacy-policy";
   }
 
+  if (label === "Careers") {
+    return "#careers";
+  }
+
   if (label === "Refund Policy") {
     return "#refund-policy";
   }
@@ -34,11 +38,11 @@ function getFooterHref(label) {
     return "#terms-and-conditions";
   }
 
-  if (label === "HR Executive Training") {
+  if (label === "HR Executive Course") {
     return "#hr-executive-course";
   }
 
-  if (label === "HR Recruitment Training") {
+  if (label === "HR Recruitment Course") {
     return "#hr-recruitment-course";
   }
 
@@ -92,8 +96,8 @@ function Footer() {
               LIVE CLASSES
             </h3>
             <div className="mt-4 space-y-3">
-              <FooterLink>HR Executive Training</FooterLink>
-              <FooterLink>HR Recruitment Training</FooterLink>
+              <FooterLink>HR Executive Course</FooterLink>
+              <FooterLink>HR Recruitment Course</FooterLink>
               <FooterLink>Full Stack Development</FooterLink>
               <FooterLink>Software Quality Testing</FooterLink>
               <FooterLink>Data Structure And Algorithms</FooterLink>
@@ -105,8 +109,8 @@ function Footer() {
           <div>
             <h3 className="text-[15px] font-extrabold text-white">Popular Courses</h3>
             <div className="mt-4 space-y-3">
-              <FooterLink>HR Executive Training</FooterLink>
-              <FooterLink>HR Recruitment Training</FooterLink>
+              <FooterLink>HR Executive Course</FooterLink>
+              <FooterLink>HR Recruitment Course</FooterLink>
               <FooterLink>Full Stack Development</FooterLink>
               <FooterLink>QA Testing</FooterLink>
               <FooterLink>DSA</FooterLink>
@@ -119,6 +123,7 @@ function Footer() {
             <div className="mt-4 space-y-3">
               <FooterLink>Refund Policy</FooterLink>
               <FooterLink>FAQs</FooterLink>
+              <FooterLink>Careers</FooterLink>
               <FooterLink>Contact Us</FooterLink>
               <FooterLink>About Us</FooterLink>
               <FooterLink>Privacy Policy</FooterLink>
@@ -136,15 +141,15 @@ function Footer() {
           {/* Left: Branding */}
           <div className="space-y-6">
             <div className="flex flex-wrap items-center gap-4">
-              <img src={logo} alt="Jawa EDTECh logo" className="h-14 w-14 rounded-lg object-contain" />
+              <img src={logo} alt="JAWA EDTECH logo" className="h-14 w-14 rounded-lg object-contain" />
               <div>
-                <div className="text-[28px] font-extrabold leading-none text-white">Jawa EDTECh</div>
+                <div className="text-[28px] font-extrabold leading-none text-white">JAWA EDTECH</div>
                 <p className="mt-1 text-[11px] font-extrabold tracking-[0.22em] text-guvi-green">LEARN, LEAD, INNOVATE!</p>
               </div>
             </div>
 
             <p className="text-[15px] font-medium leading-relaxed text-slate-300">
-              Jawa EDTECh is a career-focused learning and skills development company delivering practical training in HR, full stack development, software testing, DSA, and placement preparation.
+              JAWA EDTECH is a career-focused learning and skills development company delivering practical course in HR, full stack development, software testing, DSA, and placement preparation.
             </p>
             <p className="text-[15px] font-medium leading-relaxed text-slate-300">
               Our programs combine live classes, mentor guidance, project practice, and career support to help learners build job-ready skills with confidence.
@@ -190,7 +195,7 @@ function Footer() {
           >
             Privacy Policy
           </a>
-          <span className="text-slate-400">&copy; 2026 Jawa EDTECh. All rights reserved.</span>
+          <span className="text-slate-400">&copy; 2026 JAWA EDTECH. All rights reserved.</span>
         </div>
 
       </div>

@@ -108,20 +108,6 @@ function TeamProfilePage({ slug }) {
           </div>
         </section>
 
-        {/* ─── ROLE AT Jawa EDTECh ─── */}
-        <section className="tp-section tp-section--white">
-          <div className="shell tp-content-width">
-            <h2 className="tp-section-heading">
-              <span className="tp-green-letter">R</span>ole At Jawa EDTECh
-            </h2>
-            <p className="tp-role-intro">{member.roleDescription}</p>
-            <ul className="tp-role-list">
-              {member.responsibilities.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        </section>
 
         {/* ─── WHAT STUDENTS SAY ─── */}
         <section className="tp-section tp-section--gray">
@@ -186,7 +172,7 @@ function TeamProfilePage({ slug }) {
                 <blockquote className="tp-founder-quote-text">
                   "{member.founderQuote}"
                 </blockquote>
-                <cite className="tp-founder-quote-cite">— {member.name}, {member.role}, Jawa EDTECh</cite>
+                <cite className="tp-founder-quote-cite">— {member.name}, {member.role}, JAWA EDTECH</cite>
               </div>
             </div>
           </section>
@@ -199,7 +185,7 @@ function TeamProfilePage({ slug }) {
               <span className="tp-green-letter">C</span>onnect with {member.name.split(" ")[0]}
             </h2>
             <p className="tp-connect-intro">
-              Interested in learning more about career opportunities, training programs, or industry collaborations?
+              Interested in learning more about career opportunities, course programs, or industry collaborations?
             </p>
             <div className="tp-connect-grid">
               <a href={`mailto:${member.contact.email}`} className="tp-connect-card">

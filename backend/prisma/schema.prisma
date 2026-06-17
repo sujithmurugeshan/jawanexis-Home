@@ -44,3 +44,17 @@ model InternshipApplication {
   status         String            @default("PENDING")
   createdAt      DateTime          @default(now())
 }
+
+model JobApplication {
+  id             String            @id @default(uuid())
+  jobTitle       String
+  name           String
+  email          String
+  phone          String
+  education      String?
+  graduationYear Int?
+  language       String?
+  resumePath     String?
+  status         String            @default("PENDING")
+  createdAt      DateTime          @default(now())
+}

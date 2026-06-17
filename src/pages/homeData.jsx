@@ -2,11 +2,11 @@ import courseAi from "../assets/course-ai.png";
 import courseData from "../assets/course-data.png";
 import courseGenai from "../assets/course-genai.png";
 import courseUiux from "../assets/course-uiux.png";
-import courseFullstack from "../assets/course-fullstack.png";
-import courseHrExecutive from "../assets/course-hr-executive.png";
-import courseHrRecruitment from "../assets/course-hr-recruitment.png";
-import courseDsa from "../assets/course-dsa.png";
-import courseQa from "../assets/course-qa.png";
+import courseFullstack from "../assets/course-fullstack-banner.jpg";
+import courseHrExecutive from "../assets/course-hr-executive-banner.jpg";
+import courseHrRecruitment from "../assets/course-hr-recruitment-banner.jpg";
+import courseDsa from "../assets/course-dsa-banner.jpg";
+import courseQa from "../assets/course-qa-banner.jpg";
 import awardPlaceholder from "../assets/hero-learning.png";
 import abcConsultantsLogo from "../assets/company-logos/abc-consultants.jpg";
 import airtableLogo from "../assets/company-logos/airtable.jpg";
@@ -145,8 +145,8 @@ export const studentCompanyRows = [
 ];
 
 export const liveCards = [
-  [courseHrExecutive, "HR Executive Training", "Tamil, English"],
-  [courseHrRecruitment, "HR Recruitment Training", "Tamil, English"],
+  [courseHrExecutive, "HR Executive Course", "Tamil, English"],
+  [courseHrRecruitment, "HR Recruitment Course", "Tamil, English"],
   [courseFullstack, "Full Stack Development", "Tamil, English"],
   [courseQa, "Software Quality Testing(QA Testing)", "Tamil, English"],
   [courseDsa, "DSA", "Tamil, English"]
@@ -157,6 +157,7 @@ export const navItems = [
   { label: "Courses", href: "#courses-page" },
   { label: "Internship", href: "#internship" },
   { label: "About Us", href: "#about-us" },
+  { label: "Careers", href: "#careers" },
   { label: "Contact Us", href: "#contact" }
 ];
 
@@ -286,97 +287,97 @@ export const journeyLearners = [
 export const learnerCards = [
   [
     "Balaji",
-    "Hastgags",
+    "Hashtag Info Systems",
     "HR Course",
-    "The HR course at Jawa EDTECh exceeded my expectations. The trainers were knowledgeable and always ready to clarify doubts. I gained practical skills in recruitment and employee management, which increased my confidence for job opportunities.",
+    "The HR course at JAWA EDTECH exceeded my expectations. The trainers were knowledgeable and always ready to clarify doubts. I gained practical skills in recruitment and employee management, which increased my confidence for job opportunities.",
     balajiTestimonialPhoto
   ],
   [
     "Anbu",
-    "TVS",
-    "HR Training",
-    "My experience at Jawa EDTECh was excellent. The HR training program was well-structured and included practical sessions that helped me understand real-world HR processes. The support and guidance from the trainers made learning easy and effective.",
+    "TVS Motor Company",
+    "HR Course",
+    "My experience at JAWA EDTECH was excellent. The HR course program was well-structured and included practical sessions that helped me understand real-world HR processes. The support and guidance from the trainers made learning easy and effective.",
     anbuTestimonialPhoto
   ],
   [
     "Shamugavel",
-    "TVS",
+    "TVS Motor Company",
     "HR Executive Course",
-    "I successfully completed the HR Executive Course at Jawa EDTECh, and it was a wonderful learning experience. The trainers explained every HR concept clearly and provided practical knowledge of recruitment, onboarding, and HR operations. This course helped me build confidence and prepare for a career in Human Resources.",
+    "I successfully completed the HR Executive Course at JAWA EDTECH, and it was a wonderful learning experience. The trainers explained every HR concept clearly and provided practical knowledge of recruitment, onboarding, and HR operations. This course helped me build confidence and prepare for a career in Human Resources.",
     shanmugavelTestimonialPhoto
   ],
   [
     "Nivetha",
-    "Sharp",
-    "HR Training",
-    "I am glad I chose Jawa EDTECh for my HR training. The course covered all the important HR functions, and the hands-on approach helped me gain valuable industry knowledge. It was a great step toward achieving my career goals.",
+    "CRI Group",
+    "HR Course",
+    "I am glad I chose JAWA EDTECH for my HR course. The course covered all the important HR functions, and the hands-on approach helped me gain valuable industry knowledge. It was a great step toward achieving my career goals.",
     avatarFemale
   ],
   [
     "Akshaya",
     "Freshworks",
     "HR Executive Course",
-    "Completing the HR Executive Course at Jawa EDTECh was a rewarding experience. The training sessions were interactive and informative, helping me understand HR concepts in a simple way. I feel more prepared to start my professional journey in HR.",
+    "Completing the HR Executive Course at JAWA EDTECH was a rewarding experience. The course sessions were interactive and informative, helping me understand HR concepts in a simple way. I feel more prepared to start my professional journey in HR.",
     avatarFemale
   ],
   [
     "Gokulram",
     "V Support Solutions",
-    "HR Training",
-    "I had a great experience learning at Jawa EDTECh. The HR training program gave me valuable insights into recruitment, onboarding, and employee engagement. The trainers were supportive throughout the course and encouraged continuous learning.",
+    "HR Course",
+    "I had a great experience learning at JAWA EDTECH. The HR course program gave me valuable insights into recruitment, onboarding, and employee engagement. The trainers were supportive throughout the course and encouraged continuous learning.",
     avatarMale
   ],
   [
     "Gurunath",
     "Payoda Technologies",
-    "HR Training",
-    "Jawa EDTECh provided an excellent learning environment for HR aspirants. The course content was relevant to industry requirements, and the practical training helped me develop the skills needed to work in an HR role successfully.",
+    "HR Course",
+    "JAWA EDTECH provided an excellent learning environment for HR aspirants. The course content was relevant to industry requirements, and the practical course helped me develop the skills needed to work in an HR role successfully.",
     avatarMale
   ],
   [
     "Varshini",
     "Ahker",
     "HR Course",
-    "The HR course at Jawa EDTECh helped me gain both theoretical and practical knowledge. The real-time examples and assignments improved my understanding of HR processes and prepared me for workplace challenges. I highly recommend this course to aspiring HR professionals.",
+    "The HR course at JAWA EDTECH helped me gain both theoretical and practical knowledge. The real-time examples and assignments improved my understanding of HR processes and prepared me for workplace challenges. I highly recommend this course to aspiring HR professionals.",
     avatarFemale
   ],
   [
     "Prakash",
     "Reqroots",
-    "HR Training",
-    "I am thankful to Jawa EDTECh for providing quality HR training and career guidance. The course enhanced my professional skills and gave me a better understanding of HR practices. It was a valuable learning experience that will help me in my future career.",
+    "HR Course",
+    "I am thankful to JAWA EDTECH for providing quality HR course and career guidance. The course enhanced my professional skills and gave me a better understanding of HR practices. It was a valuable learning experience that will help me in my future career.",
     avatarMale
   ],
   [
     "Tamzhil Arasan",
     "Athen Technology Solutions",
     "Full Stack Development Course",
-    "I successfully completed the Full Stack Development Course at Jawa EDTECh, and it was an excellent learning experience. The trainers taught both front-end and back-end technologies in a simple and practical way. Working on real-time projects helped me improve my coding skills and gain confidence in web development.",
+    "I successfully completed the Full Stack Development Course at JAWA EDTECH, and it was an excellent learning experience. The trainers taught both front-end and back-end technologies in a simple and practical way. Working on real-time projects helped me improve my coding skills and gain confidence in web development.",
     avatarMale
   ]
 ];
 
 export const awardSlides = [
   {
-    title: "Best GenAI Training Partner",
-    description: "Jawa EDTECh recognized as the Best GenAI Training Partner by UBS Forums.",
+    title: "Best GenAI Course Partner",
+    description: "JAWA EDTECH recognized as the Best GenAI Course Partner by UBS Forums.",
     image: awardPlaceholder
   },
   {
-    title: "Industry Ready Training",
+    title: "Industry Ready Course",
     description: "Recognized for practical, career-focused learning programs that help students prepare for real workplace roles.",
     image: awardPlaceholder
   },
   {
     title: "Student Success Recognition",
-    description: "Celebrating student achievements across HR, full stack development, quality testing, and career training programs.",
+    description: "Celebrating student achievements across HR, full stack development, quality testing, and career course programs.",
     image: awardPlaceholder
   }
 ];
 
 export const learningCourses = [
-  ["Human Resources", "HR Executive Training", "Paid", courseHrExecutive],
-  ["Human Resources", "HR Recruitment Training", "Paid", courseHrRecruitment],
+  ["Human Resources", "HR Executive Course", "Paid", courseHrExecutive],
+  ["Human Resources", "HR Recruitment Course", "Paid", courseHrRecruitment],
   ["Development", "Full Stack Development", "Paid", courseFullstack],
   ["Quality Assurance", "Software Quality Testing(QA Testing)", "Paid", courseQa],
   ["Programming", "DSA", "Paid", courseDsa]
@@ -392,10 +393,10 @@ export const achievementPhotos = [
 ];
 
 export const footerColumns = [
-  ["Courses", "HR Executive Training", "HR Recruitment Training", "Full Stack Development", "Software Quality Testing(QA Testing)", "DSA"],
-  ["Popular Courses", "HR Executive Training", "HR Recruitment Training", "Full Stack Development", "QA Testing", "DSA"],
-  ["Paid Courses", "HR Executive Training", "HR Recruitment Training", "Full Stack Development", "QA Testing", "DSA"],
-  ["Products", "Placement Preparation", "Jawa EDTECh for Corporates"],
+  ["Courses", "HR Executive Course", "HR Recruitment Course", "Full Stack Development", "Software Quality Testing(QA Testing)", "DSA"],
+  ["Popular Courses", "HR Executive Course", "HR Recruitment Course", "Full Stack Development", "QA Testing", "DSA"],
+  ["Paid Courses", "HR Executive Course", "HR Recruitment Course", "Full Stack Development", "QA Testing", "DSA"],
+  ["Products", "Placement Preparation", "JAWA EDTECH for Corporates"],
   ["Resources", "Blog", "Forum", "Rewards"],
   ["Company", "Refund Policy", "Contact Us", "About Us", "Privacy Policy"]
 ];

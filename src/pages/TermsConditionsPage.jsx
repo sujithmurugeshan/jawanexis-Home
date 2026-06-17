@@ -24,7 +24,7 @@ function TermsConditionsPage() {
               Terms &amp; Conditions
             </h1>
             <p className="mx-auto mt-3 max-w-[760px] text-[15px] font-medium leading-relaxed text-guvi-muted">
-              Please read these terms carefully before enrolling in our training programs.
+              Please read these terms carefully before enrolling in our course programs.
             </p>
           </div>
         </section>
@@ -71,7 +71,7 @@ function TermsConditionsPage() {
               <article className="lg:col-span-9 bg-white border border-guvi-line/60 rounded-xl p-6 sm:p-10 shadow-sm">
                 <div className="prose prose-slate max-w-none">
                   <p className="text-[16px] leading-7 font-medium text-guvi-muted mb-8">
-                    Welcome to Jawa EDTECh. By accessing our website and enrolling in our training programs, you agree to comply with and be bound by the following Terms and Conditions. Please review them carefully.
+                    Welcome to JAWA EDTECH. By accessing our website and enrolling in our course programs, you agree to comply with and be bound by the following Terms and Conditions. Please review them carefully.
                   </p>
 
                   {/* Section 1 */}
@@ -81,7 +81,7 @@ function TermsConditionsPage() {
                       Acceptance of Terms
                     </h2>
                     <p className="text-[15px] leading-7 font-medium text-guvi-muted">
-                      By using our website, accessing our services, or registering for any training courses, you confirm that you accept and agree to comply with these Terms &amp; Conditions in full. If you do not agree, you must not use our website or services.
+                      By using our website, accessing our services, or registering for any course courses, you confirm that you accept and agree to comply with these Terms &amp; Conditions in full. If you do not agree, you must not use our website or services.
                     </p>
                   </div>
 
@@ -92,7 +92,7 @@ function TermsConditionsPage() {
                       Course Enrollment
                     </h2>
                     <p className="text-[15px] leading-7 font-medium text-guvi-muted">
-                      Enrollment in any training program at Jawa EDTECh is confirmed only after:
+                      Enrollment in any course program at JAWA EDTECH is confirmed only after:
                     </p>
                     <ul className="mt-3 space-y-2.5 pl-5">
                       <li className="flex items-start gap-2.5 text-[15px] leading-relaxed font-medium text-guvi-muted">
@@ -101,7 +101,7 @@ function TermsConditionsPage() {
                       </li>
                       <li className="flex items-start gap-2.5 text-[15px] leading-relaxed font-medium text-guvi-muted">
                         <CheckCircle2 size={16} className="text-guvi-green mt-1 shrink-0" />
-                        <span>Verification of registration details and documentation by the Jawa EDTECh admissions team.</span>
+                        <span>Verification of registration details and documentation by the JAWA EDTECH admissions team.</span>
                       </li>
                     </ul>
                   </div>
@@ -122,7 +122,7 @@ function TermsConditionsPage() {
                       </li>
                       <li className="flex items-start gap-2.5 text-[15px] leading-relaxed font-medium text-guvi-muted">
                         <CheckCircle2 size={16} className="text-guvi-green mt-1 shrink-0" />
-                        <span>Attend live classes, training sessions, and mentor reviews regularly and on time.</span>
+                        <span>Attend live classes, course sessions, and mentor reviews regularly and on time.</span>
                       </li>
                       <li className="flex items-start gap-2.5 text-[15px] leading-relaxed font-medium text-guvi-muted">
                         <CheckCircle2 size={16} className="text-guvi-green mt-1 shrink-0" />
@@ -142,7 +142,7 @@ function TermsConditionsPage() {
                       Intellectual Property Rights
                     </h2>
                     <p className="text-[15px] leading-7 font-medium text-guvi-muted mb-3">
-                      All course materials, training content, presentations, source codes, videos, assessments, and associated resources are the exclusive intellectual property of Jawa EDTECh.
+                      All course materials, course content, presentations, source codes, videos, assessments, and associated resources are the exclusive intellectual property of JAWA EDTECH.
                     </p>
                     <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-3">
                       <p className="text-[14px] leading-relaxed font-semibold text-amber-800 flex items-center gap-2">
@@ -150,7 +150,7 @@ function TermsConditionsPage() {
                       </p>
                       <ul className="mt-2 space-y-1.5 pl-5 text-[14px] leading-relaxed font-medium text-amber-700 list-disc">
                         <li>Copying, reproducing, translating, or distributing course materials.</li>
-                        <li>Recording live training sessions or webinars without prior written permission.</li>
+                        <li>Recording live course sessions or webinars without prior written permission.</li>
                         <li>Sharing login credentials or course-sharing learning resources with third parties.</li>
                       </ul>
                     </div>
@@ -163,10 +163,10 @@ function TermsConditionsPage() {
                       Placement Support Disclaimer
                     </h2>
                     <p className="text-[15px] leading-7 font-medium text-guvi-muted">
-                      Jawa EDTECh offers robust career support, including mock interviews, resume optimization, LinkedIn profile reviews, and placement assistance through our network of hiring partners.
+                      JAWA EDTECH offers robust career support, including mock interviews, resume optimization, LinkedIn profile reviews, and placement assistance through our network of hiring partners.
                     </p>
                     <p className="mt-3 text-[15px] leading-7 font-semibold text-black bg-guvi-mint/50 border border-guvi-line/45 rounded-lg p-4">
-                      ⚠️ Note: Placement opportunities depend entirely on individual performance, skill proficiency, attendance, market conditions, and specific employer standards. Jawa EDTECh does not guarantee jobs, salary packages, or hiring outcomes.
+                      ⚠️ Note: Placement opportunities depend entirely on individual performance, skill proficiency, attendance, market conditions, and specific employer standards. JAWA EDTECH does not guarantee jobs, salary packages, or hiring outcomes.
                     </p>
                   </div>
 
@@ -202,7 +202,7 @@ function TermsConditionsPage() {
                       Limitation of Liability
                     </h2>
                     <p className="text-[15px] leading-7 font-medium text-guvi-muted">
-                      Jawa EDTECh, its founders, directors, employees, and trainers shall not be liable for any direct, indirect, incidental, special, or consequential damages resulting from the use of (or inability to use) our website, services, training courses, or study materials.
+                      JAWA EDTECH, its founders, directors, employees, and trainers shall not be liable for any direct, indirect, incidental, special, or consequential damages resulting from the use of (or inability to use) our website, services, course courses, or study materials.
                     </p>
                   </div>
 
@@ -238,9 +238,9 @@ function TermsConditionsPage() {
                       If you have any questions or require clarifications regarding these Terms &amp; Conditions, please reach out to us at:
                     </p>
                     <div className="mt-4 bg-slate-50 border border-slate-200 rounded-lg p-5">
-                      <p className="text-[15px] font-bold text-black mb-1">Jawa EDTECh</p>
+                      <p className="text-[15px] font-bold text-black mb-1">JAWA EDTECH</p>
                       <p className="text-[14px] font-medium text-guvi-muted">
-                        Email: <a href="mailto:hr@Jawa EDTECh.com" className="text-guvi-deepGreen underline font-semibold">hr@Jawa EDTECh.com</a>
+                        Email: <a href="mailto:hr@jawaedtech.com" className="text-guvi-deepGreen underline font-semibold">hr@jawaedtech.com</a>
                       </p>
                       <p className="text-[14px] font-medium text-guvi-muted">
                         Phone: <a href="tel:+919790631286" className="text-guvi-deepGreen underline font-semibold">+91 97906 31286</a>

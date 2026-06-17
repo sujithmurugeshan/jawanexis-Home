@@ -7,7 +7,8 @@ import LiveCard from "../components/LiveCard.jsx";
 import SyllabusModal from "../components/SyllabusModal.jsx";
 import nativeLanguagesImage from "../assets/native-languages.jpg";
 import posterBoat from "../assets/poster-boat.png";
-import posterBoatHr from "../assets/poster-boat-hr.jpg";
+import posterBoatHr from "../assets/poster-boat-hr-realistic.png";
+import companyLogo from "../assets/logo.png";
 import {
   achievementPhotos,
   journeyLearners,
@@ -27,7 +28,7 @@ const heroOfferPanels = [
     ),
     image: posterBoat,
     rows: [
-      ["HR Executive Training", "HR Recruitment Training", "Full Stack Development"],
+      ["HR Executive Course", "HR Recruitment Course", "Full Stack Development"],
       ["Software Quality Testing (QA Testing)", "Data Structure And Algorithms (DSA)"],
     ],
     cta: "Claim Rs. 7,777 Off Now",
@@ -42,11 +43,10 @@ const heroOfferPanels = [
     ),
     image: posterBoatHr,
     rows: [
-      ["HR Executive Training", "HR Recruitment Training", "Full Stack Development"],
-      ["Software Quality Testing (QA Testing)", "Data Structure And Algorithms (DSA)"],
+      ["HR Executive Course", "HR Recruitment Course"]
     ],
     cta: " Explore Career Programs ",
-    note: "Build practical HR and IT skills with career-focused training.",
+    note: "Build practical HR and IT skills with career-focused course.",
   },
 ];
 
@@ -66,6 +66,7 @@ function Home() {
 
   return (
     <div className="min-h-screen bg-white text-guvi-ink">
+      {/* Banner image updated */}
       <Header />
 
       <main>
@@ -244,50 +245,46 @@ function HeroOffer() {
           className="hero-offer-track"
           style={{ transform: `translateX(-${activeSlide * 100}%)` }}
         >
-        {heroOfferPanels.map((panel) => (
-          <article className="hero-offer-card" key={panel.eyebrow}>
-            <div className="hero-offer-art" aria-hidden="true">
-              <img src={panel.image} alt="" />
-            </div>
-            <div className="shell flex min-h-[374px] items-center">
-              <div className="relative z-10 max-w-[760px] pt-1 xl:max-w-[930px]">
-                <p className="text-[18px] font-semibold leading-tight tracking-[-0.01em] text-black sm:text-[25px]">
-                  {panel.eyebrow}
-                </p>
-                <h1 className="mt-5 text-[30px] font-extrabold leading-tight tracking-[-0.02em] text-black sm:text-[42px] lg:text-[46px]">
-                  {panel.title}
-                </h1>
-                {panel.description ? (
-                  <p className="mt-3 max-w-[900px] text-[16px] font-extrabold leading-7 text-black/68 sm:text-[19px]">
-                    {panel.description}
-                  </p>
-                ) : null}
-                <div className="mt-7 inline-flex max-w-[760px] flex-col gap-y-3 rounded-[24px] border-2 border-black bg-gradient-to-r from-guvi-mint to-white py-4 pl-9 pr-7 shadow-[inset_12px_0_0_#19d950] md:rounded-[28px] lg:max-w-[880px]">
-                  {panel.rows.map((row) => (
-                    <div key={row.join("-")} className="flex flex-wrap items-center gap-x-6 gap-y-2.5">
-                      {row.map((course) => (
-                        <span
-                          key={course}
-                          className="flex cursor-default items-center gap-2 whitespace-nowrap text-[15px] font-extrabold text-black sm:text-[16px]"
-                        >
-                          <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-guvi-green animate-pulse" />
-                          <span>{course}</span>
-                        </span>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-                <a
-                  href="#internship"
-                  className="mt-7 flex h-[48px] w-[220px] items-center justify-center rounded-md btn-glossy-green text-[17px] font-extrabold sm:h-[54px] sm:w-[260px] sm:text-[21px]"
-                >
-                  {panel.cta}
-                </a>
-                <p className="mt-4 text-[16px] font-medium text-black/70">{panel.note}</p>
+          {heroOfferPanels.map((panel) => (
+            <article className="hero-offer-card" key={panel.eyebrow}>
+              <div className="hero-offer-art" aria-hidden="true">
+                <img src={panel.image} alt="" />
               </div>
-            </div>
-          </article>
-        ))}
+              <div className="shell flex min-h-[374px] items-center">
+                <div className="relative z-10 max-w-[760px] pt-1 xl:max-w-[930px]">
+                  <p className="text-[18px] font-semibold leading-tight tracking-[-0.01em] text-black sm:text-[25px]">
+                    {panel.eyebrow}
+                  </p>
+                  <h1 className="mt-5 text-[30px] font-extrabold leading-tight tracking-[-0.02em] text-black sm:text-[42px] lg:text-[46px]">
+                    {panel.title}
+                  </h1>
+                  {panel.description ? (
+                    <p className="mt-3 max-w-[900px] text-[16px] font-extrabold leading-7 text-black/68 sm:text-[19px]">
+                      {panel.description}
+                    </p>
+                  ) : null}
+                  <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4 rounded-[24px] border-2 border-black bg-gradient-to-r from-guvi-mint to-white py-6 pl-9 pr-7 shadow-[inset_12px_0_0_#19d950] md:rounded-[28px] w-fit">
+                    {panel.rows.flat().map((course) => (
+                      <span
+                        key={course}
+                        className="flex cursor-default items-center gap-2 text-[15px] font-extrabold text-black sm:text-[16px]"
+                      >
+                        <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-guvi-green animate-pulse-bright" />
+                        <span>{course}</span>
+                      </span>
+                    ))}
+                  </div>
+                  <a
+                    href="#internship"
+                    className="mt-7 flex h-[48px] w-fit px-8 items-center justify-center rounded-md btn-glossy-green text-[17px] font-extrabold sm:h-[54px] sm:px-10 sm:text-[21px]"
+                  >
+                    {panel.cta}
+                  </a>
+                  <p className="mt-4 text-[16px] font-medium text-black/70">{panel.note}</p>
+                </div>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -300,11 +297,11 @@ function LiveClasses({ onSyllabusClick }) {
       <div className="shell">
         <div className="mx-auto max-w-[1030px] text-center">
           <h2 className="flex items-center justify-center gap-3 text-[30px] font-extrabold leading-tight tracking-[-0.01em] text-guvi-ink sm:text-[40px]">
-            <span className="h-[21px] w-[21px] rounded-full bg-guvi-green" />
+            <span className="h-[21px] w-[21px] rounded-full bg-guvi-green animate-pulse" />
             Live Classes + Placement Guidance
           </h2>
           <p className="mt-6 text-[18px] font-medium leading-[1.45] text-guvi-muted sm:text-[24px]">
-            Jawa EDTECh offers one of the industry's leading Project Based Career Programs that promises
+            JAWA EDTECH offers one of the industry's leading Project Based Career Programs that promises
             <br className="hidden lg:block" />
             Placement Guidance on completing the program.
           </p>
@@ -351,20 +348,56 @@ function JourneyOfLearners() {
                     </div>
                   )}
                 </div>
-                <div className="journey-slide-body">
-                  <h3 className="journey-learner-name">
-                    <span>{learner.name}</span>
+                <div className="journey-slide-body flex flex-col items-center px-4 pb-6">
+                  <h3 className="text-[18px] font-extrabold text-black mt-2 mb-3 text-center">
+                    {learner.name}
                   </h3>
-                  <p className="journey-learner-role">{learner.role}</p>
-                  <p className="journey-working-label">Working At</p>
-                  <div className="journey-company-lockup">
+                  <div className="h-8 flex items-center justify-center mb-6">
                     {learner.companyLogo ? (
-                      <img src={learner.companyLogo} alt={`${learner.company} logo`} className="journey-company-logo" />
+                      <img src={learner.companyLogo} alt={`${learner.company} logo`} className="max-h-full max-w-[120px] object-contain" />
                     ) : (
-                      <span className="journey-company-mark" aria-hidden="true">{learner.companyMark || learner.company.charAt(0)}</span>
+                      <span className="font-bold text-gray-600 text-sm">{learner.company}</span>
                     )}
                   </div>
-                  {learner.location ? <p className="journey-location">{learner.location}</p> : null}
+                  
+                  {/* Exact Journey Path UI */}
+                  <div className="w-full text-left flex flex-col mt-auto relative pt-2">
+                    {/* Dashed line extending through the middle */}
+                    <div className="absolute left-[29px] top-[40px] bottom-[40px] w-px border-l-2 border-dashed border-gray-300 z-0"></div>
+
+                    {/* Before Role Box */}
+                    <div className="relative flex items-center gap-4 bg-white border border-gray-200 rounded-[14px] px-5 py-4 z-10">
+                      <div className="ml-[3px] w-[14px] h-[14px] rounded-full border-[1.5px] border-gray-300 bg-white flex-shrink-0"></div>
+                      <div className="text-[15px] font-bold text-gray-800 leading-snug">
+                        {learner.beforeRole || "Fresher / Job Seeker"}
+                      </div>
+                    </div>
+                    
+                    {/* After JAWA EDTECH */}
+                    <div className="relative flex items-center gap-6 py-6 z-10 pl-[12px]">
+                      <div className="w-9 h-9 rounded-full bg-white border border-gray-200 flex items-center justify-center flex-shrink-0 shadow-sm p-1.5 z-10 relative">
+                        <img src={companyLogo} alt="JAWA EDTECH" className="w-full h-full object-contain" />
+                      </div>
+                      <div className="text-[15px] font-medium text-gray-700">
+                        After JAWA EDTECH
+                      </div>
+                    </div>
+                    
+                    {/* After Role (Green Box) */}
+                    <div className="relative z-10">
+                      {/* Green downward triangle on top of the green box */}
+                      <div className="absolute left-[25px] -top-[5px] w-0 h-0 border-l-[5px] border-r-[5px] border-t-[6px] border-l-transparent border-r-transparent border-t-[#19d950]"></div>
+                      
+                      <div className="flex items-center gap-4 bg-[#e9f8ef] rounded-[14px] px-5 py-4">
+                        <div className="ml-[3px] w-[14px] h-[14px] rounded-full border-[2px] border-[#19d950] flex items-center justify-center flex-shrink-0 bg-[#e9f8ef]">
+                          <div className="w-[6px] h-[6px] rounded-full bg-[#19d950]"></div>
+                        </div>
+                        <div className="text-[15px] font-bold text-black leading-snug">
+                          {learner.role}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </article>
             ))}
@@ -550,9 +583,9 @@ const getCourseHash = (title) => {
   switch (title) {
     case "Full Stack Development":
       return "#full-stack-development-course";
-    case "HR Executive Training":
+    case "HR Executive Course":
       return "#hr-executive-course";
-    case "HR Recruitment Training":
+    case "HR Recruitment Course":
       return "#hr-recruitment-course";
     case "Software Quality Testing(QA Testing)":
     case "Software Quality Testing (QA Testing)":
@@ -565,21 +598,7 @@ const getCourseHash = (title) => {
 };
 
 const getCourseImageStyle = (title) => {
-  switch (title) {
-    case "DSA":
-      return { backgroundColor: "#213643", objectFit: "contain" };
-    case "Full Stack Development":
-      return { backgroundColor: "#f8f9fa", objectFit: "contain" };
-    case "HR Executive Training":
-      return { backgroundColor: "#161717", objectFit: "contain" };
-    case "HR Recruitment Training":
-      return { backgroundColor: "#141319", objectFit: "contain" };
-    case "Software Quality Testing(QA Testing)":
-    case "Software Quality Testing (QA Testing)":
-      return { backgroundColor: "#0c1f47", objectFit: "contain" };
-    default:
-      return { objectFit: "cover" };
-  }
+  return { objectFit: "fill" };
 };
 
 function LearningPace() {
@@ -598,7 +617,7 @@ function LearningPace() {
             Choose from 1000+ exclusive courses with new courses being published every month.
           </p>
         </div>
-         <div className="mt-7 flex flex-wrap justify-center gap-3">
+        <div className="mt-7 flex flex-wrap justify-center gap-3">
           {courseTabs.map(
             (tab) => (
               <button
@@ -623,7 +642,7 @@ function LearningPace() {
                 aria-hidden={index >= visibleCourses.length}
               >
                 <article>
-                  <div className="h-[150px] overflow-hidden">
+                  <div className="aspect-video overflow-hidden">
                     <img src={image} alt={`${title} course preview`} className="h-full w-full" style={getCourseImageStyle(title)} />
                   </div>
                   <div className="p-5">
@@ -637,7 +656,7 @@ function LearningPace() {
             ))}
           </div>
         </div>
-        
+
       </div>
     </section>
   );
@@ -661,11 +680,11 @@ function NativeLanguages() {
               Leading EdTech Platform for Learning in Native Languages.
             </h2>
             <p className="mt-5 text-[17px] font-medium leading-8 text-guvi-muted sm:text-[22px] sm:leading-[1.55]">
-              Jawa EDTECh helps learners build job-ready skills through practical online learning, career-focused training, and placement
+              JAWA EDTECH helps learners build job-ready skills through practical online learning, career-focused course, and placement
               guidance in regional and global languages.
             </p>
             <p className="mt-8 text-[20px] font-semibold text-guvi-ink sm:text-[24px]">
-              <span className="font-extrabold text-guvi-deepGreen">Jawa EDTECh</span>
+              <span className="font-extrabold text-guvi-deepGreen">JAWA EDTECH</span>
               <span> - Learn, Upskill, and Grow</span>
             </p>
           </div>
@@ -720,7 +739,7 @@ function AchievementsGallery() {
           </span>
           <h2 className="text-[32px] font-extrabold text-guvi-ink sm:text-[40px]">Our Academic Collaborations</h2>
           <p className="mt-3 max-w-[600px] mx-auto text-[15px] font-medium text-guvi-muted">
-            Partnering with leading institutions to deliver industry-relevant training and career development programs.
+            Partnering with leading institutions to deliver industry-relevant course and career development programs.
           </p>
         </div>
 
@@ -825,8 +844,8 @@ function AchievementsGallery() {
               aria-label={`Go to slide ${index + 1}`}
               onClick={() => setActiveSlide(index)}
               className={`h-2.5 rounded-full transition-all duration-300 ${index === activeSlide
-                  ? "w-6 bg-guvi-green shadow-[0_0_0_4px_rgba(25,217,80,0.12)]"
-                  : "w-2.5 bg-guvi-green/35 hover:bg-guvi-green/60"
+                ? "w-6 bg-guvi-green shadow-[0_0_0_4px_rgba(25,217,80,0.12)]"
+                : "w-2.5 bg-guvi-green/35 hover:bg-guvi-green/60"
                 }`}
             />
           ))}

@@ -3,7 +3,7 @@ import { Briefcase, UserPlus, Code2, Bug, Cpu, ChevronRight, Star, CheckCircle, 
 
 /* ─── Course Preview Data ─── */
 const coursePreviewData = {
-  "HR Executive Training": {
+  "HR Executive Course": {
     href: "#hr-executive-course",
     icon: Briefcase,
     duration: "90 Days",
@@ -15,7 +15,7 @@ const coursePreviewData = {
     whyChoose: [
       "Become an HR Professional in just 90 Days",
       "Industry-Focused Curriculum",
-      "Hands-On Practical Training",
+      "Hands-On Practical Course",
       "Real-Time HR Case Studies",
       "Expert Mentor Guidance",
       "Job-Oriented Learning Approach"
@@ -41,7 +41,7 @@ const coursePreviewData = {
       "Learn from Industry Experts",
       "Work on Hands-On Assignments",
       "Solve Real HR Business Scenarios",
-      "Industry-Relevant Training",
+      "Industry-Relevant Course",
       "Interactive Learning Sessions",
       "Career Support & Guidance"
     ],
@@ -55,7 +55,7 @@ const coursePreviewData = {
     ],
     cta: "Start Your HR Career with Confidence!"
   },
-  "HR Recruitment Training": {
+  "HR Recruitment Course": {
     href: "#hr-recruitment-course",
     icon: UserPlus,
     duration: "45 Days",
@@ -67,7 +67,7 @@ const coursePreviewData = {
     whyChoose: [
       "Become a Recruitment Pro in 45 Days",
       "Practical Hiring Simulations",
-      "LinkedIn Recruiter Training",
+      "LinkedIn Recruiter Course",
       "ATS Tool Mastery",
       "Expert Recruiter Mentors",
       "Placement-Ready Preparation"
@@ -84,7 +84,7 @@ const coursePreviewData = {
     benefits: [
       "Live Recruitment Simulations",
       "Real-World Hiring Projects",
-      "Industry-Standard Tool Training",
+      "Industry-Standard Tool Course",
       "Confidence in End-to-End Hiring",
       "Professional Sourcing Profile",
       "Career Launch Support"
@@ -145,7 +145,7 @@ const coursePreviewData = {
       "Learn from Senior Developers",
       "Build Production-Ready Apps",
       "AI-Powered Feature Development",
-      "Cloud Deployment Training",
+      "Cloud Deployment Course",
       "Code Review Sessions",
       "Career Development Centre"
     ],
@@ -169,7 +169,7 @@ const coursePreviewData = {
     accentLight: "#e9f8ef",
     accentBorder: "#c5e8d0",
     whyChoose: [
-      "Complete QA Testing Training",
+      "Complete QA Testing Course",
       "Manual & Automation Testing",
       "Selenium WebDriver Mastery",
       "API Testing with Postman",
@@ -187,7 +187,7 @@ const coursePreviewData = {
     ],
     benefits: [
       "Hands-On Automation Labs",
-      "Industry-Standard Tool Training",
+      "Industry-Standard Tool Course",
       "QA Engineer Certification",
       "Real Application Testing",
       "Resume & Interview Prep",
@@ -221,7 +221,7 @@ const coursePreviewData = {
     accentLight: "#e9f8ef",
     accentBorder: "#c5e8d0",
     whyChoose: [
-      "Interview-Focused DSA Training",
+      "Interview-Focused DSA Course",
       "Complexity Analysis Mastery",
       "LeetCode Pattern Practice",
       "Dynamic Programming Module",

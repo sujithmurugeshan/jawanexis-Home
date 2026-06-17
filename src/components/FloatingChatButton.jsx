@@ -15,19 +15,19 @@ function getJawaReply(message) {
   const text = message.toLowerCase();
 
   if (text.includes("contact") || text.includes("phone") || text.includes("email") || text.includes("support")) {
-    return "You can contact Jawa EDTECh at +91 9790631286 or email hr@Jawa EDTECh.com. You can also ask me about courses before contacting the team.";
+    return "You can contact JAWA EDTECH at +91 9790631286 or email hr@jawaedtech.com. You can also ask me about courses before contacting the team.";
   }
 
   if (text.includes("placement") || text.includes("job") || text.includes("career")) {
-    return "Jawa EDTECh programs include placement guidance after course completion. Jawa can help you choose a course based on your target role, current skill level, and language preference.";
+    return "JAWA EDTECH programs include placement guidance after course completion. Jawa can help you choose a course based on your target role, current skill level, and language preference.";
   }
 
   if (text.includes("live") || text.includes("class") || text.includes("mentor")) {
-    return "Live classes are available for HR Executive Training, HR Recruitment Training, Full Stack Development, QA Testing, and DSA. Classes are designed with mentor guidance and practical learning.";
+    return "Live classes are available for HR Executive Course, HR Recruitment Course, Full Stack Development, QA Testing, and DSA. Classes are designed with mentor guidance and practical learning.";
   }
 
   if (text.includes("hr") || text.includes("recruit")) {
-    return "For HR careers, Jawa recommends HR Executive Training if you want broad HR operations skills, and HR Recruitment Training if you want to focus on hiring, screening, and recruitment workflows.";
+    return "For HR careers, Jawa recommends HR Executive Course if you want broad HR operations skills, and HR Recruitment Course if you want to focus on hiring, screening, and recruitment workflows.";
   }
 
   if (text.includes("full stack") || text.includes("developer") || text.includes("coding")) {
@@ -43,14 +43,14 @@ function getJawaReply(message) {
   }
 
   if (text.includes("fee") || text.includes("price") || text.includes("offer") || text.includes("discount")) {
-    return "The homepage currently highlights a Rs. 5,000 offer on Jawa EDTECh Live Class programs. For exact pricing, contact the admissions team so they can confirm the latest details.";
+    return "The homepage currently highlights a Rs. 5,000 offer on JAWA EDTECH Live Class programs. For exact pricing, contact the admissions team so they can confirm the latest details.";
   }
 
   if (text.includes("course") || text.includes("program") || text.includes("suit")) {
-    return "Jawa can help you pick from HR Executive Training, HR Recruitment Training, Full Stack Development, QA Testing, and DSA. Tell me your background and target role, and I will suggest a path.";
+    return "Jawa can help you pick from HR Executive Course, HR Recruitment Course, Full Stack Development, QA Testing, and DSA. Tell me your background and target role, and I will suggest a path.";
   }
 
-  return "I can help with Jawa EDTECh courses, live classes, placement guidance, fees, and contact details. Tell me what you want to learn or the role you are aiming for.";
+  return "I can help with JAWA EDTECH courses, live classes, placement guidance, fees, and contact details. Tell me what you want to learn or the role you are aiming for.";
 }
 
 function FloatingChatButton() {

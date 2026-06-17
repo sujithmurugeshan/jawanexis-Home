@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { Eye, Target, Users, Sparkles, Heart, LogIn, Star, Rocket, Binoculars, Cloud } from "lucide-react";
+import { Eye, Target, Users, Sparkles, Heart, LogIn, Star, Rocket, Binoculars, Cloud, Linkedin } from "lucide-react";
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import FloatingChatButton from "../components/FloatingChatButton.jsx";
@@ -12,8 +12,6 @@ import companyLogo from "../assets/logo.png";
 import sooryaPhoto from "../assets/soorya.png";
 import anishaPhoto from "../assets/anisha.png";
 import nithinPhoto from "../assets/nithin.png";
-import sunithaPhoto from "../assets/sunitha.jpg";
-
 function BackgroundPattern({ className }) {
   return (
     <svg
@@ -43,27 +41,26 @@ function BackgroundPattern({ className }) {
 }
 
 const teamMembers = [
-  { name: "Soorya Jawahar", role: "Founder & CEO", badge: "FOUNDER & CEO", photo: sooryaPhoto, slug: "soorya-jawahar" },
-  { name: "Anisha", role: "Senior HR - Training & Development", badge: "SENIOR HR", photo: anishaPhoto, slug: "anisha-riya" },
-  { name: "Nitinchand", role: "Tech Advisor", badge: "TECH ADVISOR", photo: nithinPhoto, slug: "nitinchand-saravanan" },
-  { name: "Sunitha Prakash", role: "Digital Marketing Executive", badge: "DIGITAL MARKETING", photo: sunithaPhoto, slug: "sunitha-prakash" }
+  { name: "Soorya Jawahar", role: "Founder & CEO", badge: "FOUNDER & CEO", photo: sooryaPhoto, slug: "soorya-jawahar", linkedin: "https://www.linkedin.com/in/soorya-jawahar/" },
+  { name: "Anisha", role: "Senior HR - Course & Development", badge: "SENIOR HR", photo: anishaPhoto, slug: "anisha-riya", linkedin: "https://www.linkedin.com/in/anisha-riya-855b142a9/" },
+  { name: "Nitinchand", role: "Tech Advisor", badge: "TECH ADVISOR", photo: nithinPhoto, slug: "nitinchand-saravanan", linkedin: "https://www.linkedin.com/in/nitinchand-saravanan-aa64131b4/" }
 ];
 
 const testimonials = [
-  { name: "Shamugavel", role: "HR - TVS", course: "HR Executive Course", quote: "I successfully completed the HR Executive Course at Jawa EDTECh, and it was a wonderful learning experience. The trainers explained every HR concept clearly and provided practical knowledge of recruitment, onboarding, and HR operations. This course helped me build confidence and prepare for a career in Human Resources." },
-  { name: "Anbu", role: "HR - TVS", course: "HR Training", quote: "My experience at Jawa EDTECh was excellent. The HR training program was well-structured and included practical sessions that helped me understand real-world HR processes. The support and guidance from the trainers made learning easy and effective." },
-  { name: "Nivetha", role: "HR - Sharp", course: "HR Training", quote: "I am glad I chose Jawa EDTECh for my HR training. The course covered all the important HR functions, and the hands-on approach helped me gain valuable industry knowledge. It was a great step toward achieving my career goals." },
-  { name: "Balaji", role: "HR - Hastgags", course: "HR Course", quote: "The HR course at Jawa EDTECh exceeded my expectations. The trainers were knowledgeable and always ready to clarify doubts. I gained practical skills in recruitment and employee management, which increased my confidence for job opportunities." },
-  { name: "Akshaya", role: "HR - Freshworks", course: "HR Executive Course", quote: "Completing the HR Executive Course at Jawa EDTECh was a rewarding experience. The training sessions were interactive and informative, helping me understand HR concepts in a simple way. I feel more prepared to start my professional journey in HR." },
-  { name: "Gurunath", role: "HR - Payoda Technologies", course: "HR Training", quote: "Jawa EDTECh provided an excellent learning environment for HR aspirants. The course content was relevant to industry requirements, and the practical training helped me develop the skills needed to work in an HR role successfully." },
-  { name: "Gokulram", role: "HR - V Support Solutions", course: "HR Training", quote: "I had a great experience learning at Jawa EDTECh. The HR training program gave me valuable insights into recruitment, onboarding, and employee engagement. The trainers were supportive throughout the course and encouraged continuous learning." },
-  { name: "Varshini", role: "HR - Ahker", course: "HR Course", quote: "The HR course at Jawa EDTECh helped me gain both theoretical and practical knowledge. The real-time examples and assignments improved my understanding of HR processes and prepared me for workplace challenges. I highly recommend this course to aspiring HR professionals." },
-  { name: "Prakash", role: "HR - Reqroots", course: "HR Training", quote: "I am thankful to Jawa EDTECh for providing quality HR training and career guidance. The course enhanced my professional skills and gave me a better understanding of HR practices. It was a valuable learning experience that will help me in my future career." },
-  { name: "Tamzhil Arasan", role: "Athen Technology Solutions", course: "Full Stack Development Course", quote: "I successfully completed the Full Stack Development Course at Jawa EDTECh, and it was an excellent learning experience. The trainers taught both front-end and back-end technologies in a simple and practical way. Working on real-time projects helped me improve my coding skills and gain confidence in web development." },
-  { name: "Udhaya Mithra", role: "Quest Global", course: "Full Stack Developer Course", quote: "The Full Stack Developer Course at Jawa EDTECh provided me with strong technical knowledge and hands-on experience. I learned technologies like HTML, CSS, JavaScript, React, and database management through practical sessions. The guidance from the trainers helped me become job-ready and improve my problem-solving skills." },
-  { name: "Karthick Kathirvel", role: "Tekpillar", course: "Full Stack Development Course", quote: "Joining the Full Stack Development Course at Jawa EDTECh was one of the best decisions for my career. The course covered all the essential concepts required to build modern web applications. The project-based learning approach helped me understand real-world development processes and prepared me for opportunities in the IT industry." },
-  { name: "Jamuna", role: "Testriq", course: "QA Testing Course", quote: "The QA Testing Course at Jawa EDTECh provided me with both theoretical knowledge and hands-on experience. The trainers explained testing concepts clearly and guided us through real-time testing scenarios. This course helped me gain confidence in identifying defects and ensuring software quality." },
-  { name: "Lakshana", role: "Sasti Infotech", course: "Data Structures and Algorithms Course", quote: "I completed the Data Structures and Algorithms Course at Jawa EDTECh and gained a strong understanding of programming fundamentals. The trainers explained complex concepts like arrays, linked lists, stacks, queues, and algorithms in a simple way. This course significantly improved my problem-solving abilities." }
+  { name: "Shamugavel", role: "HR - TVS", course: "HR Executive Course", quote: "I successfully completed the HR Executive Course at JAWA EDTECH, and it was a wonderful learning experience. The trainers explained every HR concept clearly and provided practical knowledge of recruitment, onboarding, and HR operations. This course helped me build confidence and prepare for a career in Human Resources." },
+  { name: "Anbu", role: "HR - TVS", course: "HR Course", quote: "My experience at JAWA EDTECH was excellent. The HR course program was well-structured and included practical sessions that helped me understand real-world HR processes. The support and guidance from the trainers made learning easy and effective." },
+  { name: "Nivetha", role: "HR - Sharp", course: "HR Course", quote: "I am glad I chose JAWA EDTECH for my HR course. The course covered all the important HR functions, and the hands-on approach helped me gain valuable industry knowledge. It was a great step toward achieving my career goals." },
+  { name: "Balaji", role: "HR - Hastgags", course: "HR Course", quote: "The HR course at JAWA EDTECH exceeded my expectations. The trainers were knowledgeable and always ready to clarify doubts. I gained practical skills in recruitment and employee management, which increased my confidence for job opportunities." },
+  { name: "Akshaya", role: "HR - Freshworks", course: "HR Executive Course", quote: "Completing the HR Executive Course at JAWA EDTECH was a rewarding experience. The course sessions were interactive and informative, helping me understand HR concepts in a simple way. I feel more prepared to start my professional journey in HR." },
+  { name: "Gurunath", role: "HR - Payoda Technologies", course: "HR Course", quote: "JAWA EDTECH provided an excellent learning environment for HR aspirants. The course content was relevant to industry requirements, and the practical course helped me develop the skills needed to work in an HR role successfully." },
+  { name: "Gokulram", role: "HR - V Support Solutions", course: "HR Course", quote: "I had a great experience learning at JAWA EDTECH. The HR course program gave me valuable insights into recruitment, onboarding, and employee engagement. The trainers were supportive throughout the course and encouraged continuous learning." },
+  { name: "Varshini", role: "HR - Ahker", course: "HR Course", quote: "The HR course at JAWA EDTECH helped me gain both theoretical and practical knowledge. The real-time examples and assignments improved my understanding of HR processes and prepared me for workplace challenges. I highly recommend this course to aspiring HR professionals." },
+  { name: "Prakash", role: "HR - Reqroots", course: "HR Course", quote: "I am thankful to JAWA EDTECH for providing quality HR course and career guidance. The course enhanced my professional skills and gave me a better understanding of HR practices. It was a valuable learning experience that will help me in my future career." },
+  { name: "Tamzhil Arasan", role: "Athen Technology Solutions", course: "Full Stack Development Course", quote: "I successfully completed the Full Stack Development Course at JAWA EDTECH, and it was an excellent learning experience. The trainers taught both front-end and back-end technologies in a simple and practical way. Working on real-time projects helped me improve my coding skills and gain confidence in web development." },
+  { name: "Udhaya Mithra", role: "Quest Global", course: "Full Stack Developer Course", quote: "The Full Stack Developer Course at JAWA EDTECH provided me with strong technical knowledge and hands-on experience. I learned technologies like HTML, CSS, JavaScript, React, and database management through practical sessions. The guidance from the trainers helped me become job-ready and improve my problem-solving skills." },
+  { name: "Karthick Kathirvel", role: "Tekpillar", course: "Full Stack Development Course", quote: "Joining the Full Stack Development Course at JAWA EDTECH was one of the best decisions for my career. The course covered all the essential concepts required to build modern web applications. The project-based learning approach helped me understand real-world development processes and prepared me for opportunities in the IT industry." },
+  { name: "Jamuna", role: "Testriq", course: "QA Testing Course", quote: "The QA Testing Course at JAWA EDTECH provided me with both theoretical knowledge and hands-on experience. The trainers explained testing concepts clearly and guided us through real-time testing scenarios. This course helped me gain confidence in identifying defects and ensuring software quality." },
+  { name: "Lakshana", role: "Sasti Infotech", course: "Data Structures and Algorithms Course", quote: "I completed the Data Structures and Algorithms Course at JAWA EDTECH and gained a strong understanding of programming fundamentals. The trainers explained complex concepts like arrays, linked lists, stacks, queues, and algorithms in a simple way. This course significantly improved my problem-solving abilities." }
 ];
 
 // Colorful card back colors — cycles through the deck
@@ -239,7 +236,7 @@ function WallOfLove() {
                         <img src={companyLogo} alt="Logo" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
                       </div>
                       <div>
-                        <div style={{ fontWeight: 800, fontSize: 16, color: "#8cc63f", fontFamily: "DM Sans, sans-serif" }}>
+                        <div style={{ fontWeight: 800, fontSize: 16, color: "#19d950", fontFamily: "DM Sans, sans-serif" }}>
                           {item.name}
                         </div>
                         <div style={{ fontSize: 12, color: "#64748b", fontWeight: 600, marginTop: 2 }}>
@@ -330,7 +327,7 @@ function WallOfLove() {
               cursor: "pointer", transition: "all 0.2s",
               fontSize: 16, fontWeight: 800,
             }}
-            onMouseOver={e => { e.currentTarget.style.background = "#8cc63f"; e.currentTarget.style.borderColor = "#8cc63f"; }}
+            onMouseOver={e => { e.currentTarget.style.background = "#19d950"; e.currentTarget.style.borderColor = "#19d950"; }}
             onMouseOut={e => { e.currentTarget.style.background = "#111"; e.currentTarget.style.borderColor = "#111"; }}
             aria-label="Next"
           >
@@ -364,7 +361,7 @@ function WallOfLove() {
 function AboutPage() {
   const [activeTab, setActiveTab] = useState("mission");
 
-  const missionText = "To deliver practical, industry-relevant training and career development programs that help learners gain real-world expertise, achieve their goals, and succeed in their chosen careers.";
+  const missionText = "To deliver practical, industry-relevant course and career development programs that help learners gain real-world expertise, achieve their goals, and succeed in their chosen careers.";
 
   const visionText = "To empower individuals with the skills, confidence, and opportunities needed to build successful careers and create a meaningful impact in the professional world.";
 
@@ -381,7 +378,7 @@ function AboutPage() {
         <section className="relative overflow-hidden bg-gradient-to-br from-[#052412] via-[#094021] to-[#02170b] py-24 lg:py-32 text-white">
           {/* Glowing blur effects */}
           <div className="absolute left-[10%] top-[10%] w-[300px] h-[300px] bg-[#19d950]/15 rounded-full blur-[100px] pointer-events-none" />
-          <div className="absolute right-[10%] bottom-[10%] w-[350px] h-[350px] bg-[#0b8a32]/20 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute right-[10%] bottom-[10%] w-[350px] h-[350px] bg-[#19d950]/20 rounded-full blur-[120px] pointer-events-none" />
           
           <BackgroundPattern className="absolute -left-10 top-12 opacity-30 hidden md:block" />
           <BackgroundPattern className="absolute -right-10 bottom-8 opacity-30 hidden md:block" />
@@ -395,7 +392,7 @@ function AboutPage() {
               with <span className="text-[#19d950] drop-shadow-[0_2px_8px_rgba(25,217,80,0.15)]">Real-World Expertise</span>
             </h1>
             <p className="mx-auto mt-6 max-w-[760px] text-[16px] font-medium leading-8 text-emerald-100/80 sm:text-[18px]">
-              Jawa EDTECh bridges the gap between traditional learning and industry requirements. We deliver job-focused training programs across emerging domains, preparing candidates to stand out in today's competitive job market.
+              JAWA EDTECH bridges the gap between traditional learning and industry requirements. We deliver job-focused course programs across emerging domains, preparing candidates to stand out in today's competitive job market.
             </p>
           </div>
         </section>
@@ -413,13 +410,13 @@ function AboutPage() {
               >
                 <span
                   className={`text-[24px] sm:text-[32px] font-extrabold transition-colors duration-200 pb-1.5 ${
-                    activeTab === "mission" ? "text-black border-b-[3.5px] border-[#15b957]" : "text-black/35 hover:text-black/55"
+                    activeTab === "mission" ? "text-black border-b-[3.5px] border-[#19d950]" : "text-black/35 hover:text-black/55"
                   }`}
                 >
                   Our Mission
                 </span>
                 {activeTab === "mission" && (
-                  <div className="ml-2.5 text-[#15b957] flex items-center relative -top-1">
+                  <div className="ml-2.5 text-[#19d950] flex items-center relative -top-1">
                     <Rocket size={30} className="transform -rotate-12 animate-pulse" />
                     <Cloud size={13} className="absolute -bottom-1 -left-1 opacity-70" />
                     <Cloud size={15} className="absolute -bottom-2 -left-2.5 opacity-40" />
@@ -435,13 +432,13 @@ function AboutPage() {
               >
                 <span
                   className={`text-[24px] sm:text-[32px] font-extrabold transition-colors duration-200 pb-1.5 ${
-                    activeTab === "vision" ? "text-black border-b-[3.5px] border-[#15b957]" : "text-black/35 hover:text-black/55"
+                    activeTab === "vision" ? "text-black border-b-[3.5px] border-[#19d950]" : "text-black/35 hover:text-black/55"
                   }`}
                 >
                   Our Vision
                 </span>
                 {activeTab === "vision" && (
-                  <div className="ml-2.5 text-[#15b957] flex items-center relative -top-1">
+                  <div className="ml-2.5 text-[#19d950] flex items-center relative -top-1">
                     <Binoculars size={30} className="animate-pulse" />
                   </div>
                 )}
@@ -479,14 +476,14 @@ function AboutPage() {
                 The experienced leaders and advisors driving candidate success and course excellence.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-[1280px] mx-auto px-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1024px] mx-auto px-4">
               {teamMembers.map((member) => (
                 <div
                   key={member.name}
                   className="relative bg-white rounded-[20px] border border-guvi-line/40 shadow-[0_8px_30px_rgba(15,23,42,0.06)] overflow-hidden transition-all duration-300 group h-[380px]"
                 >
-                  <div className="absolute inset-0 flex items-end justify-center">
-                    <img src={member.photo} alt={member.name} className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-x-0 bottom-0 top-6 flex items-end justify-center">
+                    <img src={member.photo} alt={member.name} className="h-full w-full object-cover object-top origin-top transition-transform duration-500 group-hover:scale-105" />
                   </div>
                   <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm px-3.5 py-1.5 rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.06)] border border-slate-100/50 transition-all duration-300 group-hover:opacity-0 group-hover:pointer-events-none z-20">
                     <span className="text-[10px] tracking-wider font-extrabold text-slate-700 uppercase font-sans">{member.badge}</span>
@@ -495,9 +492,16 @@ function AboutPage() {
                     <LogIn size={13} className="stroke-[2.5]" />
                     <span className="text-[11px] font-extrabold tracking-wide font-sans">View Profile</span>
                   </a>
-                  <div className="absolute bottom-0 left-0 right-0 bg-[#8cc63f] px-6 py-5 transition-transform duration-300 ease-out translate-y-full group-hover:translate-y-0 z-20 text-left">
-                    <h4 className="text-white font-extrabold text-[18px] tracking-wide font-sans leading-tight">{member.name}</h4>
-                    <p className="text-white/90 font-medium text-[12px] mt-0.5 font-sans leading-snug">{member.role}</p>
+                  <div className="absolute bottom-0 left-0 right-0 btn-glossy-green px-6 py-5 transition-transform duration-300 ease-out translate-y-full group-hover:translate-y-0 z-20 text-left flex items-center justify-between">
+                    <div>
+                      <h4 className="text-[#111] font-extrabold text-[18px] tracking-wide font-sans leading-tight">{member.name}</h4>
+                      <p className="text-[#111]/80 font-bold text-[12px] mt-0.5 font-sans leading-snug">{member.role}</p>
+                    </div>
+                    {member.linkedin && (
+                      <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#111] hover:text-black/70 transition-colors" aria-label={`${member.name} LinkedIn`}>
+                        <Linkedin size={22} />
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}

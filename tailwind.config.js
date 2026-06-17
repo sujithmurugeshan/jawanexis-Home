@@ -24,6 +24,20 @@ export default {
         menu: "0 14px 30px rgba(15, 23, 42, 0.12)",
         lift: "0 8px 18px rgba(25, 217, 80, 0.30)",
         soft: "0 18px 45px rgba(25, 38, 33, 0.12)"
+      },
+      keyframes: {
+        'pulse-bright': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.7' },
+        },
+        blink: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0' },
+        }
+      },
+      animation: {
+        'pulse-bright': 'pulse-bright 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        blink: 'blink 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       }
     }
   },

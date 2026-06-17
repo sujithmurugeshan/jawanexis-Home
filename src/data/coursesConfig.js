@@ -1,4 +1,4 @@
-// Configuration data for all course pages on Jawa EDTECh
+// Configuration data for all course pages on JAWA EDTECH
 import courseAi from "../assets/course-ai.png";
 import courseData from "../assets/course-data.png";
 import courseGenai from "../assets/course-genai.png";
@@ -10,18 +10,18 @@ import fullstackPreviewImg from "../assets/fullstack-dev-team.png";
 import qaPreviewImg from "../assets/qa-testing-professional.png";
 import dsaPreviewImg from "../assets/dsa-coding-student.png";
 
-import courseFullstack from "../assets/course-fullstack.png";
-import courseHrExecutive from "../assets/course-hr-executive.png";
-import courseHrRecruitment from "../assets/course-hr-recruitment.png";
-import courseDsa from "../assets/course-dsa.png";
-import courseQa from "../assets/course-qa.png";
+import courseFullstack from "../assets/course-fullstack-banner.jpg";
+import courseHrExecutive from "../assets/course-hr-executive-banner.jpg";
+import courseHrRecruitment from "../assets/course-hr-recruitment-banner.jpg";
+import courseDsa from "../assets/course-dsa-banner.jpg";
+import courseQa from "../assets/course-qa-banner.jpg";
 
 export const coursesConfig = {
   "hr-executive": {
     id: "hr-executive",
-    title: "HR Executive Training",
+    title: "HR Executive Course",
     subtitle: "Human Resource Executive & Development Program",
-    heroTitle: "Jawa EDTECh HR Executive Training Program",
+    heroTitle: "JAWA EDTECH HR Executive Course Program",
     heroDesc: "Master core HR concepts, corporate operations, statutory compliance, payroll systems, and talent management with hands-on practice.",
     previewImg: courseData,
     previewHumanImg: hrPreviewImg,
@@ -31,10 +31,10 @@ export const coursesConfig = {
     internshipPrice: "₹5,000",
     internshipStrikethrough: "₹7,000",
     features: [
-      "Jawa EDTECh HR Executive Certification",
+      "JAWA EDTECH HR Executive Certification",
       "Live Online Classes",
       "6 Months",
-      "Practical Payroll Training",
+      "Practical Payroll Course",
       "Labour Law Compliance",
       "HRMS Tool Mastery",
       "Resume & Mock Interview Prep"
@@ -67,7 +67,7 @@ export const coursesConfig = {
     ],
     previewContent: {
       tagline: "Become an HR Professional in just 90 Days",
-      description: "Do you want to become an HR Professional in just 90 Days? We have the thing for you! At Jawa EDTECh, our HR Executive Training program helps students and graduates become HR professionals. They can handle real-world HR responsibilities with confidence. Human Resources is not about recruitment and administration anymore. HR professionals play a role in finding the best talent doing employee engagement , handling performance management, Payroll to develop the organization and growing the business. Our HR Course is practical. Focused on the industry. It prepares you for HR roles in companies. You will work on hands-on projects, real-time case studies. Get expert guidance. This way you will gain the skills needed to succeed in today's job market.",
+      description: "Do you want to become an HR Professional in just 90 Days? We have the thing for you! At JAWA EDTECH, our HR Executive Course program helps students and graduates become HR professionals. They can handle real-world HR responsibilities with confidence. Human Resources is not about recruitment and administration anymore. HR professionals play a role in finding the best talent doing employee engagement , handling performance management, Payroll to develop the organization and growing the business. Our HR Course is practical. Focused on the industry. It prepares you for HR roles in companies. You will work on hands-on projects, real-time case studies. Get expert guidance. This way you will gain the skills needed to succeed in today's job market.",
       learningOutcomes: [
         "HR Operations & Administration core concepts",
         "Employee onboarding and joining documentation",
@@ -79,7 +79,7 @@ export const coursesConfig = {
         "Exit management workflows and offboarding"
       ],
       whyChoose: [
-        "Our training is built around what companies are actually looking for in HR professionals today.",
+        "Our course is built around what companies are actually looking for in HR professionals today.",
         "Learn HR through practical experience, including Recruitment, Payroll, HRMS, Employee Management, Compliance, and other day-to-day HR activities.",
         "Sessions are guided by experienced HR professionals who have worked directly in the industry and understand real workplace challenges.",
         "We believe learning happens by doing, so every module includes practical exercises, real-time examples, and hands-on activities.",
@@ -197,17 +197,17 @@ export const coursesConfig = {
     faqs: [
       { q: "Who can join this course?", a: "This program is suitable for graduates, MBA HR students, career changers, and working professionals who want to enter the HR field." },
       { q: "Do I need prior HR experience?", a: "No, the course starts from the absolute basics, covering foundational HR structures and policies before moving to complex compliance and tools." },
-      { q: "What is the course duration?", a: "The training program spans approximately 6 months of interactive weekly modules, with optional internship support." },
+      { q: "What is the course duration?", a: "The course program spans approximately 6 months of interactive weekly modules, with optional internship support." },
       { q: "Is the course online or offline?", a: "The course is offline." },
-      { q: "Will I receive a certificate?", a: "Yes, you will earn a Jawa EDTECh HR Executive Certificate upon completion of the course requirements." },
+      { q: "Will I receive a certificate?", a: "Yes, you will earn a JAWA EDTECH HR Executive Certificate upon completion of the course requirements." },
       { q: "Will I learn tools like SAP or Zoho?", a: "Yes, you will get hands-on familiarity with popular HRMS and payroll tools including Zoho People, SAP HR concepts, and Excel." }
     ]
   },
   "hr-recruitment": {
     id: "hr-recruitment",
-    title: "HR Recruitment Training",
+    title: "HR Recruitment Course",
     subtitle: "Recruitment & Talent Acquisition Program",
-    heroTitle: "Jawa EDTECh HR Recruitment Training Program",
+    heroTitle: "JAWA EDTECH HR Recruitment Course Program",
     heroDesc: "Become an expert in talent acquisition. Learn advanced candidate sourcing, resume screening, talent mapping, ATS tools, and recruitment automation.",
     previewImg: courseGenai,
     previewHumanImg: hrPreviewImg,
@@ -217,10 +217,10 @@ export const coursesConfig = {
     internshipPrice: "₹3,500",
     internshipStrikethrough: "₹5,000",
     features: [
-      "Jawa EDTECh Recruitment Specialist Certificate",
+      "JAWA EDTECH Recruitment Specialist Certificate",
       "Live Sourcing Simulations",
       "6 Months",
-      "LinkedIn Recruiter Training",
+      "LinkedIn Recruiter Course",
       "ATS Automation Hands-on",
       "Salary Negotiation Prep",
       "Mock Interview Sessions"
@@ -253,7 +253,7 @@ export const coursesConfig = {
     ],
     previewContent: {
       tagline: "Become a Recruitment Professional in just 45 days",
-      description: "Do you want to have a career in HR recruitment and talent acquisition? Jawa EDTECh's HR Recruitment Training Program is for students, graduates and people who want to become recruiters. They want to learn how companies find, screen, interview and hire the people for the job. Our Recruitment Training Course teaches people about the ways to recruit. This includes how to find candidates, screen them, set up interviews and use the tools that HR professionals use.",
+      description: "Do you want to have a career in HR recruitment and talent acquisition? JAWA EDTECH's HR Recruitment Course Program is for students, graduates and people who want to become recruiters. They want to learn how companies find, screen, interview and hire the people for the job. Our Recruitment Course Course teaches people about the ways to recruit. This includes how to find candidates, screen them, set up interviews and use the tools that HR professionals use.",
       learningOutcomes: [
         "Recruitment Foundation and Core functions",
         "Talent acquisition strategies",
@@ -384,15 +384,15 @@ export const coursesConfig = {
       { q: "Do I need a tech background?", a: "No, recruiting roles exist in all sectors. We cover both tech and non-tech recruitment strategies." },
       { q: "What is the course duration?", a: "The course spans 6 months, featuring structured weekly modules and mock sourcing labs." },
       { q: "Is the course online or offline?", a: "The course is offline." },
-      { q: "Will I receive a certificate?", a: "Yes, you will get a certified HR Recruiter Certificate from Jawa EDTECh." },
+      { q: "Will I receive a certificate?", a: "Yes, you will get a certified HR Recruiter Certificate from JAWA EDTECH." },
       { q: "Will I work on live requirements?", a: "Yes, you will simulate candidate sourcing for real job requirements using industry tools." }
     ]
   },
   "full-stack": {
     id: "full-stack",
     title: "Full Stack Development with AI",
-    subtitle: "Full Stack Developer Training Program",
-    heroTitle: "Jawa EDTECh Full Stack Development Program",
+    subtitle: "Full Stack Developer Course Program",
+    heroTitle: "JAWA EDTECH Full Stack Development Program",
     heroDesc: "Build full stack skills in Full Stack Development with expert guidance, hands-on projects, and career support. Master tools like Git, MongoDB, Express, React, Node.js and more!",
     previewImg: courseAi,
     previewHumanImg: fullstackPreviewImg,
@@ -402,7 +402,7 @@ export const coursesConfig = {
     internshipPrice: "₹3,500",
     internshipStrikethrough: "₹5,000",
     features: [
-      "Jawa EDTECh Full Stack Certification",
+      "JAWA EDTECH Full Stack Certification",
       "Live Online Classes",
       "1-on-1 Mock Interviews",
       "6-Month Program",
@@ -449,7 +449,7 @@ export const coursesConfig = {
     ],
     previewContent: {
       tagline: "Become a job ready Full Stack Developer",
-      description: "Become a job ready Full Stack Developer. Do you want to build websites and web applications that companies use every day? At Jawa EDTECh, our Full Stack Development Training Program helps students and working professionals become Full Stack Developers. You will learn how to create web applications by working on both the front end and the back end of websites. Our Full Stack Developer Course is designed with what companies need in mind. You will work on projects and assignments that're like what you will do on the job. You will also get help from experts who have been doing this for a time. This will give you the skills you need to get a job in software development.",
+      description: "Become a job ready Full Stack Developer. Do you want to build websites and web applications that companies use every day? At JAWA EDTECH, our Full Stack Development Course Program helps students and working professionals become Full Stack Developers. You will learn how to create web applications by working on both the front end and the back end of websites. Our Full Stack Developer Course is designed with what companies need in mind. You will work on projects and assignments that're like what you will do on the job. You will also get help from experts who have been doing this for a time. This will give you the skills you need to get a job in software development.",
       learningOutcomes: [
         "HTML5, CSS3 and JavaScript",
         "How to make websites look good on all devices",
@@ -464,7 +464,7 @@ export const coursesConfig = {
       ],
       whyChoose: [
         "Learn the latest Full Stack Development skills that companies are hiring for.",
-        "Build real-world projects and web applications with hands-on training.",
+        "Build real-world projects and web applications with hands-on course.",
         "Get trained by experienced industry professionals.",
         "Create a strong portfolio to showcase your skills.",
         "Receive resume building and interview preparation support.",
@@ -582,15 +582,15 @@ export const coursesConfig = {
       { q: "Do I need prior coding knowledge?", a: "No prior coding knowledge is required. The curriculum starts from absolute basics — HTML, CSS, and JavaScript — and progressively advances to full stack development with AI integration. Complete beginners are welcome." },
       { q: "What is the course duration?", a: "The Full Stack Development Course spans approximately 6 months with structured weekly modules. The 1-month internship program is available separately for hands-on industry experience." },
       { q: "Is the course online or offline?", a: "The course is offline." },
-      { q: "Will I receive a certificate after completion?", a: "Yes! Upon successfully completing all modules and the capstone project, you will receive a Jawa EDTECh Full Stack Development Certificate, which you can showcase on LinkedIn and in job applications." },
+      { q: "Will I receive a certificate after completion?", a: "Yes! Upon successfully completing all modules and the capstone project, you will receive a JAWA EDTECH Full Stack Development Certificate, which you can showcase on LinkedIn and in job applications." },
       { q: "Will I work on real-world projects?", a: "Absolutely. The curriculum includes 100+ hours of hands-on project work across all modules, culminating in an industry-level capstone project that becomes a portfolio-ready showcase of your skills." }
     ]
   },
   "qa-testing": {
     id: "qa-testing",
     title: "Software Quality Testing (QA Testing)",
-    subtitle: "Software Testing Training Program",
-    heroTitle: "Jawa EDTECh Software Quality Testing (QA) Program",
+    subtitle: "Software Testing Course Program",
+    heroTitle: "JAWA EDTECH Software Quality Testing (QA) Program",
     heroDesc: "Master manual and automated software testing. Learn test planning, bug tracking, SQL, API testing with Postman, Selenium WebDriver, and CI/CD pipelines.",
     previewImg: courseUiux,
     previewHumanImg: qaPreviewImg,
@@ -598,7 +598,7 @@ export const coursesConfig = {
     price: "₹65,000",
     strikethroughPrice: "₹1,10,000",
     features: [
-      "Jawa EDTECh QA Engineer Certification",
+      "JAWA EDTECH QA Engineer Certification",
       "Live Automated Testing Labs",
       "Selenium WebDriver & TestNG",
       "API Testing with Postman",
@@ -632,7 +632,7 @@ export const coursesConfig = {
     ],
     previewContent: {
       tagline: "Become a Skilled Software Testing Professional",
-      description: "Do you want to build a career in software testing and quality assurance? Jawa EDTECh's Software Quality Testing Training Program helps students and graduates gain practical knowledge of software testing processes used in leading IT companies. Learn how to identify defects, improve software quality, and ensure applications work efficiently before reaching users. Our QA Testing Course focuses on practical learning, industry standards, and real-time testing projects that prepare you for a successful career in software quality assurance.",
+      description: "Do you want to build a career in software testing and quality assurance? JAWA EDTECH's Software Quality Testing Course Program helps students and graduates gain practical knowledge of software testing processes used in leading IT companies. Learn how to identify defects, improve software quality, and ensure applications work efficiently before reaching users. Our QA Testing Course focuses on practical learning, industry standards, and real-time testing projects that prepare you for a successful career in software quality assurance.",
       learningOutcomes: [
         "Software Testing Fundamentals",
         "Manual Testing Techniques",
@@ -646,7 +646,7 @@ export const coursesConfig = {
         "Automation Testing Basics"
       ],
       whyChoose: [
-        "Industry-oriented training built around leading QA workflows.",
+        "Industry-oriented course built around leading QA workflows.",
         "Real-time testing projects simulating corporate production releases.",
         "Practical defect tracking experience using tools like Jira.",
         "Expert QA trainers with years of software testing experience.",
@@ -762,17 +762,17 @@ export const coursesConfig = {
     faqs: [
       { q: "Who can join this course?", a: "Students, graduates, or professionals looking to build a career in software quality assurance and automation testing." },
       { q: "Do I need programming knowledge?", a: "No prior coding is required. We start with manual testing and introduce Java/JavaScript fundamentals needed for Selenium automation." },
-      { q: "What is the course duration?", a: "The course spans 6 months of weekly training, covering manual testing, automated testing, and API verification." },
+      { q: "What is the course duration?", a: "The course spans 6 months of weekly course, covering manual testing, automated testing, and API verification." },
       { q: "Is the course online or offline?", a: "The course is offline." },
-      { q: "Will I get a certificate?", a: "Yes, you will receive a Jawa EDTECh Certified QA Testing Certificate upon successful completion." },
+      { q: "Will I get a certificate?", a: "Yes, you will receive a JAWA EDTECH Certified QA Testing Certificate upon successful completion." },
       { q: "Will I work on automation projects?", a: "Yes, you will design automated test suites for web applications using Selenium and Postman." }
     ]
   },
   "dsa": {
     id: "dsa",
     title: "Data Structures & Algorithms (DSA)",
-    subtitle: "DSA Training Program",
-    heroTitle: "Jawa EDTECh DSA & Coding Interview Program",
+    subtitle: "DSA Course Program",
+    heroTitle: "JAWA EDTECH DSA & Coding Interview Program",
     heroDesc: "Crack your dream product-company interviews. Master complexity analysis, arrays, lists, recursion, trees, graphs, dynamic programming, and competitive coding.",
     previewImg: courseDsa,
     previewHumanImg: dsaPreviewImg,
@@ -781,7 +781,7 @@ export const coursesConfig = {
     price: "₹30,000",
     strikethroughPrice: "₹45,000",
     features: [
-      "Jawa EDTECh DSA Course Completion Certificate",
+      "JAWA EDTECH DSA Course Completion Certificate",
       "Live Problem-Solving Walkthroughs",
       "Complexity Analysis & Optimization",
       "LeetCode & Competitive Programming Prep",
@@ -813,7 +813,7 @@ export const coursesConfig = {
     ],
     previewContent: {
       tagline: "Master Data Structures and Algorithms for Top Tech Careers",
-      description: "Do you want to crack coding interviews and secure jobs in leading IT companies? Jawa EDTECh's Data Structures and Algorithms Training Program helps students build strong problem-solving and programming skills. Learn the concepts that top technology companies use to evaluate software developers during technical interviews. Our DSA Course focuses on coding practice, logical thinking, algorithm optimization, and interview preparation through hands-on problem-solving sessions.",
+      description: "Do you want to crack coding interviews and secure jobs in leading IT companies? JAWA EDTECH's Data Structures and Algorithms Course Program helps students build strong problem-solving and programming skills. Learn the concepts that top technology companies use to evaluate software developers during technical interviews. Our DSA Course focuses on coding practice, logical thinking, algorithm optimization, and interview preparation through hands-on problem-solving sessions.",
       learningOutcomes: [
         "Programming Fundamentals",
         "Arrays and Strings",
@@ -943,9 +943,9 @@ export const coursesConfig = {
     faqs: [
       { q: "Who can join this course?", a: "Students preparing for campus placements, software engineers aiming to switch to product companies, and competitive programmers." },
       { q: "What languages are supported?", a: "You can solve problems in C++, Java, or Python. The core logic of DSA remains the same." },
-      { q: "What is the course duration?", a: "The course spans approximately 6 months of intensive problem-solving and algorithmic training." },
+      { q: "What is the course duration?", a: "The course spans approximately 6 months of intensive problem-solving and algorithmic course." },
       { q: "Is the course online or offline?", a: "The course is offline." },
-      { q: "Will I get a certificate?", a: "Yes, you will receive a Jawa EDTECh DSA Course Completion Certificate." },
+      { q: "Will I get a certificate?", a: "Yes, you will receive a JAWA EDTECH DSA Course Completion Certificate." },
       { q: "Will this help in product company interviews?", a: "Yes, the curriculum is specifically designed around coding interview patterns of companies like Amazon, Google, and Microsoft." }
     ]
   }

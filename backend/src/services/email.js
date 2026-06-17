@@ -11,13 +11,14 @@ const transporter = nodemailer.createTransport({
 });
 
 // Fire and forget function
-const sendEmail = async (to, subject, text) => {
+const sendEmail = async (to, subject, text, attachments = []) => {
   try {
     await transporter.sendMail({
       from: `"Jawa EDTECh" <${process.env.SMTP_USER}>`,
       to,
       subject,
       text,
+      attachments
     });
     console.log(`Email sent to ${to}`);
   } catch (error) {
