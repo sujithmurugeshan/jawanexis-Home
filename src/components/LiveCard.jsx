@@ -4,9 +4,9 @@ const getCourseHash = (title) => {
   switch (title) {
     case "Full Stack Development":
       return "#full-stack-development-course";
-    case "HR Executive Training":
+    case "HR Executive Course":
       return "#hr-executive-course";
-    case "HR Recruitment Training":
+    case "HR Recruitment Course":
       return "#hr-recruitment-course";
     case "Software Quality Testing(QA Testing)":
     case "Software Quality Testing (QA Testing)":
@@ -24,9 +24,9 @@ const getCourseImageStyle = (title) => {
       return { backgroundColor: "#213643", objectFit: "contain" };
     case "Full Stack Development":
       return { backgroundColor: "#f8f9fa", objectFit: "contain" };
-    case "HR Executive Training":
+    case "HR Executive Course":
       return { backgroundColor: "#161717", objectFit: "contain" };
-    case "HR Recruitment Training":
+    case "HR Recruitment Course":
       return { backgroundColor: "#141319", objectFit: "contain" };
     case "Software Quality Testing(QA Testing)":
     case "Software Quality Testing (QA Testing)":

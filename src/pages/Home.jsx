@@ -27,7 +27,7 @@ const heroOfferPanels = [
     ),
     image: posterBoat,
     rows: [
-      ["HR Executive Training", "HR Recruitment Training", "Full Stack Development"],
+      ["HR Executive Course", "HR Recruitment Course", "Full Stack Development"],
       ["Software Quality Testing (QA Testing)", "Data Structure And Algorithms (DSA)"],
     ],
     cta: "Claim Rs. 7,777 Off Now",
@@ -42,7 +42,7 @@ const heroOfferPanels = [
     ),
     image: posterBoatHr,
     rows: [
-      ["HR Executive Training", "HR Recruitment Training", "Full Stack Development"],
+      ["HR Executive Course", "HR Recruitment Course", "Full Stack Development"],
       ["Software Quality Testing (QA Testing)", "Data Structure And Algorithms (DSA)"],
     ],
     cta: " Explore Career Programs ",
@@ -304,7 +304,7 @@ function LiveClasses({ onSyllabusClick }) {
             Live Classes + Placement Guidance
           </h2>
           <p className="mt-6 text-[18px] font-medium leading-[1.45] text-guvi-muted sm:text-[24px]">
-            Jawa EDTECh offers one of the industry's leading Project Based Career Programs that promises
+            JAWA EDTECH offers one of the industry's leading Project Based Career Programs that promises
             <br className="hidden lg:block" />
             Placement Guidance on completing the program.
           </p>
@@ -550,9 +550,9 @@ const getCourseHash = (title) => {
   switch (title) {
     case "Full Stack Development":
       return "#full-stack-development-course";
-    case "HR Executive Training":
+    case "HR Executive Course":
       return "#hr-executive-course";
-    case "HR Recruitment Training":
+    case "HR Recruitment Course":
       return "#hr-recruitment-course";
     case "Software Quality Testing(QA Testing)":
     case "Software Quality Testing (QA Testing)":
@@ -570,9 +570,9 @@ const getCourseImageStyle = (title) => {
       return { backgroundColor: "#213643", objectFit: "contain" };
     case "Full Stack Development":
       return { backgroundColor: "#f8f9fa", objectFit: "contain" };
-    case "HR Executive Training":
+    case "HR Executive Course":
       return { backgroundColor: "#161717", objectFit: "contain" };
-    case "HR Recruitment Training":
+    case "HR Recruitment Course":
       return { backgroundColor: "#141319", objectFit: "contain" };
     case "Software Quality Testing(QA Testing)":
     case "Software Quality Testing (QA Testing)":
@@ -661,11 +661,11 @@ function NativeLanguages() {
               Leading EdTech Platform for Learning in Native Languages.
             </h2>
             <p className="mt-5 text-[17px] font-medium leading-8 text-guvi-muted sm:text-[22px] sm:leading-[1.55]">
-              Jawa EDTECh helps learners build job-ready skills through practical online learning, career-focused training, and placement
+              JAWA EDTECH helps learners build job-ready skills through practical online learning, career-focused training, and placement
               guidance in regional and global languages.
             </p>
             <p className="mt-8 text-[20px] font-semibold text-guvi-ink sm:text-[24px]">
-              <span className="font-extrabold text-guvi-deepGreen">Jawa EDTECh</span>
+              <span className="font-extrabold text-guvi-deepGreen">JAWA EDTECH</span>
               <span> - Learn, Upskill, and Grow</span>
             </p>
           </div>

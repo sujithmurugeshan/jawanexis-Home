@@ -83,6 +83,18 @@ const LOGO_MAP = {
   zoho_recruit: <ZohoRecruitToolLogo />
 };
 
+const ICON_MAP = {
+  BookOpen,
+  Users,
+  Laptop,
+  Award,
+  Briefcase,
+  Search,
+  MessageSquare,
+  CheckCircle2,
+  Sparkles
+};
+
 /* ─────────────── Hiring Partner SVGs ─────────────── */
 const FreshworksLogo = () => (
   <div className="flex items-center gap-1.5 text-sm font-extrabold text-[#1e293b]">
@@ -382,7 +394,7 @@ function FaqSection({ faqs, title }) {
             Frequently Asked Questions
           </h2>
           <p className="mt-3 text-gray-500 font-medium">
-            Everything you need to know about the Jawa EDTECh {title} Program.
+            Everything you need to know about the JAWA EDTECH {title} Program.
           </p>
         </div>
 
@@ -704,13 +716,12 @@ function CoursePreviewSection({ config }) {
       "logical thinking",
       "algorithm optimization",
       "interview preparation",
-      "Jawa EDTECh",
-      "Jawa EDTECh"
+      "JAWA EDTECH"
     ];
 
     let highlighted = text;
     keywords.forEach(keyword => {
-      const regex = new RegExp(`\\b${keyword.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b`, 'gi');
+      const regex = new RegExp(`\\b${keyword.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b`, 'gi');
       highlighted = highlighted.replace(regex, (match) => {
         return `<strong class="text-green-700 font-extrabold">${match}</strong>`;
       });
@@ -723,7 +734,7 @@ function CoursePreviewSection({ config }) {
     <div className="flex flex-col gap-6 w-full select-text">
       
       {/* 1. Quote-style / Hook Callout Container (Full Width) */}
-      <div className="relative pl-8 py-4 border-l-4 border-green-500 bg-gradient-to-r from-green-50/50 via-green-50/10 to-transparent rounded-r-2xl shadow-[inset_1px_1px_2px_rgba(25,217,80,0.03)] group">
+      <div className="relative z-10 pl-8 py-4 border-l-4 border-green-500 bg-white border border-slate-100 rounded-r-2xl shadow-[0_2px_12px_rgba(0,0,0,0.02)] group">
         <span className="absolute -left-4 -top-6 text-[90px] text-green-200/40 font-serif select-none pointer-events-none leading-none">“</span>
         <p className="text-lg md:text-xl font-extrabold text-green-900 leading-relaxed italic relative z-10">
           {hookText}
@@ -734,7 +745,7 @@ function CoursePreviewSection({ config }) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch mt-2">
         
         {/* Block A Card */}
-        <div className="bg-gradient-to-br from-white to-gray-50/30 border-l-4 border-l-green-600/30 border border-gray-150 rounded-r-2xl rounded-l-md p-6 shadow-[0_4px_20px_rgba(0,0,0,0.015)] hover:border-l-green-600 hover:shadow-[0_8px_30px_rgba(25,217,80,0.03)] hover:border-gray-200 transition-all duration-300 relative flex flex-col justify-between">
+        <div className="bg-white z-10 border-l-4 border-l-green-600/30 border border-gray-150 rounded-r-2xl rounded-l-md p-6 shadow-[0_4px_20px_rgba(0,0,0,0.015)] hover:border-l-green-600 hover:shadow-[0_8px_30px_rgba(25,217,80,0.03)] hover:border-gray-200 transition-all duration-300 relative flex flex-col justify-between">
           <div className="absolute top-4 right-4 w-1.5 h-1.5 rounded-full bg-green-400" />
           <p className="text-[15px] sm:text-base leading-relaxed text-gray-650 font-semibold">
             {highlightKeyWords(blockAText)}
@@ -743,7 +754,7 @@ function CoursePreviewSection({ config }) {
 
         {/* Block B Card */}
         {blockBText && (
-          <div className="bg-gradient-to-br from-white to-gray-50/30 border-l-4 border-l-green-600/30 border border-gray-150 rounded-r-2xl rounded-l-md p-6 shadow-[0_4px_20px_rgba(0,0,0,0.015)] hover:border-l-green-600 hover:shadow-[0_8px_30px_rgba(25,217,80,0.03)] hover:border-gray-200 transition-all duration-300 relative flex flex-col justify-between">
+          <div className="bg-white z-10 border-l-4 border-l-green-600/30 border border-gray-150 rounded-r-2xl rounded-l-md p-6 shadow-[0_4px_20px_rgba(0,0,0,0.015)] hover:border-l-green-600 hover:shadow-[0_8px_30px_rgba(25,217,80,0.03)] hover:border-gray-200 transition-all duration-300 relative flex flex-col justify-between">
             <div className="absolute top-4 right-4 w-1.5 h-1.5 rounded-full bg-green-400" />
             <p className="text-[15px] sm:text-base leading-relaxed text-gray-650 font-semibold">
               {highlightKeyWords(blockBText)}
@@ -756,9 +767,108 @@ function CoursePreviewSection({ config }) {
   );
 }
 
+const renderPerkIcon = (iconKey) => {
+  switch (iconKey) {
+    case "code":
+      return (
+        <div className="w-20 h-20 rounded-2xl flex items-center justify-center" style={{ background: "linear-gradient(135deg,#4ade80,#16a34a)", boxShadow: "0 8px 24px rgba(22,163,74,0.35)" }}>
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <path d="M14 12L6 20L14 28" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M26 12L34 20L26 28" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M23 8L17 32" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.7" />
+          </svg>
+        </div>
+      );
+    case "users":
+      return (
+        <div className="w-20 h-20 rounded-2xl flex items-center justify-center" style={{ background: "linear-gradient(135deg,#4ade80,#16a34a)", boxShadow: "0 8px 24px rgba(22,163,74,0.35)" }}>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" fill="white" fillOpacity="0.2" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+        </div>
+      );
+    case "checkmark":
+      return (
+        <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+          <circle cx="36" cy="36" r="28" stroke="#16a34a" strokeWidth="2.5" strokeDasharray="6 4" />
+          <circle cx="36" cy="36" r="20" fill="#dcfce7" />
+          <path d="M25 36L32 43L48 27" stroke="#16a34a" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    case "document":
+      return (
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="5" y="2" width="14" height="20" rx="2" ry="2" fill="#dcfce7" />
+          <line x1="9" y1="7" x2="15" y2="7" />
+          <line x1="9" y1="11" x2="15" y2="11" />
+          <line x1="9" y1="15" x2="15" y2="15" />
+        </svg>
+      );
+    case "target":
+      return (
+        <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+          <circle cx="36" cy="36" r="30" stroke="#16a34a" strokeWidth="2.5" fill="white" />
+          <circle cx="36" cy="36" r="21" stroke="#16a34a" strokeWidth="2" fill="white" />
+          <circle cx="36" cy="36" r="12" fill="#dcfce7" stroke="#16a34a" strokeWidth="2" />
+          <circle cx="36" cy="36" r="5" fill="#16a34a" />
+          <path d="M52 20L38 34" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" />
+          <path d="M52 20L46 21.5M52 20L50.5 26" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      );
+    case "terminal":
+      return (
+        <svg width="96" height="68" viewBox="0 0 96 68" fill="none">
+          <rect x="2" y="2" width="92" height="56" rx="6" fill="#0f172a" />
+          <rect x="10" y="10" width="76" height="40" rx="3" fill="#1e293b" />
+          <circle cx="16" cy="16" r="3" fill="#ef4444" />
+          <circle cx="24" cy="16" r="3" fill="#eab308" />
+          <circle cx="32" cy="16" r="3" fill="#22c55e" />
+          <path d="M16 28L23 34L16 40" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          <rect x="27" y="31" width="32" height="3" rx="1.5" fill="#64748b" />
+          <rect x="38" y="58" width="20" height="5" rx="2" fill="#64748b" />
+          <rect x="30" y="63" width="36" height="3" rx="1.5" fill="#475569" />
+        </svg>
+      );
+    case "briefcase":
+      return (
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2" fill="#dcfce7" />
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+        </svg>
+      );
+    case "search":
+      return (
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="11" cy="11" r="8" fill="#dcfce7" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          <circle cx="11" cy="11" r="3" stroke="#16a34a" strokeWidth="1.5" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+};
+
 /* ─────────────── CORE COURSE PAGE COMPONENT ─────────────── */
 export default function CoursePage({ courseKey, isInternship }) {
   const config = coursesConfig[courseKey];
+  const defaultCareerPerks = [
+    { title: "Mentors", desc: "Live interactive classes, hands-on practice sessions & expert-led doubt clarification.", icon: "code" },
+    { title: "Unlimited Practice", desc: "Sharpen your skills with multiple programming problems or real-world practice case studies.", icon: "checkmark" },
+    { title: "Career Launch Support", desc: "Gain placement guidance, resume reviews, and job prep to accelerate your career.", icon: "target" },
+    { title: "Real-Time Project Work", desc: "Work on extensive hours of real-world, industry-relevant projects to build a job-winning portfolio.", icon: "terminal" }
+  ];
+  const careerPerks = config?.careerPerks || defaultCareerPerks;
+  const defaultFeatureCards = [
+    { icon: "BookOpen", title: "100% Practical Training", desc: "Learn through hands-on assignments, projects, and real-world scenarios." },
+    { icon: "Users", title: "Expert Mentor Guidance", desc: "Get support from experienced industry professionals throughout the program." },
+    { icon: "Laptop", title: "Portfolio & Project Building", desc: "Build industry-level projects and create a job-ready portfolio." },
+    { icon: "Award", title: "Career Support & Certification", desc: "Receive interview preparation, resume guidance, and course certification." }
+  ];
+  const featureCards = config?.heroFeatureCards || defaultFeatureCards;
 
   if (!config) {
     return (
@@ -884,7 +994,7 @@ export default function CoursePage({ courseKey, isInternship }) {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
               </span>
-              Jawa EDTECh Certified
+              JAWA EDTECH Certified
             </span>
             <h1 className="text-[28px] sm:text-[40px] md:text-[50px] font-extrabold leading-tight tracking-tight text-gray-900 max-w-[900px]">
               {config.heroTitle}
@@ -906,22 +1016,18 @@ export default function CoursePage({ courseKey, isInternship }) {
 
               {/* ── Left Feature Cards ── */}
               <div className="flex flex-col gap-5 w-full md:w-[220px] lg:w-[250px] shrink-0">
-                {/* Card 1 */}
-                <div className="bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-[0_4px_24px_rgba(25,217,80,0.08)] border border-green-100 hover:shadow-[0_8px_32px_rgba(25,217,80,0.15)] hover:-translate-y-0.5 transition-all duration-200">
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center mb-3 shadow-sm">
-                    <BookOpen size={17} className="text-white stroke-[2.5]" />
-                  </div>
-                  <h4 className="font-extrabold text-[14px] text-gray-900 mb-1.5 leading-snug">100% Practical Training</h4>
-                  <p className="text-[12px] text-gray-500 font-medium leading-relaxed">Learn through hands-on assignments, projects, and real-world scenarios.</p>
-                </div>
-                {/* Card 2 */}
-                <div className="bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-[0_4px_24px_rgba(25,217,80,0.08)] border border-green-100 hover:shadow-[0_8px_32px_rgba(25,217,80,0.15)] hover:-translate-y-0.5 transition-all duration-200">
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center mb-3 shadow-sm">
-                    <Users size={17} className="text-white stroke-[2.5]" />
-                  </div>
-                  <h4 className="font-extrabold text-[14px] text-gray-900 mb-1.5 leading-snug">Expert Mentor Guidance</h4>
-                  <p className="text-[12px] text-gray-500 font-medium leading-relaxed">Get support from experienced industry professionals throughout the program.</p>
-                </div>
+                {featureCards.slice(0, 2).map((card, idx) => {
+                  const Icon = ICON_MAP[card.icon] || BookOpen;
+                  return (
+                    <div key={idx} className="bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-[0_4px_24px_rgba(25,217,80,0.08)] border border-green-100 hover:shadow-[0_8px_32px_rgba(25,217,80,0.15)] hover:-translate-y-0.5 transition-all duration-200">
+                      <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center mb-3 shadow-sm">
+                        <Icon size={17} className="text-white stroke-[2.5]" />
+                      </div>
+                      <h4 className="font-extrabold text-[14px] text-gray-900 mb-1.5 leading-snug">{card.title}</h4>
+                      <p className="text-[12px] text-gray-500 font-medium leading-relaxed">{card.desc}</p>
+                    </div>
+                  );
+                })}
               </div>
 
               {/* ── Center: Student Image (clean, no overlays) ── */}
@@ -931,7 +1037,7 @@ export default function CoursePage({ courseKey, isInternship }) {
                   style={{ background: "radial-gradient(ellipse at 50% 90%,rgba(25,217,80,0.12) 0%,transparent 70%)" }} />
                 <img
                   src={config.studentsImg}
-                  alt={`Jawa EDTECh ${config.title} Students`}
+                  alt={`JAWA EDTECH ${config.title} Students`}
                   className="relative w-full block object-contain object-bottom drop-shadow-xl"
                   style={{ maxHeight: 520, minHeight: 280 }}
                 />
@@ -939,22 +1045,18 @@ export default function CoursePage({ courseKey, isInternship }) {
 
               {/* ── Right Feature Cards ── */}
               <div className="flex flex-col gap-5 w-full md:w-[220px] lg:w-[250px] shrink-0">
-                {/* Card 3 */}
-                <div className="bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-[0_4px_24px_rgba(25,217,80,0.08)] border border-green-100 hover:shadow-[0_8px_32px_rgba(25,217,80,0.15)] hover:-translate-y-0.5 transition-all duration-200">
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center mb-3 shadow-sm">
-                    <Laptop size={17} className="text-white stroke-[2.5]" />
-                  </div>
-                  <h4 className="font-extrabold text-[14px] text-gray-900 mb-1.5 leading-snug">Portfolio &amp; Project Building</h4>
-                  <p className="text-[12px] text-gray-500 font-medium leading-relaxed">Build industry-level projects and create a job-ready portfolio.</p>
-                </div>
-                {/* Card 4 */}
-                <div className="bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-[0_4px_24px_rgba(25,217,80,0.08)] border border-green-100 hover:shadow-[0_8px_32px_rgba(25,217,80,0.15)] hover:-translate-y-0.5 transition-all duration-200">
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center mb-3 shadow-sm">
-                    <Award size={17} className="text-white stroke-[2.5]" />
-                  </div>
-                  <h4 className="font-extrabold text-[14px] text-gray-900 mb-1.5 leading-snug">Career Support &amp; Certification</h4>
-                  <p className="text-[12px] text-gray-500 font-medium leading-relaxed">Receive interview preparation, resume guidance, and course certification.</p>
-                </div>
+                {featureCards.slice(2, 4).map((card, idx) => {
+                  const Icon = ICON_MAP[card.icon] || BookOpen;
+                  return (
+                    <div key={idx} className="bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-[0_4px_24px_rgba(25,217,80,0.08)] border border-green-100 hover:shadow-[0_8px_32px_rgba(25,217,80,0.15)] hover:-translate-y-0.5 transition-all duration-200">
+                      <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center mb-3 shadow-sm">
+                        <Icon size={17} className="text-white stroke-[2.5]" />
+                      </div>
+                      <h4 className="font-extrabold text-[14px] text-gray-900 mb-1.5 leading-snug">{card.title}</h4>
+                      <p className="text-[12px] text-gray-500 font-medium leading-relaxed">{card.desc}</p>
+                    </div>
+                  );
+                })}
               </div>
 
             </div>
@@ -975,73 +1077,17 @@ export default function CoursePage({ courseKey, isInternship }) {
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8 items-start">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                {/* Mentors */}
-                <article className="flex flex-col bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow" style={{ minHeight: 220 }}>
-                  <h3 className="text-[17px] font-extrabold text-gray-900">Mentors</h3>
-                  <p className="mt-2 text-[13px] font-medium text-gray-500 leading-relaxed">Live interactive classes, hands-on practice sessions &amp; expert-led doubt clarification.</p>
-                  <div className="mt-auto pt-5 flex justify-center">
-                    <div className="w-full max-w-[170px] h-[110px] bg-gradient-to-br from-[#f0fff4] to-[#dcfce7] rounded-2xl border border-green-100 flex items-center justify-center">
-                      <div className="w-20 h-20 rounded-2xl flex items-center justify-center" style={{ background: "linear-gradient(135deg,#4ade80,#16a34a)", boxShadow: "0 8px 24px rgba(22,163,74,0.35)" }}>
-                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                          <path d="M14 12L6 20L14 28" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-                          <path d="M26 12L34 20L26 28" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-                          <path d="M23 8L17 32" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.7" />
-                        </svg>
+                {careerPerks.map((perk, index) => (
+                  <article key={index} className="flex flex-col bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow" style={{ minHeight: 220 }}>
+                    <h3 className="text-[17px] font-extrabold text-gray-900">{perk.title}</h3>
+                    <p className="mt-2 text-[13px] font-medium text-gray-500 leading-relaxed">{perk.desc}</p>
+                    <div className="mt-auto pt-5 flex justify-center">
+                      <div className="w-full max-w-[170px] h-[110px] bg-gradient-to-br from-[#f0fff4] to-[#dcfce7] rounded-2xl border border-green-100 flex items-center justify-center">
+                        {renderPerkIcon(perk.icon)}
                       </div>
                     </div>
-                  </div>
-                </article>
-                {/* Unlimited Practice */}
-                <article className="flex flex-col bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow" style={{ minHeight: 220 }}>
-                  <h3 className="text-[17px] font-extrabold text-gray-900">Unlimited Practice</h3>
-                  <p className="mt-2 text-[13px] font-medium text-gray-500 leading-relaxed">Sharpen your skills with multiple programming problems or real-world practice case studies.</p>
-                  <div className="mt-auto pt-5 flex justify-center">
-                    <div className="w-full max-w-[170px] h-[110px] bg-gradient-to-br from-[#f0fff4] to-[#dcfce7] rounded-2xl border border-green-100 flex items-center justify-center">
-                      <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
-                        <circle cx="36" cy="36" r="28" stroke="#16a34a" strokeWidth="2.5" strokeDasharray="6 4" />
-                        <circle cx="36" cy="36" r="20" fill="#dcfce7" />
-                        <path d="M25 36L32 43L48 27" stroke="#16a34a" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </div>
-                  </div>
-                </article>
-                {/* Career Launch */}
-                <article className="flex flex-col bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow" style={{ minHeight: 220 }}>
-                  <h3 className="text-[17px] font-extrabold text-gray-900">Career Launch Support</h3>
-                  <p className="mt-2 text-[13px] font-medium text-gray-500 leading-relaxed">Gain placement guidance, resume reviews, and job prep to accelerate your career.</p>
-                  <div className="mt-auto pt-5 flex justify-center">
-                    <div className="w-full max-w-[170px] h-[110px] bg-gradient-to-br from-[#f0fff4] to-[#dcfce7] rounded-2xl border border-green-100 flex items-center justify-center">
-                      <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
-                        <circle cx="36" cy="36" r="30" stroke="#16a34a" strokeWidth="2.5" fill="white" />
-                        <circle cx="36" cy="36" r="21" stroke="#16a34a" strokeWidth="2" fill="white" />
-                        <circle cx="36" cy="36" r="12" fill="#dcfce7" stroke="#16a34a" strokeWidth="2" />
-                        <circle cx="36" cy="36" r="5" fill="#16a34a" />
-                        <path d="M52 20L38 34" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" />
-                        <path d="M52 20L46 21.5M52 20L50.5 26" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" />
-                      </svg>
-                    </div>
-                  </div>
-                </article>
-                {/* Real-Time Projects */}
-                <article className="flex flex-col bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow" style={{ minHeight: 220 }}>
-                  <h3 className="text-[17px] font-extrabold text-gray-900">Real-Time Project Work</h3>
-                  <p className="mt-2 text-[13px] font-medium text-gray-500 leading-relaxed">Work on extensive hours of real-world, industry-relevant projects to build a job-winning portfolio.</p>
-                  <div className="mt-auto pt-5 flex justify-center">
-                    <div className="w-full max-w-[170px] h-[110px] bg-gradient-to-br from-[#f0fff4] to-[#dcfce7] rounded-2xl border border-green-100 flex items-center justify-center">
-                      <svg width="96" height="68" viewBox="0 0 96 68" fill="none">
-                        <rect x="2" y="2" width="92" height="56" rx="6" fill="#0f172a" />
-                        <rect x="10" y="10" width="76" height="40" rx="3" fill="#1e293b" />
-                        <circle cx="16" cy="16" r="3" fill="#ef4444" />
-                        <circle cx="24" cy="16" r="3" fill="#eab308" />
-                        <circle cx="32" cy="16" r="3" fill="#22c55e" />
-                        <path d="M16 28L23 34L16 40" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <rect x="27" y="31" width="32" height="3" rx="1.5" fill="#64748b" />
-                        <rect x="38" y="58" width="20" height="5" rx="2" fill="#64748b" />
-                        <rect x="30" y="63" width="36" height="3" rx="1.5" fill="#475569" />
-                      </svg>
-                    </div>
-                  </div>
-                </article>
+                  </article>
+                ))}
               </div>
               <ApplyForm data={formData} onChange={hc(setFormData)} onPhoneChange={hp(setFormData)} onSubmit={submitPage} submitted={pageOk} loading={loading} error={serverError} />
 
@@ -1049,8 +1095,49 @@ export default function CoursePage({ courseKey, isInternship }) {
           </div>
         </section>
 
-        <section className="py-16 bg-white border-t border-b border-gray-100" id="preview-section">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative py-16 bg-white border-t border-b border-gray-100 overflow-hidden" id="preview-section">
+          
+          {/* Course Tools Background Layer */}
+          {config.tools && config.tools.length > 0 && (
+            <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0 flex items-center justify-center opacity-[0.85]">
+              <div className="absolute w-full h-full max-w-7xl mx-auto">
+                {config.tools.map((tool, index) => {
+                  const positions = [
+                    { top: "8%", left: "2%" },
+                    { top: "16%", right: "2%" },
+                    { top: "35%", left: "1%" },
+                    { top: "50%", right: "1%" },
+                    { top: "65%", left: "3%" },
+                    { top: "75%", right: "3%" },
+                    { top: "88%", left: "1%" },
+                    { top: "92%", right: "2%" }
+                  ];
+                  const pos = positions[index % positions.length];
+                  const animDelay = `${index * 0.7}s`;
+                  return (
+                    <div 
+                      key={index} 
+                      className="absolute hidden md:block"
+                      style={{ 
+                        top: pos.top, 
+                        left: pos.left, 
+                        right: pos.right,
+                        animation: `pulse 4s ease-in-out infinite`,
+                        animationDelay: animDelay,
+                        transform: `scale(${1.2 + (index % 3) * 0.2})`
+                      }}
+                    >
+                      <div className="w-16 h-16 md:w-20 md:h-20 opacity-100">
+                        {LOGO_MAP[tool.logoKey]}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
               <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-50 border border-green-100 text-green-700 text-xs font-extrabold uppercase tracking-wider mb-4">
                 <Search size={12} className="text-green-600" />
@@ -1067,7 +1154,7 @@ export default function CoursePage({ courseKey, isInternship }) {
               <CoursePreviewSection config={config} />
 
               {/* Interactive Tabs */}
-              <div className="w-full">
+              <div className="w-full relative z-10">
                 <CoursePreviewTabs previewContent={config.previewContent} />
               </div>
 

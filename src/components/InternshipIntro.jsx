@@ -67,7 +67,7 @@ export default function InternshipIntro({ courseKey }) {
           {/* Badge pill */}
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-green-200 text-green-700 text-xs font-extrabold uppercase tracking-widest mb-5 shadow-sm">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-ping" />
-            Jawa EDTECh Certified
+            JAWA EDTECH Certified
           </span>
 
           <h2 className="text-[28px] sm:text-[40px] md:text-[50px] font-extrabold leading-tight tracking-tight text-gray-900 max-w-[900px]">
@@ -108,7 +108,7 @@ export default function InternshipIntro({ courseKey }) {
                 style={{ background: "radial-gradient(ellipse at 50% 90%, rgba(25,217,80,0.12) 0%, transparent 70%)" }} />
               <img
                 src={studentsImg}
-                alt="Jawa EDTECh Internship Students"
+                alt="JAWA EDTECH Internship Students"
                 className="relative w-full block object-contain object-bottom drop-shadow-xl rounded-2xl"
                 style={{ maxHeight: 480, minHeight: 240 }}
               />

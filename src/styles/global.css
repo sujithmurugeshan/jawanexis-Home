@@ -1596,11 +1596,11 @@ a {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 .tp-expertise-chip:hover {
-  border-color: #8cc63f;
+  border-color: #19d950;
   background: #f0faf2;
   color: #111;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(140, 198, 63, 0.12);
+  box-shadow: 0 4px 12px rgba(25, 217, 80, 0.12);
 }
 
 /* ── Role list ── */
@@ -1634,7 +1634,7 @@ a {
   top: 10px;
   width: 8px;
   height: 8px;
-  background: #8cc63f;
+  background: #19d950;
   border-radius: 50%;
 }
 
@@ -1656,12 +1656,12 @@ a {
 }
 .tp-testimonial-card:hover {
   border-color: #c9f2cf;
-  box-shadow: 0 8px 24px rgba(140, 198, 63, 0.1);
+  box-shadow: 0 8px 24px rgba(25, 217, 80, 0.1);
   transform: translateY(-2px);
 }
 
 .tp-testimonial-quote-icon {
-  color: #8cc63f;
+  color: #19d950;
   opacity: 0.4;
   margin-bottom: 12px;
 }
@@ -1688,7 +1688,7 @@ a {
 }
 
 .tp-quote-icon {
-  color: #8cc63f;
+  color: #19d950;
   margin: 0 auto 20px;
   opacity: 0.6;
 }
@@ -1705,7 +1705,7 @@ a {
 .tp-quote-cite {
   font-size: 15px;
   font-weight: 700;
-  color: #8cc63f;
+  color: #19d950;
   font-style: normal;
 }
 
@@ -1741,7 +1741,7 @@ a {
 .tp-founder-signature-role {
   font-size: 13px;
   font-weight: 700;
-  color: #8cc63f;
+  color: #19d950;
   margin: 0;
 }
 
@@ -1766,7 +1766,7 @@ a {
 .tp-founder-quote-cite {
   font-size: 14px;
   font-weight: 700;
-  color: #8cc63f;
+  color: #19d950;
   font-style: normal;
 }
 
@@ -1796,10 +1796,10 @@ a {
   transition: all 0.25s;
 }
 .tp-connect-card:hover {
-  border-color: #8cc63f;
+  border-color: #19d950;
   background: #f0faf2;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(140, 198, 63, 0.12);
+  box-shadow: 0 6px 20px rgba(25, 217, 80, 0.12);
 }
 
 .tp-connect-icon {
@@ -1813,7 +1813,7 @@ a {
   color: #fff;
 }
 .tp-connect-icon--email {
-  background: linear-gradient(135deg, #8cc63f, #6aad2d);
+  background: linear-gradient(135deg, #19d950, #0b8a32);
 }
 .tp-connect-icon--phone {
   background: linear-gradient(135deg, #111, #334155);

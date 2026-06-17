@@ -108,12 +108,12 @@ function TeamProfilePage({ slug }) {
           </div>
         </section>
 
-        {/* ─── ROLE AT Jawa EDTECh ─── */}
+        {/* ─── ROLE AT JAWA EDTECH ─── */}
         {slug !== "soorya-jawahar" && slug !== "nitinchand-saravanan" && slug !== "sunitha-prakash" && (
         <section className="tp-section tp-section--white">
           <div className="shell tp-content-width">
             <h2 className="tp-section-heading">
-              <span className="tp-green-letter">R</span>ole At Jawa EDTECh
+              <span className="tp-green-letter">R</span>ole At JAWA EDTECH
             </h2>
             <p className="tp-role-intro">{member.roleDescription}</p>
             <ul className="tp-role-list">
@@ -188,7 +188,7 @@ function TeamProfilePage({ slug }) {
                 <blockquote className="tp-founder-quote-text">
                   "{member.founderQuote}"
                 </blockquote>
-                <cite className="tp-founder-quote-cite">— {member.name}, {member.role}, Jawa EDTECh</cite>
+                <cite className="tp-founder-quote-cite">— {member.name}, {member.role}, JAWA EDTECH</cite>
               </div>
             </div>
           </section>

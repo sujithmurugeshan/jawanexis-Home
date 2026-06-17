@@ -7,13 +7,13 @@ import { navItems } from "../pages/homeData.jsx";
 
 const courseItems = [
   {
-    label: "HR Executive Training",
+    label: "HR Executive Course",
     href: "#hr-executive-course",
     desc: "Core HR, Payroll & Compliance",
     icon: Briefcase
   },
   {
-    label: "HR Recruitment Training",
+    label: "HR Recruitment Course",
     href: "#hr-recruitment-course",
     desc: "Talent Sourcing & Interview Prep",
     icon: UserPlus
@@ -40,13 +40,13 @@ const courseItems = [
 
 const internshipItems = [
   {
-    label: "HR Executive Training",
+    label: "HR Executive Course",
     href: "#hr-executive-internship",
     desc: "Core HR, Payroll & Compliance",
     icon: Briefcase
   },
   {
-    label: "HR Recruitment Training",
+    label: "HR Recruitment Course",
     href: "#hr-recruitment-internship",
     desc: "Talent Sourcing & Interview Prep",
     icon: UserPlus
@@ -117,7 +117,7 @@ function Header() {
   return (
     <header className="sticky top-0 z-40 bg-white shadow-nav">
       <div className="shell flex h-14 items-center justify-between gap-4">
-        <a href="#home" className="flex min-w-[160px] items-center gap-2" aria-label="Jawa EDTECh home">
+        <a href="#home" className="flex min-w-[160px] items-center gap-2" aria-label="JAWA EDTECH home">
           <img
             src={logo3d}
             alt=""
@@ -125,7 +125,7 @@ function Header() {
             aria-hidden="true"
           />
           <div className="flex flex-col leading-none">
-            <span className="text-lg font-extrabold tracking-tight text-black">Jawa EDTECh</span>
+            <span className="text-lg font-extrabold tracking-tight text-black">JAWA EDTECH</span>
             <span className="mt-0.5 text-[6px] font-bold tracking-[0.16em] text-black/60">LEARN, LEAD, INNOVATE!</span>
           </div>
         </a>

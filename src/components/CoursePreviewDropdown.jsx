@@ -3,7 +3,7 @@ import { Briefcase, UserPlus, Code2, Bug, Cpu, ChevronRight, Star, CheckCircle, 
 
 /* ─── Course Preview Data ─── */
 const coursePreviewData = {
-  "HR Executive Training": {
+  "HR Executive Course": {
     href: "#hr-executive-course",
     icon: Briefcase,
     duration: "90 Days",
@@ -55,7 +55,7 @@ const coursePreviewData = {
     ],
     cta: "Start Your HR Career with Confidence!"
   },
-  "HR Recruitment Training": {
+  "HR Recruitment Course": {
     href: "#hr-recruitment-course",
     icon: UserPlus,
     duration: "45 Days",
