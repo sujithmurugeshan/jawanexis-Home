@@ -125,8 +125,8 @@ function Header() {
             aria-hidden="true"
           />
           <div className="flex flex-col leading-none">
-            <span className="text-lg font-extrabold tracking-tight text-black">JAWA EDTECH</span>
-            <span className="mt-0.5 text-[6px] font-bold tracking-[0.16em] text-black/60">LEARN, LEAD, INNOVATE!</span>
+            <span className="text-lg font-extrabold tracking-tight text-emerald-600">JAWA EDTECH</span>
+            <span className="mt-0.5 text-[6px] font-bold tracking-[0.16em] text-emerald-600/80">LEARN, LEAD, INNOVATE!</span>
           </div>
         </a>
 

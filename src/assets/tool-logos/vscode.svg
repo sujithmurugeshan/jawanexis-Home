@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Visual Studio Code">
+  <defs>
+    <linearGradient id="vscode-bg" x1="49.997%" y1="23.222%" x2="49.997%" y2="96.373%">
+      <stop offset="0%" stop-color="#0065A9"/>
+      <stop offset="100%" stop-color="#007ACC"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#vscode-bg)" d="M255.7 56.7 141.5 0 0 48.2v159.6l141.5 48.2 114.2-56.7V56.7z"/>
+  <path fill="#007ACC" d="M141.5 0 0 48.2v159.6l141.5 48.2V0z"/>
+  <path fill="#1F9CF0" d="M141.5 0v256l114.2-56.7V56.7L141.5 0z"/>
+  <path fill="#FFF" d="M65.4 167.3 32.2 141.7l108.9-63.1 33.2 25.6-108.9 63.1zm33.2-25.6 33.2 25.6 75.7-44.1-33.2-25.6-75.7 44.1z"/>
+</svg>
