@@ -93,7 +93,7 @@ router.post('/google', async (req, res) => {
       });
     }
 
-    const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: '24h' });
+    const token = jwt.sign({ id: user.id, email: user.email, isAdmin: user.isAdmin }, JWT_SECRET, { expiresIn: '24h' });
     res.json({
       access_token: token,
       token_type: "bearer",
