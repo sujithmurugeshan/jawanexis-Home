@@ -435,22 +435,21 @@ function FaqSection({ faqs, title }) {
 }
 
 const COURSE_PREVIEW_LOGO_POSITIONS = [
-  { top: "5%", left: "1.5%", rotate: "-8deg", delay: "0s" },
-  { top: "8%", right: "1%", rotate: "10deg", delay: "1.2s" },
-  { top: "38%", left: "0.5%", rotate: "-5deg", delay: "2.4s" },
-  { top: "52%", right: "0.5%", rotate: "7deg", delay: "0.8s" },
-  { bottom: "14%", left: "2%", rotate: "6deg", delay: "1.8s" },
-  { bottom: "10%", right: "1.5%", rotate: "-9deg", delay: "3s" },
-  { top: "24%", left: "4%", rotate: "4deg", delay: "2s" },
-  { bottom: "28%", right: "3%", rotate: "-4deg", delay: "1.5s" }
+  { top: "8%", left: "1.5%", rotate: "-8deg", delay: "0s" },
+  { top: "12%", right: "1%", rotate: "10deg", delay: "1.2s" },
+  { top: "45%", left: "0.5%", rotate: "-5deg", delay: "2.4s" },
+  { bottom: "15%", left: "2%", rotate: "6deg", delay: "1.8s" },
+  { bottom: "20%", right: "1.5%", rotate: "-9deg", delay: "3s" }
 ];
 
 function CoursePreviewBackground({ tools }) {
   if (!tools?.length) return null;
 
+  const displayTools = tools.slice(0, 5);
+
   return (
     <div className="course-preview-bg-logos" aria-hidden="true">
-      {tools.map((tool, index) => {
+      {displayTools.map((tool, index) => {
         const pos = COURSE_PREVIEW_LOGO_POSITIONS[index % COURSE_PREVIEW_LOGO_POSITIONS.length];
         return (
           <div
@@ -785,13 +784,13 @@ function CoursePreviewSection({ config }) {
 
   return (
     <div className="w-full select-text">
-      <div className="course-preview-hook">
+      <div className="relative z-10 pl-8 py-4 border-l-4 border-green-500 bg-white border border-slate-100 rounded-r-2xl shadow-[0_2px_12px_rgba(0,0,0,0.02)] group">
         <span className="course-preview-hook-quote">&ldquo;</span>
         <p className="course-preview-hook-text">{hookText}</p>
       </div>
 
       <div className="course-preview-cards">
-        <article className="course-preview-card">
+        <article className="bg-white z-10 course-preview-card">
           <span className="course-preview-card-dot" aria-hidden="true" />
           <div className="course-preview-card-label">
             <BookOpen size={13} aria-hidden="true" />
@@ -803,7 +802,7 @@ function CoursePreviewSection({ config }) {
         </article>
 
         {blockBText && (
-          <article className="course-preview-card">
+          <article className="bg-white z-10 course-preview-card">
             <span className="course-preview-card-dot" aria-hidden="true" />
             <div className="course-preview-card-label">
               <Award size={13} aria-hidden="true" />
@@ -1152,13 +1151,8 @@ export default function CoursePage({ courseKey, isInternship }) {
           <div className="course-preview-bg-glow course-preview-bg-glow--left" aria-hidden="true" />
           <div className="course-preview-bg-glow course-preview-bg-glow--right" aria-hidden="true" />
 
-          <CoursePreviewBackground tools={config.tools} />
-
-          <div className="course-preview-decor" aria-hidden="true">
-            <BookOpen className="course-preview-decor-icon course-preview-decor-icon--1" />
-            <GraduationCap className="course-preview-decor-icon course-preview-decor-icon--2" />
-            <Briefcase className="course-preview-decor-icon course-preview-decor-icon--3" />
-            <Award className="course-preview-decor-icon course-preview-decor-icon--4" />
+          <div style={{ opacity: 0.85 }}>
+            <CoursePreviewBackground tools={config.tools} />
           </div>
 
           <div className="course-preview-shell max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1180,7 +1174,7 @@ export default function CoursePage({ courseKey, isInternship }) {
             <div className="course-preview-body">
               <CoursePreviewSection config={config} />
 
-              <div className="course-preview-tabs-wrap">
+              <div className="course-preview-tabs-wrap relative z-10 bg-white rounded-3xl">
                 <CoursePreviewTabs previewContent={config.previewContent} />
               </div>
             </div>
@@ -1240,13 +1234,13 @@ export default function CoursePage({ courseKey, isInternship }) {
                     ))}
                   </div>
 
-                  {/* Download Syllabus */}
+                  {/* Contact Us */}
                   <div className="mt-8 flex justify-end">
-                    <button
-                      onClick={() => setShowModal(true)}
-                      className="px-7 py-3 rounded-xl btn-glossy-green font-extrabold text-sm cursor-pointer">
-                      Download Syllabus
-                    </button>
+                    <a
+                      href="#contact"
+                      className="px-7 py-3 rounded-xl btn-glossy-green font-extrabold text-sm cursor-pointer text-center inline-block">
+                      Contact Us
+                    </a>
                   </div>
                 </div>
               </div>

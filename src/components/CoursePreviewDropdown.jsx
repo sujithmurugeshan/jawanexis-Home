@@ -58,14 +58,14 @@ const coursePreviewData = {
   "HR Recruitment Course": {
     href: "#hr-recruitment-course",
     icon: UserPlus,
-    duration: "45 Days",
-    tagline: "Become a Recruitment Professional in just 45 Days",
+    duration: "30 Days",
+    tagline: "Become a Recruitment Professional in just 30 Days",
     subtitle: "Source. Screen. Hire. Excel.",
     accentColor: "#0b8a32",
     accentLight: "#e9f8ef",
     accentBorder: "#c5e8d0",
     whyChoose: [
-      "Become a Recruitment Pro in 45 Days",
+      "Become a Recruitment Pro in 30 Days",
       "Practical Hiring Simulations",
       "LinkedIn Recruiter Training",
       "ATS Tool Mastery",
