@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react(), jsxOnlyEntryPlugin()],
   build: {
     rollupOptions: {
-      input: "src/main.jsx"
+      input: "index.html"
     }
   }
 });
