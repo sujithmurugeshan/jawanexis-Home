@@ -161,39 +161,7 @@ router.get('/run-db-push', (req, res) => {
   }
 });
 
-router.get('/test-email', async (req, res) => {
-  const nodemailer = require('nodemailer');
-  try {
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT || '587'),
-      secure: process.env.SMTP_PORT === '465',
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
 
-    await transporter.verify();
-    
-    await transporter.sendMail({
-      from: `"Test Bot" <${process.env.SMTP_USER}>`,
-      to: 'jawaedtech@gmail.com',
-      subject: 'Live Server Test',
-      text: 'If you are reading this, the live server can send emails!'
-    });
-
-    res.json({ success: true, message: "Email sent successfully to jawaedtech@gmail.com. Check your inbox!" });
-  } catch (error) {
-    res.status(500).json({ 
-      success: false, 
-      error: error.message, 
-      stack: error.stack,
-      user: process.env.SMTP_USER,
-      pass_length: process.env.SMTP_PASS ? process.env.SMTP_PASS.length : 0 
-    });
-  }
-});
 
 router.post('/logout', (req, res) => {
   res.json({ success: true });

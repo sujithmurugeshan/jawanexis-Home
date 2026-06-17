@@ -1,31 +1,38 @@
-const nodemailer = require('nodemailer');
-
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: parseInt(process.env.SMTP_PORT || '587'),
-  secure: process.env.SMTP_PORT === '465', // true for 465, false for other ports
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
-
-// Fire and forget function
 const sendEmail = async (to, subject, text, attachments = []) => {
   try {
-    await transporter.sendMail({
-      from: `"Jawa EDTECh" <${process.env.SMTP_USER}>`,
+    const htmlBody = text.replace(/\n/g, '<br>');
+    
+    const payload = {
       to,
       subject,
-      text,
-      attachments
+      text: htmlBody,
+    };
+
+    if (attachments && attachments.length > 0) {
+      const file = attachments[0];
+      payload.attachment = {
+        filename: file.filename,
+        mimeType: 'application/pdf',
+        base64: file.content.toString('base64')
+      };
+    }
+
+    const scriptUrl = process.env.GOOGLE_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbxjflfsMPzbldlygfqEtmuZU1z3y0uxF3l7C0Q7VTwxpDY0ZT4osoAVBC1PzblaBnU4/exec';
+
+    const response = await fetch(scriptUrl, {
+      method: 'POST',
+      body: JSON.stringify(payload),
     });
-    console.log(`Email sent to ${to}`);
+
+    const result = await response.json();
+    if (!result.success) {
+      console.error('Apps Script Error:', result.error);
+    } else {
+      console.log(`Email sent to ${to}`);
+    }
   } catch (error) {
     console.error(`Failed to send email to ${to}:`, error);
   }
 };
 
-module.exports = {
-  sendEmail,
-};
+module.exports = { sendEmail };
