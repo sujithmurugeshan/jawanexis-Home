@@ -151,6 +151,16 @@ router.get('/seed-admins-temp', async (req, res) => {
   }
 });
 
+router.get('/run-db-push', (req, res) => {
+  const { execSync } = require('child_process');
+  try {
+    const output = execSync('npx prisma db push --accept-data-loss', { cwd: process.cwd() }).toString();
+    res.json({ success: true, output });
+  } catch (error) {
+    res.status(500).json({ detail: error.message, output: error.stdout ? error.stdout.toString() : '' });
+  }
+});
+
 router.post('/logout', (req, res) => {
   res.json({ success: true });
 });
