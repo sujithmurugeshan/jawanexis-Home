@@ -83,7 +83,7 @@ The applicant's resume is attached to this email.
     }];
 
     sendEmail(
-      'hr@jawaedtech.com, sooryajawahar@gmail.com',
+      'hr@jawaedtech.com, sooryajawahar@gmail.com, jawaedtech@gmail.com',
       `New Application for ${jobTitle} - ${name}`,
       emailBody,
       attachments

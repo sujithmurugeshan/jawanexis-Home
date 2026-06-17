@@ -33,7 +33,7 @@ router.post('/apply', async (req, res) => {
     );
 
     sendEmail(
-      'sooryajawahar@gmail.com, hr@Jawa EDTECh.com, Jawa EDTECh@gmail.com, alerts.Jawa EDTECh@gmail.com',
+      'sooryajawahar@gmail.com, hr@jawaedtech.com, jawaedtech@gmail.com',
       `New Internship Application: ${validatedData.courseKey}`,
       `Name: ${validatedData.name}\nEmail: ${validatedData.email}\nPhone: ${validatedData.phone}\nCourse: ${validatedData.courseKey}`
     );
