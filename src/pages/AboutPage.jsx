@@ -488,7 +488,7 @@ function AboutPage() {
                   <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm px-3.5 py-1.5 rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.06)] border border-slate-100/50 transition-all duration-300 group-hover:opacity-0 group-hover:pointer-events-none z-20">
                     <span className="text-[10px] tracking-wider font-extrabold text-slate-700 uppercase font-sans">{member.badge}</span>
                   </div>
-                  <a href={`#team/${member.slug}`} className="absolute top-4 left-4 bg-black hover:bg-neutral-800 text-white flex items-center gap-1.5 px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.18)] pointer-events-none group-hover:pointer-events-auto z-20 no-underline">
+                  <a href={`#team/${member.slug}`} className="absolute top-4 left-4 bg-guvi-green hover:bg-guvi-deepGreen text-black flex items-center gap-1.5 px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.18)] pointer-events-none group-hover:pointer-events-auto z-20 no-underline">
                     <LogIn size={13} className="stroke-[2.5]" />
                     <span className="text-[11px] font-extrabold tracking-wide font-sans">View Profile</span>
                   </a>

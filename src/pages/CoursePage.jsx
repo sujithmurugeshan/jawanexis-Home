@@ -3,7 +3,7 @@ import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import { API_BASE_URL } from "../config";
 
-import { CheckCircle2, X, ChevronRight, Star, Search, BookOpen, Award, Briefcase, Sparkles, Users, Laptop, FileText, MessageSquare } from "lucide-react";
+import { CheckCircle2, X, ChevronRight, Star, Search, BookOpen, Award, Briefcase, Sparkles, Users, Laptop, FileText, MessageSquare, GraduationCap } from "lucide-react";
 import { coursesConfig } from "../data/coursesConfig.js";
 import {
   JavaScriptLogo, HTMLLogo, CSSLogo, TailwindCSSLogo, ReactLogo, ReduxLogo,
@@ -14,7 +14,8 @@ import {
   GoogleWorkspaceLogo, SourcingToolsLogo, SeleniumLogo, JiraLogo, TestNGLogo,
   MavenLogo, SQLLogo, JenkinsLogo, DevToolsLogo, SwaggerLogo,
   CPlusPlusLogo, JavaLogo, PythonLogo, LeetCodeLogo, HackerRankLogo,
-  CodeChefLogo, GeeksforGeeksLogo, ChatGPTLogo, GeminiLogo, EightfoldLogo, ParadoxLogo
+  CodeChefLogo, GeeksforGeeksLogo, ChatGPTLogo, GeminiLogo, EightfoldLogo, ParadoxLogo,
+  KekaToolLogo, GreytHRToolLogo, DarwinboxToolLogo, EightfoldImgLogo, ZohoRecruitToolLogo
 } from "../components/ToolLogos.jsx";
 
 // Map tool keys to SVG components
@@ -73,7 +74,25 @@ const LOGO_MAP = {
   leetcode: <LeetCodeLogo />,
   hackerrank: <HackerRankLogo />,
   codechef: <CodeChefLogo />,
-  geeksforgeeks: <GeeksforGeeksLogo />
+  geeksforgeeks: <GeeksforGeeksLogo />,
+
+  keka: <KekaToolLogo />,
+  greythr: <GreytHRToolLogo />,
+  darwinbox: <DarwinboxToolLogo />,
+  eightfold_img: <EightfoldImgLogo />,
+  zoho_recruit: <ZohoRecruitToolLogo />
+};
+
+const ICON_MAP = {
+  BookOpen,
+  Users,
+  Laptop,
+  Award,
+  Briefcase,
+  Search,
+  MessageSquare,
+  CheckCircle2,
+  Sparkles
 };
 
 /* ─────────────── Hiring Partner SVGs ─────────────── */
@@ -415,6 +434,59 @@ function FaqSection({ faqs, title }) {
   );
 }
 
+const COURSE_PREVIEW_LOGO_POSITIONS = [
+  { top: "5%", left: "1.5%", rotate: "-8deg", delay: "0s" },
+  { top: "8%", right: "1%", rotate: "10deg", delay: "1.2s" },
+  { top: "38%", left: "0.5%", rotate: "-5deg", delay: "2.4s" },
+  { top: "52%", right: "0.5%", rotate: "7deg", delay: "0.8s" },
+  { bottom: "14%", left: "2%", rotate: "6deg", delay: "1.8s" },
+  { bottom: "10%", right: "1.5%", rotate: "-9deg", delay: "3s" },
+  { top: "24%", left: "4%", rotate: "4deg", delay: "2s" },
+  { bottom: "28%", right: "3%", rotate: "-4deg", delay: "1.5s" }
+];
+
+function CoursePreviewBackground({ tools }) {
+  if (!tools?.length) return null;
+
+  return (
+    <div className="course-preview-bg-logos" aria-hidden="true">
+      {tools.map((tool, index) => {
+        const pos = COURSE_PREVIEW_LOGO_POSITIONS[index % COURSE_PREVIEW_LOGO_POSITIONS.length];
+        return (
+          <div
+            key={`${tool.logoKey}-${index}`}
+            className="course-preview-logo-chip hidden sm:flex"
+            style={{
+              top: pos.top,
+              left: pos.left,
+              right: pos.right,
+              bottom: pos.bottom,
+              "--logo-rotate": pos.rotate,
+              animationDelay: pos.delay
+            }}
+          >
+            {LOGO_MAP[tool.logoKey]}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function CoursePreviewMobileTools({ tools }) {
+  if (!tools?.length) return null;
+
+  return (
+    <div className="course-preview-mobile-tools sm:hidden" aria-hidden="true">
+      {tools.slice(0, 5).map((tool) => (
+        <div key={tool.logoKey} className="course-preview-mobile-tool">
+          {LOGO_MAP[tool.logoKey]}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 /* ─────────────── Course Preview Tabs Component ─────────────── */
 function CoursePreviewTabs({ previewContent }) {
   const [activeTab, setActiveTab] = useState("learn");
@@ -429,9 +501,9 @@ function CoursePreviewTabs({ previewContent }) {
   const currentTab = tabs.find(t => t.id === activeTab) || tabs[0];
 
   return (
-    <div className="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-[0_8px_40px_rgba(25,217,80,0.06)]">
+    <div className="course-preview-tabs">
       {/* Tab Navigation */}
-      <div style={{ background: "linear-gradient(135deg,#f0fdf4,#ffffff)" }} className="flex flex-wrap gap-1.5 border-b border-gray-100 p-4">
+      <div className="course-preview-tabs-nav">
         {tabs.map(tab => {
           const IconComponent = tab.icon;
           const isActive = activeTab === tab.id;
@@ -703,7 +775,7 @@ function CoursePreviewSection({ config }) {
 
     let highlighted = text;
     keywords.forEach(keyword => {
-      const regex = new RegExp(`\\b${keyword.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b`, 'gi');
+      const regex = new RegExp(`\\b${keyword.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b`, 'gi');
       highlighted = highlighted.replace(regex, (match) => {
         return `<strong class="text-green-700 font-extrabold">${match}</strong>`;
       });
@@ -713,45 +785,143 @@ function CoursePreviewSection({ config }) {
   };
 
   return (
-    <div className="flex flex-col gap-6 w-full select-text">
-      
-      {/* 1. Quote-style / Hook Callout Container (Full Width) */}
-      <div className="relative pl-8 py-4 border-l-4 border-green-500 bg-gradient-to-r from-green-50/50 via-green-50/10 to-transparent rounded-r-2xl shadow-[inset_1px_1px_2px_rgba(25,217,80,0.03)] group">
-        <span className="absolute -left-4 -top-6 text-[90px] text-green-200/40 font-serif select-none pointer-events-none leading-none">“</span>
-        <p className="text-lg md:text-xl font-extrabold text-green-900 leading-relaxed italic relative z-10">
-          {hookText}
-        </p>
+    <div className="w-full select-text">
+      <div className="course-preview-hook">
+        <span className="course-preview-hook-quote">&ldquo;</span>
+        <p className="course-preview-hook-text">{hookText}</p>
       </div>
 
-      {/* 2. Premium Content Containers in Two Columns */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch mt-2">
-        
-        {/* Block A Card */}
-        <div className="bg-gradient-to-br from-white to-gray-50/30 border-l-4 border-l-green-600/30 border border-gray-150 rounded-r-2xl rounded-l-md p-6 shadow-[0_4px_20px_rgba(0,0,0,0.015)] hover:border-l-green-600 hover:shadow-[0_8px_30px_rgba(25,217,80,0.03)] hover:border-gray-200 transition-all duration-300 relative flex flex-col justify-between">
-          <div className="absolute top-4 right-4 w-1.5 h-1.5 rounded-full bg-green-400" />
-          <p className="text-[15px] sm:text-base leading-relaxed text-gray-650 font-semibold">
+      <div className="course-preview-cards">
+        <article className="course-preview-card">
+          <span className="course-preview-card-dot" aria-hidden="true" />
+          <div className="course-preview-card-label">
+            <BookOpen size={13} aria-hidden="true" />
+            Program Overview
+          </div>
+          <p className="course-preview-card-text">
             {highlightKeyWords(blockAText)}
           </p>
-        </div>
+        </article>
 
-        {/* Block B Card */}
         {blockBText && (
-          <div className="bg-gradient-to-br from-white to-gray-50/30 border-l-4 border-l-green-600/30 border border-gray-150 rounded-r-2xl rounded-l-md p-6 shadow-[0_4px_20px_rgba(0,0,0,0.015)] hover:border-l-green-600 hover:shadow-[0_8px_30px_rgba(25,217,80,0.03)] hover:border-gray-200 transition-all duration-300 relative flex flex-col justify-between">
-            <div className="absolute top-4 right-4 w-1.5 h-1.5 rounded-full bg-green-400" />
-            <p className="text-[15px] sm:text-base leading-relaxed text-gray-650 font-semibold">
+          <article className="course-preview-card">
+            <span className="course-preview-card-dot" aria-hidden="true" />
+            <div className="course-preview-card-label">
+              <Award size={13} aria-hidden="true" />
+              Industry Readiness
+            </div>
+            <p className="course-preview-card-text">
               {highlightKeyWords(blockBText)}
             </p>
-          </div>
+          </article>
         )}
-
       </div>
     </div>
   );
 }
 
+const renderPerkIcon = (iconKey) => {
+  switch (iconKey) {
+    case "code":
+      return (
+        <div className="w-20 h-20 rounded-2xl flex items-center justify-center" style={{ background: "linear-gradient(135deg,#4ade80,#16a34a)", boxShadow: "0 8px 24px rgba(22,163,74,0.35)" }}>
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <path d="M14 12L6 20L14 28" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M26 12L34 20L26 28" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M23 8L17 32" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.7" />
+          </svg>
+        </div>
+      );
+    case "users":
+      return (
+        <div className="w-20 h-20 rounded-2xl flex items-center justify-center" style={{ background: "linear-gradient(135deg,#4ade80,#16a34a)", boxShadow: "0 8px 24px rgba(22,163,74,0.35)" }}>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" fill="white" fillOpacity="0.2" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+        </div>
+      );
+    case "checkmark":
+      return (
+        <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+          <circle cx="36" cy="36" r="28" stroke="#16a34a" strokeWidth="2.5" strokeDasharray="6 4" />
+          <circle cx="36" cy="36" r="20" fill="#dcfce7" />
+          <path d="M25 36L32 43L48 27" stroke="#16a34a" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    case "document":
+      return (
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="5" y="2" width="14" height="20" rx="2" ry="2" fill="#dcfce7" />
+          <line x1="9" y1="7" x2="15" y2="7" />
+          <line x1="9" y1="11" x2="15" y2="11" />
+          <line x1="9" y1="15" x2="15" y2="15" />
+        </svg>
+      );
+    case "target":
+      return (
+        <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+          <circle cx="36" cy="36" r="30" stroke="#16a34a" strokeWidth="2.5" fill="white" />
+          <circle cx="36" cy="36" r="21" stroke="#16a34a" strokeWidth="2" fill="white" />
+          <circle cx="36" cy="36" r="12" fill="#dcfce7" stroke="#16a34a" strokeWidth="2" />
+          <circle cx="36" cy="36" r="5" fill="#16a34a" />
+          <path d="M52 20L38 34" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" />
+          <path d="M52 20L46 21.5M52 20L50.5 26" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      );
+    case "terminal":
+      return (
+        <svg width="96" height="68" viewBox="0 0 96 68" fill="none">
+          <rect x="2" y="2" width="92" height="56" rx="6" fill="#0f172a" />
+          <rect x="10" y="10" width="76" height="40" rx="3" fill="#1e293b" />
+          <circle cx="16" cy="16" r="3" fill="#ef4444" />
+          <circle cx="24" cy="16" r="3" fill="#eab308" />
+          <circle cx="32" cy="16" r="3" fill="#22c55e" />
+          <path d="M16 28L23 34L16 40" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          <rect x="27" y="31" width="32" height="3" rx="1.5" fill="#64748b" />
+          <rect x="38" y="58" width="20" height="5" rx="2" fill="#64748b" />
+          <rect x="30" y="63" width="36" height="3" rx="1.5" fill="#475569" />
+        </svg>
+      );
+    case "briefcase":
+      return (
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2" fill="#dcfce7" />
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+        </svg>
+      );
+    case "search":
+      return (
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="11" cy="11" r="8" fill="#dcfce7" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          <circle cx="11" cy="11" r="3" stroke="#16a34a" strokeWidth="1.5" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+};
+
 /* ─────────────── CORE COURSE PAGE COMPONENT ─────────────── */
 export default function CoursePage({ courseKey, isInternship }) {
   const config = coursesConfig[courseKey];
+  const defaultCareerPerks = [
+    { title: "Mentors", desc: "Live interactive classes, hands-on practice sessions & expert-led doubt clarification.", icon: "code" },
+    { title: "Unlimited Practice", desc: "Sharpen your skills with multiple programming problems or real-world practice case studies.", icon: "checkmark" },
+    { title: "Career Launch Support", desc: "Gain placement guidance, resume reviews, and job prep to accelerate your career.", icon: "target" },
+    { title: "Real-Time Project Work", desc: "Work on extensive hours of real-world, industry-relevant projects to build a job-winning portfolio.", icon: "terminal" }
+  ];
+  const careerPerks = config?.careerPerks || defaultCareerPerks;
+  const defaultFeatureCards = [
+    { icon: "BookOpen", title: "100% Practical Training", desc: "Learn through hands-on assignments, projects, and real-world scenarios." },
+    { icon: "Users", title: "Expert Mentor Guidance", desc: "Get support from experienced industry professionals throughout the program." },
+    { icon: "Laptop", title: "Portfolio & Project Building", desc: "Build industry-level projects and create a job-ready portfolio." },
+    { icon: "Award", title: "Career Support & Certification", desc: "Receive interview preparation, resume guidance, and course certification." }
+  ];
+  const featureCards = config?.heroFeatureCards || defaultFeatureCards;
 
   if (!config) {
     return (
@@ -932,22 +1102,18 @@ export default function CoursePage({ courseKey, isInternship }) {
 
               {/* ── Right Feature Cards ── */}
               <div className="flex flex-col gap-5 w-full md:w-[220px] lg:w-[250px] shrink-0">
-                {/* Card 3 */}
-                <div className="bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-[0_4px_24px_rgba(25,217,80,0.08)] border border-green-100 hover:shadow-[0_8px_32px_rgba(25,217,80,0.15)] hover:-translate-y-0.5 transition-all duration-200">
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center mb-3 shadow-sm">
-                    <Laptop size={17} className="text-white stroke-[2.5]" />
-                  </div>
-                  <h4 className="font-extrabold text-[14px] text-gray-900 mb-1.5 leading-snug">Portfolio &amp; Project Building</h4>
-                  <p className="text-[12px] text-gray-500 font-medium leading-relaxed">Build industry-level projects and create a job-ready portfolio.</p>
-                </div>
-                {/* Card 4 */}
-                <div className="bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-[0_4px_24px_rgba(25,217,80,0.08)] border border-green-100 hover:shadow-[0_8px_32px_rgba(25,217,80,0.15)] hover:-translate-y-0.5 transition-all duration-200">
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center mb-3 shadow-sm">
-                    <Award size={17} className="text-white stroke-[2.5]" />
-                  </div>
-                  <h4 className="font-extrabold text-[14px] text-gray-900 mb-1.5 leading-snug">Career Support &amp; Certification</h4>
-                  <p className="text-[12px] text-gray-500 font-medium leading-relaxed">Receive interview preparation, resume guidance, and course certification.</p>
-                </div>
+                {featureCards.slice(2, 4).map((card, idx) => {
+                  const Icon = ICON_MAP[card.icon] || BookOpen;
+                  return (
+                    <div key={idx} className="bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-[0_4px_24px_rgba(25,217,80,0.08)] border border-green-100 hover:shadow-[0_8px_32px_rgba(25,217,80,0.15)] hover:-translate-y-0.5 transition-all duration-200">
+                      <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center mb-3 shadow-sm">
+                        <Icon size={17} className="text-white stroke-[2.5]" />
+                      </div>
+                      <h4 className="font-extrabold text-[14px] text-gray-900 mb-1.5 leading-snug">{card.title}</h4>
+                      <p className="text-[12px] text-gray-500 font-medium leading-relaxed">{card.desc}</p>
+                    </div>
+                  );
+                })}
               </div>
 
             </div>
@@ -968,73 +1134,17 @@ export default function CoursePage({ courseKey, isInternship }) {
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8 items-start">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                {/* Mentors */}
-                <article className="flex flex-col bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow" style={{ minHeight: 220 }}>
-                  <h3 className="text-[17px] font-extrabold text-gray-900">Mentors</h3>
-                  <p className="mt-2 text-[13px] font-medium text-gray-500 leading-relaxed">Live interactive classes, hands-on practice sessions &amp; expert-led doubt clarification.</p>
-                  <div className="mt-auto pt-5 flex justify-center">
-                    <div className="w-full max-w-[170px] h-[110px] bg-gradient-to-br from-[#f0fff4] to-[#dcfce7] rounded-2xl border border-green-100 flex items-center justify-center">
-                      <div className="w-20 h-20 rounded-2xl flex items-center justify-center" style={{ background: "linear-gradient(135deg,#4ade80,#16a34a)", boxShadow: "0 8px 24px rgba(22,163,74,0.35)" }}>
-                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                          <path d="M14 12L6 20L14 28" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-                          <path d="M26 12L34 20L26 28" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-                          <path d="M23 8L17 32" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.7" />
-                        </svg>
+                {careerPerks.map((perk, index) => (
+                  <article key={index} className="flex flex-col bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow" style={{ minHeight: 220 }}>
+                    <h3 className="text-[17px] font-extrabold text-gray-900">{perk.title}</h3>
+                    <p className="mt-2 text-[13px] font-medium text-gray-500 leading-relaxed">{perk.desc}</p>
+                    <div className="mt-auto pt-5 flex justify-center">
+                      <div className="w-full max-w-[170px] h-[110px] bg-gradient-to-br from-[#f0fff4] to-[#dcfce7] rounded-2xl border border-green-100 flex items-center justify-center">
+                        {renderPerkIcon(perk.icon)}
                       </div>
                     </div>
-                  </div>
-                </article>
-                {/* Unlimited Practice */}
-                <article className="flex flex-col bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow" style={{ minHeight: 220 }}>
-                  <h3 className="text-[17px] font-extrabold text-gray-900">Unlimited Practice</h3>
-                  <p className="mt-2 text-[13px] font-medium text-gray-500 leading-relaxed">Sharpen your skills with multiple programming problems or real-world practice case studies.</p>
-                  <div className="mt-auto pt-5 flex justify-center">
-                    <div className="w-full max-w-[170px] h-[110px] bg-gradient-to-br from-[#f0fff4] to-[#dcfce7] rounded-2xl border border-green-100 flex items-center justify-center">
-                      <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
-                        <circle cx="36" cy="36" r="28" stroke="#16a34a" strokeWidth="2.5" strokeDasharray="6 4" />
-                        <circle cx="36" cy="36" r="20" fill="#dcfce7" />
-                        <path d="M25 36L32 43L48 27" stroke="#16a34a" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </div>
-                  </div>
-                </article>
-                {/* Career Launch */}
-                <article className="flex flex-col bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow" style={{ minHeight: 220 }}>
-                  <h3 className="text-[17px] font-extrabold text-gray-900">Career Launch Support</h3>
-                  <p className="mt-2 text-[13px] font-medium text-gray-500 leading-relaxed">Gain placement guidance, resume reviews, and job prep to accelerate your career.</p>
-                  <div className="mt-auto pt-5 flex justify-center">
-                    <div className="w-full max-w-[170px] h-[110px] bg-gradient-to-br from-[#f0fff4] to-[#dcfce7] rounded-2xl border border-green-100 flex items-center justify-center">
-                      <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
-                        <circle cx="36" cy="36" r="30" stroke="#16a34a" strokeWidth="2.5" fill="white" />
-                        <circle cx="36" cy="36" r="21" stroke="#16a34a" strokeWidth="2" fill="white" />
-                        <circle cx="36" cy="36" r="12" fill="#dcfce7" stroke="#16a34a" strokeWidth="2" />
-                        <circle cx="36" cy="36" r="5" fill="#16a34a" />
-                        <path d="M52 20L38 34" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" />
-                        <path d="M52 20L46 21.5M52 20L50.5 26" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" />
-                      </svg>
-                    </div>
-                  </div>
-                </article>
-                {/* Real-Time Projects */}
-                <article className="flex flex-col bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow" style={{ minHeight: 220 }}>
-                  <h3 className="text-[17px] font-extrabold text-gray-900">Real-Time Project Work</h3>
-                  <p className="mt-2 text-[13px] font-medium text-gray-500 leading-relaxed">Work on extensive hours of real-world, industry-relevant projects to build a job-winning portfolio.</p>
-                  <div className="mt-auto pt-5 flex justify-center">
-                    <div className="w-full max-w-[170px] h-[110px] bg-gradient-to-br from-[#f0fff4] to-[#dcfce7] rounded-2xl border border-green-100 flex items-center justify-center">
-                      <svg width="96" height="68" viewBox="0 0 96 68" fill="none">
-                        <rect x="2" y="2" width="92" height="56" rx="6" fill="#0f172a" />
-                        <rect x="10" y="10" width="76" height="40" rx="3" fill="#1e293b" />
-                        <circle cx="16" cy="16" r="3" fill="#ef4444" />
-                        <circle cx="24" cy="16" r="3" fill="#eab308" />
-                        <circle cx="32" cy="16" r="3" fill="#22c55e" />
-                        <path d="M16 28L23 34L16 40" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <rect x="27" y="31" width="32" height="3" rx="1.5" fill="#64748b" />
-                        <rect x="38" y="58" width="20" height="5" rx="2" fill="#64748b" />
-                        <rect x="30" y="63" width="36" height="3" rx="1.5" fill="#475569" />
-                      </svg>
-                    </div>
-                  </div>
-                </article>
+                  </article>
+                ))}
               </div>
               <ApplyForm data={formData} onChange={hc(setFormData)} onPhoneChange={hp(setFormData)} onSubmit={submitPage} submitted={pageOk} loading={loading} error={serverError} />
 
@@ -1042,28 +1152,42 @@ export default function CoursePage({ courseKey, isInternship }) {
           </div>
         </section>
 
-        <section className="py-16 bg-white border-t border-b border-gray-100" id="preview-section">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-10">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-50 border border-green-100 text-green-700 text-xs font-extrabold uppercase tracking-wider mb-4">
-                <Search size={12} className="text-green-600" />
+        <section className="course-preview-section" id="preview-section">
+          <div className="course-preview-bg-pattern" aria-hidden="true" />
+          <div className="course-preview-bg-glow course-preview-bg-glow--left" aria-hidden="true" />
+          <div className="course-preview-bg-glow course-preview-bg-glow--right" aria-hidden="true" />
+
+          <CoursePreviewBackground tools={config.tools} />
+
+          <div className="course-preview-decor" aria-hidden="true">
+            <BookOpen className="course-preview-decor-icon course-preview-decor-icon--1" />
+            <GraduationCap className="course-preview-decor-icon course-preview-decor-icon--2" />
+            <Briefcase className="course-preview-decor-icon course-preview-decor-icon--3" />
+            <Award className="course-preview-decor-icon course-preview-decor-icon--4" />
+          </div>
+
+          <div className="course-preview-shell max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <header className="course-preview-header">
+              <span className="course-preview-badge">
+                <Search size={12} aria-hidden="true" />
                 Course Preview &amp; Insights
               </span>
-              <h2 className="text-[28px] md:text-[36px] font-extrabold text-gray-900 tracking-tight leading-tight">
+              <h2 className="course-preview-title">
                 {config.previewContent.tagline}
               </h2>
-            </div>
+              {config.subtitle && (
+                <p className="course-preview-subtitle">{config.subtitle}</p>
+              )}
+            </header>
 
-            <div className="flex flex-col gap-10">
-              
-              {/* Course Preview Content */}
+            <CoursePreviewMobileTools tools={config.tools} />
+
+            <div className="course-preview-body">
               <CoursePreviewSection config={config} />
 
-              {/* Interactive Tabs */}
-              <div className="w-full">
+              <div className="course-preview-tabs-wrap">
                 <CoursePreviewTabs previewContent={config.previewContent} />
               </div>
-
             </div>
           </div>
         </section>
@@ -1150,8 +1274,8 @@ export default function CoursePage({ courseKey, isInternship }) {
             {/* Clean square/rounded-square cards layout with original logos */}
             <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
               {config.tools.map(({ name, logoKey }) => (
-                <div key={name} className="flex flex-col items-center justify-center bg-white border border-gray-150 rounded-2xl p-5 w-[120px] h-[120px] shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-green-200 transition-all duration-300 group cursor-default">
-                  <div className="flex items-center justify-center w-14 h-14 object-contain mb-2 transition-transform duration-300 group-hover:scale-110">
+                <div key={name} className="flex flex-col items-center justify-center bg-white border border-gray-150 rounded-2xl p-5 w-[140px] h-[140px] shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-green-200 transition-all duration-300 group cursor-default">
+                  <div className="flex items-center justify-center w-20 h-20 mb-2 transition-transform duration-300 group-hover:scale-110 [&_img]:!w-[72px] [&_img]:!h-[72px] [&_svg]:!w-[72px] [&_svg]:!h-[72px]">
                     {LOGO_MAP[logoKey] || <span className="text-xs font-bold text-gray-400">{name.substring(0, 3)}</span>}
                   </div>
                   <span className="text-xs font-bold text-gray-700 text-center leading-tight transition-colors group-hover:text-green-600">{name}</span>

@@ -4,6 +4,11 @@ import powerbiLogoPng from "../assets/powerbi-logo.png";
 import excelHrLogoPng from "../assets/excel-hr-logo.png";
 import eightfoldLogoPng from "../assets/eightfold-logo.png";
 import paradoxLogoPng from "../assets/paradox-logo.png";
+import kekaLogoPng from "../assets/tool_keka.jpg";
+import greythrLogoPng from "../assets/tool_greythr.jpg";
+import darwinboxLogoPng from "../assets/tool_darwinbox.png";
+import eightfoldImgLogoPng from "../assets/tool_eightfold.png";
+import zohoRecruitLogoPng from "../assets/tool_zoho_recruit.png";
 import javascriptLogoPng from "../assets/fs_js.png";
 import htmlLogoPng from "../assets/fs_html.png";
 import cssLogoPng from "../assets/fs_css.png";
@@ -338,4 +343,24 @@ export const ParadoxLogo = () => (
 
 export const ExcelHRAnalyticsLogo = () => (
   <img src={excelHrLogoPng} alt="Excel Advanced HR Analytics" width="52" height="52" className="object-contain" />
+);
+
+export const KekaToolLogo = () => (
+  <img src={kekaLogoPng} alt="Keka" width="52" height="52" className="object-contain" />
+);
+
+export const GreytHRToolLogo = () => (
+  <img src={greythrLogoPng} alt="greytHR" width="52" height="52" className="object-contain" />
+);
+
+export const DarwinboxToolLogo = () => (
+  <img src={darwinboxLogoPng} alt="Darwinbox" width="52" height="52" className="object-contain" />
+);
+
+export const EightfoldImgLogo = () => (
+  <img src={eightfoldImgLogoPng} alt="Eightfold.ai" width="52" height="52" className="object-contain" />
+);
+
+export const ZohoRecruitToolLogo = () => (
+  <img src={zohoRecruitLogoPng} alt="Zoho Recruit" width="52" height="52" className="object-contain" />
 );

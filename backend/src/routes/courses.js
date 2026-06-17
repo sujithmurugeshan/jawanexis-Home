@@ -5,7 +5,7 @@ const router = express.Router();
 const courses = {
   "hr-executive": {
     id: "hr-executive",
-    title: "HR Executive Training",
+    title: "HR Executive Course",
     subtitle: "Complete HR Management & Operations",
     price: 14999,
     strikethrough_price: 22776,
@@ -13,7 +13,7 @@ const courses = {
   },
   "hr-recruitment": {
     id: "hr-recruitment",
-    title: "HR Recruitment Training",
+    title: "HR Recruitment Course",
     subtitle: "End-to-End IT Recruitment",
     price: 12999,
     strikethrough_price: 20776,
