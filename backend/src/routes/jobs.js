@@ -2,6 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const prisma = require('../db');
 const { sendEmail } = require('../services/email');
+const { appendJobApplicationRow } = require('../services/sheets');
 const { authenticateToken } = require('./auth');
 const fs = require('fs');
 const path = require('path');
@@ -50,6 +51,17 @@ router.post('/apply', upload.single('resume'), async (req, res) => {
       }
     });
 
+    // Sync to Google Sheets
+    await appendJobApplicationRow({
+      jobTitle,
+      name,
+      email,
+      phone,
+      education,
+      graduationYear,
+      language
+    });
+
     // Send email to HR and Soorya
     const emailBody = `
 New Job Application Received!
@@ -75,6 +87,24 @@ The applicant's resume is attached to this email.
       `New Application for ${jobTitle} - ${name}`,
       emailBody,
       attachments
+    );
+
+    // Send thank you email to applicant
+    const applicantEmailBody = `
+Dear ${name},
+
+Thank you for applying for the ${jobTitle} position at JAWA EDTECH! 
+
+We have successfully received your application and resume. Our hiring team will review your profile and get back to you if your qualifications match our requirements.
+
+Best regards,
+The JAWA EDTECH Hiring Team
+    `;
+
+    sendEmail(
+      email,
+      `Application Received: ${jobTitle} at JAWA EDTECH`,
+      applicantEmailBody
     );
 
     res.status(201).json({ success: true, message: "Application submitted successfully" });

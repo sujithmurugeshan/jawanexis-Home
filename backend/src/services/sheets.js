@@ -43,4 +43,46 @@ async function appendApplicationRow(data) {
   }
 }
 
-module.exports = { appendApplicationRow };
+async function appendJobApplicationRow(data) {
+  try {
+    const auth = new google.auth.GoogleAuth({
+      keyFile: path.join(__dirname, '../../sheets-credentials.json'),
+      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+    });
+
+    const sheets = google.sheets({ version: 'v4', auth });
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID_CAREERS;
+
+    // Create a new array representing the row data
+    // Date, Job Title, Name, Email, Phone, Education, Graduation Year, Language
+    const values = [
+      [
+        new Date().toISOString(),
+        data.jobTitle || 'N/A',
+        data.name || 'N/A',
+        data.email || 'N/A',
+        data.phone || 'N/A',
+        data.education || 'N/A',
+        data.graduationYear || 'N/A',
+        data.language || 'N/A'
+      ]
+    ];
+
+    const resource = {
+      values,
+    };
+
+    const response = await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: 'Sheet1!A:H', // Pushing to Sheet1 of the new 'carrers' document
+      valueInputOption: 'USER_ENTERED',
+      resource,
+    });
+
+    console.log('Appended job application row to Google Sheets:', response.data.updates.updatedRange);
+  } catch (error) {
+    console.error('Error appending job application to Google Sheets:', error);
+  }
+}
+
+module.exports = { appendApplicationRow, appendJobApplicationRow };

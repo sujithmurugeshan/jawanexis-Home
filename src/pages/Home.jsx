@@ -369,7 +369,7 @@ function JourneyOfLearners() {
                     <div className="relative flex items-center gap-4 bg-white border border-gray-200 rounded-[14px] px-5 py-4 z-10">
                       <div className="ml-[3px] w-[14px] h-[14px] rounded-full border-[1.5px] border-gray-300 bg-white flex-shrink-0"></div>
                       <div className="text-[15px] font-bold text-gray-800 leading-snug">
-                        {learner.beforeRole || "Fresher / Job Seeker"}
+                        {learner.beforeRole || "Fresher"}
                       </div>
                     </div>
                     

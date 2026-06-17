@@ -164,6 +164,7 @@ export const navItems = [
 export const journeyLearners = [
   {
     name: "Parthiban Sundararaju",
+    beforeRole: "MBA",
     role: "HR Executive",
     company: "Tata Consultancy Services",
     location: "Kochi",
@@ -172,7 +173,8 @@ export const journeyLearners = [
   },
   {
     name: "Shanmugavel",
-    role: "HR Senior Executive Operations",
+    beforeRole: "HR Executive",
+    role: "Senior HR Executive",
     company: "TVS Motor Company",
     location: "Chennai",
     photo: shanmugavelPhoto,
@@ -180,7 +182,8 @@ export const journeyLearners = [
   },
   {
     name: "Madhumitha",
-    role: "Talent Acquisition Executive",
+    beforeRole: "AI/ML Engineer",
+    role: "Talent Acquisition Specialist",
     company: "Expertspro INC",
     location: "Coimbatore",
     photo: madhumithaPhoto,
@@ -188,6 +191,7 @@ export const journeyLearners = [
   },
   {
     name: "Brahadeesh Kalyan",
+    beforeRole: "Production Executive",
     role: "HR Executive",
     company: "Muthu Group Companies",
     location: "Coimbatore",
@@ -212,7 +216,8 @@ export const journeyLearners = [
   },
   {
     name: "Anbu R",
-    role: "HR Executive",
+    beforeRole: "HR Executive",
+    role: "Senior HR Executive",
     company: "TVS Motor Company",
     location: "Chennai",
     photo: anbuPhoto,
@@ -220,7 +225,8 @@ export const journeyLearners = [
   },
   {
     name: "Mohan Prasad",
-    role: "Senior Associate HR Operations",
+    beforeRole: "HR Executive",
+    role: "Senior HR Executive",
     company: "Russell Tobin",
     location: "New York",
     photo: mohanPhoto,
@@ -228,6 +234,7 @@ export const journeyLearners = [
   },
   {
     name: "Hariharasudhan Sudhagar",
+    beforeRole: "Analyst",
     role: "Full Stack Developer",
     company: "Laxhari Infotech",
     location: "Coimbatore",
@@ -236,7 +243,8 @@ export const journeyLearners = [
   },
   {
     name: "Mohammed Hashid",
-    role: "Full Stack Developer",
+    beforeRole: "Developer",
+    role: "Senior Developer",
     company: "AES Technologies",
     location: "Coimbatore",
     photo: mohammedPhoto,
@@ -244,6 +252,7 @@ export const journeyLearners = [
   },
   {
     name: "Shanmugam Gopal",
+    beforeRole: "Programmer Analyst",
     role: "Senior Developer",
     company: "Fresa Technologies",
     location: "Chennai",
@@ -252,6 +261,7 @@ export const journeyLearners = [
   },
   {
     name: "Dhanasekar Selvam",
+    beforeRole: "Fresher",
     role: "Full Stack Developer",
     company: "Prevaj",
     location: "Chennai",
@@ -260,7 +270,8 @@ export const journeyLearners = [
   },
   {
     name: "Gugan",
-    role: "Senior Mulesoft Developer",
+    beforeRole: "Developer",
+    role: "Technical Lead",
     company: "Mulecraft Digital",
     location: "Salem",
     photo: guganPhoto,

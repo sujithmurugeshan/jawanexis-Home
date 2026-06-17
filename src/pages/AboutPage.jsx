@@ -42,7 +42,7 @@ function BackgroundPattern({ className }) {
 
 const teamMembers = [
   { name: "Soorya Jawahar", role: "Founder & CEO", badge: "FOUNDER & CEO", photo: sooryaPhoto, slug: "soorya-jawahar", linkedin: "https://www.linkedin.com/in/soorya-jawahar/" },
-  { name: "Anisha", role: "Senior HR - Course & Development", badge: "SENIOR HR", photo: anishaPhoto, slug: "anisha-riya", linkedin: "https://www.linkedin.com/in/anisha-riya-855b142a9/" },
+  { name: "Anisha", role: "Senior HR - training & Development", badge: "SENIOR HR", photo: anishaPhoto, slug: "anisha-riya", linkedin: "https://www.linkedin.com/in/anisha-riya-855b142a9/" },
   { name: "Nitinchand", role: "Tech Advisor", badge: "TECH ADVISOR", photo: nithinPhoto, slug: "nitinchand-saravanan", linkedin: "https://www.linkedin.com/in/nitinchand-saravanan-aa64131b4/" }
 ];
 

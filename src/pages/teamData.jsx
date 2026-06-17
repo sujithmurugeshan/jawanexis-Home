@@ -67,10 +67,10 @@ const teamProfiles = {
   "anisha-riya": {
     slug: "anisha-riya",
     name: "Anisha Riya",
-    role: "Senior HR Course & Development",
+    role: "Senior HR training & Development",
     photo: anishaPhoto,
     about: [
-      "Anisha Riya is a passionate HR Professional and HR Trainer dedicated to helping students and fresh graduates build successful careers in Human Resources. As the Senior HR Course & Development Specialist at JAWA EDTECH, she focuses on transforming aspiring learners into industry-ready HR professionals through practical, hands-on learning experiences.",
+      "Anisha Riya is a passionate HR Professional and HR Trainer dedicated to helping students and fresh graduates build successful careers in Human Resources. As the Senior HR training & Development Specialist at JAWA EDTECH, she focuses on transforming aspiring learners into industry-ready HR professionals through practical, hands-on learning experiences.",
       "With expertise in recruitment, HR operations, employee engagement, and career development, Anisha is committed to bridging the gap between academic learning and industry expectations. Through real-time HR projects, recruitment simulations, mock interviews, resume-building workshops, and personalized career guidance, she empowers students to develop the skills and confidence needed to succeed in the corporate world.",
       "Her mission is to equip learners with job-ready HR competencies that employers value and help them build rewarding careers in Human Resources."
     ],
@@ -86,7 +86,7 @@ const teamProfiles = {
       "Campus-to-Corporate Transition Course",
       "Practical HR Skill Development"
     ],
-    roleDescription: "As the Senior HR Course & Development Specialist, Anisha Riya is responsible for:",
+    roleDescription: "As the Senior HR training & Development Specialist, Anisha Riya is responsible for:",
     responsibilities: [
       "Delivering industry-focused HR course programs",
       "Conducting recruitment and interview simulations",
