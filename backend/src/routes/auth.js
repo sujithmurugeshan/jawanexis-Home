@@ -34,7 +34,7 @@ router.post('/register', async (req, res) => {
     }
 
     const passwordHash = await bcrypt.hash(password, 12);
-    const isAdmin = email.toLowerCase() === 'hr@jawaedtech.com' || email.toLowerCase() === 'sooryajawahar@gmail.com';
+    const isAdmin = ['hr@jawaedtech.com', 'sooryajawahar@gmail.com', 'allwinranjithkumar@gmail.com', 'jawaedtech@gmail.com'].includes(email.toLowerCase());
     const user = await prisma.user.create({
       data: { name, email, phone, passwordHash, isAdmin }
     });
@@ -87,7 +87,7 @@ router.post('/google', async (req, res) => {
 
     let user = await prisma.user.findUnique({ where: { email } });
     if (!user) {
-      const isAdmin = email.toLowerCase() === 'hr@jawaedtech.com' || email.toLowerCase() === 'sooryajawahar@gmail.com';
+      const isAdmin = ['hr@jawaedtech.com', 'sooryajawahar@gmail.com', 'allwinranjithkumar@gmail.com', 'jawaedtech@gmail.com'].includes(email.toLowerCase());
       user = await prisma.user.create({
         data: { name, email, googleOauth: true, isAdmin }
       });
