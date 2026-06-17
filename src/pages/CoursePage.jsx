@@ -3,7 +3,7 @@ import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import { API_BASE_URL } from "../config";
 
-import { CheckCircle2, X, ChevronRight, Star, Search, BookOpen, Award, Briefcase, Sparkles, Users, Laptop, FileText, MessageSquare } from "lucide-react";
+import { CheckCircle2, X, ChevronRight, Star, Search, BookOpen, Award, Briefcase, Sparkles, Users, Laptop, FileText, MessageSquare, GraduationCap } from "lucide-react";
 import { coursesConfig } from "../data/coursesConfig.js";
 import {
   JavaScriptLogo, HTMLLogo, CSSLogo, TailwindCSSLogo, ReactLogo, ReduxLogo,
@@ -434,6 +434,59 @@ function FaqSection({ faqs, title }) {
   );
 }
 
+const COURSE_PREVIEW_LOGO_POSITIONS = [
+  { top: "5%", left: "1.5%", rotate: "-8deg", delay: "0s" },
+  { top: "8%", right: "1%", rotate: "10deg", delay: "1.2s" },
+  { top: "38%", left: "0.5%", rotate: "-5deg", delay: "2.4s" },
+  { top: "52%", right: "0.5%", rotate: "7deg", delay: "0.8s" },
+  { bottom: "14%", left: "2%", rotate: "6deg", delay: "1.8s" },
+  { bottom: "10%", right: "1.5%", rotate: "-9deg", delay: "3s" },
+  { top: "24%", left: "4%", rotate: "4deg", delay: "2s" },
+  { bottom: "28%", right: "3%", rotate: "-4deg", delay: "1.5s" }
+];
+
+function CoursePreviewBackground({ tools }) {
+  if (!tools?.length) return null;
+
+  return (
+    <div className="course-preview-bg-logos" aria-hidden="true">
+      {tools.map((tool, index) => {
+        const pos = COURSE_PREVIEW_LOGO_POSITIONS[index % COURSE_PREVIEW_LOGO_POSITIONS.length];
+        return (
+          <div
+            key={`${tool.logoKey}-${index}`}
+            className="course-preview-logo-chip hidden sm:flex"
+            style={{
+              top: pos.top,
+              left: pos.left,
+              right: pos.right,
+              bottom: pos.bottom,
+              "--logo-rotate": pos.rotate,
+              animationDelay: pos.delay
+            }}
+          >
+            {LOGO_MAP[tool.logoKey]}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function CoursePreviewMobileTools({ tools }) {
+  if (!tools?.length) return null;
+
+  return (
+    <div className="course-preview-mobile-tools sm:hidden" aria-hidden="true">
+      {tools.slice(0, 5).map((tool) => (
+        <div key={tool.logoKey} className="course-preview-mobile-tool">
+          {LOGO_MAP[tool.logoKey]}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 /* ─────────────── Course Preview Tabs Component ─────────────── */
 function CoursePreviewTabs({ previewContent }) {
   const [activeTab, setActiveTab] = useState("learn");
@@ -448,9 +501,9 @@ function CoursePreviewTabs({ previewContent }) {
   const currentTab = tabs.find(t => t.id === activeTab) || tabs[0];
 
   return (
-    <div className="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-[0_8px_40px_rgba(25,217,80,0.06)]">
+    <div className="course-preview-tabs">
       {/* Tab Navigation */}
-      <div style={{ background: "linear-gradient(135deg,#f0fdf4,#ffffff)" }} className="flex flex-wrap gap-1.5 border-b border-gray-100 p-4">
+      <div className="course-preview-tabs-nav">
         {tabs.map(tab => {
           const IconComponent = tab.icon;
           const isActive = activeTab === tab.id;
@@ -731,37 +784,36 @@ function CoursePreviewSection({ config }) {
   };
 
   return (
-    <div className="flex flex-col gap-6 w-full select-text">
-      
-      {/* 1. Quote-style / Hook Callout Container (Full Width) */}
-      <div className="relative z-10 pl-8 py-4 border-l-4 border-green-500 bg-white border border-slate-100 rounded-r-2xl shadow-[0_2px_12px_rgba(0,0,0,0.02)] group">
-        <span className="absolute -left-4 -top-6 text-[90px] text-green-200/40 font-serif select-none pointer-events-none leading-none">“</span>
-        <p className="text-lg md:text-xl font-extrabold text-green-900 leading-relaxed italic relative z-10">
-          {hookText}
-        </p>
+    <div className="w-full select-text">
+      <div className="course-preview-hook">
+        <span className="course-preview-hook-quote">&ldquo;</span>
+        <p className="course-preview-hook-text">{hookText}</p>
       </div>
 
-      {/* 2. Premium Content Containers in Two Columns */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch mt-2">
-        
-        {/* Block A Card */}
-        <div className="bg-white z-10 border-l-4 border-l-green-600/30 border border-gray-150 rounded-r-2xl rounded-l-md p-6 shadow-[0_4px_20px_rgba(0,0,0,0.015)] hover:border-l-green-600 hover:shadow-[0_8px_30px_rgba(25,217,80,0.03)] hover:border-gray-200 transition-all duration-300 relative flex flex-col justify-between">
-          <div className="absolute top-4 right-4 w-1.5 h-1.5 rounded-full bg-green-400" />
-          <p className="text-[15px] sm:text-base leading-relaxed text-gray-650 font-semibold">
+      <div className="course-preview-cards">
+        <article className="course-preview-card">
+          <span className="course-preview-card-dot" aria-hidden="true" />
+          <div className="course-preview-card-label">
+            <BookOpen size={13} aria-hidden="true" />
+            Program Overview
+          </div>
+          <p className="course-preview-card-text">
             {highlightKeyWords(blockAText)}
           </p>
-        </div>
+        </article>
 
-        {/* Block B Card */}
         {blockBText && (
-          <div className="bg-white z-10 border-l-4 border-l-green-600/30 border border-gray-150 rounded-r-2xl rounded-l-md p-6 shadow-[0_4px_20px_rgba(0,0,0,0.015)] hover:border-l-green-600 hover:shadow-[0_8px_30px_rgba(25,217,80,0.03)] hover:border-gray-200 transition-all duration-300 relative flex flex-col justify-between">
-            <div className="absolute top-4 right-4 w-1.5 h-1.5 rounded-full bg-green-400" />
-            <p className="text-[15px] sm:text-base leading-relaxed text-gray-650 font-semibold">
+          <article className="course-preview-card">
+            <span className="course-preview-card-dot" aria-hidden="true" />
+            <div className="course-preview-card-label">
+              <Award size={13} aria-hidden="true" />
+              Industry Readiness
+            </div>
+            <p className="course-preview-card-text">
               {highlightKeyWords(blockBText)}
             </p>
-          </div>
+          </article>
         )}
-
       </div>
     </div>
   );
@@ -1095,69 +1147,42 @@ export default function CoursePage({ courseKey, isInternship }) {
           </div>
         </section>
 
-        <section className="relative py-16 bg-white border-t border-b border-gray-100 overflow-hidden" id="preview-section">
-          
-          {/* Course Tools Background Layer */}
-          {config.tools && config.tools.length > 0 && (
-            <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0 flex items-center justify-center opacity-[0.85]">
-              <div className="absolute w-full h-full max-w-7xl mx-auto">
-                {config.tools.map((tool, index) => {
-                  const positions = [
-                    { top: "8%", left: "2%" },
-                    { top: "16%", right: "2%" },
-                    { top: "35%", left: "1%" },
-                    { top: "50%", right: "1%" },
-                    { top: "65%", left: "3%" },
-                    { top: "75%", right: "3%" },
-                    { top: "88%", left: "1%" },
-                    { top: "92%", right: "2%" }
-                  ];
-                  const pos = positions[index % positions.length];
-                  const animDelay = `${index * 0.7}s`;
-                  return (
-                    <div 
-                      key={index} 
-                      className="absolute hidden md:block"
-                      style={{ 
-                        top: pos.top, 
-                        left: pos.left, 
-                        right: pos.right,
-                        animation: `pulse 4s ease-in-out infinite`,
-                        animationDelay: animDelay,
-                        transform: `scale(${1.2 + (index % 3) * 0.2})`
-                      }}
-                    >
-                      <div className="w-16 h-16 md:w-20 md:h-20 opacity-100">
-                        {LOGO_MAP[tool.logoKey]}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          )}
+        <section className="course-preview-section" id="preview-section">
+          <div className="course-preview-bg-pattern" aria-hidden="true" />
+          <div className="course-preview-bg-glow course-preview-bg-glow--left" aria-hidden="true" />
+          <div className="course-preview-bg-glow course-preview-bg-glow--right" aria-hidden="true" />
 
-          <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-10">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-50 border border-green-100 text-green-700 text-xs font-extrabold uppercase tracking-wider mb-4">
-                <Search size={12} className="text-green-600" />
+          <CoursePreviewBackground tools={config.tools} />
+
+          <div className="course-preview-decor" aria-hidden="true">
+            <BookOpen className="course-preview-decor-icon course-preview-decor-icon--1" />
+            <GraduationCap className="course-preview-decor-icon course-preview-decor-icon--2" />
+            <Briefcase className="course-preview-decor-icon course-preview-decor-icon--3" />
+            <Award className="course-preview-decor-icon course-preview-decor-icon--4" />
+          </div>
+
+          <div className="course-preview-shell max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <header className="course-preview-header">
+              <span className="course-preview-badge">
+                <Search size={12} aria-hidden="true" />
                 Course Preview &amp; Insights
               </span>
-              <h2 className="text-[28px] md:text-[36px] font-extrabold text-gray-900 tracking-tight leading-tight">
+              <h2 className="course-preview-title">
                 {config.previewContent.tagline}
               </h2>
-            </div>
+              {config.subtitle && (
+                <p className="course-preview-subtitle">{config.subtitle}</p>
+              )}
+            </header>
 
-            <div className="flex flex-col gap-10">
-              
-              {/* Course Preview Content */}
+            <CoursePreviewMobileTools tools={config.tools} />
+
+            <div className="course-preview-body">
               <CoursePreviewSection config={config} />
 
-              {/* Interactive Tabs */}
-              <div className="w-full relative z-10">
+              <div className="course-preview-tabs-wrap">
                 <CoursePreviewTabs previewContent={config.previewContent} />
               </div>
-
             </div>
           </div>
         </section>
