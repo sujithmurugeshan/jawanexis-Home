@@ -29,7 +29,7 @@ const heroOfferPanels = [
     image: posterBoat,
     rows: [
       ["HR Executive Course", "HR Recruitment Course", "Full Stack Development"],
-      ["Software Quality Testing (QA Testing)", "Data Structure And Algorithms (DSA)"],
+      ["Software Quality Testing (QA Testing)", "Data Structure And Algorithms (DSA)", "MERN Stack Internship"],
     ],
     cta: "Claim Rs. 7,777 Off Now",
     note: "*Offer Ends Soon",
