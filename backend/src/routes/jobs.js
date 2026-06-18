@@ -82,8 +82,9 @@ The applicant's resume is attached to this email.
       content: req.file.buffer
     }];
 
+    const ADMIN_EMAILS = process.env.ADMIN_EMAILS || 'hr@jawaedtech.com,sooryajawahar@gmail.com,jawaedtech@gmail.com';
     sendEmail(
-      'hr@jawaedtech.com, sooryajawahar@gmail.com, jawaedtech@gmail.com',
+      ADMIN_EMAILS,
       `New Application for ${jobTitle} - ${name}`,
       emailBody,
       attachments
